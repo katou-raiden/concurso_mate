@@ -1,0 +1,280 @@
+body, html{
+    height: 100% !important;
+} 
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+nav {
+    
+    height: 100% !important;
+    display: block !important;
+    position: static !important;
+    
+    
+   
+}
+
+nav header{
+    height: 100% !important;
+    
+}
+
+.site-bg-image{
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-image: url("../images/desert.jpg") !important;
+    height: 100% !important;
+    
+}
+
+.site-bg-opacity{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: .5;
+    left: 0;
+    top: 0;
+    
+}
+
+#site-bg button{
+    color: white;
+    display: inline-block;
+    text-align: center;
+    font-size: 3rem;
+    position: absolute;
+    bottom: 20%;
+    overflow: visible;
+    background-color: transparent;
+    border: none;
+    outline-style: none;
+    left: 50%;
+    transform: translate(-50%);
+
+
+    
+
+}
+
+#site-bg button span{
+    animation-name: header-arrow;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+    animation-duration: 1.5s;
+    position: relative;
+}
+
+.site-bg-text{
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.site-bg-text h2{
+    color: white;
+    font-size: 1rem;
+}
+.site-bg-text p{
+    color: white;
+    font-size: .7rem;
+}
+
+.nav{
+    
+    background-color: rgb(218, 56, 209);
+    position: static;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100px;
+    flex-wrap: nowrap;
+    align-items: center;
+   
+
+}
+
+.nav-brand{
+    height: 75px;
+    width: 75px;
+}
+
+
+
+.nav-list{
+    display: inline-block;
+    list-style: none;
+    background-color: black;
+    padding: 0;
+}
+
+.nav-list li{
+    
+}
+
+#search-button{
+    display: inline-block !important;
+}
+
+#menu-button{
+    display: inline-block !important;
+    
+}
+
+#close-dropDiv-Button{
+    display: none;
+}
+
+@media (min-width: 320px){
+    .nav-list{
+        display: none;
+    }
+
+    .user-profile-welcome{
+        display: inline-block;
+        margin: 0 2rem;
+
+    }
+    .user-profile-welcome p{
+        display: inline-block;
+        font-size: 1.2rem;
+        margin-left: .2rem;
+    }
+    
+    
+    .nav-menu button{
+        margin-right: 1.5rem;
+        margin-left: 0;
+        color: white;
+        background-color: transparent;
+        border-style: none;
+        border-color: none;
+        font-size: 1.3rem;
+    }
+    .menu-search{
+        margin-right: .4rem;
+    }
+    .menu-button{
+        
+    }
+
+    .nav-list{
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        top: -100vh;
+        left: 0;
+        display: none;
+        background-color: rgba(0, 0, 0, 0.850);
+        transition: top .5s ease;
+        z-index: 90;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        
+     
+    }
+
+    .nav-list li{
+        
+       
+        padding: 1rem 0;
+        margin: 0;
+        border-top-style: solid;
+        border-top-width: .3px;
+        border-top-color: whitesmoke;
+        width: 25%;
+        text-align: center;;
+        text-transform: capitalize;
+        box-sizing: border-box;
+    }
+
+    .nav-list li a{
+        text-decoration: none;
+        text-transform: capitalize;
+        color: whitesmoke;
+    }
+    .nav-list li a:hover{
+        color: rgb(218, 56, 209);
+    }
+    
+    .nav-list li:first-child{
+       
+        border-top-style: none;
+    }
+    
+    .nav-brand{
+        margin-left: 1.5rem;
+    }
+    
+    #close-dropdiv-button{
+        display: inline-block;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        color: white;
+    }
+    #search-field-group{
+        transition: bottom .5s ease;
+        display: none;
+        position: absolute;
+        bottom: -100px;
+        height: 60px;
+        background-color: rgb(27, 46, 129);
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        z-index: 3;
+        
+    }
+
+    #search-field-group input{
+        margin-right: 1rem;
+        width: 80%;
+        border-radius: 10px;
+        outline-style: none;
+        height: 40px;
+    }
+    #search-field-group input:active{
+        border-style: solid;
+        border-color: rgb(53, 140, 255);
+        border-width: 4px;
+    }
+
+    #search-field-group button {
+        background-color: transparent;
+        border-style: none;
+        color: white;
+        font-size: 1.5rem;
+    }
+}
+
+@keyframes header-arrow{
+    0%{
+        top: 0;
+    }
+    50%{
+        top: 3rem;
+    }
+    100%{
+        top: 0;
+    }
+}

@@ -1,0 +1,39 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+<title>CMMD | Home</title>
+<link rel="stylesheet" href="{% static 'core/css/home.css' %}">
+    <section id="recent-news">
+        <div class="container-fluid h-100">
+            <h3 class="my-5 text-center text-uppercase">latest news</h3>
+            
+            {% for new in news %}
+            <div class="card new py-5">
+                <div class="row justify-content-center align-items-start h-100">
+                    <div class="col-3 card-img-div  h-100 overflow-hidden">
+                        <img src="{{new.image.url}}" alt="" class="card-img" style="">
+                    </div>
+                    <div class="col-6 bg-danger h-100">
+                        <div class="card-body h-75">
+                            <h4 class="card-title">{{new.title}}</h4>
+                            <p class="card-text">{{new.content}}</p>
+                        </div>
+                        <div class="card-footer mt-auto h-25">
+                            <p class="d-inline-block font-weight-bolder">Created on: {{new.date_created}}
+                            {% if new.date_created != new.date_updated %}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;Last Update on: {{new.date_updated}}
+                            {% endif %}
+                            
+                            </p>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+    
+        </div>
+    </section>
+    
+{% endblock %}

@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+    <script defer src="{% static 'js/jquery.min.js' %}"></script>
+    <script defer src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script defer src="{% static 'core/js/base.js' %}"></script>
+
+</head>
+<body>
+    <nav>
+        <header id="site-bg">
+            <div class="site-bg-image"></div>
+            <div class="site-bg-opacity"></div>
+            <div class="site-bg-text">
+                <h2>Libertad</h2>
+                <p>Explora tus Horizontes!</p>
+            </div>
+            <button href="#" type="button">
+                <span class="fas fa-angle-double-down"></span>
+            </button>
+        </header>
+        <div class="nav">
+            <div class="nav-brand">
+                <h2><a href="{% url 'home' %}" 
+                style="text-decoration-style: none; 
+                    color: white;">SITIO WEB</a></h2>
+            </div>
+    
+            <div class="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-list-item"><a href="{% url 'home' %}">home</a></li>
+                    <li class="nav-list-item"><a href="#">noticias</a></li>
+                    <li class="nav-list-item"><a href="#">entrena</a></li>
+                    <li class="nav-list-item">
+                        biblioteca
+                        <ul class="dropdiv d-none">
+                            <li class="dropdiv-item">historia</li>
+                            <li class="dropdiv-item">descargas</li>
+                            <li class="dropdiv-item">videos</li>
+                        </ul>
+                    
+                    </li>
+                    <li class="nav-list-item"><a href="">informacion</a></li>
+                    <li class="nav-list-item"><a href="">FAQ</a></li>
+                    <li class="nav-list-item"><a href="{% url 'about' %}">about</a></li>
+                    <button id="close-dropdiv-button">
+                        <span class="fas fa-times"></span>
+                    </button>
+
+                </ul>
+                {% if request.user.is_authenticated %}
+                <div class="user-profile-welcome">
+                    <span class='fas fa-user'></span>
+                    <p>Bienvenido {{request.user.username}}!!</p>
+                </div>
+                {% endif %}
+                <button id="search-button" type="button">
+                    <span class="fas fa-search"></span>
+                </button>
+                <button id="menu-button" type="button">
+                    <span class="fas fa-bars"></span>
+                </button>
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'logout' %}" type="button"><span class="fas fa-door-open"></span></a>
+                {% endif %}
+            </div>
+            <div id="search-field-group">
+                <input class="form-input" type="text">
+                <button id="search-field-cancel">
+                    <span class="fas fa-times"></span>
+                </button>
+            </div>
+            
+           
+    
+        </div>
+    </nav>
+    {% block content %}
+      
+    {% endblock %}
+</body>
+</html>
