@@ -1,0 +1,1 @@
+default_apps_config = 'accounts.apps.AccountsConfig'

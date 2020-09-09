@@ -1,3 +1,4 @@
+"use strict";
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +7,59 @@
     <title>Document</title>
 </head>
 <body>
+    {{student_form.errors}}
+    {{user_form.errors}}
+    {{professor_form.errors}}
     <form action="" method="POST">
         {% csrf_token %}
+        <input type="radio" name="forms" value="professor">
+        <input type="radio" name="forms" checked value="student">
         {{user_form}}
+        <div class="student-div" style="display: none;">
+            {{student_form}}
+        </div>
+        <div class="professor-div" style="display: none;">
+            {{professor_form}}
+        </div>
         <button type=submit>
             submit
         </button>
     </form>
+    <script>
+        
+        
+        window.onload = function(){
+            const rb_p = document.querySelector('input[value="professor"]');
+            const rb_s = document.querySelector('input[value="student"]');
+            const professor_div = document.querySelector('.professor-div');
+            const student_div = document.querySelector('.student-div');
+            s = (e) => {
+            if(rb_p.checked){
+               student_div.style.display = "none";
+               professor_div.style.display = "block";
+           } 
+
+            else if(rb_s.checked){
+               professor_div.style.display = "none";
+               student_div.style.display = "block";
+           } 
+           
+        }
+
+        rb_p.addEventListener('click', s);
+        rb_s.addEventListener('click', s);
+
+        function init(){
+            if(rb_s.checked)
+                student_div.style.display = "block";
+            if(rb_p.checked)
+                professor_div.style.display = "block";
+        }
+
+        init();
+        };  
+
+        
+    </script>
 </body>
 </html>
