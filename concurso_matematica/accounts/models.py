@@ -14,6 +14,8 @@ class Student(models.Model):
     phone_number = models.CharField(max_length=7, blank=True, default='')
     private_number = models.CharField(max_length=9, blank=True, default='')
     
+    def __str__(self):
+        return user.username
 
 class Professor(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
@@ -23,7 +25,7 @@ class Professor(models.Model):
     institute = models.CharField(max_length=20, blank=True, default='')
     
     def __str__(self):
-        return 'user__username'
+        return user.username
 
 class SocialLink(models.Model):
     link = models.URLField(default='')
