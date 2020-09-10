@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'core',
     'news',
     'accounts',
+    'forum.apps.ForumConfig'
 ]
 
 MIDDLEWARE = [

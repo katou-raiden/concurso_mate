@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="display-1">Posts de {{ tema }}</h1>
+  <div class="col-3">
+  <ul>
+      {% for tema in temas %}
+        <li><a href="">{{ tema.nombre }}</a></li>
+      {% endfor %}
+
+  </ul>
+  </div>
+  <div class="col-9">
+  {% for art in arts %}
+    <a class="card" href="{% url 'forum_detail' art.id %}">{{art.titulo}}</a>
+  {% endfor %}
+  </div>
+{% endblock content %}
