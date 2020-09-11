@@ -1,65 +1,70 @@
-"use strict";
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'accounts/css/signup.css' %}">
+    <script defer src="{% static 'accounts/js/signup.js' %}">
+    </script>
 </head>
 <body>
-    {{student_form.errors}}
-    {{user_form.errors}}
-    {{professor_form.errors}}
-    <form action="" method="POST">
-        {% csrf_token %}
-        <input type="radio" name="forms" value="professor">
-        <input type="radio" name="forms" checked value="student">
-        {{user_form}}
-        <div class="student-div" style="display: none;">
-            {{student_form}}
+    
+    <div class="signup-area">
+        <form method="POST" class="form-area">
+            {% csrf_token %}
+            <div class="first-last-name-area">
+                <label for="first-name-input">nombre</label>
+                <input type="text" name="first_name" id="first-name-input">
+                <label for="second-name-input" id="second-name-input">apellido</label>
+                <input type="text" name="second_name">
+                <div class="buttons-div">
+                    <button class="next-button">next</button>
+                </div>
+            </div>
+            <div class="pui-grade-area">
+                <label for="pui-input">instituto</label>
+                <input type="text" name="first_name" id="pui-input">
+                <label for="grade-input">grade</label>
+                <input type="text" name="grade" id="grade-input">
+                <div class="buttons-div">
+                    <button class="prev-button">prev</button>
+                    <button class="next-button">next</button>
+                </div>
+            </div>
+            <div class="email-area">
+                <label for="email-input">email</label>
+                <input type="email" name="email" id="email-input">
+                <div class="buttons-div">
+                    <button class="prev-button">prev</button>
+                    <button class="next-button">next</button>
+                </div>
+            </div>
+            <div class="username-area">
+                
+                <label for="username-input">username</label>
+                <input type="text" name="username" id="username-input">
+                <div class="buttons-div">
+                    <button class="prev-button">prev</button>
+                    <button class="next-button">next</button>
+                </div>
+            </div>
+            <div class="password-area">
+                <label for="password-input">password</label>
+                <input type="password" name="password" id="password-input">
+                <div class="buttons-div">
+                    <button class="prev-button">prev</button>
+                    <button type="submit">submit</button>
+                </div>
+            </div>
+            
+        </form>
+        <div class="steps-area">
+                
         </div>
-        <div class="professor-div" style="display: none;">
-            {{professor_form}}
-        </div>
-        <button type=submit>
-            submit
-        </button>
-    </form>
-    <script>
-        
-        
-        window.onload = function(){
-            const rb_p = document.querySelector('input[value="professor"]');
-            const rb_s = document.querySelector('input[value="student"]');
-            const professor_div = document.querySelector('.professor-div');
-            const student_div = document.querySelector('.student-div');
-            s = (e) => {
-            if(rb_p.checked){
-               student_div.style.display = "none";
-               professor_div.style.display = "block";
-           } 
 
-            else if(rb_s.checked){
-               professor_div.style.display = "none";
-               student_div.style.display = "block";
-           } 
-           
-        }
-
-        rb_p.addEventListener('click', s);
-        rb_s.addEventListener('click', s);
-
-        function init(){
-            if(rb_s.checked)
-                student_div.style.display = "block";
-            if(rb_p.checked)
-                professor_div.style.display = "block";
-        }
-
-        init();
-        };  
-
-        
-    </script>
+    </div>
+    
 </body>
 </html>

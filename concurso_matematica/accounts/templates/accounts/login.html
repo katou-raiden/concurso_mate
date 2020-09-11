@@ -1,17 +1,40 @@
-<form action="" method="POST">
-    {% csrf_token %}
-    <p>
-        {% for message in messages %}
-        {{message}}
-        {% endfor %}
-    </p>
-    
-    <label for="">Username</label>
-<input type="text" name="username">
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'accounts/css/login.css' %}">
+</head>
+<body>
+    <div class="bg cover"></div>
+    <div class="black-layer cover"></div>
+    <div class="login-area">
+        <h1>Login</h1>
+        <div class="image-area">
+            <img src="{% static 'accounts/images/user.svg' %}" alt="">
+        </div>
+        <form class="login-form" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="username-area">
+                    <label for=username-input>username</label>
+                    <input id="username-input" minlength="3" maxlength="12" pattern="\w{3, 12}" type="text" name="username">
+                </div>
+                <div class="password-area">
+                    <label for=password-input>password</label>
+                    <input id="password-input" type="password" name="password" minlength="8" maxlength="20">
+                </div>
+                <button type="submit">submit</button>
 
-<label for="">Password</label>
-<input type="password" name="password">
-<button type="submit">
-    submit
-</button>
-</form>
+            </div>
+        </form>
+        <div class="links-area">
+            <a href="">Forgot your password?</a>
+            <a href="{% url 'signup' %}">New here?</a>
+        </div>
+        
+    </div>
+</body>
+</html>
