@@ -6,55 +6,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'accounts/css/signup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
     <script defer src="{% static 'accounts/js/signup.js' %}">
     </script>
 </head>
 <body>
     
+    {% if done %}
+    <div class="success-message-area">
+        <p><span class="fa-check-square"></span>Te has registrado con exito</p>
+        <a href="{% url 'home' %}">Continuar al sitio</a>
+    </div>
+    
+    {% else %}
     <div class="signup-area">
         <form method="POST" class="form-area">
             {% csrf_token %}
             <div class="first-last-name-area">
-                <label for="first-name-input">nombre</label>
-                <input type="text" name="first_name" id="first-name-input">
+                <label for="first-name-input" id="first-name-input">nombre</label>
+                <input type="text" name="first_name" id="first-name-input" required>
                 <label for="second-name-input" id="second-name-input">apellido</label>
-                <input type="text" name="second_name">
+                <input type="text" name="second_name" id="second-name-input" required>
                 <div class="buttons-div">
-                    <button class="next-button">next</button>
+                    <button type="button" class="next-button">next</button>
                 </div>
             </div>
             <div class="pui-grade-area">
                 <label for="pui-input">instituto</label>
                 <input type="text" name="first_name" id="pui-input">
-                <label for="grade-input">grade</label>
-                <input type="text" name="grade" id="grade-input">
+                <label for="grade-input" >grade</label>
+                <input type="text" name="grade" required id="grade-input">
                 <div class="buttons-div">
-                    <button class="prev-button">prev</button>
-                    <button class="next-button">next</button>
+                    <button type="button" class="prev-button">prev</button>
+                    <button type="button" class="next-button">next</button>
                 </div>
             </div>
             <div class="email-area">
                 <label for="email-input">email</label>
-                <input type="email" name="email" id="email-input">
+                <input type="email" name="email" required id="email-input">
                 <div class="buttons-div">
-                    <button class="prev-button">prev</button>
-                    <button class="next-button">next</button>
+                    <button type="button" class="prev-button">prev</button>
+                    <button type="button" class="next-button">next</button>
                 </div>
             </div>
             <div class="username-area">
                 
                 <label for="username-input">username</label>
-                <input type="text" name="username" id="username-input">
+                <input type="text" name="username" required id="username-input">
                 <div class="buttons-div">
-                    <button class="prev-button">prev</button>
-                    <button class="next-button">next</button>
+                    <button type="button" class="prev-button">prev</button>
+                    <button type="button" class="next-button">next</button>
                 </div>
             </div>
             <div class="password-area">
-                <label for="password-input">password</label>
-                <input type="password" name="password" id="password-input">
+                <label for="password-input1">password</label>
+                <input type="password" name="password1" required id="password-input1">
+                <label for="password-input2">re-type</label>
+                <input type="password" name="password2" required id="password-input2">
                 <div class="buttons-div">
-                    <button class="prev-button">prev</button>
+                    <button type="button" class="prev-button">prev</button>
                     <button type="submit">submit</button>
                 </div>
             </div>
@@ -65,6 +75,6 @@
         </div>
 
     </div>
-    
+    {% endif %}
 </body>
 </html>

@@ -116,4 +116,54 @@
             margin: 0 .250rem;
             cursor: pointer;
         }
+
+        .step-active{
+            background-color: white;
+        }
+        .step-completed{
+            background-color: chartreuse;
+        }
+        .step-wrong{
+            background-color: rgb(194, 0, 39);
+        }
     
+        .success-message-area{
+            min-width: 26%;
+            height: auto;
+            background-color: rgb(23, 4, 54);
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 2rem 0;
+        }
+        .success-message-area p{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 1.5rem;
+            color: rgb(236, 236, 37);
+            text-align: center;
+            font-weight: 700;
+        }
+        .success-message-area p span{
+            font-size: 2rem;
+            color: greenyellow;
+            margin: 0 2rem;
+        }
+        .success-message-area a{
+            display: block;
+            margin: 2rem auto;
+            font-size: 1.5rem;
+            border: 2px solid rgb(21, 133, 21);
+            color: rgb(21, 133, 21);
+            background-color: inherit;
+            padding: 1rem;
+            width: max-content;
+            text-decoration: none;
+            transition: all .5s ease;
+            border-radius: 8px;
+        }
+
+        .success-message-area a:hover{
+            background-color: rgb(21, 133, 21);
+            color: white;
+        }
