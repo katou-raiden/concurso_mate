@@ -107,6 +107,7 @@ nav header{
     height: 100px;
     flex-wrap: nowrap;
     align-items: center;
+    box-shadow: 0 0px 40px rgba(0, 0, 0);
    
 
 }

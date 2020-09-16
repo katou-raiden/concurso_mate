@@ -55,7 +55,7 @@
             margin: 0 auto;
             letter-spacing: 0.025rem;
         }
-        .form-area > div input{
+        .form-area > div input[type="text"], .form-area > div input[type="password"], .form-area > div input[type="email"]{
             width: 60%;
             background-color: transparent;
             border-style: none;
@@ -165,5 +165,30 @@
 
         .success-message-area a:hover{
             background-color: rgb(21, 133, 21);
+            color: white;
+        }
+
+        .image-area img{
+            max-width: 180px;
+            max-height: auto;
+        }
+
+        .image-area input[type="file"]{
+            background-color: rgb(7, 36, 100);
+            border: solid 2px rgb(3, 148, 3);
+            color: rgb(3, 148, 3);
+            margin: 1rem auto;
+        }
+        
+        .image-area input[type="file"]::after{
+            background-color: rgb(7, 36, 100);
+            border: solid 2px rgb(3, 148, 3);
+            color: rgb(3, 148, 3);
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .image-area input:hover{
+            background-color: rgb(3, 148, 3);
             color: white;
         }

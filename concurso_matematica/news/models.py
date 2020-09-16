@@ -14,7 +14,7 @@ class Notice(models.Model):
     downvotes = models.IntegerField(null=False, blank=False, default=0)
 
     def __str__(self):
-        return self.title + ' - ' + self.date_created
+        return self.title + ' - ' + str(self.date_created)
     
 
 
