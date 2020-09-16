@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row">
+            <a href="{% url 'forum_main' %}" class="btn btn-light">Forum</a>
+            <a href="" class="btn btn-light">Noticias</a>
+        </div>
+
+        {% block content %}
+            <div class="row">
+                <h1 class="display-2">Asi vamos tirando</h1>
+                <p class="lead">Vamos a hacer algo funcional antes del domingo que si se puede</p>
+            </div>
+        {% endblock content %}
+
+    </div>
+
+    
+
+    <script src="{% static "js/popper.js" %}"></script>
+    <script src="{% static "js/jquery.js" %}"></script>
+    <script src="{% static "js/bootstrap.js" %}"></script>
+</body>
+</html>
