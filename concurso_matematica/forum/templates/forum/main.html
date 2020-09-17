@@ -1,25 +1,86 @@
-{% extends "base.html" %}
-
+{% extends "forum/base.html" %}
+{% load static %}
 {% block content %}
-<h1 class="display-1">Ultimas Entradas</h1>
-  <div class="col-3">
-  <ul>
-      {% for tema in temas %}
-        <li><a href="{% url 'forum_filter' tema.id %}">{{ tema.nombre }}</a></li>
-      {% endfor %}
+<link rel="stylesheet" href="{% static 'forum/css/main.css' %}">
 
-  </ul>
+<div class="row mt-4">
+
+  <aside class="col-12 col-lg-4 col-xl-2">
+    <h2 class="d-none d-lg-block text-lg-center h5 my-4">Sidebar</h2>
+    <ul class="d-flex flex-lg-column flex-row list-unstyled" id="aside-nav">
+      <li class="ml-1"><a href="" class="nav-link active">Example</a></li>
+      <li class="ml-1 "><a href="" class="nav-link active">Example</a></li>
+      <li class="ml-1 "><a href="" class="nav-link active">Example</a></li>
+      <li class="ml-1 "><a href="" class="nav-link active">Example</a></li>
+      <li class="ml-1 "><a href="" class="nav-link active">Example</a></li>
+    </ul>
+  </aside>
+  <section class="col-12 col-lg-8 col-xl-7">
+    <div id="section heading" class="border-dark border-bottom pb-5">
+      <div class="d-flex align-items-center my-4">
+        <h1 class="display-4 text-black d-inline-block" id="questions-section-title">Top Questions</h1>
+        <a class="btn btn-primary text-white d-inline-block mx-4" href="#">Ask Question</a>
+
+      </div>
+      <div class="btn-group d-flex justify-content-end" role="group" id="question-filter-area">
+        <a href="#" class="btn btn-outline-secondary rounded-left">Interesting</a>
+        <a href="#" class="btn btn-outline-secondary">Hot</a>
+        <a href="#" class="btn btn-outline-secondary">Month</a>
+        <a href="#" class="btn btn-outline-secondary rounded-left">Day</a>
+      </div>
+    </div>
+
+    <div id="questions-area" class="my-5">
+      {% for post in posts %}
+      <div class="w-100 border-secondary d-flex flex-row border-bottom border-top border-primary">
+        <div class="question-info d-flex flex-column justify-content-center">
+          <div class="btn-group d-inline-block question-info-area">
+            <a href="" class="question-vote-info btn btn-outline-success text-center h-75 d-inline-block">
+              <span class="h3 d-block">50</span>
+              <span class="h6 text-secondary">Votes</span>
+            </a>
+            <a href="" class="question-answers-info btn btn-outline-primary  h-75 d-inline-block">
+              <span class="h3 d-block">50</span>
+              <span class="h6 text-secondary">Answers</span>
+            </a>
+            <a href="" class="btn btn-outline-secondary question-views-info  h-75 d-inline-block">
+              <span class="h3 d-block">50</span>
+              <span class="h6 text-secondary">Views</span>
+            </a>
+          </div>
+        </div>
+        <div class="d-flex flex-column py-1 justify-content-between question-item">
+          <h6 class="mx-3 my-1 h2">{{post.titulo}}</h6>
+
+          <div class="mx-3 question-info-footer d-flex justify-content-between align-content-end">
+            <ul class="list-unstyled my-2 question-info-tags">
+              <li class="d-inline-block">
+                <a class="">
+
+                </a></li>
+              <li class="d-inline-block">
+                <a class="">
+                  linux
+                </a></li>
+              <li class="d-inline-block "><a class="">
+                  linux
+                </a></li>
+              <li class="d-inline-block "><a class="">
+                  linux
+                </a></li>
+            </ul>
+            <p class="py-0 my-0"> posted August 4th 2015 by Atemas <span>515</span></p>
+          </div>
+
+
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </section>
+  <div class="col-12 col-xl-3">
   </div>
-  <div class="col-9">
-  {% for art in arts %}
-      <a href="{% url 'forum_detail' art.id %}">
-        <h2 class="card-header">
-            {{ art.titulo }}
-        </h2>
-        <p class="card-body">
-            {{ art.contenido }}
-        </p>
-      </a>
-  {% endfor %}
-  </div>
-{% endblock content %}
+</div>
+
+{% endblock %}

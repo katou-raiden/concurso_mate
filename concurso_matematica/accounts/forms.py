@@ -17,11 +17,18 @@ class UserForm(forms.ModelForm):
 class StudentForm(forms.ModelForm):
 
     class Meta:
-        fields = ['pui', 'grade', 'private_number', 'phone_number', 'province']
+        fields = ['pui', 'grade']
         model = Student
 
 class ProfessorForm(forms.ModelForm):
 
     class Meta:
-        fields = ['institute', 'phone_number', 'private_number', 'province']
+        fields = ['institute']
         model = Professor
+
+class ProfileForm(forms.ModelForm):
+    
+    class Meta:
+        fields = '__all__'
+        exclude = ['user']
+        model = Profile

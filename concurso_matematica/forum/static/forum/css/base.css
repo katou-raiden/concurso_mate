@@ -1,0 +1,25 @@
+.navbar-brand img{
+    height: 100px;
+    width: 100px;
+    }
+
+    nav{
+        height: auto;
+        width: 100%;
+        background-color: rgb(17, 69, 182);
+    }
+
+    nav > div{
+
+    }
+#nav li{
+    margin: .8rem;
+    font-size: 1.4rem;
+}
+
+#nav li button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    text-align: center;
+}

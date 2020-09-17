@@ -1,0 +1,98 @@
+<html>
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'forum/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+    <script defer src="{% static 'js/jquery.min.js' %}"></script>
+    <script defer src="{% static 'js/popper.js' %}"></script>
+    <script defer src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+    <header>
+         <!-- Aqui vendria una especie de propaganda animada para darle algo de coolidad al sitio,
+        asi como anuncios, etc.. -->
+        <img src="" alt="">
+        
+        <nav class="navbar navbar-dark navbar-expand-lg shadow">
+             <!-- Aqui pues la barra de navegacion y los items de toda la vida -->
+            <a href="{% url 'forum_main' %}" class="navbar-brand">
+                <img src="{% static 'img/Logo.png' %}"></img>
+            </a>
+           
+
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#nav">
+                    <span class="navbar-toggler-icon text-white"></span>
+                </button>
+                <div class="navbar-collapse collapse">
+
+                    <ul class="navbar-nav ml-auto d-flex justify-content-around align-items-center" id="nav">
+                        <li>
+                            <form class="navbar-fo form-row text-center form-group" method="POST">
+                                    <label class="col-2" class="text-white" for="#search-question">
+                                        <span class="fas fa-search text-white"></span>
+                                    </label>
+                                    <input type="text" class="col-10 form-control text-white" id="search-question" placeholder="Search a Question">
+                            </form>
+                          
+                        </li>
+                        <li class="nav-item text-white">Lobby</li>
+                        <li class="nav-item inbox-messages">
+                            <button><span class="fas fa-inbox text-white"></span></button>
+                            <ul>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">
+                                <span class="fas fa-info-circle"></span>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link fas fa-user text-white" data-toggle="dropdown" data-target="#user-options">
+                            </a>
+                            <ul class="dropdown-menu" id="user-options">
+                                <li>item#1</li>
+                                <li>item#2</li>
+                                <li>item#3</li>
+                                <li>item#4</li>
+                            </ul>
+                        </li>
+                        <li class="nav-item text-white">
+                            <span class="fas fa-question-circle"></span>
+                            <div id="user-recent-posts">
+                                <ul>
+    
+                                </ul>
+                            </div>
+                        </li>
+                            <li class="nav-item">
+                                <a href="nav-link text-white" class="text-white">
+                                    <span class="fas fa-door-open">
+                                    </span>
+                                </a>
+                            </li>
+                        <li class="nav-item"></li>
+                    </ul>
+                </div>
+            
+            
+        </nav>
+    </header>
+   
+    <section id="main-section">
+
+        <div class="container-fluid">
+            {% block content %}
+               
+            {% endblock %}
+    
+        </div>
+    </section>
+
+    
+
+    
+   
+</body>
+</html>

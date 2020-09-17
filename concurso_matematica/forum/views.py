@@ -6,9 +6,9 @@ from . import forms
 
 
 def forum_main_view(request):
-    arts = Post.objects.all()
+    posts = Post.objects.all()
     temas = Tema.objects.all()
-    return render(request, 'forum/main.html', context={'arts': arts, 'temas':temas})
+    return render(request, 'forum/main.html', context={'posts': posts, 'temas':temas})
 
 
 def forum_detail_view(request,id):
