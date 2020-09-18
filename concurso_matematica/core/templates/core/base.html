@@ -1,12 +1,16 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
     <script defer src="{% static 'js/jquery.min.js' %}"></script>
+    <script defer src="{% static 'js/popper.js' %}"></script>
     <script defer src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script defer src="{% static 'core/js/base.js' %}"></script>
 </head>
 
 <body>
@@ -33,36 +37,36 @@
             <div class="navbar-collapse collapse" id="nav">
 
                 <ul class="navbar-nav ml-auto d-flex justify-content-around align-items-center">
-                    <li class="nav-item"><a href="{% url 'home' %}">Home</a></li>
-                    <li class="nav-item"><a href="{% url 'forum' }">Forum</a></li>
-                    <li class="nav-item">Entrena
-                        <div class="dropdown">
-                            <div class="dropdown-item"><a href="#" class="dropdown-item-text">Examenes</a></div>
-                            <div class="dropdown-item"><a href="#" class="dropdown-item-text">
+                    <li class="nav-item"><a href="{% url 'home' %}" class="text-white text-decoration-none">Home</a></li>
+                    <li class="nav-item"><a href="{% url 'forum_main' %}" class="text-white text-decoration-none">Forum</a></li>
+                    <li class="nav-item dropdown"><a class="dropdown-toggle text-white text-decoration-none"  role="button" data-target="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Entrena</a>
+                        <div class="dropdown-menu" id="navbarDropdown">
+                            <div class="dropdown-item"><a href="#" class="text-white text-decoration-none">Examenes</a></div>
+                            <div class="dropdown-item"><a href="#" class="text-white text-decoration-none">
                                 Torneo
                             </a></div>
-                            <div class="dropdown-item"><a href="#" class="dropdown-item-text">
+                            <div class="dropdown-item"><a href="#" class="text-white text-decoration-none">
                                 Ejercicios
                             </a></div>
                         </div>
                     </li>
-                    <li class="nav-item">Biblioteca
-                        <div class="dropdown-menu">
+                    <li class="nav-item dropdown"><a href="" data-target="biblioteca-li" data-toggle="dropdown" class="dropdown-toggle text-white text-decoration-none">Biblioteca</a>
+                        <div class="dropdown-menu" id="biblioteca-li">
                             <div class="dropdown-item">Historia</div>
                             <div class="dropdown-item">Descargas</div>
                             <div class="dropdown-item">Videos</div>
                         </div>
                     </li>
-                    <li class="nav-item"><a href="#" class="dropdown-item-text">Dashboard</a></li>
+                    <li class="nav-item"><a href="#" class="text-white text-decoration-none dropdown-item-text">Dashboard</a></li>
                     
                         {% if request.user.is_autheticated %}
                         <li class=" nav-item">
-                            <a href="{% logout %}" class="fas fa-door-open"></a>
+                            <a href="{% url 'logout' %}" class="fas fa-door-open"></a>
                             {% else %}
                     <li class="dropdown nav-item">
                         <div class="dropdown">
-                    <li class="dropdown-item"><a href="{% url 'signup' %}">Register</a></li>
-                    <li class="dropdown-item"><a href="{% url 'login' %}">Login</a></li>
+                    <li class="dropdown-item"><a class="text-white text-decoration-none" href="{% url 'signup' %}">Register</a></li>
+                    <li class="dropdown-item"><a class="text-white text-decoration-none" href="{% url 'login' %}">Login</a></li>
             </div>
             {% endif %}
             </li>

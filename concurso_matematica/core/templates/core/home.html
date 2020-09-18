@@ -19,11 +19,15 @@
                     <h5 class="card-title border-bottom border-secondary">{{new.title}}</h5>
                     <div class="card-footer">
                         <p class="card-text">
-                            <img src="{{new.user.profile.image.url}}" alt="">
-                            <a class="card-link">@{{new.user.username}}</a>
+                            <img src="{% if new.user.profile %}{{new.user.profile.image.url}}{% endif %}" alt="">
+                            <div>
+                                <img src="{% if new.author.profile %}{{new.author.profile.img.urls}}{% endif %}" alt="">
+                                <a class="card-link">@{{new.author.username}}</a>
+                            </div>
+                            
                         </p>
                         <p class="card-text">
-                            written on august 2019
+                            
                         </p>
                     </div>
                 </div>
@@ -38,9 +42,11 @@
     <div class="row">
         {% for video in last_videos %}
         <div class="col-12 col-lg-4">
-            <div class="video">
-
-            </div>
+            <div class="video-area">
+                <video src="">
+                    
+                </video>
+            </div> 
         </div>
         {% endfor %}
     </div>
