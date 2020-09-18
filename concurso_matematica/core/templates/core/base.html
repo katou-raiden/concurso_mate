@@ -1,12 +1,16 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
     <script defer src="{% static 'js/jquery.min.js' %}"></script>
+    <script defer src="{% static 'js/popper.js' %}"></script>
     <script defer src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script defer src="{% static 'core/js/base.js' %}"></script>
 </head>
 
 <body>
@@ -34,9 +38,9 @@
 
                 <ul class="navbar-nav ml-auto d-flex justify-content-around align-items-center">
                     <li class="nav-item"><a href="{% url 'home' %}">Home</a></li>
-                    <li class="nav-item"><a href="{% url 'forum' }">Forum</a></li>
-                    <li class="nav-item">Entrena
-                        <div class="dropdown">
+                    <li class="nav-item"><a href="{% url 'forum_main' %}">Forum</a></li>
+                    <li class="nav-item dropdown">Entrena
+                        <div class="dropdown-menu">
                             <div class="dropdown-item"><a href="#" class="dropdown-item-text">Examenes</a></div>
                             <div class="dropdown-item"><a href="#" class="dropdown-item-text">
                                 Torneo
@@ -46,7 +50,7 @@
                             </a></div>
                         </div>
                     </li>
-                    <li class="nav-item">Biblioteca
+                    <li class="nav-item dropdown">Biblioteca
                         <div class="dropdown-menu">
                             <div class="dropdown-item">Historia</div>
                             <div class="dropdown-item">Descargas</div>
@@ -57,7 +61,7 @@
                     
                         {% if request.user.is_autheticated %}
                         <li class=" nav-item">
-                            <a href="{% logout %}" class="fas fa-door-open"></a>
+                            <a href="{% url 'logout' %}" class="fas fa-door-open"></a>
                             {% else %}
                     <li class="dropdown nav-item">
                         <div class="dropdown">
