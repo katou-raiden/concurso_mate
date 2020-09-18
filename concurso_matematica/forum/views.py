@@ -19,7 +19,7 @@ def forum_detail_view(request,id):
         form = forms.ComentForm(request.POST)
         if form.is_valid:
             cont = form.data['contenido']
-            coment = Comment(usuario=request.user, contenido=cont, post=obj)
+            coment = Comment(user=request.user, content=cont, post=obj)
             coment.save()
             return redirect('forum_detail', id=id)
     else:

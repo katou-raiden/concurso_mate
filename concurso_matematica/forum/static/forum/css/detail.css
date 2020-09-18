@@ -11,3 +11,45 @@
 .text-justify{
     text-align: justify;
 }
+
+.ask-button{
+  
+    height: 40px !important;
+    width: auto !important;
+    padding: .4rem !important;
+    
+}
+
+.rep-circle{
+    width: 5px;
+    height: 5px;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: tomato;
+    margin: 0 .6rem;
+
+}
+
+.accepted-circle{
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: brown;
+    margin: 0 .6rem;
+
+}
+
+.user-info{
+    background-color: #E1ECF4;
+    border-radius: 4px;
+   
+}
+
+.tag {
+    background-color: #E1ECF4;;
+}
+
+.fa-sort-up, .fa-sort-down{
+    font-size: 3rem;
+}

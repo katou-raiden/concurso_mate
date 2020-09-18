@@ -38,6 +38,7 @@ def signUp_view(request):
     user_form = UserForm()
     professor_form = ProfessorForm()
     student_form = StudentForm()
+    profile_form = ProfileForm()
 
     if request.method == "POST":
         
@@ -82,6 +83,7 @@ def signUp_view(request):
         'user_form' : user_form,
         'professor_form': professor_form,
         'student_form': student_form,
+        'profile_form': profile_form,
     }
-    return render(request, 'accounts/signup.html', context)
+    return render(request, 'accounts/prueba.html', context)
         

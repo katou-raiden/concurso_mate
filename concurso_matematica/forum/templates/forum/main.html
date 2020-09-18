@@ -3,24 +3,13 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'forum/css/main.css' %}">
 
-<div class="row mt-4">
 
-  <aside class="col-12 col-lg-4 col-xl-2">
-    <h2 class="d-none d-lg-block text-lg-center h5 my-4">Sidebar</h2>
-    <ul class="d-flex flex-lg-column flex-row list-unstyled" id="aside-nav">
-      <li class="ml-1"><a href="" class="nav-link active">Example</a></li>
-      <li class="ml-1 "><a href="" class="nav-link active">Example</a></li>
-      <li class="ml-1 "><a href="" class="nav-link active">Example</a></li>
-      <li class="ml-1 "><a href="" class="nav-link active">Example</a></li>
-      <li class="ml-1 "><a href="" class="nav-link active">Example</a></li>
-    </ul>
-  </aside>
-  <section class="col-12 col-lg-8 col-xl-8">
+
+  <section id="questions-section">
     <div id="section heading" class="border-dark border-bottom pb-5">
       <div class="d-flex align-items-center my-4">
         <h1 class="display-4 text-black d-inline-block" id="questions-section-title">Top Questions</h1>
         <a class="btn btn-primary text-white d-inline-block mx-4" href="#">Ask Question</a>
-
       </div>
       <div class="btn-group d-flex justify-content-end" role="group" id="question-filter-area">
         <a href="#" class="btn btn-outline-secondary rounded-left">Interesting</a>
@@ -79,9 +68,7 @@
     </div>
 
   </section>
-  <div class="col-12 col-xl-2">
-  </div>
-</div>
+
 <script>
    window.onload = function(){
         $('[data-toggle="popover"]').popover();

@@ -2,63 +2,133 @@
 {% load static %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'forum/css/detail.css' %}">
-<section id="question-area-section">
-    <div class="container h-100">
-        <div class="row h-100 bg-light">
-            <div class="col-2 col-lg-3 h-100">
-                <div class='user'>
-                    <h6 class="text-center h2">John Doe</h6>
-                    <div class="user-profile-picture w-100 h-auto overflow-hidden">
-                        <img class="img-fluid" src="../../static/forum/images/579.jpg" alt="">
+
+
+<section id="question-area-section" class="row mx-0 px-0">
+    <div class="col-12 mx-0 px-0">
+        <div class="row mx-0 px-0 border-bottom border-secondary pb-4">
+            <div class="col-8">
+                <!-- Titulo del post -->
+                <h4>Un titulo de ejemplo</h4>
+
+                <ul class="list-unstyled">
+                    <li class="d-inline-block">Asked : Today</li>
+                    <li class="d-inline-block mx-3">Active : Today</li>
+                    <li class="d-inline-block mx-3">Viewed : 16 times</li>
+                </ul>
+            </div>
+            <div class="col-4 d-flex justify-content-end">
+                <a href="" class="btn btn-primary ask-button text-center">Ask Question</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-xl-8 pt-5">
+        <div class="row">
+            <div class="col-1 h-100 bg-light">
+                <div>
+                    <a class="d-inline-block m-0 w-100 text-center" href="#"><span class="fas fa-sort-up"></span></a>
+                    <p class="m-0 text-center">0</p>
+                    <a class="d-inline-block m-0  w-100 text-center" href="#">
+                        <span class="fas fa-sort-down"></span>
+                    </a>
+                </div>
+
+            </div>
+            <div class="col">
+                <div class="question-post">
+                    <!-- Etiqueta que denota contenido redactado por el usuario -->
+                    <p class="">
+                        t. Excepturi neque modi veritatis explicabo laudantium, nihil molestiae nemo commodi
+                        consequuntur, aspernatur dolore deserunt! Nemo aliquid similique facere incidunt qui
+                        consequuntur est.
+                    </p>
+
+
+
+
+                    <div class="question-actions">
+                        <a href="#">share</a>
+                        <a href="#">edit</a>
+                        <a href="#">delete</a>
+                        <!-- Esta en especial es para marcar el contenido de una pregunta de un usuario como inapropiado y solicitar atencion del moderador -->
+                        <a href="#">flag</a>
+
                     </div>
-                    <div class="user-score-area d-flex justify-content-around">
-                        <p><span class="fas fa-star"></span> : 1500</p>
-                        <p><span class="fas fa-vote-yea"></span> : 5000</p>
+                    <!-- Este div es para proveer la informacion del usuario que posteo la pregunta -->
+                    <div class=" ml-auto user-info w-25 p-1">
+                        <p>Asked 37 secs ago</p>
+                        <div class="block text-center">
+                            <img class="" style="height: 50px; width: 50px; object-fit: cover;" src="" alt="">
+
+                        </div>
+                        <div class="d-inline-block text-center">
+                            <a href="" class="d-block text-center">Mhar Macu Macu</a>
+                            <p class="py-0 my-0">
+                            <div class="rep-circle"></div>85<div class="accepted-circle"></div>1200</p>
+                        </div>
+
                     </div>
-                    <p class="d-block text-center">Joined on : August 23</p>
+                    <!-- El div que contiene la lista de comentarios -->
+                    <div class="comments">
+                        <div class="comments-set">
+                            {% for coment in comentarios %}
+                            <div class="card">
+                                <h2 class="card-header">
+                                    {{ coment.user }}
+                                </h2>
+                                <p class="card-body">
+                                    {{ coment.content }}
+                                </p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <a href="#" type="button">add a comment</a>
+                    </div>
+                    {% comment %}
+                    {% for post in user_post %}
+                    <!-- Renderizar todas las respuestas relacionadas con la pregunta del usuario -->
+                    {% endfor %}
+                    {% endcomment %}
+                    <div class="">
+                        <p>
+                            Know someone who can answer? Share the link to this question via <a href="#">email</a>, <a
+                                href="#">Facebook</a>, <a href="#">Twitter</a>.
+                        </p>
+
+                        <div class="user-answer">
+                            <h3>Your Answer</h3>
+                            <form action="" method="POST">
+                                <textarea class="w-100 form-control-lg" name="" id="" cols="30" rows="10"></textarea>
+                                <button type="submit" class="my-3 btn btn-primary">Post Your Anwer</button>
+                            </form>
+                        </div>
+                        <p>Browse other questions tagged <a href=""
+                                class="text-decoration-none tag mx-2 px-2 py-1 rounded-sm">tag#1</a><a
+                                class="tag text-decoration-none rounded-sm py-1 px-2 mx-2" href="">tag#2</a>
+                        </p>
+                    </div>
                 </div>
             </div>
-            <div class="col-10 col-lg-9">
-
-                <p class="text-justify">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque labore nam vel architecto iste quae
-                    cumque quia consequuntur sit aliquid facilis dolorem voluptatum nobis soluta voluptas cum, libero
-                    voluptatibus nisi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi et corporis quidem quod
-                    pariatur, sit, quas provident omnis quis deserunt sequi maiores a eos qui ex sunt? Sint, commodi
-                    perspiciatis.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque labore nam vel architecto iste quae
-                    cumque quia consequuntur sit aliquid facilis dolorem voluptatum nobis soluta voluptas cum, libero
-                    voluptatibus nisi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi et corporis quidem quod
-                    pariatur, sit, quas provident omnis quis deserunt sequi maiores a eos qui ex sunt? Sint, commodi
-                    perspiciatis.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque labore nam vel architecto iste quae
-                    cumque quia consequuntur sit aliquid facilis dolorem voluptatum nobis soluta voluptas cum, libero
-                    voluptatibus nisi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi et corporis quidem quod
-                    pariatur, sit, quas provident omnis quis deserunt sequi maiores a eos qui ex sunt? Sint, commodi
-                    perspiciatis.
-                </p>
-            </div>
-
         </div>
-        <form action="" method="post">{% csrf_token %}
-            {{ form.as_p }}
-            <input class="btn btn-light" type="submit" content="">
-        </form>
-        
-        
-        {% for coment in comentarios %}
-        <div class="card">
-            <h2 class="card-header">
-                {{ coment.usuario }}
-            </h2>
-            <p class="card-body">
-                {{ coment.contenido }}
-            </p>
-        </div>
-        {% endfor %}
+    </div>
+    <div class="col-12 col-xl-4">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere qui, beatae ratione, laboriosam debitis
+        consequatur distinctio quia ipsum esse alias magnam obcaecati quo repellat cumque deserunt omnis voluptatum
+        ullam aliquam!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi est quis accusantium, consequatur cum deserunt
+        tenetur voluptatum corporis facere neque iusto itaque esse earum porro! Expedita voluptatum numquam culpa
+        possimus?
     </div>
 
-    
+    </div>
+    </div>
+</section>
+
+
+
+
+
+
 </section>
 
 

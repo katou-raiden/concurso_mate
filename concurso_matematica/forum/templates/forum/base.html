@@ -1,5 +1,5 @@
-<html>
 {% load static %}
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -89,16 +89,33 @@
 
         </nav>
     </header>
+    
 
-    <section id="main-section">
 
-        <div class="container-fluid">
-            {% block content %}
+    <div class="container-fluid">
+        <div class="row mt-4">
 
-            {% endblock %}
+            <aside class="col-12 col-lg-4 col-xl-2 border-right pr-2 border-dark">
+              <h2 class="d-none d-lg-block text-lg-center h5 my-4">Sidebar</h2>
+              <ul class="d-flex flex-lg-column flex-row list-unstyled" id="aside-nav">
+                <li class="ml-1"><a href="" class="nav-link active">Example</a></li>
+                <li class="ml-1 "><a href="" class="nav-link active">Example</a></li>
+                <li class="ml-1 "><a href="" class="nav-link active">Example</a></li>
+                <li class="ml-1 "><a href="" class="nav-link active">Example</a></li>
+                <li class="ml-1 "><a href="" class="nav-link active">Example</a></li>
+              </ul>
+            </aside>
+            <div class="col-lg col-12 col-xl">
+                {% block content %}
 
-        </div>
-    </section>
+                {% endblock %}
+            </div>
+            
+            
+          </div>
+
+     </div>
+    
 
 
     <script>

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'news.apps.NewsConfig',
     'accounts.apps.AccountsConfig',
     'forum.apps.ForumConfig',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
