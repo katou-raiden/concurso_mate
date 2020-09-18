@@ -6,4 +6,4 @@ from . import models
 admin.site.register(models.Comentario)
 admin.site.register(models.Post)
 admin.site.register(models.Respuesta)
-admin.site.register(models.Tema)
+admin.site.register(models.Tag)
