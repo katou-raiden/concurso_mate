@@ -3,35 +3,47 @@
 {% block content %}
 <title>CMMD | Home</title>
 <link rel="stylesheet" href="{% static 'core/css/home.css' %}">
-    <section id="recent-news">
-        <div class="container-fluid h-100">
-            <h3 class="my-5 text-center text-uppercase">latest news</h3>
-            
-            {% for new in news %}
-            <div class="card new py-5">
-               <div class="card-header">
-                    <img src="{{new.img.url}}" class="card-img" alt="">
-                    <p class="card-title">
-                        {{new.title}}
-                    </p>
-    
-               </div>
-               <div class="card-body">
-                    <p class="card-text">
-                        Redactado por <img src="" alt=""><a href="">{{new.author.username}}</a>
-                    </p>
-                    
-               </div>
-               <div class="card-footer">
-                    <span class="fas fa-thumbs-up"></span>
-                    <span class="fas fa-thumbs-down"></span> | 
-                    
-               </div>
+ 
+<section id="recent-news-section" class="bg-light">
+    <div class="row">
+
+        {% for new in news %}
+        <div class="col-12 col-lg-6 col-xl-4">
+            <div class="card border border-dark shadow mx-auto">
+                <div class="card-header">
+                    <div class="card-img-top card-image">
+                        <img class="img-fluid" src="{{new.image.url}}" alt="Imagen">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title border-bottom border-secondary">{{new.title}}</h5>
+                    <div class="card-footer">
+                        <p class="card-text">
+                            <img src="{{new.user.profile.image.url}}" alt="">
+                            <a class="card-link">@{{new.user.username}}</a>
+                        </p>
+                        <p class="card-text">
+                            written on august 2019
+                        </p>
+                    </div>
+                </div>
 
             </div>
-            {% endfor %}
-    
         </div>
-    </section>
+        {% endfor %}
+        
+    </div>
+</section>
+<section id="related-videos" class="my-4 bg-light">
+    <div class="row">
+        {% for video in last_videos %}
+        <div class="col-12 col-lg-4">
+            <div class="video">
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
     
 {% endblock %}

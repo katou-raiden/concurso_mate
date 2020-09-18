@@ -1,25 +1,66 @@
-{% extends 'base.html' %}
-
+{% extends 'forum/base.html' %}
+{% load static %}
 {% block content %}
-    <h1>{{ art.titulo }}</h1>
-<p class="lead">{{ art.contenido }}</p>
+<link rel="stylesheet" href="{% static 'forum/css/detail.css' %}">
+<section id="question-area-section">
+    <div class="container h-100">
+        <div class="row h-100 bg-light">
+            <div class="col-2 col-lg-3 h-100">
+                <div class='user'>
+                    <h6 class="text-center h2">John Doe</h6>
+                    <div class="user-profile-picture w-100 h-auto overflow-hidden">
+                        <img class="img-fluid" src="../../static/forum/images/579.jpg" alt="">
+                    </div>
+                    <div class="user-score-area d-flex justify-content-around">
+                        <p><span class="fas fa-star"></span> : 1500</p>
+                        <p><span class="fas fa-vote-yea"></span> : 5000</p>
+                    </div>
+                    <p class="d-block text-center">Joined on : August 23</p>
+                </div>
+            </div>
+            <div class="col-10 col-lg-9">
 
-<form action="" method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input class="btn btn-light" type="submit" content="">
-</form>
+                <p class="text-justify">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque labore nam vel architecto iste quae
+                    cumque quia consequuntur sit aliquid facilis dolorem voluptatum nobis soluta voluptas cum, libero
+                    voluptatibus nisi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi et corporis quidem quod
+                    pariatur, sit, quas provident omnis quis deserunt sequi maiores a eos qui ex sunt? Sint, commodi
+                    perspiciatis.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque labore nam vel architecto iste quae
+                    cumque quia consequuntur sit aliquid facilis dolorem voluptatum nobis soluta voluptas cum, libero
+                    voluptatibus nisi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi et corporis quidem quod
+                    pariatur, sit, quas provident omnis quis deserunt sequi maiores a eos qui ex sunt? Sint, commodi
+                    perspiciatis.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque labore nam vel architecto iste quae
+                    cumque quia consequuntur sit aliquid facilis dolorem voluptatum nobis soluta voluptas cum, libero
+                    voluptatibus nisi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi et corporis quidem quod
+                    pariatur, sit, quas provident omnis quis deserunt sequi maiores a eos qui ex sunt? Sint, commodi
+                    perspiciatis.
+                </p>
+            </div>
 
-
-{% for coment in comentarios %}
-    <div class="card">
-        <h2 class="card-header">
-            {{ coment.usuario }}
-        </h2>
-        <p class="card-body">
-            {{ coment.contenido }}
-        </p>
+        </div>
+        <form action="" method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <input class="btn btn-light" type="submit" content="">
+        </form>
+        
+        
+        {% for coment in comentarios %}
+        <div class="card">
+            <h2 class="card-header">
+                {{ coment.usuario }}
+            </h2>
+            <p class="card-body">
+                {{ coment.contenido }}
+            </p>
+        </div>
+        {% endfor %}
     </div>
-{% endfor %}
+
+    
+</section>
+
+
 
 {% endblock %}
-
