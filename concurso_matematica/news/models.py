@@ -7,7 +7,7 @@ class Notice(models.Model):
     text = models.TextField(null=True, blank=True, default="")
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-    author = models.OneToOneField(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     reference = models.URLField(null=True, blank=True, default="")
     image = models.ImageField(upload_to='news/images', null=True)
     upvotes = models.IntegerField(null=False, blank=False, default=0)
