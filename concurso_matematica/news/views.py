@@ -2,10 +2,16 @@ from django.shortcuts import render
 from .models import *
 # Create your views here.
 
-def new_view(request):
+def new_view(request, pk):
 
-    news = Notice.objects.all()[:6]
+    new = Notice.objects.get(pk=pk)
     context = {
-        'news' : news,
+        'new' : new,
+    }
+    return render(request, 'news/new.html', context)
+
+def news_view(request):
+    context = {
+        
     }
     return render(request, 'news/new.html', context)

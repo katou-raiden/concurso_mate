@@ -14,7 +14,7 @@ class Profile(models.Model):
     phone_number = models.CharField(max_length=7, blank=True, default='')
     private_number = models.CharField(max_length=9, blank=True, default='')
     province = models.CharField(max_length=15, blank=True, default='')
-    content = HTMLField()
+    
     
 
 class Student(models.Model):
