@@ -98,7 +98,8 @@
                         <div class="user-answer">
                             <h3>Your Answer</h3>
                             <form action="" method="POST">
-                                <textarea class="w-100 form-control-lg" name="" id="" cols="30" rows="10"></textarea>
+                                {% csrf_token %}
+                                <textarea class="w-100 form-control-lg" name="content" id="content" cols="30" rows="10"></textarea>
                                 <button type="submit" class="my-3 btn btn-primary">Post Your Anwer</button>
                             </form>
                         </div>

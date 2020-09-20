@@ -149,3 +149,4 @@ cython_debug
 *.pyc
 concurso_matematica/forum/__pycache__/views.cpython-37.pyc
 concurso_matematica/db.sqlite3
+concurso_matematica/db.sqlite3

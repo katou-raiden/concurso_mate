@@ -9,6 +9,9 @@ class PostForm(forms.ModelForm):
 
         exclude = ['fecha']
 
+class AnswerForm(forms.Form):
+    content = forms.Textarea()
+
 
 class ComentForm(forms.Form):
 

@@ -1,5 +1,5 @@
 from django.shortcuts import render,get_object_or_404,redirect
-from .models import Post, Comment, Tag
+from .models import Post, Comment, Tag, Answer
 from . import forms
 
 # Create your views here.
@@ -12,18 +12,22 @@ def forum_main_view(request):
 
 
 def forum_detail_view(request,id):
-    obj = get_object_or_404(Post, id=id)
-    comentarios = obj.comentarios.all()
-    form = forms.ComentForm()
+    post = get_object_or_404(Post,id=id)
+    answers = post.answers.all()
+    post_comments = post.comments.all()
     if request.method == 'POST':
-        form = forms.ComentForm(request.POST)
-        if form.is_valid:
-            cont = form.data['contenido']
-            coment = Comment(user=request.user, content=cont, post=obj)
-            coment.save()
-            return redirect('forum_detail', id=id)
+        answer_content = request.POST.get('content')
+        print(answer_content)
+        answer = Answer(content = answer_content, user = request.user, post = post)
+        answer.save()
+        return redirect('forum_detail',id)
     else:
-        return render(request, 'forum/detail.html', context={'art': obj,'comentarios':comentarios,'form':form})
+        context = {
+            'post':post,
+            'answers':answers,
+            'post_comments':post_comments
+        }
+        return render(request,'forum/detail.html',context=context)
 
 
 def forum_post_view(request):
