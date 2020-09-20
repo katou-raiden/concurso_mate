@@ -9,7 +9,7 @@
         <div class="row mx-0 px-0 border-bottom border-secondary pb-4">
             <div class="col-8">
                 <!-- Titulo del post -->
-                <h4>Un titulo de ejemplo</h4>
+                <h4>{{post.title}}</h4>
 
                 <ul class="list-unstyled">
                     <li class="d-inline-block">Asked : Today</li>
@@ -38,9 +38,7 @@
                 <div class="question-post">
                     <!-- Etiqueta que denota contenido redactado por el usuario -->
                     <p class="">
-                        t. Excepturi neque modi veritatis explicabo laudantium, nihil molestiae nemo commodi
-                        consequuntur, aspernatur dolore deserunt! Nemo aliquid similique facere incidunt qui
-                        consequuntur est.
+                        {{post.content}}
                     </p>
 
 
@@ -104,14 +102,14 @@
                             </form>
                         </div>
                         <p>Browse other questions tagged <a href=""
-                                class="text-decoration-none tag mx-2 px-2 py-1 rounded-sm">tag#1</a><a
-                                class="tag text-decoration-none rounded-sm py-1 px-2 mx-2" href="">tag#2</a>
+                                class="text-decoration-none tag mx-2 px-2 py-1 rounded-sm">{{post.tag}}</a>
                         </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!--No tengo idea de para que es esto-->
     <div class="col-12 col-xl-4">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere qui, beatae ratione, laboriosam debitis
         consequatur distinctio quia ipsum esse alias magnam obcaecati quo repellat cumque deserunt omnis voluptatum
