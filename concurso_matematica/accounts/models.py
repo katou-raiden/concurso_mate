@@ -8,6 +8,12 @@ from django.core.validators import RegexValidator
 PROVINCE_REGEX = '48|47|7|45|42|43|51|41|33|32|31|24|23|22|21|46'
 PUI_REGEX = None
 
+'''
+    Men seria bueno anadir a Profile el numero de identidad y direccion particular
+    la relacion entre Social Link y User deberia ser de ForeignKey osea muchos social links para cada usuario,
+    y ya creo que con esos detalles ya estarian completos lo modelos
+'''
+
 class Profile(models.Model):
     image = models.ImageField(upload_to="users/profile_pictures", null=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
@@ -35,4 +41,3 @@ class Professor(models.Model):
 class SocialLink(models.Model):
     link = models.URLField(default='')
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    
