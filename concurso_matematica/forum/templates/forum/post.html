@@ -1,9 +1,21 @@
-{% extends 'base.html' %}
+{% extends 'forum/base.html' %}
 
 {% block content %}
-    <form action="" method="post">
+    <form class="form-group" action="" method="post">
         {% csrf_token %}
-        {{ form }}
-        <input type="submit" content="Post!!!">
+
+        <label for="title-input">Title</label>
+        <input type="text" class="form-control" id="title-input" name="title">
+
+        <label for="content-textarea">Content</label>
+        <textarea class="form-control" id="content-textarea" rows="4"></textarea>
+
+        <label for="tag-select">Tag</label>
+        <select class="form-control form-control-lg" id="tag-select" name="tag">
+            {% for tag in tags %}
+              <option value="{{tag.id}}">{{tag.name}}</option>
+            {% endfor %}
+        <br>
+        <input class="btn btn-large btn-primary" type="submit" content="Post!!!">
     </form>
 {% endblock %}

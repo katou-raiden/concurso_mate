@@ -31,16 +31,20 @@ def forum_detail_view(request,id):
 
 
 def forum_post_view(request):
-    form = forms.PostForm()
+    '''
+        Campos del Formulario:
+        title,content,tag
+    '''
+    tags = Tag.objects.all()
     if request.method == 'POST':
-        form = forms.PostForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('forum_main')
-        else:
-            return redirect(forum_post_view(request))
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        tag_id = request.POST.get('tag')
+        post = Post(user = request.user, title = title, content = content, tag = Tag.objects.get(id=tag_id))
+        post.save()
+        return redirect('forum_main')
     else:
-        return render(request, 'forum/post.html',context={'form': form})
+        return render(request, 'forum/post.html', context = {'tags':tags})
 
 def forum_filter_view(request,id):
     arts = Post.objects.filter(id=id)
