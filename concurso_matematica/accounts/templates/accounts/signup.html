@@ -1,16 +1,271 @@
 {% load static %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'accounts/css/signup.css' %}">
     <link rel="stylesheet" href="{% static 'css/all.css' %}">
-    <script defer src="{% static 'accounts/js/signup.js' %}">
-    </script>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
 </head>
+
 <body>
+    <div id="signUp-area" class=" my-5 border-dark border rounded shadow">
+
+        {% for hidden_field in user_form.hidden_fields %}
+        {% if hidden_field.errors %}
+        {{ hidden_field.errors }}
+        {% endif %}
+        {{hidden_field}}
+        {% endfor %}
+
+        {% for non_field in user_form.non_fields %}
+        {% if non_field.errors %}
+        {{ non_field.errors }}
+        {% endif %}
+        {{ nonfields_field }}
+        {% endfor %}
+
+        <form class="d-block" method="POST">
+            {% csrf_token %}
+         
+            <div class="image-area border border-top-0 shadow">
+                <img src="{% static 'accounts/images/user.svg' %}" id="avatar-img" alt="">
+                
+                <div id="avatar-field-wrapper">
+                   
+                    <!-- <input enctype="multipart/form-data" type="file" accept="image/*" name="avatar" id="avatar-field" onchange="loadFile(event)"> -->
+                    {{profile_form.avatar|attr:"onchange:loadFile(event)"|attr:"accept:image/*"}}
+                    <i class="fas fa-camera"></i>
+                </div>
+            </div>
+
+        
+
+            <div class="form-row justify-content-center">
+                <div class="form-check form-check-inline my-3">
+                    <input type="radio" class="form-check-input" id="student-radio" name="role" class="form-check-input"
+                        value="student" checked>
+                    <label for="#student-radio" class="form-check-label">Student</label>
+                </div>
+
+                <div class="form-check form-check-inline my-3">
+                    <input type="radio" name="role" id="professor-radio" class="form-check-input" value="professor">
+                    <label for="#professor-radio" class="form-check-label">Professor</label>
+                </div>
+
+            </div>
+
+            <div class="form-group row my-3">
+                <label for="{{user_form.first_name.id_for_label}}" class="col-form-label col-12 col-md-2 col-xl-2">First Name</label>
+                <div class="col">
+                    {% if user_form.first_name.errors %}
+                    {{ user_form.first_name|add_class:"form-control is-invalid" }}
+                    <div class="invalid-feedback">
+                        {{user_form.first_name.errors}}
+                    </div>
+                    {% else %}
+                    {{ user_form.first_name|add_class:"form-control is-valid" }}
+                    {% endif %}
+                </div>
+                <label for="{{user_form.last_name.id_for_label}}" class="col-form-label col-12 col-md-1 col-xl-2">Last Name</label>
+                <div class="col">
+                    {% if user_form.last_name.errors %}
+                    {{user_form.last_name|add_class:"form-control is-invalid"}}
+                    <div class="invalid-feedback">
+                        {{user_form.last_name.errors}}
+                
+                    </div>
+                    {% else %}
+                    {{user_form.last_name|add_class:"form-control is-valid"}}
+                    {% endif %}
+                    
+                </div>
+            </div>
+          
+
+            <div class="form-group row my-3">
+
+                <label class="col-form-label col-12 col-xl-2 col-md-2 {% if student_form.pui.errors %}is-invalid{% endif %}" for="{{student_form.pui.id_for_label}}">Institute</label>
+                <label class="col-form-label col-12 col-xl-2 col-md-2 {% if professor_form.institute.errors %}is-invalid{% endif %}" for="{{professor_form.institute.id_for_label}}">Institute</label>
+
+                <div class="col">
+                    {% if student_form.pui.errors %}
+                    {{student_form.pui|add_class:"form-control is-invalid"}}
+                    <div class="invalid-feedback">
+                        {{student_form.pui.errors}}
+                
+                    </div>
+                    {% else %}
+                    {{student_form.pui|add_class:"form-control is-valid"}}
+                    {% endif %}
+
+                    {% if professor_form.institute.errors %}
+                    {{professor_form.institute|add_class:"form-control is-invalid"}}
+                    <div class="invalid-feedback">
+                        
+                        {{professor_form.institute.errors}}
+                    </div>
+                    {% else %}
+                    {{professor_form.institute|add_class:"form-control is-valid"}}
+                    {% endif %}
+                    
+                    
+                   
+                </div>
+                <label for="{{student_form.grade.id_for_label}}" class="col-12 col-xl-2  col-md-1 col-form-label">Grade</label>
+                <div class="col">
+                    {% if student_form.grade.errors %}
+                    {{student_form.grade|add_class:"form-control is-invalid"}}
+                    <div class="invalid-feedback">
+                        {{student_form.grade.errors}}
+                
+                    </div>
+                    {% else %}
+                    {{student_form.grade|add_class:"form-control is-valid"}}
+                    {% endif %}
+                </div>
+
+            </div>
+            
+            <div class="form-group row my-3">
+                <label class="col-12 col-md-2" for="{{user_form.email.id_for_label}}">Email</label>
+                <div class="col">
+                    {% if user_form.email.errors %}
+                    {{user_form.email|add_class:"form-control is-invalid"}}
+                    <div class="invalid-feedback">
+                        {{user_form.email.errors}}
+                
+                    </div>
+                    {% else %}
+                    {{user_form.email|add_class:"form-control is-valid"}}
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="form-group row my-3">
+
+                <label class="col-form-label col-12  col-xl-2 {% if user_form.username.errors %}is-invalid{% endif %}" for="{{user_form.username.id_for_label}}">Username</label>
+                <div class="col">
+                    {% if user_form.username.errors %}
+                    {{user_form.username|add_class:"form-control is-invalid"}}
+                    <div class="invalid-feedback">
+                        {{user_form.username.errors}}
+                
+                    </div>
+                    {% else %}
+                    {{user_form.username|add_class:"form-control is-valid"}}
+                    {% endif %}
+                </div>
+            </div>
+
+           
+            <div class="form-group row my-3">
+                <label class="col-form-label col-12 col-xl-2" for="user_form.password.id_for_label">Password</label>
+                <div class="col">
+                    {% if user_form.password.errors %}
+                    {{user_form.password|add_class:"form-control is-invalid"|attr:"type:password"}}
+                    <div class="invalid-feedback">
+                        {{user_form.password.errors}}
+                
+                    </div>
+                    {% else %}
+                    {{user_form.password|add_class:"form-control is-valid"|attr:"type:password"}}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="d-flex justify-content-center my-5">
+                <button class="btn btn-primary py-2 px-5 mx-auto font-weight-bold" type="submit">Submit</button>
+            </div>
+           
+
+        </form>
+
+        <div class="links-area">
+            {{user_form.errors}}
+            {{profile_form.errors}}
+            {{student_form.errors}}
+            {{professor_form.errors}}
+
+            <a href="#" class="link-primary text-decoration-none my-2 d-block">Forgot your password?</a>
+            <a href="{% url 'login' %}" class="link-primary my-2 text-decoration-none d-block">Already Have an
+                Account?</a>
+        </div>
+
+    </div>
+
+    <script>
+        var loadFile = function (event) {
+            
+            var image = document.getElementById('avatar-img');
+            image.src = URL.createObjectURL(event.target.files[0]);
+            imageComputedStyle =getComputedStyle(image, null); 
+
+            if (imageComputedStyle.width !== "95%" && imageComputedStyle.height !== "95%") {
+                
+                image.style.width = "95%";
+                image.style.height = "95%";
+            }
+        };
+
+        var studentRadio = document.getElementById('student-radio');
+        var professorRadio = document.getElementById('professor-radio');
+        var grade = document.getElementById('id_grade');
+        var pui = document.getElementById('id_pui');
+        var institute = document.getElementById('id_institute');
+        var gradeLabel = document.querySelector('label[for="id_grade"]')
+        var puiLabel = document.querySelector('label[for="id_pui"]')
+        var instituteLabel = document.querySelector('label[for="id_institute"]')
+        var email = document.getElementById('id_email');
+        var signUp = document.getElementById('signUp-area');
+        
+        
+        
+        studentRadio.onchange = (evt) => {
+            
+            if(studentRadio.checked){
+                
+                grade.style.display = "initial";
+                gradeLabel.style.display = "initial";
+                pui.style.display = "initial";
+                puiLabel.style.display = "initial";
+                institute.style.display = "none";
+                instituteLabel.style.display ="none";
+                institute.value = "";
+                
+
+            }
+        }
+
+        professorRadio.onchange = (evt) => {
+
+            if(professorRadio.checked){
+
+                institute.style.display = "initial";
+                instituteLabel.style.display ="initial";
+                grade.style.display = "none";
+                gradeLabel.style.display = "none";
+                pui.style.display = "none";
+                puiLabel.style.display = "none";
+                grade.value = "";
+                pui.value = "";
+                
+            }
+        }
+
+        institute.style.display = "none";
+        instituteLabel.style.display = "none";
+
+
+    </script>
+
     
+
 </body>
+
 </html>

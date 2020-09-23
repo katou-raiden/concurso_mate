@@ -1,194 +1,87 @@
+html {
+  box-sizing: border-box;
+}
 
+body, body * {
+  box-sizing: inherit;
+}
 
-        body, html{
-            height: 100%;
-        }
-        body{
-            
-            background-color: black;
-            margin: 0;
-            padding: 0;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-image: url(../images/the-road.jpg);
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-        .signup-area{
-            width: 100vw;
-            height: 80%;
-            background-color: rgba(110, 110, 108, 0.400);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .form-area{
-            width: 90%;
-            height: 70%;
-            display: block;
-            
-        }
-        .form-area > div {
-            width: 100%;
-            text-align: center;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(0, 59, 15, 0.199);
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-        }
-        .form-area div label{
-            text-transform: capitalize;
-            display: block;
-            text-align: start;
-            width: 60%;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: rgba(255, 255, 255, 0.692);
-            margin: 0 auto;
-            letter-spacing: 0.025rem;
-        }
-        .form-area > div input[type="text"], .form-area > div input[type="password"], .form-area > div input[type="email"]{
-            width: 60%;
-            background-color: transparent;
-            border-style: none;
-            outline-style: none;
-            border-bottom-style: solid;
-            border-bottom-width: 4px;
-            border-bottom-color: rgb(3, 151, 94);
-            font-size: 1.3rem;
-            padding-left: .5rem;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.692);
-        }
+#avatar-field-wrapper {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
 
-        
-        
-        .buttons-div button{
-            display: inline-block;
-            margin: 1.8rem 2rem;
-            background-color: transparent;
-            border: none;
-            outline: none;
-            color: white;
-            font-size: 2rem;
-            background-color: yellowgreen;
-            border-radius: 8px;
-            padding: .4rem 1rem;
-            cursor: pointer;
-            text-transform: uppercase;
-        }
+#avatar-field-wrapper i {
+  background-color: rgba(128, 128, 128, 0.383);
+  font-size: 1.2em;
+  padding: 6px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+}
 
-        .form-area .buttons-div:first-child button{
-            background-color: paleturquoise;
-        }
-        
-        .buttons-div{
-            width: 60%;
-            display: flex;
-            justify-content: space-between;
-            margin: 0;
-        }
+#avatar-field-wrapper input[type="file"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
 
-        .form-area label, .form-area input{
-            margin: 1rem 0;
-        }
-        .steps-area{
-            width: 100%;
-            display: block;
-            text-align: center;
-        }
-        .step{
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: rgba(0, 0, 0, 0.582);
-            display: inline-block;
-            border-style: none;
-            outline-style: none;
-            margin: 0 .250rem;
-            cursor: pointer;
-        }
+#signUp-area {
+  padding: 60px;
+  padding-top: 0;
+}
 
-        .step-active{
-            background-color: white;
-        }
-        .step-completed{
-            background-color: chartreuse;
-        }
-        .step-wrong{
-            background-color: rgb(194, 0, 39);
-        }
-    
-        .success-message-area{
-            min-width: 26%;
-            height: auto;
-            background-color: rgb(23, 4, 54);
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            padding: 2rem 0;
-        }
-        .success-message-area p{
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            font-size: 1.5rem;
-            color: rgb(236, 236, 37);
-            text-align: center;
-            font-weight: 700;
-        }
-        .success-message-area p span{
-            font-size: 2rem;
-            color: greenyellow;
-            margin: 0 2rem;
-        }
-        .success-message-area a{
-            display: block;
-            margin: 2rem auto;
-            font-size: 1.5rem;
-            border: 2px solid rgb(21, 133, 21);
-            color: rgb(21, 133, 21);
-            background-color: inherit;
-            padding: 1rem;
-            width: max-content;
-            text-decoration: none;
-            transition: all .5s ease;
-            border-radius: 8px;
-        }
+@media (min-width: 576px) {
+  #signUp-area {
+    width: 100% !important;
+  }
+}
 
-        .success-message-area a:hover{
-            background-color: rgb(21, 133, 21);
-            color: white;
-        }
+@media (min-width: 992px) {
+  #signUp-area {
+    width: 60% !important;
+  }
+}
 
-        .image-area img{
-            max-width: 180px;
-            max-height: auto;
-        }
+@media (min-width: 1200px) {
+  #signUp-area {
+    width: 30% !important;
+  }
+}
 
-        .image-area input[type="file"]{
-            background-color: rgb(7, 36, 100);
-            border: solid 2px rgb(3, 148, 3);
-            color: rgb(3, 148, 3);
-            margin: 1rem auto;
-        }
-        
-        .image-area input[type="file"]::after{
-            background-color: rgb(7, 36, 100);
-            border: solid 2px rgb(3, 148, 3);
-            color: rgb(3, 148, 3);
-            font-size: 1.4rem;
-            font-weight: 700;
-        }
+#signUp-area .image-area {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
 
-        .image-area input:hover{
-            background-color: rgb(3, 148, 3);
-            color: white;
-        }
+#signUp-area .image-area img {
+  position: absolute;
+  width: 70%;
+  height: 70%;
+  display: inline-block;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  object-fit: cover;
+  object-position: center;
+}
+
+#signUp-area form button[type="submit"] {
+  font-size: 1.7em;
+}
