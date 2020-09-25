@@ -9,7 +9,7 @@
     <div id="section heading" class="border-dark border-bottom pb-5">
       <div class="d-flex align-items-center my-4">
         <h1 class="display-4 text-black d-inline-block" id="questions-section-title">Top Questions</h1>
-        <a class="btn btn-primary text-white d-inline-block mx-4" href="#">Ask Question</a>
+        <a class="btn btn-primary text-white d-inline-block mx-4" href="{% url 'forum_post' %}">Ask Question</a>
       </div>
       <div class="btn-group d-flex justify-content-end" role="group" id="question-filter-area">
         <a href="#" class="btn btn-outline-secondary rounded-left">Interesting</a>
@@ -39,23 +39,13 @@
           </div>
         </div>
         <div class="d-flex flex-grow-1 flex-column py-1 justify-content-between question-item align-items-stretch">
-          <h6 class="mx-5 my-1 h4">{{post.title }}</h6>
+          <a href="{% url 'forum_detail' post.id %}"><h6 class="mx-5 my-1 h4">{{post.title }}</h6></a>
 
           <div class="mx-5 question-info-footer d-flex justify-content-between align-items-end">
             <ul class="list-unstyled question-info-tags py-0 my-0">
-              <li class="d-inline-block">
-                <a class="">
-
-                </a></li>
               <li class="d-inline-block ">
                 <a class="">
-                  <span class="question-tag">linux</span>
-                </a></li>
-              <li class="d-inline-block"><a class="">
-                <span class="question-tag">linux</span>
-                </a></li>
-              <li class="d-inline-block"><a class="">
-                <a class="question-tag" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Hello" title="Testing title" data-container="body" >linux</a>
+                  <span class="question-tag">{{post.tag}}</span>
                 </a></li>
             </ul>
             <p class="py-0 my-0">posted August 4th 2015 by <a href="#">@Atemas</a><span class="font-weight-bold small">515</span></p>
