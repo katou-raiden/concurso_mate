@@ -5,8 +5,9 @@ __pycache__/
 *.rar
 *.jpg
 *.png
+migrations/
+media/
 db.sqlite3
-*.py[cod]
 *$py.class
 
 # C extensions
@@ -52,7 +53,6 @@ htmlcov/
 nosetests.xml
 coverage.xml
 *.cover
-*.py,cover
 .hypothesis/
 .pytest_cache/
 cover/
@@ -66,7 +66,6 @@ cover/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
-migrations/
 
 # Flask stuff:
 instance/
@@ -148,9 +147,5 @@ cython_debug
 *.iml
 *.xml
 *.pyc
-concurso_matematica/forum/__pycache__/views.cpython-37.pyc
-concurso_matematica/db.sqlite3
-concurso_matematica/db.sqlite3
-concurso_matematica/forum/migrations/0002_auto_20200917_2333.py
-concurso_matematica/db.sqlite3
-*.sqlite3
+
+

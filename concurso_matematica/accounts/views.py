@@ -48,17 +48,26 @@ def signUp_view(request):
         user_form = UserForm(request.POST)
         professor_form = ProfessorForm(request.POST)
         student_form = StudentForm(request.POST)
+        profile_form = ProfileForm(request.POST, request.FILES)
         
         if user_form.is_valid():
+            print('usuario valido')
             #Si se rellenaron todos los campos necesarios correctamente del modelo 
             #usuario, entonces estamos listos para proceder con las extensiones del mismo
             #El primero que tenga informacion proveida y correcta, es el procesado
 
             if professor_form.is_bound and professor_form.is_valid():
                 #profesor tiene datos y son correctos (literalmente)
+
+                
                 new_user = user_form.save(commit=False)
                 new_user.set_password(request.POST.get('password'))
                 new_user.save()
+
+                if (profile_form.is_valid()):
+                    new_profile = profile_form.save(commit=False)
+                    new_profile.user = new_user
+
                 #en estas tres lineas aseguro que la instancia user este salvada para
                 #que la extension tenga su referencia asegurada en la bd
                 new_professor = professor_form.save(commit=False)
@@ -72,6 +81,11 @@ def signUp_view(request):
                 new_user = user_form.save(commit=False)
                 new_user.set_password(request.POST.get('password'))
                 new_user.save()
+
+                if (profile_form.is_valid()):
+                    new_profile = profile_form.save(commit=False)
+                    new_profile.user = new_user
+
                 new_student = student_form.save(commit=False)
                 new_student.user = new_user
                 new_student.save()
@@ -85,5 +99,5 @@ def signUp_view(request):
         'student_form': student_form,
         'profile_form': profile_form,
     }
-    return render(request, 'accounts/prueba.html', context)
+    return render(request, 'accounts/signup.html', context)
         
