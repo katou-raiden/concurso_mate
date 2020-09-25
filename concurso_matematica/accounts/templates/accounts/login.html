@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'accounts/css/login.css' %}">
+<<<<<<< HEAD
 </head>
 <body>
     <div class="bg cover"></div>
@@ -33,6 +34,46 @@
         <div class="links-area">
             <a href="">Forgot your password?</a>
             <a href="{% url 'signup' %}">New here?</a>
+=======
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <script defer src="{% static 'js/jquery.min.js' %}"></script>
+    <script defer src="{% static 'js/bootstrap.js' %}"></script>
+</head>
+<body>
+    <div class="login-area my-5 border-dark border rounded shadow">
+        
+        <div class="image-area border border-top-0 shadow">
+            <img src="{% static 'accounts/images/user.svg' %}" alt="">
+        </div>
+
+        <form class="" method="POST">
+
+            {% csrf_token %}
+            <div class="form-group row mb-3 mt-5">
+                <label for="#username-field" class="col-form-label col-3 text-right">Username</label>
+                <div class="col">
+                    <input type="text" class="form-control" id="#username-field" name="username">
+                </div>
+            </div>
+
+            <div class="form-group row my-3">
+                <label for="#password-field" class="col-form-label col-3 text-right">Password</label>
+                <div class="col">
+                    <input type="password" id="#password-field" class="form-control" name="password">
+                </div>
+            </div>
+
+            
+            <div class="d-flex justify-content-center my-5">
+                <button type="submit" class="btn btn-primary font-weight-bold py-2 px-4">Submit</button>
+            </div>
+            
+        </form>
+
+        <div class="links-area my-4">
+            <a href="" class="link-primary text-decoration-none my-2 d-block">Forgot your password?</a>
+            <a href="{% url 'signup' %}" class="link-primary my-2 text-decoration-none d-block">New here?</a>
+>>>>>>> essential_features_l0new0lf
         </div>
         
     </div>

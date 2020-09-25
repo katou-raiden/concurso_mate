@@ -1,89 +1,88 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/all.css' %}">
     <script defer src="{% static 'js/jquery.min.js' %}"></script>
+    <script defer src="{% static 'js/popper.js' %}"></script>
     <script defer src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script defer src="{% static 'core/js/base.js' %}"></script>
-
 </head>
-<body>
-    <nav>
-        <header id="site-bg">
-            <div class="site-bg-image"></div>
-            <div class="site-bg-opacity"></div>
-            <div class="site-bg-text">
-                <h2>Libertad</h2>
-                <p>Explora tus Horizontes!</p>
-            </div>
-            <button href="#" type="button">
-                <span class="fas fa-angle-double-down"></span>
-            </button>
-        </header>
-        <div class="nav">
-            <div class="nav-brand">
-                <h2><a href="{% url 'home' %}" 
-                style="text-decoration-style: none; 
-                    color: white;">SITIO WEB</a></h2>
-            </div>
-    
-            <div class="nav-menu">
-                <ul class="nav-list">
-                    <li class="nav-list-item"><a href="{% url 'home' %}">home</a></li>
-                    <li class="nav-list-item"><a href="#">noticias</a></li>
-                    <li class="nav-list-item"><a href="#">entrena</a></li>
-                    <li class="nav-list-item">
-                        biblioteca
-                        <ul class="dropdiv d-none">
-                            <li class="dropdiv-item">historia</li>
-                            <li class="dropdiv-item">descargas</li>
-                            <li class="dropdiv-item">videos</li>
-                        </ul>
-                    
-                    </li>
-                    <li class="nav-list-item"><a href="">informacion</a></li>
-                    <li class="nav-list-item"><a href="">FAQ</a></li>
-                    <li class="nav-list-item"><a href="{% url 'about' %}">about</a></li>
-                    <button id="close-dropdiv-button">
-                        <span class="fas fa-times"></span>
-                    </button>
 
-                </ul>
-                {% if request.user.is_authenticated %}
-                <div class="user-profile-welcome">
-                    <span class='fas fa-user'></span>
-                    <p>Bienvenido {{request.user.username}}!!</p>
-                </div>
-                {% endif %}
-                <button id="search-button" type="button">
-                    <span class="fas fa-search"></span>
-                </button>
-                <button id="menu-button" type="button">
-                    <span class="fas fa-bars"></span>
-                </button>
-                {% if request.user.is_authenticated %}
-                <a href="{% url 'logout' %}" type="button"><span class="fas fa-door-open"></span></a>
-                {% endif %}
+<body>
+    <header>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Fluid jumbotron</h1>
+                <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.
+                </p>
             </div>
-            <div id="search-field-group">
-                <input class="form-input" type="text">
-                <button id="search-field-cancel">
-                    <span class="fas fa-times"></span>
-                </button>
-            </div>
-            
-           
-    
         </div>
-    </nav>
-    {% block content %}
-      
-    {% endblock %}
+
+        <nav class="navbar navbar-expand-lg shadow">
+            <!-- Aqui pues la barra de navegacion y los items de toda la vida -->
+            <a href="{% url 'forum_main' %}" class="navbar-brand ml-4">
+                <img src="{% static 'img/Logo.png' %}"></img>
+            </a>
+
+
+            <button class="navbar-toggler mr-2" data-toggle="collapse" data-target="#nav">
+                <span class="fas fa-bars"></span>
+            </button>
+
+            <div class="navbar-collapse collapse" id="nav">
+
+                <ul class="navbar-nav ml-auto d-flex justify-content-around align-items-center">
+                    <li class="nav-item"><a href="{% url 'home' %}" class="text-white text-decoration-none">Home</a></li>
+                    <li class="nav-item"><a href="{% url 'forum_main' %}" class="text-white text-decoration-none">Forum</a></li>
+                    <li class="nav-item dropdown"><a class="dropdown-toggle text-white text-decoration-none"  role="button" data-target="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Entrena</a>
+                        <div class="dropdown-menu" id="navbarDropdown">
+                            <div class="dropdown-item"><a href="#" class=" text-decoration-none">Examenes</a></div>
+                            <div class="dropdown-item"><a href="#" class=" text-decoration-none"></a>
+                                Torneo
+                            </a></div>
+                            <div class="dropdown-item"><a href="#" class=" text-decoration-none">
+                                Ejercicios
+                            </a></div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown"><a href="" data-target="biblioteca-li" data-toggle="dropdown" class="dropdown-toggle text-white text-decoration-none">Biblioteca</a>
+                        <div class="dropdown-menu" id="biblioteca-li">
+                            <div class="dropdown-item">Historia</div>
+                            <div class="dropdown-item">Descargas</div>
+                            <div class="dropdown-item">Videos</div>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="#" class="text-white text-decoration-none ">Dashboard</a></li>
+                    
+                        {% if request.user.is_autheticated %}
+                        <li class=" nav-item">
+                            <a href="{% url 'logout' %}" class="fas fa-door-open"></a>
+                            {% else %}
+                    <li class="dropdown nav-item">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target="#account">account</a>
+                        <div class="dropdown-menu" id="account">
+                    <li class="dropdown-item"><a class="text-white text-decoration-none" href="{% url 'signup' %}">Register</a></li>
+                    <li class="dropdown-item"><a class="text-white text-decoration-none" href="{% url 'login' %}">Login</a></li>
+            </div>
+            {% endif %}
+            </li>
+
+            </ul>
+            </div>
+
+
+        </nav>
+    </header>
+    <div class="container-fluid">
+        {% block content %}
+        {% endblock %}
+
+    </div>
 </body>
+
 </html>

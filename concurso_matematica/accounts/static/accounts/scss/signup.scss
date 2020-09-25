@@ -1,0 +1,122 @@
+$screen-sm-min: 576px;
+$screen-md-min: 768px;
+$screen-lg-min: 992px;
+$screen-xl-min: 1200px;
+
+@mixin sm {
+    @media (min-width: #{$screen-sm-min}) {
+        @content
+    }
+}
+
+@mixin md {
+    @media (min-width: #{$screen-md-min}) {
+        @content
+    }
+}
+
+@mixin lg {
+    @media (min-width: #{$screen-lg-min}) {
+        @content
+    }
+}
+
+@mixin xl {
+    @media (min-width: #{$screen-xl-min}) {
+        @content
+    }
+}
+
+html{
+    box-sizing: border-box;
+}
+body, body * {
+    box-sizing: inherit;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+#avatar-field-wrapper {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+
+    i {
+        background-color: rgba(128, 128, 128, 0.383);
+        font-size: 1.2em;
+        padding: 6px;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 1;
+        
+
+    }
+    input[type="file"]{
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        z-index: 2;
+    }
+}
+
+#signUp-area{
+    padding: 60px;
+    padding-top: 0;
+    
+    @include sm {
+        width: 100% !important;
+        
+    }
+    
+    @include lg {
+        width: 60% !important;
+    }
+
+    @include xl {
+        width: 30% !important;
+    }
+      
+
+    .image-area {
+        position: relative;
+        width: 140px;
+        height: 140px;
+        margin: 0 auto;
+        margin-bottom: 40px;
+        
+        
+        img {
+            
+            position: absolute;
+            width: 70%;
+            height: 70%;
+            display: inline-block;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            object-fit: cover;
+            object-position: center;
+        }
+
+       
+
+        
+    }
+    form {
+        button[type="submit"]{
+            font-size: 1.7em;
+        }
+    }
+}

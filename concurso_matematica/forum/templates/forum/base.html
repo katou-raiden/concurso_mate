@@ -1,0 +1,128 @@
+{% load static %}
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'forum/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+    <script defer src="{% static 'js/jquery.min.js' %}"></script>
+    <script defer src="{% static 'js/popper.js' %}"></script>
+    <script defer src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+
+<body>
+    <header>
+        <!-- Aqui vendria una especie de propaganda animada para darle algo de coolidad al sitio,
+        asi como anuncios, etc.. -->
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <h1 class="display-4">Fluid jumbotron</h1>
+              <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+            </div>
+          </div>
+        
+        <nav class="navbar navbar-expand-lg shadow">
+            <!-- Aqui pues la barra de navegacion y los items de toda la vida -->
+            <a href="{% url 'forum_main' %}" class="navbar-brand ml-4">
+                <img src="{% static 'img/Logo.png' %}"></img>
+            </a>
+
+
+            <button class="navbar-toggler mr-2" data-toggle="collapse" data-target="#nav">
+                <span class="fas fa-bars"></span>
+            </button>
+            
+            <div class="navbar-collapse collapse" id="nav">
+
+                <ul class="navbar-nav ml-auto d-flex justify-content-around align-items-center">
+
+                    <li class="order-last order-lg-first">
+                        <form method="GET" class="form-inline my-0">
+                            <div class="form-group my-0 py-0">
+
+                                <input type="text" class="form-control-lg mr-0"><button type="submit" class="border-0 btn-success btn-lg  btn-primary rounded-0  rounded-right"><span class="fas fa-search"></span></button>
+                                
+                            </div>
+                        </form>
+
+                    </li>
+                    <li class="nav-item text-white">Lobby</li>
+                    <li class="nav-item inbox-messages">
+                        <button><span class="fas fa-inbox text-white"></span></button>
+                        <ul>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">
+                            <span class="fas fa-info-circle"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link fas fa-user text-white" data-toggle="dropdown" data-target="#user-options">
+                        </a>
+                        <ul class="dropdown-menu" id="user-options">
+                            <li>item#1</li>
+                            <li>item#2</li>
+                            <li>item#3</li>
+                            <li>item#4</li>
+                        </ul>
+                    </li>
+                    <li class="nav-item text-white">
+                        <span class="fas fa-question-circle"></span>
+                        <div id="user-recent-posts">
+                            <ul>
+
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="nav-link text-white" class="text-white">
+                            <span class="fas fa-door-open">
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item"></li>
+                </ul>
+            </div>
+
+
+        </nav>
+    </header>
+    
+
+
+    <div class="container-fluid">
+        <div class="row mt-4">
+
+            <aside class="col-12 col-lg-4 col-xl-2 border-right pr-2 border-dark">
+              <h2 class="d-none d-lg-block text-lg-center h5 my-4">Sidebar</h2>
+              <ul class="d-flex flex-lg-column flex-row list-unstyled" id="aside-nav">
+                <li class="ml-1"><a href="" class="nav-link active">Example</a></li>
+                <li class="ml-1 "><a href="" class="nav-link active">Example</a></li>
+                <li class="ml-1 "><a href="" class="nav-link active">Example</a></li>
+                <li class="ml-1 "><a href="" class="nav-link active">Example</a></li>
+                <li class="ml-1 "><a href="" class="nav-link active">Example</a></li>
+              </ul>
+            </aside>
+            <div class="col-lg col-12 col-xl">
+                {% block content %}
+
+                {% endblock %}
+            </div>
+            
+            
+          </div>
+
+     </div>
+    
+
+
+    <script>
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+{% extends "forum/base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'forum/css/main.css' %}">
+
+
+
+  <section id="questions-section">
+    <div id="section heading" class="border-dark border-bottom pb-5">
+      <div class="d-flex align-items-center my-4">
+        <h1 class="display-4 text-black d-inline-block" id="questions-section-title">Top Questions</h1>
+        <a class="btn btn-primary text-white d-inline-block mx-4" href="#">Ask Question</a>
+      </div>
+      <div class="btn-group d-flex justify-content-end" role="group" id="question-filter-area">
+        <a href="#" class="btn btn-outline-secondary rounded-left">Interesting</a>
+        <a href="#" class="btn btn-outline-secondary">Hot</a>
+        <a href="#" class="btn btn-outline-secondary">Month</a>
+        <a href="#" class="btn btn-outline-secondary rounded-right">Day</a>
+      </div>
+    </div>
+
+    <div id="questions-area" class="bg-light">
+      {% for post in posts %}
+      <div class="w-100 border-secondary py-4 d-flex flex-row border-bottom border-black">
+        <div class="question-info d-flex flex-column justify-content-center ml-4">
+          <div class="btn-group d-inline-block question-info-area">
+            <a href="" class="question-vote-info btn btn-outline-success text-center h-75 d-inline-block">
+              <span class="h3 d-block">50</span>
+              <span class="h6 text-secondary">Votes</span>
+            </a>
+            <a href="" class="question-answers-info btn btn-outline-primary  h-75 d-inline-block">
+              <span class="h3 d-block">50</span>
+              <span class="h6 text-secondary">Answers</span>
+            </a>
+            <a href="" class="btn btn-outline-secondary question-views-info  h-75 d-inline-block">
+              <span class="h3 d-block">50</span>
+              <span class="h6 text-secondary">Views</span>
+            </a>
+          </div>
+        </div>
+        <div class="d-flex flex-grow-1 flex-column py-1 justify-content-between question-item align-items-stretch">
+          <h6 class="mx-5 my-1 h4">{{post.title }}</h6>
+
+          <div class="mx-5 question-info-footer d-flex justify-content-between align-items-end">
+            <ul class="list-unstyled question-info-tags py-0 my-0">
+              <li class="d-inline-block">
+                <a class="">
+
+                </a></li>
+              <li class="d-inline-block ">
+                <a class="">
+                  <span class="question-tag">linux</span>
+                </a></li>
+              <li class="d-inline-block"><a class="">
+                <span class="question-tag">linux</span>
+                </a></li>
+              <li class="d-inline-block"><a class="">
+                <a class="question-tag" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Hello" title="Testing title" data-container="body" >linux</a>
+                </a></li>
+            </ul>
+            <p class="py-0 my-0">posted August 4th 2015 by <a href="#">@Atemas</a><span class="font-weight-bold small">515</span></p>
+          </div>
+
+
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </section>
+
+<script>
+   window.onload = function(){
+        $('[data-toggle="popover"]').popover();
+        };
+</script>
+{% endblock %}

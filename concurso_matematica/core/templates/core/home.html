@@ -1,39 +1,131 @@
 {% extends 'core/base.html' %}
 {% load static %}
+{% load app_filters %}
 {% block content %}
 <title>CMMD | Home</title>
 <link rel="stylesheet" href="{% static 'core/css/home.css' %}">
-    <section id="recent-news">
-        <div class="container-fluid h-100">
-            <h3 class="my-5 text-center text-uppercase">latest news</h3>
+
+
+
+  <div id="home-slideShow">
+    <h4 class="display-4 pl-5 py-2">Sugerencias</h4>
+    <div id="slideShow-slides">
+    
+      <div class="slide fade">
+        <img src="{{news.0.image.url}}"  alt="">
+      </div>
+      <div class="slide fade">
+        <img src="{{news.1.image.url}}" alt="">
+      </div>
+      <button type="button" onclick="plusSlides(-1);" class="prev">&#10094;</button>
+      <button type="button" onclick="plusSlides(1);" class="next">&#10095;</button>
+    </div>
+    
+    <div id="dots">
+      <span class="dot" onclick="currentSlide(1);"></span>
+      <span class="dot" onclick="currentSlide(2);"></span>
+    </div>
+
+  </div>
+  
+
+
+  <section id="recent-news-section" class="bg-light my-4">
+
+
+            <div class="row py-1">
+
             
             {% for new in news %}
-            <div class="card new py-5">
-                <div class="row justify-content-center align-items-start h-100">
-                    <div class="col-3 card-img-div  h-100 overflow-hidden">
-                        <img src="{{new.image.url}}" alt="" class="card-img" style="">
-                    </div>
-                    <div class="col-6 bg-danger h-100">
-                        <div class="card-body h-75">
-                            <h4 class="card-title">{{new.title}}</h4>
-                            <p class="card-text">{{new.content}}</p>
-                        </div>
-                        <div class="card-footer mt-auto h-25">
-                            <p class="d-inline-block font-weight-bolder">Created on: {{new.date_created}}
-                            {% if new.date_created != new.date_updated %}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;Last Update on: {{new.date_updated}}
-                            {% endif %}
-                            
-                            </p>
-                            
-                            
-                        </div>
-                    </div>
-                </div>
+            
+            <div class="col-12 col-md-6 col-xl-4 d-flex my-5 px-0">
 
+            <div class="card shadow w-75 card{{forloop.counter}}">
+              <div class="card-header px-0 py-0" >
+                <img class="card-img-top" src="{{new.image.url}}" alt="" style="object-position: center !important; object-fit: cover !important; width: 100% !important; height: 400px;">
+              </div>
+              <div class="card-body">
+                
+                <h6 class="card-title h1">{{new.title}}</h6>
+                <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam voluptatibus repellendus eveniet dicta amet vitae, nostrum eius ratione maiores culpa cum, similique in consequatur esse. Minima distinctio odio delectus eligendi!</p>
+
+                <div class="my-4">
+                  <img src="{{new.author.profile.image.url}}" alt="" class="rounded-circle" style="height: 100px; width: 100px; object-fit: cover !important; object-position: center !important;">
+                  <a href="#" class="new-username card-link bg-dark py-2 px-3 mx-2 text-decoration-none text-white">@{{new.author.username}}</a>
+                  <p class="d-inline-block ml-auto text-muted">{{new.date_created}}</p>
+                  <div class="new-tags">
+                    {% comment %}
+                    {% for tag in new.tags %}
+                      <span class="d-inline-block {% if not forloop.first %}ml-2{% endif %}"></span>
+                    {% endfor %}
+                    {% endcomment %}
+                  </div>
+                </div>
+        
+                <a href="{% url 'new' new.id %}" class="btn btn-primary d-block  read-more bg-dark ml-auto py-4">Read More</a>
+                
+              </div>
             </div>
+            
+            
+          </div>
+            
             {% endfor %}
-    
+          </div>
+          
+         
+            
+          
+      
+  </section>
+
+  <section id="related-videos">
+
+
+    <div class="row">
+      {% comment %}
+      {% for video in videos %}
+      <div class="col-4">
+        <div class="video-box">
+          <h5>{{video.title}}</h5>
+          <video src=""></video>
+          <p>{{video.description}}</p>
+          <div class="tags">
+            {% for tag in video.tags %}
+            <span class="d-inline-block mr-2">{{tag.name}}</span>
+            {% endfor %}
+          </div>
         </div>
-    </section>
+      </div>
+      {% endfor %}
+      {% endcomment %}
+      
+      
+    </div>
+  </section>
+
+
+
+
+<script  src="{% static 'core/js/home.js' %}"></script>
+<script src="{% static 'js/clamp.min.js' %}">
+</script>
+<script>
+  var texts = document.getElementsByClassName('card-text');
+  var readMoreButton = document.getElementsByClassName('read-more');
+  let expression = /\d+/;
+  
+  let count = 0;
+  for(let x of texts){
+    $clamp(x, {clamp: 4, animate: true});
+  }
+  for(let x=0; x < texts.length; x++){
+    if (Math.ceil(expression.exec(getComputedStyle(texts[x], null).height)/expression.exec(getComputedStyle(texts[x], null).lineHeight)) >= 4) {
+      readMoreButton[x].classList.replace('d-none', 'd-inline-block');
+    }
     
+  }
+  
+  
+</script>
 {% endblock %}

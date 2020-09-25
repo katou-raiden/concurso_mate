@@ -37,9 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',
-    'news',
-    'accounts',
+    'core.apps.CoreConfig',
+    'news.apps.NewsConfig',
+    'accounts.apps.AccountsConfig',
+    'forum.apps.ForumConfig',
+    'tinymce',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -122,7 +125,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'static'),
 ]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'

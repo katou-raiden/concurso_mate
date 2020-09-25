@@ -1,0 +1,21 @@
+#questions-section-title{
+    
+}
+
+#aside-nav{
+    
+}
+
+
+.question-info-area a:hover span{
+    color: white !important;
+}
+
+.question-tag{
+    background: linear-gradient(0deg ,rgba(88, 157, 236, 0.74), rgba(85, 144, 207, 0.603), rgba(119, 183, 255, 0.534));
+    border-radius: 2px;
+    padding: .025rem .3rem;
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+    
+}

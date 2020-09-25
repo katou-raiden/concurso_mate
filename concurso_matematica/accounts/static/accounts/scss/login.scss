@@ -1,0 +1,85 @@
+$screen-sm-min: 576px;
+$screen-md-min: 768px;
+$screen-lg-min: 992px;
+$screen-xl-min: 1200px;
+
+@mixin sm {
+    @media (min-width: #{$screen-sm-min}) {
+        @content
+    }
+}
+
+@mixin md {
+    @media (min-width: #{$screen-md-min}) {
+        @content
+    }
+}
+
+@mixin lg {
+    @media (min-width: #{$screen-lg-min}) {
+        
+    }
+}
+
+@mixin xl {
+    @media (min-width: #{$screen-xl-min}) {
+        @content
+    }
+}
+
+
+html{
+    box-sizing: border-box;
+}
+body, body * {
+    box-sizing: inherit;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-area {
+    padding: 0 60px;
+    padding-bottom: 40px;
+
+    
+
+    .image-area {
+        position: relative;
+        width: 140px;
+        height: 140px;
+        margin: 0 auto;
+        margin-bottom: 40px;
+        pointer-events: none;
+
+        
+        img:empty {
+            position: absolute;
+            width: 70%;
+            height: 70%;
+            display: inline-block;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            pointer-events: none;
+        }
+        
+    }
+
+    form {
+
+        button[type="submit"] {
+            font-size: 1.3em;
+        }
+    }
+}
