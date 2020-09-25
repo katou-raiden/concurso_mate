@@ -20,18 +20,21 @@
         <div class="opacity-box"></div>
         <div style="height: 100vh; width: 100%;"></div>
         <div class="user-and-title-box">
-            <h1 class="text-center">{{new.title}}</h1>
+            <h1 class="text-center">{{ new.title }}</h1>
             <p>
-                <img src="{{ new.author.avatar.url }}" class="user-profile-picture" alt="">
-                @<a href="#">{{ new.author.username }}</a>
+                <img src="{{ new.user.profile.avatar.url }}" class="user-profile-picture rounded-circle" alt="" style="width: 60px; height: 60px; object-position: center; object-fit: cover;">
+                @<a href="#">{{ new.user.username }}</a>
             </p>
-            <p>Written on 21 August 2020</p>
+            <p>Written {{ new.date_created }}</p>
         </div>
 
-        <div class="container">
-            <div class="user-new">
+        <div class="container my-5">
+            <div class="new w-100">
                 <!-- Aqui iria el contenido de la noticia del usuario --> 
-                {{ new.content }}
+                <p style="display : block; overflow-wrap: break-word; max-width : 100%;">
+                    {{ new.content }}
+                </p>
+                
             </div>
             <!-- * Todos los comentarios -->
             <div class="accordion" id="accordionExample">
@@ -42,66 +45,107 @@
                                 data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 <!-- * Seccion de comentarios y cantidad
                                 * Comments - {% comment %}{{ comments|length }}{% endcomment %} -->
+                                <h4>Comments - {{ new.main_comment|length }}</h4>
                             </button>
                         </h2>
                     </div>
-                    
+        
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                         data-parent="#accordionExample">
                         <div class="card-body" id="comments">
-                            {% for comment in comments %}
-                            <div class="comment card">
-                                <div class="card-header">
-                                    <h6 class="card-subtitle">{{ comment.title }}</h6>
-                                </div>
+                            {% for main_comment in new.main_comments.all %}
+                            <div class="comment card w-100 p-0 m-0">
                                 <div class="row">
-                                    <div class="col-3 col-lg-2">
+                                    <div class="col-2 col-lg-2 py-4">
+                                        <h6 class="text-center">{{ main_comment.user.username }}</h6>
+                                        
+                                        <div class="avatar text-center">
+                                            <img src="{% if main_comment.user.profile.avatar %}{{ main_comment.user.profile.avatar.url }}{% else %}{% static 'accounts/images/user.svg' %}{% endif %}" alt="" class="img-thumbnail" style="width: 120px !important; height: 120px !important; object-fit: cover; object-position: center;">
+                                        </div>
+                                        <div class="user-points d-flex justify-content-center">
+                                            <div class="text-center">
+                                                <i class="fas fa-trophy"></i>
+                                                <span>50</span>
+                                            </div>
+                                            <div class="text-center">
+                                                <i class="fas fa-star"></i>
+                                                <span>50</span>
+                                            </div>
+                                        </div>
 
-                                        <img src="{{ comment.author.avatar.url }}" alt="" class="img-thumbnail" style="width: 120px !important; height: 120px !important; object-fit: cover; object-position: center;">
+                                        <div class="votes text-center">
+                                            <a href="#" class="upvote"><i class="fas fa-arrow-up"></i></a>
+                                            <a href="#"><i class="fas fa-arrow-down"></i></a>
+                                        </div>
                                         
                                     </div>
                                     <div class="col">
                                         <div class="card-body">
 
                                             <p class="card-text">
-                                                {{ comment.content }}
+                                                {{ main_comment.content }}
                                                
                                             </p>
                                         </div>
                                     </div>
+                                    <div class="card-footer">
+                                       <span>Posted {{ main_comment.date_pub }}</span>
+                                    </div>
                                 </div>
 
-                            {% for comment in comments.comments %}
+                                {% for comment in main_comment.sub_comments.all %}
                             <!-- Comentarios del comentario -->
-                            <div class="comment row">
-                                    <div class="col-2">
-                                        <img src="{{ comment.author.avatar.url }}" alt="">
-
+                            <div class="comment card w-75 ml-auto">
+                                <div class="card-header">
+                                    <h6 class="h3">{{ comment.user.username }}  says:</h6>
+                                </div>
+                                <div class="row">
+                                    <div class="col-2 py-2">
+                                        <div class="avatar text-center">
+                                            <img src="{% if main_comment.user.profile.avatar %}{{ main_comment.user.profile.avatar.url }}{% else %}{% static 'accounts/images/user.svg' %}{% endif %}" class="img-thumbnail " style="object-fit: cover; object-position: center; width: 120px !important;height: 120px !important;" alt="">
+                                        </div>
+            
+                                        <div class="user-points d-flex justify-content-center">
+                                            <div class="text-center">
+                                                <i class="fas fa-trophy"></i>
+                                                <span>50</span>
+                                            </div>
+                                            <div class="text-center">
+                                                <i class="fas fa-star"></i>
+                                                <span>50</span>
+                                            </div>
+                                        </div>
+                                        <div class="votes text-center">
+                                            <a href="#" class="upvote"><i class="fas fa-arrow-up"></i></a>
+                                            <a href="#"><i class="fas fa-arrow-down"></i></a>
+                                        </div>
+    
                                     </div>
-                                    <h6 class="h3">{{ comment.author.username }}  says:</h6>
+                                    <div class="col">
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                {{ comment.content }}
+                                            </p>
+                                       </div>
+                                    </div>
+                                </div>
+                                    
+                                   
                                 
-                                <p class="card-text">
-                                    {{ comment.content }}
-                                </p>
+                                
                                 <div class="card-footer">
-                                    <div class="votes">
-                                        <a href="#" class="upvote"><i class="fas fa-arrow-up"></i></a>
-                                        <a href="#" class="downvote"><i class="fas fa-arrow-down"></i></a>
-
-                                    </div>
+                                   
                                     <p>
                                         <!-- * Aqui indica cuando se posteo el comentario --> 
-                                        Posted {{new.date_created}}
+                                        Posted {{ comment.date_pub }}
                                     </p>
 
                                 </div>
                             </div>
                             {% endfor %}
-                            
-
-                           
 
                             </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -113,6 +157,7 @@
                     </div>
                     <form method="POST" class="d-flex flex-wrap">
                         {% csrf_token %}
+                        
                         <textarea class="form-control-plaintext bg-light w-100 " name="" id="" cols="30" rows="10"></textarea>
                         <button class="btn btn-primary my-4  px-4 py-2 font-weight-bold ml-auto" type="submit">Post</button>
                     </form>
@@ -123,7 +168,7 @@
                     {% endfor %}
                 </div>
                 <div class="social-links ">
-                    {% for link in new.author.links %}
+                    {% for link in new.user.links %}
                     <!-- * aqui van todos los links a las redes sociales -->
                     {% endfor %}
                     <a href="#"><i class="fab fa-facebook-f"></i></a>

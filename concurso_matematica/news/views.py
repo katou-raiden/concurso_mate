@@ -10,7 +10,7 @@ def new_view(request, pk):
     }
     return render(request, 'news/new.html', context)
 
-def news_view(request):
+def list_news_view(request):
     context = {
         
     }
