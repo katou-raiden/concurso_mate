@@ -56,14 +56,13 @@
                             {% for main_comment in new.main_comments.all %}
                             <div class="comment card w-100 p-0 m-0">
                                 <div class="row">
-                                    <div class="col-2 col-lg-2 py-3">
+                                    <div class="col-2 col-lg-2 py-4">
                                         <h6 class="text-center">{{ main_comment.user.username }}</h6>
                                         
                                         <div class="avatar text-center">
                                             <img src="{% if main_comment.user.profile.avatar %}{{ main_comment.user.profile.avatar.url }}{% else %}{% static 'accounts/images/user.svg' %}{% endif %}" alt="" class="img-thumbnail" style="width: 120px !important; height: 120px !important; object-fit: cover; object-position: center;">
-
                                         </div>
-                                        <div class="user-points">
+                                        <div class="user-points d-flex justify-content-center">
                                             <div class="text-center">
                                                 <i class="fas fa-trophy"></i>
                                                 <span>50</span>
@@ -101,14 +100,24 @@
                                     <h6 class="h3">{{ comment.user.username }}  says:</h6>
                                 </div>
                                 <div class="row">
-                                    <div class="col-2">
+                                    <div class="col-2 py-2">
                                         <div class="avatar text-center">
                                             <img src="{% if main_comment.user.profile.avatar %}{{ main_comment.user.profile.avatar.url }}{% else %}{% static 'accounts/images/user.svg' %}{% endif %}" class="img-thumbnail " style="object-fit: cover; object-position: center; width: 120px !important;height: 120px !important;" alt="">
                                         </div>
             
+                                        <div class="user-points d-flex justify-content-center">
+                                            <div class="text-center">
+                                                <i class="fas fa-trophy"></i>
+                                                <span>50</span>
+                                            </div>
+                                            <div class="text-center">
+                                                <i class="fas fa-star"></i>
+                                                <span>50</span>
+                                            </div>
+                                        </div>
                                         <div class="votes text-center">
                                             <a href="#" class="upvote"><i class="fas fa-arrow-up"></i></a>
-                                            <a href="#" class="downvote"><i class="fas fa-arrow-down"></i></a>
+                                            <a href="#"><i class="fas fa-arrow-down"></i></a>
                                         </div>
     
                                     </div>
