@@ -47,8 +47,7 @@ def forum_post_view(request):
         return render(request, 'forum/post.html', context = {'tags':tags})
 
 def forum_filter_view(request,id):
-    tags = Tag.objects.all()
     tag = get_object_or_404(Tag, id=id)
     arts = Post.objects.all(tag = tag)
 
-    return render(request, 'forum/filter.html', context={'arts': arts, 'tag': tag, 'tags':tags})
+    return render(request, 'forum/filter.html', context={'arts': arts, 'tag': tag})
