@@ -1,4 +1,7 @@
 from django import template
+import datetime, pytz
+import math
+
 register = template.Library()
 
 @register.filter(name="divide_by")
@@ -23,3 +26,6 @@ def number_minus(number, arg):
     else:
         return number - arg
         
+@register.filter(name='format_date')
+def format_date_our_way(date):
+    pass

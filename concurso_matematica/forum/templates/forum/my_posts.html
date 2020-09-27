@@ -1,0 +1,21 @@
+{% extends "forum/base.html" %}
+
+{% block content %}
+    <table class='table'>
+        <thead>
+            <tr>
+                <th scope='col'>Post</th>
+                <th scope='col'>Date_pub</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+                <tr>
+                    <td scope='row'><a href="{% url 'post_edit' post.id %}">{{post.title}}</a></td>
+                    <td scope='row'>{{post.date_pub}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+        
+{% endblock %}

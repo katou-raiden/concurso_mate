@@ -7,6 +7,7 @@ __pycache__/
 *.png
 migrations/
 media/
+maquetado/
 db.sqlite3
 *$py.class
 
@@ -148,4 +149,9 @@ cython_debug
 *.xml
 *.pyc
 
+
+.idea/
+.vscode/launch.json
+.vscode/settings.json
+.vscode/
 
