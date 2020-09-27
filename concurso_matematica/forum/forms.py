@@ -7,7 +7,10 @@ class PostForm(forms.ModelForm):
     class Meta():
         model = Post
 
-        exclude = ['fecha']
+        exclude = ['date_pub', 'date_mod', 'user']
+
+class AnswerForm(forms.Form):
+    content = forms.Textarea()
 
 
 class ComentForm(forms.Form):

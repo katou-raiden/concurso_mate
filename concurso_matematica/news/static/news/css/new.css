@@ -1,76 +1,58 @@
-body {
-    
-
-}
-html, body,  section{
-    min-height: 100%;
-    margin: 0;
-    padding: 0;
-   
-    
+html, body, section {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-section{
-
-}
 .notice-background-image, .opacity-box {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    top: 0;
-   
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
 }
 
-.notice-background-image{
-    background-position: center;
-    background-image: url(../images/the-road.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
- 
-.card-img img{
-    height: 100px !important;
-    width: 100px !important;
+.notice-background-image {
+  background-position: center;
+  background-image: url(../images/the-road.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-.opacity-box{
-    background-color: rgba(0, 0, 0, 0.336);
+.card-img img {
+  height: 100px !important;
+  width: 100px !important;
 }
 
-.user-and-title-box{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-
-}
-.user-and-title-box{
-    font-weight: bold;
-    font-size: 2.4rem;
-}
-.user-and-title-box p{
-    
-    font-size: 1.3rem;
-    font-weight: 700;
-    text-align: center;
+.opacity-box {
+  background-color: rgba(0, 0, 0, 0.336);
 }
 
-.user-and-title-box a{
-    color: deepskyblue;
-    text-decoration: none;
+.user-and-title-box {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
 }
 
-.comment{
-    min-height: 200px !important;
-    display: block !important;
-    
+.user-and-title-box {
+  font-weight: bold;
+  font-size: 2.4rem;
 }
 
-img{
-
+.user-and-title-box p {
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-align: center;
 }
-p{
-    
+
+.user-and-title-box a {
+  color: deepskyblue;
+  text-decoration: none;
+}
+
+.comment {
+  min-height: 200px !important;
+  display: block !important;
 }

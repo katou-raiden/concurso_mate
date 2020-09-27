@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-*.pyc
-*.pyo
-db.sqlite3
-migrations/
-media/
-__pycache__/
-=======
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.pyo
@@ -15,6 +7,7 @@ __pycache__/
 *.png
 migrations/
 media/
+maquetado/
 db.sqlite3
 *$py.class
 
@@ -157,4 +150,8 @@ cython_debug
 *.pyc
 
 
->>>>>>> essential_features_l0new0lf
+.idea/
+.vscode/launch.json
+.vscode/settings.json
+.vscode/
+

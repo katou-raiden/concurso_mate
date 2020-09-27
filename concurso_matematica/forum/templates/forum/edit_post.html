@@ -1,0 +1,29 @@
+{% extends "forum/base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+
+  {% for hidden in form.hidden_fields %}
+    {{ hidden }}
+  {% endfor %}
+
+  {% for field in form.visible_fields %}
+    <div class="form-group">
+      <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+      {{ field|add_class:'form-control' }}
+      {% for error in field.errors %}
+        <span class="help-block">{{ error }}</span>
+      {% endfor %}
+    </div>
+  {% endfor %}
+    <br>
+  <div class="form-group">
+    <button type="submit" class="btn btn-success">
+      <span class="glyphicon glyphicon-ok"></span> Save
+    </button>
+    <a href="{% url 'my_posts' %}" class="btn btn-default">Cancel</a>
+  </div>
+</form>
+{% endblock %}
