@@ -1,8 +1,5 @@
 {% load static %}
-<<<<<<< HEAD
-=======
 {% load widget_tweaks %}
->>>>>>> essential_features_l0new0lf
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,75 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'accounts/css/signup.css' %}">
-<<<<<<< HEAD
-    <script defer src="{% static 'accounts/js/signup.js' %}">
-    </script>
-=======
     <link rel="stylesheet" href="{% static 'css/all.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.js' %}"></script>
->>>>>>> essential_features_l0new0lf
 </head>
 
 <body>
-<<<<<<< HEAD
-    
-    <div class="signup-area">
-        <form method="POST" class="form-area">
-            <div class="first-last-name-area">
-                <label for="first-name-input">nombre</label>
-                <input type="text" name="first_name" id="first-name-input">
-                <label for="second-name-input" id="second-name-input">apellido</label>
-                <input type="text" name="second_name">
-                <div class="buttons-div">
-                    <button class="next-button">next</button>
-                </div>
-            </div>
-            <div class="pui-grade-area">
-                <label for="pui-input">instituto</label>
-                <input type="text" name="first_name" id="pui-input">
-                <label for="grade-input">grade</label>
-                <input type="text" name="grade" id="grade-input">
-                <div class="buttons-div">
-                    <button class="prev-button">prev</button>
-                    <button class="next-button">next</button>
-                </div>
-            </div>
-            <div class="email-area">
-                <label for="email-input">email</label>
-                <input type="email" name="email" id="email-input">
-                <div class="buttons-div">
-                    <button class="prev-button">prev</button>
-                    <button class="next-button">next</button>
-                </div>
-            </div>
-            <div class="username-area">
-                
-                <label for="username-input">username</label>
-                <input type="text" name="username" id="username-input">
-                <div class="buttons-div">
-                    <button class="prev-button">prev</button>
-                    <button class="next-button">next</button>
-                </div>
-            </div>
-            <div class="password-area">
-                <label for="password-input">password</label>
-                <input type="password" name="password" id="password-input">
-                <div class="buttons-div">
-                    <button class="prev-button">prev</button>
-                    <button type="submit">submit</button>
-                </div>
-            </div>
-            
-        </form>
-        <div class="steps-area">
-                
-        </div>
-
-    </div>
-    
-=======
     <div id="signUp-area" class=" my-5 border-dark border rounded shadow">
 
         {% for hidden_field in user_form.hidden_fields %}
@@ -331,7 +266,6 @@
 
     
 
->>>>>>> essential_features_l0new0lf
 </body>
 
 </html>
