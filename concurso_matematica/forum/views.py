@@ -3,7 +3,9 @@ from .models import Post, Comment, Tag, Answer
 from . import forms
 
 # Create your views here.
-
+def test(request):
+    form = forms.PostForm
+    return render(request, 'forum/test.html',context={'form':form})
 
 def forum_main_view(request):
     posts = Post.objects.all()
@@ -17,7 +19,6 @@ def forum_detail_view(request,id):
     post_comments = post.comments.all()
     if request.method == 'POST':
         answer_content = request.POST.get('content')
-        print(answer_content)
         answer = Answer(content = answer_content, user = request.user, post = post)
         answer.save()
         return redirect('forum_detail',id)
@@ -51,3 +52,23 @@ def forum_filter_view(request,id):
     arts = Post.objects.all(tag = tag)
 
     return render(request, 'forum/filter.html', context={'arts': arts, 'tag': tag})
+
+def my_posts_view(request):
+    posts = Post.objects.filter(user=request.user)
+
+    return render(request, 'forum/my_posts.html', context={'posts':posts})
+
+def my_posts_edit_view(request, id):
+    post = get_object_or_404(Post,id=id)
+    form = forms.PostForm(instance=post)
+    if request.method == 'POST':
+        form = forms.PostForm(request.POST)
+        if form.is_valid:
+            post.title = form.data.get('title')
+            post.content = form.data.get('content')
+            post.tag = get_object_or_404(Tag,id=form.data.get('tag'))
+            post.save()
+            message = 'Saved Successfully'
+            return redirect('forum_main')
+    else:
+        return render(request, 'forum/edit_post.html', context={'post':post,'form':form})

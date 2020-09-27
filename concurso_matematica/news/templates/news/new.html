@@ -1,3 +1,4 @@
+{% extends "forum/base.html" %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +16,8 @@
 </head>
 
 <body>
+    
+    {% block content %}
     <section id="notice-section">
         <div class="notice-background-image"></div>
         <div class="opacity-box"></div>
@@ -181,6 +184,8 @@
         </div>
     </section>
 
+    {% endblock content %}
+        
 </body>
 
 </html>

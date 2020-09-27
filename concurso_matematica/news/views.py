@@ -3,10 +3,10 @@ from .models import *
 # Create your views here.
 
 def new_view(request, pk):
-
     new = Notice.objects.get(pk=pk)
+    
     context = {
-        'new' : new,
+        'new' : new
     }
     return render(request, 'news/new.html', context)
 
