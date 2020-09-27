@@ -157,8 +157,16 @@
                     </div>
                     <form method="POST" class="d-flex flex-wrap">
                         {% csrf_token %}
+                        <!--<textarea class="form-control-plaintext bg-light w-100 " name="" id="" cols="30" rows="10"></textarea>
+                        -->
+                        {{main_form}}
+                        <br>
                         
-                        <textarea class="form-control-plaintext bg-light w-100 " name="" id="" cols="30" rows="10"></textarea>
+                        <button class="btn btn-primary my-4  px-4 py-2 font-weight-bold ml-auto" type="submit">Post</button>
+                    </form>
+                    <form method="POST" >
+                        {% csrf_token %}
+                        {{sub_form}}
                         <button class="btn btn-primary my-4  px-4 py-2 font-weight-bold ml-auto" type="submit">Post</button>
                     </form>
                 </div>

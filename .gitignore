@@ -155,3 +155,4 @@ cython_debug
 .vscode/settings.json
 .vscode/
 
+concurso_matematica/concurso_matematica/__pycache__/urls.cpython-37.pyc
