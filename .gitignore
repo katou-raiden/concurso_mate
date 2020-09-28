@@ -14,6 +14,9 @@ db.sqlite3
 # C extensions
 *.so
 
+core/__pycache__
+views.cpython-37.pyc
+
 # Distribution / packaging
 .Python
 build/
@@ -156,3 +159,4 @@ cython_debug
 .vscode/
 
 concurso_matematica/concurso_matematica/__pycache__/urls.cpython-37.pyc
+concurso_matematica/core/__pycache__/views.cpython-37.pyc

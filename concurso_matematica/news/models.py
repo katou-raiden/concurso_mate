@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
-# Create your models here.
+from core.models import Tag
 
+# Create your models here.
 
 
 class Notice(models.Model):
@@ -49,11 +50,3 @@ class SubComment(models.Model):
     def __str__(self):
         return self.content
         
-
-class Tag(models.Model):
-    name = models.CharField(max_length=75)
-    description = models.CharField(max_length=255)
-    notices = models.ManyToManyField(Notice)
-
-    def __str__(self):
-        return self.name
