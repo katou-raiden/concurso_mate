@@ -46,3 +46,21 @@ def list_news_view(request):
     return render(request, 'news/main.html', context)
 
 
+def add_new_view(request):
+    form = NoticeForm()
+
+    if request.method == 'POST':
+        form = NoticeForm(request.POST,request.FILES)
+        print(form.errors)
+        if form.is_valid():
+            new = form.save(commit = False)
+            if request.user.is_authenticated:
+                new.user = request.user
+                new.save()
+                return redirect('home')
+            else:
+                return redirect('login')
+        else:
+            return redirect('add_new')
+    else:
+        return render(request, 'news/add_new.html', context={'form':form})

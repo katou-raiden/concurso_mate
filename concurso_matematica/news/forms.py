@@ -6,7 +6,7 @@ class NoticeForm(forms.ModelForm):
 
     class Meta:
         model = Notice
-        exclude = ['upvotes', 'date_created', 'date_updated', 'downvotes']
+        exclude = ['upvotes', 'date_created', 'date_updated', 'downvotes', 'user','reference']
 
 
 class MainCommentForm(forms.ModelForm):

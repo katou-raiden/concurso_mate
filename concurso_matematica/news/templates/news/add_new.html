@@ -1,0 +1,14 @@
+{% extends "forum/base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+<form enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+        {{form}}
+      <button type="submit" class="btn btn-success">
+        <span class="glyphicon glyphicon-ok"></span> Save
+      </button>
+      <a href="{% url 'my_posts' %}" class="btn btn-default">Cancel</a>
+    </div>
+  </form>
+{% endblock %}
