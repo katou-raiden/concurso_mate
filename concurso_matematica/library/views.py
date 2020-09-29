@@ -13,12 +13,6 @@ def videos_gallery_view(request):
     return render(request, 'library/videos.html', context=context)
 
 #Terminar Esto despues de hacer el Formulario para Comments
-def history_view(request):
-    context = {
-
-    }
-    return render(request, 'library/history.html')
-
 
 def history_post_view(request,pk):
     post = get_object_or_404(HistoryPost,id=pk)
