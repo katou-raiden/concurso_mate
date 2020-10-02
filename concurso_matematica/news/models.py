@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 
 
 class Notice(models.Model):
+    tag = models.ManyToManyField(Tag, related_name='Notice')
     title = models.CharField(max_length=30, default="")
     content = models.TextField(null=True, blank=True, default="")
     date_created = models.DateTimeField(auto_now_add=True)
