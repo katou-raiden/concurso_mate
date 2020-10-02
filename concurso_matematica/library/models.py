@@ -1,9 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
+from core.models import Tag
 
 # Create your models here.
 
 class Video(models.Model):
+    tag = models.ManyToManyField(Tag, related_name='videos', null=True, blank=True)
     title = models.CharField(max_length=75)
     description = models.TextField()
     video = models.FileField(upload_to='library/video/')
@@ -19,6 +21,7 @@ class Document(models.Model):
         return self.title
 
 class HistoryPost(models.Model):
+    tag = models.ManyToManyField(Tag, related_name='history_posts')
     title = models.CharField( max_length=50)
     content = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='history_posts')

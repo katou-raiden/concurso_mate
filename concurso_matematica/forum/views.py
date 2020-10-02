@@ -1,5 +1,6 @@
 from django.shortcuts import render,get_object_or_404,redirect
-from .models import Post, Comment, Tag, Answer
+from .models import Post, Comment, Answer
+from core.models import Tag
 from . import forms
 
 # Create your views here.
@@ -9,8 +10,7 @@ def test(request):
 
 def forum_main_view(request):
     posts = Post.objects.all()
-    temas = Tag.objects.all()
-    return render(request, 'forum/main.html', context={'posts': posts, 'temas':temas})
+    return render(request, 'forum/main.html', context={'posts': posts})
 
 
 def forum_detail_view(request,id):
@@ -40,16 +40,18 @@ def forum_post_view(request):
     if request.method == 'POST':
         title = request.POST.get('title')
         content = request.POST.get('content')
-        tag_id = request.POST.get('tag')
-        post = Post(user = request.user, title = title, content = content, tag = Tag.objects.get(id=tag_id))
+        tag = Tag.objects.get(id=request.POST.get('tag'))
+        print(tag)
+        post = Post(user = request.user, title = title, content = content)
         post.save()
+        post.tag.add(tag)
         return redirect('forum_main')
     else:
         return render(request, 'forum/post.html', context = {'tags':tags})
 
 def forum_filter_view(request,id):
     tag = get_object_or_404(Tag, id=id)
-    arts = Post.objects.all(tag = tag)
+    arts = Post.objects.filter(tag = tag)
 
     return render(request, 'forum/filter.html', context={'arts': arts, 'tag': tag})
 
@@ -66,7 +68,9 @@ def my_posts_edit_view(request, id):
         if form.is_valid:
             post.title = form.data.get('title')
             post.content = form.data.get('content')
-            post.tag = get_object_or_404(Tag,id=form.data.get('tag'))
+            obj = get_object_or_404(Tag,id=form.data.get('tag'))
+            print(obj)
+            post.tag.add(obj)
             post.save()
             message = 'Saved Successfully'
             return redirect('forum_main')
