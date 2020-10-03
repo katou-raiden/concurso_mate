@@ -211,11 +211,10 @@
 /* -----------------------------------------------------------------------------
 THE TOGGLE COMPONENT
 ----------------------------------------------------------------------------- */
-/**
+/*
 * The toggle is a button element, and as such requires some resets that are
-* unique to buttons. This button also inherits some funky stuff from my
-* CSS animating hamburger menu icons demo, which can be found at this url:
-* https://github.com/callmenick/Animating-Hamburger-Icons
+* unique to buttons. 
+* 
 */
 
 .c-circle-nav__toggle {

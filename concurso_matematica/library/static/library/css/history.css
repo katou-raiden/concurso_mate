@@ -2,20 +2,87 @@ body * {
   box-sizing: border-box !important;
 }
 
-.history-img {
+.history-flex {
+  width: 100;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 4em 2em;
+  grid-auto-rows: 200px;
+}
+
+.history-flex .history-card:hover {
+  background-color: #161414;
+  border-left-color: cyan;
+}
+
+.history-flex .history-card:hover * {
+  color: white;
+}
+
+.history-flex .history-card:hover .header span {
+  color: cyan;
+}
+
+.history-flex .history-card:hover h6 {
+  color: cyan;
+}
+
+.history-flex .history-card:hover .tags {
+  background-color: cyan;
+}
+
+.history-flex .history-card {
+  transition: border-left-color .5s ease;
+  border-left: solid 6px royalblue;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  padding: 0 6px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.history-flex .history-card, .history-flex .history-card * {
+  transition: background-color .5s ease, color .5s ease;
+}
+
+.history-flex .history-card > * {
+  flex-basis: 100%;
+}
+
+.history-flex .history-card .header img {
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+
+.history-flex .history-card h6 {
+  margin: .6em;
+  font-size: 1.3em;
+}
+
+.history-flex .history-card .tags {
+  align-self: flex-end;
+  display: flex;
+  justify-content: space-between;
+  min-height: 30px;
+  padding: 4px;
+  background-color: #f3f3f3;
+}
+
+.history-flex .history-card .tags a {
+  display: inline-block;
+  color: white;
+  background-color: rgba(49, 145, 189, 0.664);
+}
+
+.user-img {
   width: 60px;
   height: 60px;
   object-fit: cover;
   object-position: center;
-}
-
-.scrolling-wrapper {
-  max-height: 700px !important;
-  flex-wrap: wrap !important;
-}
-
-.card {
-  width: 20%;
-  height: 200px !important;
-  margin: 0;
 }

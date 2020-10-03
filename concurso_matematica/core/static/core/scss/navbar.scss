@@ -35,6 +35,7 @@ $darkblack: #0B0C10;
 			cursor: pointer;
 			
 		}
+		
 	}
 	
 
@@ -61,6 +62,7 @@ $darkblack: #0B0C10;
 		position: relative;
 
 		.dropitdown-menu{
+			z-index: 1000;
 			display: none;
 			position: absolute;
 			padding: 0;
@@ -109,7 +111,10 @@ $darkblack: #0B0C10;
 }
 
    
-
+#main-nav.drop-nav{
+	top: 0;
+	position: fixed;
+}
 
 
 #navlist > ul > li > a {
@@ -158,3 +163,32 @@ $darkblack: #0B0C10;
 	opacity: 1;
 }
 
+
+#navlist ul li.login-register{
+	a::after, a::before, a:hover::before, a:hover::after{
+		all: unset;
+	}
+
+	all: unset;
+
+	padding: 6px 10px;
+	
+	a{
+		
+		height: 40px;
+		color: cyan;
+		border-radius: 6px;
+		border: solid 2px cyan;
+		transition: background-color .5s ease, color .5s ease;
+	}
+	a:hover{
+		background-color: rgb(0, 201, 201);
+		color: white;
+	
+	}
+
+	
+	
+
+	
+}

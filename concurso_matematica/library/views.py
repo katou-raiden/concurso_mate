@@ -12,7 +12,14 @@ def videos_gallery_view(request):
     context = {'videos':videos}
     return render(request, 'library/videos.html', context=context)
 
+def history_view(request):
+    context = {
+        'history_posts': HistoryPost.objects.all()
+    }
+    return render(request, 'library/history.html', context)
+
 #Terminar Esto despues de hacer el Formulario para Comments
+
 
 def history_post_view(request,pk):
     post = get_object_or_404(HistoryPost,id=pk)

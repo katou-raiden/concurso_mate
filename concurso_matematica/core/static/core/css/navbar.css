@@ -58,6 +58,7 @@
 }
 
 #main-nav .dropitdown .dropitdown-menu {
+  z-index: 1000;
   display: none;
   position: absolute;
   padding: 0;
@@ -129,4 +130,26 @@
 #navlist > ul > li > a:focus::after {
   top: 0%;
   opacity: 1;
+}
+
+#navlist ul li.login-register {
+  all: unset;
+  padding: 6px 10px;
+}
+
+#navlist ul li.login-register a::after, #navlist ul li.login-register a::before, #navlist ul li.login-register a:hover::before, #navlist ul li.login-register a:hover::after {
+  all: unset;
+}
+
+#navlist ul li.login-register a {
+  height: 40px;
+  color: cyan;
+  border-radius: 6px;
+  border: solid 2px cyan;
+  transition: background-color .5s ease, color .5s ease;
+}
+
+#navlist ul li.login-register a:hover {
+  background-color: #00c9c9;
+  color: white;
 }

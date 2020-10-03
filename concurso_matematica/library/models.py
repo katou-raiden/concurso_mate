@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from core.models import Tag
 
 # Create your models here.
 
@@ -22,6 +23,8 @@ class Document(models.Model):
 class HistoryPost(models.Model):
     tag = models.ManyToManyField(Tag, related_name='history_posts')
     title = models.CharField( max_length=50)
+    date_pub = models.DateTimeField(auto_now_add=True, null=True)
+    date_upd = models.DateTimeField(auto_now=True, null=True)
     content = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='history_posts')
     

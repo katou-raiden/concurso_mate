@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap-4.5/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/all.css' %}">
-    
     <script defer src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
     <script defer src="{% static 'js/popper.js' %}"></script>
     <script defer src="{% static 'js/bootstrap-4.5/bootstrap.min.js' %}"></script>
@@ -19,6 +18,9 @@
     <header>
         {% include 'core/navbar.html' %}
     </header>
+    <aside>
+        {% include 'core/userbar.html' %}
+    </aside>
     
     <div class="w-100 my-5">
         {% block content %}
@@ -30,6 +32,7 @@
 
     
 
+    
 </body>
 
 </html>
