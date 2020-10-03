@@ -1,0 +1,21 @@
+body * {
+  box-sizing: border-box !important;
+}
+
+.history-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.scrolling-wrapper {
+  max-height: 700px !important;
+  flex-wrap: wrap !important;
+}
+
+.card {
+  width: 20%;
+  height: 200px !important;
+  margin: 0;
+}

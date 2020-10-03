@@ -1,4 +1,4 @@
-{% extends 'forum/base.html' %}
+{% extends 'core/base.html' %}
 {% load static %}
 {% load app_filters %}
 {% block content %}
@@ -6,126 +6,115 @@
 <link rel="stylesheet" href="{% static 'core/css/home.css' %}">
 
 
-
-  <div id="home-slideShow">
-    <h4 class="display-4 pl-5 py-2">Sugerencias</h4>
-    <div id="slideShow-slides">
-    
-      <div class="slide fade">
-        <img src="{{news.0.image.url}}"  alt="">
-      </div>
-      <div class="slide fade">
-        <img src="{{news.1.image.url}}" alt="">
-      </div>
-      <button type="button" onclick="plusSlides(-1);" class="prev">&#10094;</button>
-      <button type="button" onclick="plusSlides(1);" class="next">&#10095;</button>
+<!--
+<div id="home-slideShow" class="">
+  <h4 class="display-4 pl-5 py-2">Sugerencias</h4>
+  <div id="slideShow-slides">
+  
+    <div class="slide fade">
+      <img src="{{news.0.image.url}}"  alt="">
     </div>
-    
-    <div id="dots">
-      <span class="dot" onclick="currentSlide(1);"></span>
-      <span class="dot" onclick="currentSlide(2);"></span>
+    <div class="slide fade">
+      <img src="{{news.1.image.url}}" alt="">
     </div>
-
+    <button type="button" onclick="plusSlides(-1);" class="prev">&#10094;</button>
+    <button type="button" onclick="plusSlides(1);" class="next">&#10095;</button>
   </div>
   
+  <div id="dots">
+    <span class="dot" onclick="currentSlide(1);"></span>
+    <span class="dot" onclick="currentSlide(2);"></span>
+  </div>
+
+</div>
+--> 
 
 
-  <section id="recent-news-section" class="bg-light my-4">
 
 
-            <div class="row py-1">
 
-            
-            {% for new in news %}
-            
-            <div class="col-12 col-md-6 col-xl-4 d-flex my-5 px-0">
 
-            <div class="card shadow w-75 card{{forloop.counter}}">
-              <div class="card-header px-0 py-0" >
-                <img class="card-img-top" src="{{new.image.url}}" alt="" style="object-position: center !important; object-fit: cover !important; width: 100% !important; height: 400px;">
+  <section id="recent-news-section" class=" my-4">
+    
+    <div class="container bg-light px-5 py-5">
+      <div class="row row-cols-md-2 row-cols-sm-1 row-cols-lg-3">
+        {% for new in news %}
+        <div class="col mb-5 mx-0 px-2">
+  
+          <div class="card shadow">
+            <div class="card-body">
+              
+              <div class="text-right">
+                <span class="text-muted">{{ new.date_created }}</span>
               </div>
-              <div class="card-body">
+              
                 
-                <h6 class="card-title h1">{{new.title}}</h6>
-                <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam voluptatibus repellendus eveniet dicta amet vitae, nostrum eius ratione maiores culpa cum, similique in consequatur esse. Minima distinctio odio delectus eligendi!</p>
+                <div class=" d-flex align-items-center">
+                  <object data="{% static 'img/Logo.png' %}" width=40 height=40>
+                  <img src="{{ new.user.profile.img.url }}" alt="">
+                </object>
+                <a class="card-link ml-2" href="#">@{{ new.user.username }}</a>
 
-                <div class="my-4">
-                  <img src="{{new.author.profile.image.url}}" alt="" class="rounded-circle" style="height: 100px; width: 100px; object-fit: cover !important; object-position: center !important;">
-                  <a href="#" class="new-username card-link bg-dark py-2 px-3 mx-2 text-decoration-none text-white">@{{new.author.username}}</a>
-                  <p class="d-inline-block ml-auto text-muted">{{new.date_created}}</p>
-                  <div class="new-tags">
-                    {% comment %}
-                    {% for tag in new.tags %}
-                      <span class="d-inline-block {% if not forloop.first %}ml-2{% endif %}"></span>
-                    {% endfor %}
-                    {% endcomment %}
-                  </div>
                 </div>
-        
-                <a href="{% url 'new' new.id %}" class="btn btn-primary d-block  read-more bg-dark ml-auto py-4">Read More</a>
-                
-              </div>
+             
+              <div class="dropdown-divider my-2"></div>
+
+              <h6 class="card-title  py-0 my-3 text">{{ new.title }}</h6>
+              <p class="card-text mt-3">{% lorem %}</p>
+              
+    
             </div>
-            
-            
-          </div>
-            
-            {% endfor %}
-          </div>
-          
-         
-            
-          
-      
-  </section>
-
-  <section id="related-videos">
-
-
-    <div class="row">
-      {% comment %}
-      {% for video in videos %}
-      <div class="col-4">
-        <div class="video-box">
-          <h5>{{video.title}}</h5>
-          <video src=""></video>
-          <p>{{video.description}}</p>
-          <div class="tags">
-            {% for tag in video.tags %}
-            <span class="d-inline-block mr-2">{{tag.name}}</span>
-            {% endfor %}
+            <div class="card-footer">
+              {% for tag in new.tags.objects.all %}
+              <span class="badge badge-pill bg-primary text-white {% if forloop.firstloop %}
+              mr-2{% else %}ml-2{% endif %}">#HolaMundo</span>
+              {% endfor %}
+              <span class="badge badge-pill bg-primary text-white mr-2">#HolaMundo</span>
+              <span class="badge badge-pill bg-primary text-white ml-2">#HolaMundo</span>
+              <span class="badge badge-pill bg-primary text-white ml-2">#HolaMundo</span>
+              <span class="badge badge-pill bg-primary text-white ml-2">#HolaMundo</span>
+              
+            </div>
           </div>
         </div>
+        {% endfor %}
       </div>
-      {% endfor %}
-      {% endcomment %}
-      
-      
+
     </div>
   </section>
 
-
-
-
-<script  src="{% static 'core/js/home.js' %}"></script>
-<script src="{% static 'js/clamp.min.js' %}">
-</script>
-<script>
-  var texts = document.getElementsByClassName('card-text');
-  var readMoreButton = document.getElementsByClassName('read-more');
-  let expression = /\d+/;
-  
-  let count = 0;
-  for(let x of texts){
-    $clamp(x, {clamp: 4, animate: true});
-  }
-  for(let x=0; x < texts.length; x++){
-    if (Math.ceil(expression.exec(getComputedStyle(texts[x], null).height)/expression.exec(getComputedStyle(texts[x], null).lineHeight)) >= 4) {
-      readMoreButton[x].classList.replace('d-none', 'd-inline-block');
-    }
+          
+        
     
-  }
-  
-  
-</script>
+
+
+<section id="related-videos">
+
+
+  <div class="row">
+    {% comment %}
+    {% for video in videos %}
+    <div class="col-4">
+      <div class="video-box">
+        <h5>{{video.title}}</h5>
+        <video src=""></video>
+        <p>{{video.description}}</p>
+        <div class="tags">
+          {% for tag in video.tags %}
+          <span class="d-inline-block mr-2">{{tag.name}}</span>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% endcomment %}
+    
+    
+  </div>
+</section>
+
+
+<script src="{% static 'js/clamp.min.js' %}"></script>
+<script src="{% static 'core/js/home.js' %}"></script>
+
 {% endblock %}

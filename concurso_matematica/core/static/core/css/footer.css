@@ -1,0 +1,52 @@
+footer {
+  background-color: #0B0C10 !important;
+}
+
+footer h6 a {
+  color: #68FCF1;
+  text-decoration: none !important;
+  transition: color .3s ease-out;
+}
+
+footer h6 a:hover {
+  color: #007BFF;
+}
+
+footer p {
+  color: white;
+  font-size: 1.1em;
+}
+
+footer *[class*="ic"] {
+  transition: color .3s ease-out;
+  color: #68FCF1;
+  cursor: pointer;
+}
+
+footer .fb-ic:hover {
+  color: dodgerblue;
+}
+
+footer .tw-ic:hover {
+  color: deepskyblue;
+}
+
+footer .ins-ic:hover {
+  color: yellow;
+}
+
+footer .li-ic:hover {
+  color: blue;
+}
+
+footer .pin-ic:hover {
+  color: red;
+}
+
+footer .footer-copyright {
+  color: #68FCF1;
+}
+
+footer .footer-copyright a {
+  color: deepskyblue;
+}

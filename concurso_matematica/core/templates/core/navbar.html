@@ -1,0 +1,56 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'core/css/navbar.css' %}">
+<nav class="clearfix d-sm-flex flex-column justify-content-sm-center align-items-sm-center d-lg-block" id="main-nav">
+
+    <a href="{% url 'home' %}" id="navbrand" class="float-lg-left d-inline-flex align-items-center">
+        <img src="{% static 'img/Logo.png' %}" alt="">
+        <h2 class="ml-4 d-inline-block text-white">
+            Where Champions Speak
+        </h2>
+    </a>
+    <div id="navlist" class="float-lg-right">
+
+        <ul>
+
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'forum_main' %}">Forum</a></li>
+            <li><a href="{% url 'news' %}">News</a></li>
+            
+            <li class="dropitdown">
+                <a href="#">Training</a>
+
+                <ul class="dropitdown-menu">
+                    <li><a href="#">TESTS</a></li>
+                    <li><a href="#">EXERCISES</a></li>
+                    <li><a href="#">MORE</a></li>
+                </ul>
+
+            </li>
+
+            <li class="dropitdown">
+                <a href="{% url 'library' %}">Library</a>
+            <ul class="dropitdown-menu">
+                <li><a href="{% url 'history' %}">HISTORY</a></li>
+                <li><a href="#">DOWNLOADS</a></li>
+                <li><a href="{% url 'videos' %}">VIDEOS</a></li>
+            </ul>
+            </li>
+            <li><a href="#">FAQ</a></li>
+
+
+        </ul>
+
+
+    </div>
+  
+    
+    
+</nav>
+<ol class="breadcrumb">
+    {% if request.path == '/home/' %}
+    <li class="breadcrumb-item active" aria-current="page">Home</li>
+    {% endif %}
+    {% if request.path == '/home/' %}
+    <li class="breadcrumb-item active" aria-current="page">Home</li>
+    {% endif %}
+</ol>

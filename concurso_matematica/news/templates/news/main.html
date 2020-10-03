@@ -1,5 +1,170 @@
-{% extends "forum/base.html" %}
-
+{% extends "core/base.html" %}
+{% load static %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'news/css/main.css' %}">
+<section id="news-section" class="">
+
   
-{% endblock content %}
+  <div id="filters" class="py-2">
+    <h2 class="text-center my-3">What are you looking up?</h2>
+    
+  <form class="form-inline form-row justify-content-center my-3 py-4">
+    
+    
+    <div class="form-group mx-4">
+      <label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>
+      <select multiple class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+        <option selected>Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+
+    </div>
+
+    <div class="form-group mx-4">
+
+      <label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>
+      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+        <option selected>Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </div>
+
+    <div class="form-group mx-4">
+
+      <label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>
+     
+      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+        <option selected>Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+
+    </div>
+   
+    
+
+</form>
+</div>
+
+<div class="container py-5 bg-light">
+
+      <div class="new border-primary border-bottom border-top py-3">
+        <div class="row">
+          <div class="col-xl-auto">
+            <img class="new-img" src="{% static 'library/img/attention.jpg' %}" alt="">
+          </div>
+          <div class="col-xl">
+            <div>
+              <i class="fas fa-user"></i>
+              <a href="#">Kakarotto</a>
+              <span>5 minutes read</span>
+
+            </div>
+            <a href="#" class="link-primary text-decoration-none embed btn-gp"><h6 class="my-2 h3 d-inline-block">This is a new title</h6></a>
+            <div class="lead">
+             
+              Published <span></span>
+              <div class="new-tags">
+                <span class="badge badge-pill badge-primary">tag</span>
+                <span class="badge badge-pill badge-primary">tag</span>
+                <span class="badge badge-pill badge-primary">tag</span>
+                <span class="badge badge-pill badge-primary">tag</span>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="new border-primary border-bottom border-top py-3">
+        <div class="row">
+          <div class="col-xl-auto">
+            <img class="new-img" src="{% static 'library/img/attention.jpg' %}" alt="">
+          </div>
+          <div class="col-xl">
+            <div>
+              <i class="fas fa-user"></i>
+              <a href="#">Kakarotto</a>
+              <span>5 minutes read</span>
+
+            </div>
+            <a href="#" class="link-primary text-decoration-none embed btn-gp"><h6 class="my-2 h3 d-inline-block">This is a new title</h6></a>
+            <div class="lead">
+             
+              Published <span></span>
+              <div class="new-tags">
+                <span class="badge badge-pill badge-primary">tag</span>
+                <span class="badge badge-pill badge-primary">tag</span>
+                <span class="badge badge-pill badge-primary">tag</span>
+                <span class="badge badge-pill badge-primary">tag</span>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="new border-primary border-bottom border-top py-3">
+        <div class="row">
+          <div class="col-xl-auto">
+            <img class="new-img" src="{% static 'library/img/attention.jpg' %}" alt="">
+          </div>
+          <div class="col-xl">
+            <div>
+              <i class="fas fa-user"></i>
+              <a href="#">Kakarotto</a>
+              <span>5 minutes read</span>
+
+            </div>
+            <a href="#" class="link-primary text-decoration-none embed btn-gp"><h6 class="my-2 h3 d-inline-block">This is a new title</h6></a>
+            <div class="lead">
+             
+              Published <span></span>
+              <div class="new-tags">
+                <span class="badge badge-pill badge-primary">tag</span>
+                <span class="badge badge-pill badge-primary">tag</span>
+                <span class="badge badge-pill badge-primary">tag</span>
+                <span class="badge badge-pill badge-primary">tag</span>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="new border-primary border-bottom border-top py-3">
+        <div class="row">
+          <div class="col-xl-auto">
+            <img class="new-img" src="{% static 'library/img/attention.jpg' %}" alt="">
+          </div>
+          <div class="col-xl">
+            <div>
+              <i class="fas fa-user"></i>
+              <a href="#">Kakarotto</a>
+              <span>5 minutes read</span>
+
+            </div>
+            <a href="#" class="link-primary text-decoration-none embed btn-gp"><h6 class="my-2 h3 d-inline-block">This is a new title</h6></a>
+            <div class="lead">
+             
+              Published <span></span>
+              <div class="new-tags">
+                <span class="badge badge-pill badge-primary">tag</span>
+                <span class="badge badge-pill badge-primary">tag</span>
+                <span class="badge badge-pill badge-primary">tag</span>
+                <span class="badge badge-pill badge-primary">tag</span>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+</div>
+
+
+</div>
+{% endblock %}

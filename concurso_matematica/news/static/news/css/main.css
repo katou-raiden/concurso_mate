@@ -1,0 +1,12 @@
+.new-img {
+  width: 120px !important;
+  height: 120px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+#filters {
+  color: #66FCF1 !important;
+  background-color: #0B0C10 !important;
+  font-weight: bolder;
+}

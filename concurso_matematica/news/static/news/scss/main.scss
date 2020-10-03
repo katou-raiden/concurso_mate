@@ -1,0 +1,22 @@
+$cyan : #66FCF1;
+$negroclaro : #1F2833;
+$negrooscuro: #0B0C10;
+$gris: #C5C6C7;
+
+.new-img{
+    width: 120px !important;
+    height: 120px !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    
+}
+
+#filters{
+    color: $cyan !important;
+    background-color: $negrooscuro !important;
+    font-weight: bolder;
+}
+
+
+
+

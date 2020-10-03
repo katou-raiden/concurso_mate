@@ -1,0 +1,36 @@
+$lg:992px;
+$md:768px;
+$sm:576px;
+$xl:1200px;
+
+@mixin sm{
+    @media screen and (min-width: $sm) {
+       @content 
+    }
+}
+@mixin md{
+    @media screen and (min-width: $md) {
+       @content 
+    }
+}
+@mixin lg{
+    @media screen and (min-width: $lg) {
+       @content 
+    }
+}
+@mixin xl{
+    @media screen and (min-width: $xl) {
+       @content 
+    }
+}
+
+#recent-news-section {
+    > .container {
+      > .row:empty{
+        min-height: 300px !important;
+        }
+    }
+}
+.card {
+    
+}

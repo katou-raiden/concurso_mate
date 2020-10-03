@@ -5,97 +5,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'webfonts/opensans/style.css' %}">
     <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-4.5/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/all.css' %}">
-    <script defer src="{% static 'js/jquery.min.js' %}"></script>
+    
+    <script defer src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
     <script defer src="{% static 'js/popper.js' %}"></script>
-    <script defer src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script defer src="{% static 'js/bootstrap-4.5/bootstrap.min.js' %}"></script>
 </head>
 
 <body>
     <header>
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h1 class="display-4">Fluid jumbotron</h1>
-                <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.
-                </p>
-            </div>
-        </div>
-
-        <nav class="navbar navbar-expand-lg shadow">
-            <!-- Aqui pues la barra de navegacion y los items de toda la vida -->
-            <a href="{% url 'forum_main' %}" class="navbar-brand ml-4">
-                <img src="{% static 'img/Logo.png' %}"></img>
-            </a>
-
-
-            <button class="navbar-toggler mr-2" data-toggle="collapse" data-target="#nav">
-                <span class="fas fa-bars"></span>
-            </button>
-
-            <div class="navbar-collapse collapse" id="nav">
-
-                <ul class="navbar-nav ml-auto d-flex justify-content-around align-items-center">
-                    <li class="nav-item"><a href="{% url 'home' %}" class="text-white text-decoration-none">Home</a></li>
-                    <li class="nav-item"><a href="{% url 'forum_main' %}" class="text-white text-decoration-none">Forum</a></li>
-                    <li class="nav-item dropdown"><a class="dropdown-toggle text-white text-decoration-none"  role="button" data-target="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Entrena</a>
-                        <div class="dropdown-menu" id="navbarDropdown">
-                            <div class="dropdown-item"><a href="#" class="text-white text-decoration-none">Examenes</a></div>
-                            <div class="dropdown-item"><a href="#" class="text-white text-decoration-none">
-                    <li class="nav-item"><a href="{% url 'home' %}">Home</a></li>
-                    <li class="nav-item"><a href="{% url 'forum_main' %}">Forum</a></li>
-                    <li class="nav-item dropdown">Entrena
-                        <div class="dropdown-menu">
-                            <div class="dropdown-item"><a href="#" class="dropdown-item-text">Examenes</a></div>
-                            <div class="dropdown-item"><a href="#" class="dropdown-item-text">
-                            <div class="dropdown-item"><a href="#" class=" text-decoration-none">Examenes</a></div>
-                            <div class="dropdown-item"><a href="#" class=" text-decoration-none"></a>
-                                Torneo
-                            </a></div>
-                            <div class="dropdown-item"><a href="#" class=" text-decoration-none">
-                                Ejercicios
-                            </a></div>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown"><a href="" data-target="biblioteca-li" data-toggle="dropdown" class="dropdown-toggle text-white text-decoration-none">Biblioteca</a>
-                        <div class="dropdown-menu" id="biblioteca-li">
-                    <li class="nav-item dropdown">Biblioteca
-                        <div class="dropdown-menu">
-                    <li class="nav-item dropdown"><a href="" data-target="biblioteca-li" data-toggle="dropdown" class="dropdown-toggle text-white text-decoration-none">Biblioteca</a>
-                        <div class="dropdown-menu" id="biblioteca-li">
-                            <div class="dropdown-item">Historia</div>
-                            <div class="dropdown-item">Descargas</div>
-                            <div class="dropdown-item">Videos</div>
-                        </div>
-                    </li>
-                    <li class="nav-item"><a href="#" class="text-white text-decoration-none ">Dashboard</a></li>
-                    
-                        {% if request.user.is_autheticated %}
-                        <li class=" nav-item">
-                            <a href="{% url 'logout' %}" class="fas fa-door-open"></a>
-                            {% else %}
-                    <li class="dropdown nav-item">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target="#account">account</a>
-                        <div class="dropdown-menu" id="account">
-                    <li class="dropdown-item"><a class="text-white text-decoration-none" href="{% url 'signup' %}">Register</a></li>
-                    <li class="dropdown-item"><a class="text-white text-decoration-none" href="{% url 'login' %}">Login</a></li>
-            </div>
-            {% endif %}
-            </li>
-
-            </ul>
-            </div>
-
-
-        </nav>
+        {% include 'core/navbar.html' %}
     </header>
-    <div class="container-fluid">
+    
+    <div class="w-100 my-5">
         {% block content %}
         {% endblock %}
 
     </div>
+    {% include 'core/circle-menu.html' %}
+    {% include 'core/footer.html' %}
+
+    
+
 </body>
 
 </html>

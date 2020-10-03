@@ -5,6 +5,7 @@ __pycache__/
 *.rar
 *.jpg
 *.png
+*.mp4
 migrations/
 media/
 maquetado/
@@ -14,6 +15,7 @@ db.sqlite3
 # C extensions
 *.so
 
+E:\Github\concurso_mate_y\concurso_mate\concurso_matematica\core\__pycache__\views.cpython-37.pyc
 core/__pycache__
 views.cpython-37.pyc
 

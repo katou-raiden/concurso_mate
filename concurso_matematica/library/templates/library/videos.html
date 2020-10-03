@@ -1,0 +1,34 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+<section id="videos-section">
+    <div class="container">
+      
+        <div class="row row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+            <div class="col">
+                <div class="embed-responsive embed-responsive-4by3">
+                    <video class="embed-responsive-item" controls src="{% static 'video/Chopra.mp4' %}"></video>
+                </div>
+            </div>
+            <div class="col">
+                <div class="embed-responsive embed-responsive-4by3">
+                    <video class="embed-responsive-item" controls src="{% static 'video/Chopra.mp4' %}"></video>
+                </div>
+            </div>
+            <div class="col">
+                <div class="embed-responsive embed-responsive-4by3">
+                    <video class="embed-responsive-item" controls src="{% static 'video/Chopra.mp4' %}"></video>
+                </div>
+            </div>
+            <div class="col">
+                <div class="embed-responsive embed-responsive-4by3">
+                    <video class="embed-responsive-item" controls src="{% static 'video/Chopra.mp4' %}"></video>
+                </div>
+            </div>
+        </div>
+            
+         
+     
+    </div>
+</section>
+{% endblock %}

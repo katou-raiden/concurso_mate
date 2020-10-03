@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from core.models import Tag
 
 # Create your models here.
 
@@ -32,15 +31,20 @@ class Comment(models.Model):
     content = models.CharField( max_length=140)
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)
+    votes_plus = models.IntegerField(default=0)
+    votes_minus = models.IntegerField(default=0)
     post = models.ForeignKey(HistoryPost, on_delete=models.CASCADE, related_name='comments')
 
     def __str__(self):
         return self.content
     
 class Image(models.Model):
-    post = models.ForeignKey(HistoryPost,on_delete=models.CASCADE)
+    post = models.ForeignKey(HistoryPost,on_delete=models.CASCADE, related_name='images')
     img = models.ImageField(upload_to='library/images/')
     
     def __str__(self):
         return self.str(img)
-    
+
+class File(models.Model):
+    document = models.ForeignKey(Document, on_delete=models.CASCADE, related_name='files')
+    doc = models.FileField(upload_to='library/documents/')
