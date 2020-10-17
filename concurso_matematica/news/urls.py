@@ -3,5 +3,6 @@ from django.urls import path
 urlpatterns = [
     path('<int:pk>/', new_view, name="new"),
     path('', list_news_view, name="news"),
-    path('add-new', add_new_view, name='add_new')
+    path('add-new', add_new_view, name='add_new'),
+    path('<tag_name>/', tag_click_view, name='tag_click')
 ]

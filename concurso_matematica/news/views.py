@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import *
 from .forms import *
+from .filters import NoticeFilter
 # Create your views here.
 
 def new_view(request, pk):
@@ -40,10 +41,12 @@ def new_view(request, pk):
 
 def list_news_view(request):
     news = Notice.objects.all()
-    context = {
-        'news':news
+    f = NoticeFilter(request.GET, queryset=news)
+    cxt = {
+        'news':news,
+        'f':f,
     }
-    return render(request, 'news/main.html', context)
+    return render(request, 'news/main.html', context=cxt)
 
 
 def add_new_view(request):
@@ -64,3 +67,9 @@ def add_new_view(request):
             return redirect('add_new')
     else:
         return render(request, 'news/add_new.html', context={'form':form})
+
+def tag_click_view(request,tag_name):
+    tag = Tag.objects.filter(name=tag_name)
+    news = Notice.objects.filter(tag = tag)
+
+    return render(request,'news/click_filter.html', context = {'news':news})
