@@ -7,6 +7,20 @@ from .forms import CommentForm
 def main_view(request):
     return render(request, 'library/main.html')
 
+def history_main_view(request):
+    h_posts = HistoryPost.objects.all()
+    return render(request, 'library/history_main.html', context={'h_posts':h_posts})
+
+def video_detail_view(request,pk):
+    video = get_object_or_404(Video,id=pk)
+    return render(request, 'library/video_detail.html',context = {'video':video} )
+
+def downloads_main_view(request):
+    return render(request,'library/downloads_main.html')
+
+def download_section_view(request,section):
+    pass
+
 def videos_gallery_view(request):
     videos = Video.objects.all()
     context = {'videos':videos}
