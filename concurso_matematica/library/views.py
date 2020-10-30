@@ -53,3 +53,9 @@ def history_post_view(request,pk):
 
     context = {'post':post, 'comments':comments}
     return render(request, 'library/history.html', context=context)
+
+def tag_click_view(request,tag_name):
+    tag = Tag.objects.filter(name=tag_name)
+    news = HistoryPost.objects.filter(tag = tag)
+
+    return render(request,'news/click_filter.html', context = {'hps':hps})
