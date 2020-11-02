@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'forum.apps.ForumConfig',
     'library.apps.LibraryConfig',
     'tinymce',
+    'django_filters',
     'widget_tweaks',
     
 ]

@@ -94,6 +94,11 @@
   display: block;
 }
 
+#main-nav.drop-nav {
+  top: 0;
+  position: fixed;
+}
+
 #navlist > ul > li > a {
   padding: 12px 10px 10px;
   color: #68FCF1;

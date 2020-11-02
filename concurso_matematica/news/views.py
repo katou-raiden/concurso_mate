@@ -44,7 +44,7 @@ def list_news_view(request):
     f = NoticeFilter(request.GET, queryset=news)
     cxt = {
         'news':news,
-        'f':f,
+        'filter': f,
     }
     return render(request, 'news/main.html', context=cxt)
 
