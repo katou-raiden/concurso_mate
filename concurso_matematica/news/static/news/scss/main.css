@@ -1,0 +1,36 @@
+.new {
+  background-color: white;
+  -webkit-box-shadow: 4px 4px 14px  black;
+          box-shadow: 4px 4px 14px  black;
+  border-radius: 6px;
+  margin: 2rem 0;
+  padding: 1rem;
+  -webkit-box-shadow: inset 2px 2px 3px 1px dodgerblue;
+          box-shadow: inset 2px 2px 3px 1px dodgerblue;
+}
+
+.new .new-img {
+  width: 120px !important;
+  height: 120px !important;
+  -o-object-fit: cover !important;
+     object-fit: cover !important;
+  -o-object-position: center !important;
+     object-position: center !important;
+  border-color: black !important;
+}
+
+#filters {
+  color: #66FCF1 !important;
+  background-color: #0B0C10 !important;
+  font-weight: bolder;
+}
+
+#Fondo {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  -webkit-transform: translate(-10%);
+          transform: translate(-10%);
+  z-index: -1;
+}
+/*# sourceMappingURL=main.css.map */

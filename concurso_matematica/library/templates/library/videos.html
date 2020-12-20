@@ -1,31 +1,55 @@
 {% extends 'core/base.html' %}
 {% load static %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'library/css/videos.css' %}">
 <section id="videos-section">
+    <h1>Videos</h1>
     <div class="container">
-      
-        <div class="row row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
-            <div class="col">
-                <div class="embed-responsive embed-responsive-4by3">
-                    <video class="embed-responsive-item" controls src="{% static 'video/Chopra.mp4' %}"></video>
+      <div class="filters w-25 ml-auto">
+          <form action="" class="form-inline" method="GET">
+              <input type="text" class="w-75 form-control">
+              <button class="btn btn-primary w-25" type="submit"><i class="fas fa-search text-white"></i></button>
+          </form>
+      </div>
+      <div class="video-list p-4">
+      <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 justify-content-between w-75 mx-auto">
+        {% for video in videos %}
+            <div class="card">
+                
+                    <video class="card-img-top text-center" title="{{ video.title }}">
+                        <source src="{{ video.video.url }}#t=5">
+                        video no disponible
+                        
+                    </video>
+                    <a class="play-layer" href="#">
+                        <div class="layer-circle">
+                            <div class="layer-play">
+
+                            </div>
+                        </div>
+                    </a>
+                <div class="card-body">
+                    <div>
+                        <img src="{{ video.user.profile.avatar.url }}" class="user-avatar" alt="">
+                        <a>@{{ video.user.username }}</a>
+                        <span><!--Video Duration--></span>
+                    </div>
+                    <span class="divisor" style="display: inline-block; margin: .5rem 0; width: 90%; height: 2px; background-color: black;"></span>
+                    <a href=""><h6 class="card-title h5 text-capitalize ">{{ video.title }}</h6></a>
+                    
+                    <div class="video-info">
+                        <span class="mr-2"><i class="fas fa-eye mr-1"></i>55</span>
+                        <span class=""><i class="fas fa-thumbs-up mr-1"></i>1942</span>
+                        <span class="ml-2"><i class="fas fa-thumbs-down mr-1"></i>13</span>
+                    </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="embed-responsive embed-responsive-4by3">
-                    <video class="embed-responsive-item" controls src="{% static 'video/Chopra.mp4' %}"></video>
-                </div>
-            </div>
-            <div class="col">
-                <div class="embed-responsive embed-responsive-4by3">
-                    <video class="embed-responsive-item" controls src="{% static 'video/Chopra.mp4' %}"></video>
-                </div>
-            </div>
-            <div class="col">
-                <div class="embed-responsive embed-responsive-4by3">
-                    <video class="embed-responsive-item" controls src="{% static 'video/Chopra.mp4' %}"></video>
-                </div>
-            </div>
+
+            {% endfor %}
         </div>
+      </div>
+      
+       
             
          
      

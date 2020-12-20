@@ -1,2 +1,4 @@
 {
+    "liveSassCompile.settings.includeItems": [],
+    "liveSassCompile.settings.autoprefix": []
 }

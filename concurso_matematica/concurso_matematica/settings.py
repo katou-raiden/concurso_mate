@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'forum.apps.ForumConfig',
     'library.apps.LibraryConfig',
-    'tinymce',
+    'dashboard.apps.DashboardConfig',
+    #'tinymce',
     'django_filters',
     'widget_tweaks',
     

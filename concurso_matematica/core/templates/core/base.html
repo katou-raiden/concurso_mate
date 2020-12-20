@@ -3,6 +3,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'webfonts/opensans/style.css' %}">
@@ -12,9 +13,10 @@
     <script defer src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
     <script defer src="{% static 'js/popper.js' %}"></script>
     <script defer src="{% static 'js/bootstrap-4.5/bootstrap.min.js' %}"></script>
+
 </head>
 
-<body>
+<body class="bg-light">
     <header>
         {% include 'core/navbar.html' %}
     </header>
@@ -22,11 +24,12 @@
         {% include 'core/userbar.html' %}
     </aside>
     
-    <div class="w-100 my-5">
+    <div class="py-5 w-75 mx-auto">
         {% block content %}
         {% endblock %}
 
     </div>
+    
     {% include 'core/circle-menu.html' %}
     {% include 'core/footer.html' %}
 

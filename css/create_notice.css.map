@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,QAAQ,CAAC;EACL,KAAK,EAAE,IAAI;EACX,OAAO,EAAE,KAAK;CAEjB;;AACD,AAAA,YAAY,CAAA;EACR,gBAAgB,EAAE,KAAK;CAC1B",
+    "sources": [
+        "../concurso_matematica/news/static/news/scss/create_notice.scss"
+    ],
+    "names": [],
+    "file": "create_notice.css"
+}

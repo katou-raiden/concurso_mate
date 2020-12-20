@@ -1,33 +1,101 @@
 {% extends 'core/base.html' %}
 {% load static %}
 {% load app_filters %}
+{% load widget_tweaks %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'library/css/history.css' %}">
 <section id="history-section">
+    <div class="filters mx-auto">
+        <h2 class="text-center mb-4">What are you looking up</h2>
+        <form action="" method="GET" class="form-inline justify-content-center">
+            <div class="mr-2 mb-2">
+            <label for="{{ filters.form.title.id_for_label }}" class="mb-2">Title</label>
+            {{ filters.form.title|add_class:"form-control" }}
+            </div>
+            <div class="ml-2 mb-2">
+                <label for="{{ filters.form.title.id_for_label }}" class="mb-2">Content</label>
+                {{ filters.form.content|add_class:"form-control" }}
+                <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+            </div>
+        </form>
+    </div>
     <div class="container">
-    
-        <div class="history-flex">
-            
-            {% for post in history_posts %}
-               
-                <a class="history-card" href="{% url 'history_post' post.id %}">
-                    <div class="header">
-                        <img src="{{ post.user.profile.avatar.url }}" alt="">
-                        <span>{{ post.date_pub }}</span>
+
+        <div class="history-articles  mx-auto">
+            {% for post in h_posts.object_list %}
+            <div class="h-post media align-items-stretch my-5">
+
+                <img class="history-cover img-thumbnail" src="{% if post.image %}{{ post.image.url }}{% endif %}"
+                    alt="">
+                <div class="media-body ml-4 d-flex flex-column justify-content-between">
+
+                    <h6 class="post-title h3 mt-2">{{ post.title }}</h6>
+                    <div class="mb-2">
+                        <img class="user-avatar"
+                            src="{% if post.user.profile.avatar %}{{ post.user.profile.avatar.url }}{% endif %}" alt="">
+                        <span class="user-name d-inline-block mr-2">{{ post.user.username }}</span>
+                        <span class="mr-2 d-inline-block">5 minutes read</span>
+                        <span class="ml-2 d-inline-block">Written {{ post.date_pub }}</span>
                     </div>
-                    <h6>{{ post.title }}</h6>
-                    <div class="tags">
-                        {% for tag in post.tag.objects.all %}
-                        <a class="tag">{{ tag.name }}</a>
-                        {% endfor %}
-                    </div>
-                </a>
-                
-                
+                </div>
+
+
+            </div>
             {% endfor %}
+
+
+        </div>
+
+        <div class="paginator">
+            {% if h_posts.has_other_pages %}
+
+            <ul class="pagination justify-content-center">
+
+                {% if h_posts.has_previous %}
+
+                <li class=page-item><a class="page-link" href="?page={{ h_posts.previous_page_number }}">&laquo;</a></li>
+
+                {% else %}
+
+                <li class="disabled page-item"><a class="page-link">&laquo;</a></li>
+
+                {% endif %}
+
+                {% for i in h_posts.paginator.page_range %}
+
+                {% if h_posts.number == i %}
+
+                <li class="page-item active"><a class=" page-link" href="?page={{ i }}">{{ i }}</a></li>
+
+                {% else %}
+
+                <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+
+                {% endif %}
+
+                {% endfor %}
+
+                {% if h_posts.has_next %}
+
+                <li class="page-item"><a href="?page={{ h_posts.next_page_number }}" class="page-link">&raquo;</a></li>
+
+                {% else %}
+
+                <li class="page-item disabled"><a href="#" class="page-link">&raquo;</a></li>
+
+                {% endif %}
+            </ul>
+            {% endif %}
+
         </div>
 
     </div>
+
+  
+
+
+    </div>
+
 
 </section>
 {% endblock %}

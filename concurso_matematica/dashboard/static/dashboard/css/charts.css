@@ -1,0 +1,43 @@
+#charts {
+  margin: 0 auto;
+  width: 50%;
+}
+
+#charts .bar {
+  width: 100%;
+  margin: .8rem auto;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+#charts .bar .value {
+  margin: 0;
+  padding: 0;
+  border-radius: 16px;
+  height: 12px;
+  display: inline-block;
+  transition: width 1s ease;
+}
+
+#charts .bar .name {
+  display: inline-block;
+  width: 15ch;
+}
+
+#charts .bar .valueNumber {
+  margin-left: 2rem;
+}
+
+#charts .bar .barBox {
+  display: inline-block;
+  background-color: rgba(238, 238, 238, 0.534);
+  width: 100%;
+  height: fit-content;
+  padding: 0;
+  margin: 0;
+  margin-left: 1rem;
+  border-radius: 16px;
+}
+/*# sourceMappingURL=charts.css.map */

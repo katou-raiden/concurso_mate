@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from news.models import Notice
-from tinymce.models import HTMLField 
+#from tinymce.models import HTMLField 
 from django.core.validators import RegexValidator
 # Create your models here.
 

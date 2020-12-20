@@ -1,0 +1,145 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'library/css/video_details.css' %}">
+<section id="video-details-section">
+    <div class="container">
+        <h1>{{ video.title }}</h1>
+        <div class="row">
+            <div class="col-lg-8 col-12">
+                <div class="video">
+                    <video class="d-inline-block" id="video" controls title="{{ video.title }}">
+                        <source src="{{ video.video.url }}">
+                        <img src="" alt="">
+                        video no disponible
+                    </video>
+                    <div>
+                        <span class="">
+                            <i class="fas fa-eye"></i>
+                            <span>21</span>
+                        </span>
+                        
+                        <span>
+                            <span class="">
+                                <a href=""><i class="fas fa-thumbs-up"></i></a>
+                                <span>21</span>
+                            </span>
+                            <span class="">
+                                <a href=""><i class="fas fa-thumbs-down"></i></a>
+                                <span>21</span>
+                            </span>
+                        </span>
+                        
+                    </div>
+                    <div class="">
+                            <span><img src="{{ video.user.profile.avatar.url }}" alt=""><a href="">@{{ video.user.username }}</a></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-12">
+                <div class="card" id="playlist">
+                    <div class="card-header">
+                        <h2>Playlist</h2>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-subtitle">{{ video.playlist }}</h4>
+                        <span class="divisor" style="display: inline-block; margin: .5rem 0; width: 90%; height: 2px; background-color: black;"></span>
+                        <div class="d-flex flex-column justify-content-start">
+                            {% for video in videos %}
+                            <div class="playlist-item media">
+                                <img src="" alt="" class="playlist-item-image">
+                                <div class="media-body">
+                                    <h6>El creyente de Bretonia</h6>
+                                    <span><i class="fas fa-eye"></i><span>21</span></span>
+                                    <span>55 min</span>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="video-description">
+            {{ video.description }}
+
+        </div>
+        <div id="comment-section" class="">
+            <div class="media">
+                <div class="mr-3">
+                {% if new.user.profile.avatar.url %}
+                <img src="{{ request.user.profile.avatar.url }}" alt="" class="img-thumbnail">
+                {% else %}
+                <img src="{% static 'img/user.svg' %}" alt="" class="img-thumbnail">
+                {% endif %}
+                </div>
+                
+                
+                <div class="media-body">
+                    <form method="POST" class='d-flex align-items-stretch '>
+                        {% csrf_token %}
+                        <textarea class="text-area-comment" name="user-comment" class="" id="" cols="" rows="4" placeholder="Escribe tu comentario..."></textarea>
+                        <button class="btn btn-primary ml-2 text-uppercase font-weight-bold rounded" type="submit">submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="comments-section" class="my-5">
+            <button class="btn btn-primary font-weight-bolder d-block w-100 text-left py-3" data-toggle="collapse" data-target="#user-comments">Comments - 48</button>
+            <div id="user-comments" class="collapse w-75 mx-auto py-3">
+                {% for comment in comments %}
+
+                <div class="media">
+                    <div class="user-info d-flex align-items-center flex-column">
+                        <img src="{{ comment.user.profile.avatar.url }}" alt="" class="img-thumbnail mr-3">
+                        <div  >{{ comment.user.username }}</div>
+                        <div class="grades"></div>
+                    </div>
+                    <div class="media-body">
+                        <div>Published {{ comment.date_pub }}</div>
+                        <p>{{ comment.content }}</p>
+                        <div class="user-actions mt-2">
+                        <span class="vote">   
+                        <a href="#"><i class="fas fa-arrow-up">{{ comment.upvotes }}</i></a>
+                        <a href="#"><i class="fas fa-arrow-down">{{ comment.downvotes }}</i></a>
+                        </span>
+                        <span class="others">
+                        <a href="#">Reply</a>
+                        <a href="#">Report</a>
+                        </span>
+                        </div>
+
+                        {% for sub_comment in comment.sub_comments.all %}
+                        <div class="media">
+                            <img src="{{ sub_comment.user.profile.avatar.url }}" alt="" class="img-thumbnail mr-3">
+                            <div class="media-body">
+                                <div>Published {{ sub_comment.date_pub }}</div>
+                                <p>{{ sub_comment.content }}</p>
+                                <div class="user-actions">
+                                <span class="vote">
+                                    <a href="#"><i class="fas fa-sort-up">{{ sub_comment.upvotes }}</i></a>
+                                    <a href="#"><i class="fas fa-sort-down">{{ sub_comment.downvotes }}</i></a>
+                                </span>
+                                <span class="others">
+                                    <a href="#">Reply</a>
+                                    <a href="#">Report</a>
+
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

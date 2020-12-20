@@ -1,73 +1,41 @@
-{% extends "forum/base.html" %}
+{% extends "core/base.html" %}
 {% load static %}
+{% load widget_tweaks %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'forum/css/main.css' %}">
+  
+  <section id="forum-section">
+    <div class="container-fluid">
+      <div id="forum-sections" class="w-75 mx-auto row py-4">
 
-
-
-  <section id="questions-section">
-    <div id="section heading" class="border-dark border-bottom pb-5">
-      <div class="d-flex align-items-center my-4">
-        <h1 class="display-4 text-black d-inline-block" id="questions-section-title">Top Questions</h1>
-        
-        {% if request.user.is_authenticated %}
-          <a class="btn btn-primary text-white d-inline-block mx-4" href="{% url 'forum_post' %}">Ask Question</a>
-          
-          <a class="btn btn-primary text-white d-inline-block mx-4" href="{% url 'my_posts' %}">My Posts</a>
-        {% endif %}
-          
-      </div>
-      <div class="btn-group d-flex justify-content-end" role="group" id="question-filter-area">
-        <a href="#" class="btn btn-outline-secondary rounded-left">Interesting</a>
-        <a href="#" class="btn btn-outline-secondary">Hot</a>
-        <a href="#" class="btn btn-outline-secondary">Month</a>
-        <a href="#" class="btn btn-outline-secondary rounded-right">Day</a>
-      </div>
-    </div>
-
-    <div id="questions-area" class="bg-light">
-      {% for post in posts %}
-      <div class="w-100 border-secondary py-4 d-flex flex-row border-bottom border-black">
-        <div class="question-info d-flex flex-column justify-content-center ml-4">
-          <div class="btn-group d-inline-block question-info-area">
-            <a href="" class="question-vote-info btn btn-outline-success text-center h-75 d-inline-block">
-              <span class="h3 d-block">50</span>
-              <span class="h6 text-secondary">Votes</span>
-            </a>
-            <a href="" class="question-answers-info btn btn-outline-primary  h-75 d-inline-block">
-              <span class="h3 d-block">50</span>
-              <span class="h6 text-secondary">Answers</span>
-            </a>
-            <a href="" class="btn btn-outline-secondary question-views-info  h-75 d-inline-block">
-              <span class="h3 d-block">50</span>
-              <span class="h6 text-secondary">Views</span>
-            </a>
-          </div>
+        <div id="discussion-section" class="cforum-section col-6 border-right border-primary">
+          <a href="{% url 'doubts' %}">
+            <figure class="figure">
+              <img src="{% static 'forum/images/discussion.svg' %}" class="figure-img img-fluid" alt="">
+              <figcaption class="figure-caption text-center h2">Dudas</figcaption>
+            </figure>
+          </a>        
         </div>
-        <div class="d-flex flex-grow-1 flex-column py-1 justify-content-between question-item align-items-stretch">
-          <a href="{% url 'forum_detail' post.id %}"><h6 class="mx-5 my-1 h4">{{post.title }}</h6></a>
-
-          <div class="mx-5 question-info-footer d-flex justify-content-between align-items-end">
-            <ul class="list-unstyled question-info-tags py-0 my-0">
-              <li class="d-inline-block ">
-                <a class="">
-                  <span class="question-tag">{{post.tag}}</span>
-                </a></li>
-            </ul>
-            <p class="py-0 my-0">posted August 4th 2015 by <a href="#">@Atemas</a><span class="font-weight-bold small">515</span></p>
-          </div>
-
-
+        <div id="help-and-support-section" class="cforum-section col-6 border-left border-primary">
+          <a href="">
+            <figure class="figure">
+              <img src="{% static 'forum/images/support.svg' %}" class="figure-img img-fluid" alt="">
+              <figcaption class="figure-caption text-center h2">Help & Support</figcaption>
+            </figure>
+          </a>
         </div>
+        <div id="contest-section" class="w-100 cforum-section border-top border-primary col">
+          <a href="">
+            <figure class="figure">
+              <img src="{% static 'forum/images/cup.svg' %}" class="figure-img img-fluid" alt="">
+              <figcaption class="figure-caption text-center h2">Concursos</figcaption>
+            </figure>
+          </a>        
+        </div>
+  
       </div>
-      {% endfor %}
     </div>
 
   </section>
 
-<script>
-   window.onload = function(){
-        $('[data-toggle="popover"]').popover();
-        };
-</script>
 {% endblock %}

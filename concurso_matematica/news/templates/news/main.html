@@ -5,7 +5,8 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'news/css/main.css' %}">
 <section id="news-section" class="">
-
+  
+  <svg id="Fondo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1365 768.27"><title>Lista Noticias</title><rect width="1365" height="768" style="fill:#fff7f3"/><polyline points="507.54 767.69 26.83 381.12 971.67 0 1195.95 0 817.84 768" style="fill:#bfdde5"/><path d="M1-54.91" transform="translate(-1 0)" style="fill:#07889b"/><polyline points="507.07 768.27 1365 292.85 1365 270.03 230.65 0 1 0 0 50.41 231.79 768 507.07 768.27" style="fill:#07889b;opacity:0.8"/><polygon points="842.38 0 1336.74 768.27 0 358.9 0 299.88 436.97 0 842.38 0" style="fill:#7acdd3;opacity:0.7000000000000001"/></svg>
   
   <div id="filters" class="py-2">
     <h2 class="text-center my-3">What are you looking up?</h2>
@@ -25,125 +26,94 @@
 
     </div>
 
+    <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+
 </form>
 </div>
 
-<div class="container py-5 bg-light">
-{% for new in filter.qs %}
-<div class="new border-primary border-bottom border-top py-3">
-  <div class="row">
-    <div class="col-xl-auto">
-      <img class="new-img" src="{{ new.image.url }}" alt="">
+<div class="container py-5 ">
+
+
+
+{% for new in news.object_list %}
+
+<div class="new d-flex  align-items-stretch  py-3">
+
+    <div class="" style="flex-grow: 1;">
+      <img class="new-img img-thumbnail" src="{{ new.image.url }}" alt="">
     </div>
-    <div class="col-xl">
+    <div class="" style="flex-grow: 9;">
+
       <div>
         <i class="fas fa-user"></i>
         <a href="#">{{ new.user.username }}</a>
         <span>5 minutes read</span>
-
       </div>
-      <a href="#" class="link-primary text-decoration-none embed btn-gp"><h6 class="my-2 h3 d-inline-block">{{ new.title }}</h6></a>
+
+      <a href="{% url 'new' new.id %}" class="link-primary text-decoration-none embed btn-gp"><h6 class="my-2 h3 d-inline-block">{{ new.title }}</h6></a>
       <div class="lead">
        
         Published <span>{{ new.date_created }}</span>
         <div class="new-tags">
+
           {% for tag in new.tag.all %}
-          <span class="badge badge-pill badge-primary">{{ tag.name }} s</span>
+
+          <span class="badge badge-pill badge-primary">
+            {{ tag.name }}
+          </span>
+
           {% endfor %}
-    
 
         </div>
       </div>
     </div>
-  </div>
+  
 </div>
+
 {% endfor %}
+
+{% if news.has_other_pages %}
+
+<ul class="pagination justify-content-center">
+
+{% if news.has_previous %}
+
+<li class=page-item><a class="page-link" href="?page={{ news.previous_page_number }}">&laquo;</a></li>
+
+{% else %}
+
+<li class="disabled page-item"><a class="page-link">&laquo;</a></li>
+
+{% endif %}
+
+{% for i in news.paginator.page_range %}
+
+{% if news.number == i %}
+
+<li class="page-item active"><a class=" page-link" href="?page={{ i }}">{{ i }}</a></li>
+
+{% else %}
+
+<li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+
+{% endif %}
+
+{% endfor %}
+
+{% if news.has_next %}
+
+<li class="page-item"><a href="?page={{ news.next_page_number }}" class="page-link">&raquo;</a></li>
+
+{% else %}
+
+<li class="page-item disabled"><a href="#" class="page-link">&raquo;</a></li>
+
+{% endif %}
+</ul>
+{% endif %}
       
-      <div class="new border-primary border-bottom border-top py-3">
-        <div class="row">
-          <div class="col-xl-auto">
-            <img class="new-img" src="{% static 'library/img/attention.jpg' %}" alt="">
-          </div>
-          <div class="col-xl">
-            <div>
-              <i class="fas fa-user"></i>
-              <a href="#">Kakarotto</a>
-              <span>5 minutes read</span>
-
-            </div>
-            <a href="#" class="link-primary text-decoration-none embed btn-gp"><h6 class="my-2 h3 d-inline-block">This is a new title</h6></a>
-            <div class="lead">
-             
-              Published <span></span>
-              <div class="new-tags">
-                <span class="badge badge-pill badge-primary">tag</span>
-                <span class="badge badge-pill badge-primary">tag</span>
-                <span class="badge badge-pill badge-primary">tag</span>
-                <span class="badge badge-pill badge-primary">tag</span>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="new border-primary border-bottom border-top py-3">
-        <div class="row">
-          <div class="col-xl-auto">
-            <img class="new-img" src="{% static 'library/img/attention.jpg' %}" alt="">
-          </div>
-          <div class="col-xl">
-            <div>
-              <i class="fas fa-user"></i>
-              <a href="#">Kakarotto</a>
-              <span>5 minutes read</span>
-
-            </div>
-            <a href="#" class="link-primary text-decoration-none embed btn-gp"><h6 class="my-2 h3 d-inline-block">This is a new title</h6></a>
-            <div class="lead">
-             
-              Published <span></span>
-              <div class="new-tags">
-                <span class="badge badge-pill badge-primary">tag</span>
-                <span class="badge badge-pill badge-primary">tag</span>
-                <span class="badge badge-pill badge-primary">tag</span>
-                <span class="badge badge-pill badge-primary">tag</span>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="new border-primary border-bottom border-top py-3">
-        <div class="row">
-          <div class="col-xl-auto">
-            <img class="new-img" src="{% static 'library/img/attention.jpg' %}" alt="">
-          </div>
-          <div class="col-xl">
-            <div>
-              <i class="fas fa-user"></i>
-              <a href="#">Kakarotto</a>
-              <span>5 minutes read</span>
-
-            </div>
-            <a href="#" class="link-primary text-decoration-none embed btn-gp"><h6 class="my-2 h3 d-inline-block">This is a new title</h6></a>
-            <div class="lead">
-             
-              Published <span></span>
-              <div class="new-tags">
-                <span class="badge badge-pill badge-primary">tag</span>
-                <span class="badge badge-pill badge-primary">tag</span>
-                <span class="badge badge-pill badge-primary">tag</span>
-                <span class="badge badge-pill badge-primary">tag</span>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+</div>
 
 </div>
 
-
-</div>
 {% endblock %}

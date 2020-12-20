@@ -1,15 +1,25 @@
 from django.shortcuts import render, get_object_or_404
 from .models import *
 from .forms import CommentForm
+from .filters import *
+from django.contrib import messages
+from django.core.paginator import Paginator
 
 # Create your views here.
 
 def main_view(request):
     return render(request, 'library/main.html')
 
-def history_main_view(request):
+def history_view(request):
     h_posts = HistoryPost.objects.all()
-    return render(request, 'library/history_main.html', context={'h_posts':h_posts})
+    f = HistoryPostFilter(request.GET, queryset=h_posts)
+    paginator = Paginator(f.queryset, 6)
+    page = paginator.get_page(request.GET.get('page',1))
+    context = { 
+        'h_posts':page, 
+        'filters': f,
+        }
+    return render(request, 'library/history.html', context=context)
 
 def video_detail_view(request,pk):
     video = get_object_or_404(Video,id=pk)
@@ -23,14 +33,10 @@ def download_section_view(request,section):
 
 def videos_gallery_view(request):
     videos = Video.objects.all()
-    context = {'videos':videos}
+    context = { 'videos':videos }
     return render(request, 'library/videos.html', context=context)
 
-def history_view(request):
-    context = {
-        'history_posts': HistoryPost.objects.all()
-    }
-    return render(request, 'library/history.html', context)
+
 
 #Terminar Esto despues de hacer el Formulario para Comments
 

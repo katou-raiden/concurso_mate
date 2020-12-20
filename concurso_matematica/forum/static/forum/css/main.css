@@ -1,21 +1,47 @@
-#questions-section-title{
-    
+body {
+  box-sizing: border-box !important;
 }
 
-#aside-nav{
-    
+.cforum-section {
+  /*background-color: #FFB47B;*/
+  transition: background-color .5s ease;
+  transition: color .5s ease;
+  padding: 2rem;
+  border-width: 4px !important;
 }
 
-
-.question-info-area a:hover span{
-    color: white !important;
+.cforum-section figure {
+  text-align: center;
 }
 
-.question-tag{
-    background: linear-gradient(0deg ,rgba(88, 157, 236, 0.74), rgba(85, 144, 207, 0.603), rgba(119, 183, 255, 0.534));
-    border-radius: 2px;
-    padding: .025rem .3rem;
-    color: rgb(0, 0, 0);
-    font-weight: 400;
-    
+.cforum-section figure img {
+  height: 200px;
+  max-width: auto;
 }
+
+.cforum-section figure figcaption {
+  font-weight: bolder;
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+.cforum-section a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: unset;
+  width: 100%;
+  height: 100%;
+}
+
+.cforum-section a:hover * {
+  background-color: unset;
+  color: unset;
+}
+
+.cforum-section:hover {
+  background-color: #F78640;
+  color: white;
+}
+/*# sourceMappingURL=main.css.map */

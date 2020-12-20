@@ -1,0 +1,88 @@
+.card-img-top {
+  height: 18vh;
+  width: 100%;
+  display: inline-block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.play-layer {
+  height: 18vh;
+  width: 100%;
+  display: block;
+  position: absolute;
+  z-index: 2;
+  transition: background-color .3s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.play-layer:hover {
+  background-color: rgba(0, 0, 0, 0.548);
+}
+
+.play-layer:hover .layer-circle {
+  opacity: 1;
+}
+
+.play-layer .layer-circle {
+  transition: opacity .4s ease;
+  transition-delay: .2s;
+  opacity: 0;
+  height: calc(18vh*60/100);
+  width: calc(18vh*60/100);
+  background-color: rgba(128, 128, 128, 0.575);
+  overflow: visible;
+  border-radius: 50%;
+}
+
+.play-layer .layer-circle .layer-play {
+  transition: border-left-color .3s ease;
+  transition-delay: .2s;
+  border-top: 34px solid transparent;
+  border-bottom: 34px solid transparent;
+  border-left: 34px solid rgba(255, 255, 255, 0.589);
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  position: absolute;
+  top: 50%;
+  left: 52%;
+  transform: translate(-50%, -50%);
+}
+
+.user-avatar {
+  box-sizing: content-box;
+  object-fit: cover;
+  object-position: center;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: inline-block;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border: royalblue 3px;
+  border-style: dotted;
+  border-right-color: transparent;
+  border-left-color: transparent;
+}
+
+.filters * {
+  box-sizing: border-box;
+}
+
+.filters input[type="text"] {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.filters button {
+  border-radius: 0;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.video-list {
+  background-color: rgba(255, 255, 255, 0.63);
+}
+/*# sourceMappingURL=videos.css.map */

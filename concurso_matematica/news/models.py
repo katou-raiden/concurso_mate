@@ -6,7 +6,7 @@ from core.models import Tag
 
 
 class Notice(models.Model):
-    tag = models.ManyToManyField(Tag, related_name='Notice')
+    tag = models.ManyToManyField(Tag, null=True, blank=True, related_name='Notice')
     title = models.CharField(max_length=30, default="")
     content = models.TextField(null=True, blank=True, default="")
     date_created = models.DateTimeField(auto_now_add=True)
@@ -14,8 +14,8 @@ class Notice(models.Model):
     user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     reference = models.URLField(null=True, blank=True, default="")
     image = models.ImageField(upload_to='news/images', null=True)
-    upvotes = models.IntegerField(null=False, blank=False, default=0)
-    downvotes = models.IntegerField(null=False, blank=False, default=0)
+    upvotes = models.IntegerField(null=True, blank=True, default=0)
+    downvotes = models.IntegerField(null=True, blank=True, default=0)
 
     def __str__(self):
         return self.title + ' - ' + str(self.date_created)

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,QAAQ,CAAC;EACL,MAAM,EAAE,IAAI;CACf;;AAED,AAAA,IAAI,EAAE,IAAI,CAAA;EACN,UAAU,EAAE,qBAAqB;CACpC;;AACD,AAAA,IAAI,CAAC,CAAC,CAAC;EACH,UAAU,EAAE,kBAAkB;CAEjC;;AAED,AAAA,KAAK,CAAC;EACF,aAAa,EAAE,IAAI;EACnB,UAAU,EAAE,IAAI,CAAC,IAAI,CAAC,IAAI,CAAC,oBAAoB;CAElD",
+    "sources": [
+        "../scss/doubts.scss"
+    ],
+    "names": [],
+    "file": "doubts.css"
+}
