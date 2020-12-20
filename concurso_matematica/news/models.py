@@ -4,7 +4,6 @@ from core.models import Tag
 
 # Create your models here.
 
-
 class Notice(models.Model):
     tag = models.ManyToManyField(Tag, null=True, blank=True, related_name='Notice')
     title = models.CharField(max_length=30, default="")
@@ -50,4 +49,3 @@ class SubComment(models.Model):
 
     def __str__(self):
         return self.content
-        
