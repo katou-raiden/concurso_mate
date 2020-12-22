@@ -6,16 +6,9 @@ register = template.Library()
 
 @register.filter(name="divide_by")
 def number_over(number, arg=None):
-
-    if arg == None:
-        return number % 2
-    else:
-        try: 
-            returning = number % arg
-            return returning
-
-        except ZeroDivisionError:
-            return ''
+    
+    print("Resultado", str(int(number) % int(arg)))
+    return int(number) % int(arg)
 
 @register.filter(name="minus")
 def number_minus(number, arg):

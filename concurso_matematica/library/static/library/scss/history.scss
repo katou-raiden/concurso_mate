@@ -1,0 +1,28 @@
+
+body * {
+    box-sizing: border-box !important;
+}
+.h-post {
+    .user-avatar{
+        object-fit: cover;
+        object-position: center;
+        max-width: 30px !important;
+        max-height: 30px !important;
+        display: inline-block;
+        border-radius: 50%;
+    }
+    .history-cover{
+        object-fit: cover;
+        object-position: center;
+        width: 22vh !important;
+        height: 18vh !important;
+        display: inline-block;
+
+    }
+    .user-name{
+        margin: 0 auto;
+        width: fit-content;
+    }
+    
+    
+}

@@ -5,6 +5,7 @@ __pycache__/
 *.rar
 *.jpg
 *.png
+*.mp4
 migrations/
 media/
 maquetado/
@@ -153,6 +154,7 @@ cython_debug
 *.xml
 *.pyc
 
+.venv/
 
 .idea/
 .vscode/launch.json

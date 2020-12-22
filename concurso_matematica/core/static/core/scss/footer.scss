@@ -1,0 +1,53 @@
+$cyan: #68FCF1;
+$softblack: #1F2833;
+$darkblack: #0B0C10; 
+
+footer{
+    background-color: $darkblack !important;
+    h6{
+        a{
+            color: $cyan;
+            text-decoration: none !important;
+            transition: color .3s ease-out;
+        }
+        a:hover{
+            color: #007BFF;
+        }
+    }   
+    p{
+        color: white;
+        font-size: 1.1em;
+    }
+    
+    *[class*="ic"]{
+        transition: color .3s ease-out;
+        color: $cyan;
+        cursor: pointer;
+    }
+    .fb-ic:hover{
+        color: dodgerblue;
+    }
+    .tw-ic:hover{
+        color: deepskyblue;
+    }
+    .gplus-ic:hover{
+        
+    }
+    .ins-ic:hover{
+        color: yellow;
+    }
+    
+    .li-ic:hover{
+        color: blue;
+    }
+    .pin-ic:hover{
+        color: red;
+    }
+    .footer-copyright{
+        color: $cyan;
+        a{
+            color: deepskyblue;
+        }
+        
+    }
+}

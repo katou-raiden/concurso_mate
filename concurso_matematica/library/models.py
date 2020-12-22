@@ -9,6 +9,7 @@ class Video(models.Model):
     title = models.CharField(max_length=75)
     description = models.TextField()
     video = models.FileField(upload_to='library/video/')
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True)
 
     def __str__(self):
         return self.title
@@ -22,9 +23,12 @@ class Document(models.Model):
 
 class HistoryPost(models.Model):
     tag = models.ManyToManyField(Tag, related_name='history_posts')
-    title = models.CharField( max_length=50)
+    title = models.CharField(max_length=50)
+    date_pub = models.DateTimeField(auto_now_add=True, null=True)
+    date_upd = models.DateTimeField(auto_now=True, null=True)
     content = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='history_posts')
+    image = models.ImageField(null=True, blank=True, upload_to='library/history/imgs')
     
     def __str__(self):
         return self.title

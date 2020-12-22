@@ -1,0 +1,18 @@
+textarea {
+    resize: none;
+}
+
+html, body{
+    box-sizing: border-box !important;
+}
+body * {
+    box-sizing: inherit !important;
+    
+}
+
+.post {
+    border-radius: 15px;
+    box-shadow: 10px 10px 18px rgba(0, 0, 0, 0.226);
+    
+}
+

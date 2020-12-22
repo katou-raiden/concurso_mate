@@ -1,0 +1,52 @@
+.row {
+  pointer-events: auto;
+}
+
+.row .card {
+  width: 90% !important;
+  text-decoration: none !important;
+  color: black !important;
+  width: 100%;
+  -webkit-transition: -webkit-transform .6s ease, -webkit-box-shadow .6s ease;
+  transition: -webkit-transform .6s ease, -webkit-box-shadow .6s ease;
+  transition: transform .6s ease, box-shadow .6s ease;
+  transition: transform .6s ease, box-shadow .6s ease, -webkit-transform .6s ease, -webkit-box-shadow .6s ease;
+}
+
+.row .card:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-box-shadow: 0 2px 3px black !important;
+          box-shadow: 0 2px 3px black !important;
+}
+
+.row .card .card-header img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  width: 100%;
+  height: 200px;
+}
+
+.row .card .card-body h2 {
+  display: inline-block;
+  border-bottom: solid black 4px;
+  width: 60% !important;
+}
+
+@media (min-width: 992px) {
+  .row .card .card-body p {
+    font-size: 1.4em;
+  }
+}
+
+@media (min-width: 992px) {
+  .row .card .card-footer i {
+    font-size: 1.8em;
+  }
+  .row .card .card-footer .videos-number {
+    font-size: 1.3em;
+  }
+}
+/*# sourceMappingURL=main.css.map */

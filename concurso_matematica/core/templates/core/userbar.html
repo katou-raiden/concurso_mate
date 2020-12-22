@@ -1,0 +1,36 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'core/css/userbar.css' %}">
+<link rel="stylesheet" href="{% static 'js/popper.js' %}">
+<div id="user-menu-container">
+
+    <div id="user-menu">
+        <a class="user-avatar-link" href="#">
+            <img src="{% static 'core/img/2.jpg' %}" alt="">
+        </a>
+      
+       <ul id="options-bar">
+          <li class="option"><a href="#"><i class="fas fa-cog"></i></a></li>
+          <div class="option-divider"></div>
+          <li class="option"><a href="#"><i class="fas fa-envelope"></i></a></li>
+          <div class="option-divider"></div>
+          <li class="option"><a href="#"><i class="fas fa-bell-slash"></i></a></li>
+          <div class="option-divider"></div>
+          <li class="option"><a href="#"><i class="fas fa-comment"></i></a></li>
+       </ul>
+        
+          
+          
+    </div>
+</div>
+<script>
+    var userMenu = document.getElementById('user-menu');
+    var userMenuContainer = userMenu.parentElement;
+    userMenuContainer.addEventListener('mouseenter', function(){
+        userMenu.className = "reveal-user-menu";
+    });
+    userMenu.addEventListener('mouseleave', function(){
+        userMenu.className = "";
+
+    });
+
+</script>

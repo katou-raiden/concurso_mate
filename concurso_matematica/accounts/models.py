@@ -1,22 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import User
 from news.models import Notice
-from tinymce.models import HTMLField 
+#from tinymce.models import HTMLField 
 from django.core.validators import RegexValidator
 # Create your models here.
 
 PROVINCE_REGEX = '48|47|7|45|42|43|51|41|33|32|31|24|23|22|21|46'
 PUI_REGEX = None
 
-'''
-    Men seria bueno anadir a Profile el numero de identidad y direccion particular
-    la relacion entre Social Link y User deberia ser de ForeignKey osea muchos social links para cada usuario,
-    y ya creo que con esos detalles ya estarian completos lo modelos
-'''
+
 
 class Profile(models.Model):
-
-    """Campos correspondientes a ambos modelos principales extendidos, nótese que no seran rellenados en los formularios, sino podran serlo durante la estancia del usuario, otros, como el dni sino lo son durante un tiempo determinado, se hara uso forzoso de la magia negra para rellenarlos automaticamente, aun si no lo son."""
 
     avatar = models.ImageField(upload_to="users/profile_pictures", null=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)

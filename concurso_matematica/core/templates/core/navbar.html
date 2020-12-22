@@ -1,0 +1,40 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'core/css/navbar.css' %}">
+<nav>
+    <a href="{% url 'home' %}">
+        <img id="nav-logo" src="{% static 'img/Logo.svg' %}" alt="">
+    </a>
+    
+    <ul id="nav-list">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'forum_main' %}">Forum</a></li>
+        <li><a href="{% url 'news' %}">Noticias</a></li>
+        <li><a href="#">Entrena</a></li>
+        <li>
+            <div class="dropdown">
+                <a class="dropbtn">Biblioteca</a>
+                <div class="dropdown-content">
+                    <ul>
+                        <li>
+                            <a href="{% url 'history' %}">Historia</a>
+                        </li>
+                        <li>
+                            <a href="#">Descargas</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'videos' %}">Videos</a>
+                        </li>
+                    </ul>
+                  
+                  
+                  
+                </div>
+              </div>
+        </li>
+        <li>
+            <a href="{% url 'dashboard' %}">Dashboard</a>
+
+        </li>
+        <li><a href="{% url 'about' %}">About</a></li>
+    </ul>
+</nav>

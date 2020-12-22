@@ -1,0 +1,60 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'news/css/create_notice.css' %}">
+<form action="" enctype="multipart/form-data" id="notice-form" method="POST">
+<div class="container">
+    <h1>Publique su Noticia:</h1>
+    <div class="row">
+        <div class="col-sm-12 col-lg-6 my-2">
+            <div class="cover-box">
+                
+                <img src="{% static 'img/camera.png' %}" alt="">
+                <div class="button-wrapper">
+                    
+                    <label class="" for="notice-cover"><i class="fas fa-plus"></i></label>
+                    
+                    {{ form.image | attr:"id:notice-cover" | attr:"name:image" }}
+                    
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-6 my-2">
+            <div class="notice-box mx-auto">
+                <form action="" method="GET" id="notice-form">
+                    {% csrf_token %}
+                    <h6>Title</h6>
+                    {{ form.title|attr:"type:text"|attr:"name:title" }}
+                    <h6>Content</h6>
+                    {{ form.content }}
+                    
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-6 text-center my-2">
+            <div class="tags-box mx-auto">
+                <h6 class="text-center">Tags</h6>
+                <textarea class="w-100" name="" id="" cols="30" rows="3" form="notice-form"></textarea>
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-6 my-2">
+            <div class="buttons-box mx-auto d-flex justify-content-center align-items-center h-100 w-100">
+                <button class="btn btn-success mr-3 px-4 py-2 font-weight-bold" type="submit">Accept</button>
+                <button class="btn btn-danger ml-3 px-4 py-2 font-weight-bold">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+<!-- <script>
+    var button = document.getElementById('submiti');
+    var secondary = document.getElementById('sec-cover');
+    var image = document.getElementById('notice-cover');
+    button.onclick = function (event){
+        image.value = secondary.value;
+    }
+</script> -->
+{% endblock %}

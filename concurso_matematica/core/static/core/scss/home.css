@@ -1,0 +1,18 @@
+.carousel.slide .carousel-indicators li {
+  background-color: deepskyblue;
+}
+
+.carousel.slide .carousel-item .carousel-img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  width: 100% !important;
+  height: 75vh !important;
+  display: block !important;
+}
+
+#recent-news-section > .container > .row:empty {
+  min-height: 300px !important;
+}
+/*# sourceMappingURL=home.css.map */

@@ -1,0 +1,113 @@
+$screen-sm-min: 576px;
+$screen-md-min: 768px;
+$screen-lg-min: 992px;
+$screen-xl-min: 1200px;
+
+
+@mixin sm {
+    @media (min-width: #{$screen-sm-min}) {
+        @content
+    }
+}
+
+@mixin md {
+    @media (min-width: #{$screen-md-min}) {
+        @content
+    }
+}
+
+@mixin lg {
+    @media (min-width: #{$screen-lg-min}) {
+        @content
+    }
+}
+
+@mixin xl {
+    @media (min-width: #{$screen-xl-min}) {
+        @content
+    }
+}
+
+.row {
+    
+    
+   
+    @include md {
+        
+        
+    }
+
+    @include sm{
+        
+        
+    
+    }
+     @include lg{
+       
+    }
+
+    @include xl {
+       
+    }
+    
+    pointer-events: auto;
+    
+    .card{
+        width: 90% !important;
+        text-decoration: none !important;
+        color: black !important;
+        width: 100%;
+        transition: transform .6s ease, box-shadow .6s ease;
+    
+        &:hover{
+         transform: scale(1.1);
+         box-shadow: 0 2px 3px black !important;
+         
+        }
+    
+        .card-header img { 
+            object-fit: cover;
+            object-position: center;
+            width: 100%;
+            height: 200px;
+            
+        }
+        
+        .card-body {
+            h2 {
+            display: inline-block;
+            border-bottom: solid black 4px;
+            width: 60% !important;
+            }
+            p{
+                @include lg {
+                    font-size: 1.4em;
+                }
+            }
+        }
+    
+        .card-body 
+        
+        
+        .card-header{
+           
+        }
+
+        .card-footer{
+            @include lg{
+                i{
+                    font-size: 1.8em;
+                }
+                .videos-number{
+                    font-size: 1.3em;
+                }
+            }
+        }
+    
+       
+        
+    }
+}
+.row{
+    
+}

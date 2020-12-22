@@ -10,6 +10,10 @@ const searchFieldCancel = document.getElementById("search-field-cancel");
 const searchFieldGroup = document.getElementById('search-field-group');
 const searchFieldInput = searchFieldGroup.children[0];
 const bgArrow = document.querySelector('#site-bg button');
+const mainNav = document.getElementById('main-nav');
+var scrollPos = 0;
+
+
 
 
 //EVENT HANDLERS
@@ -61,6 +65,13 @@ var scrollToSiteMenuBar = (e) => {
         
     }
 };
+
+function dropMainNav(evt){
+    scrollPos = document.body.scrollTop;
+    if(document.body.scrollTop >= mainNav.offsetHeight){
+
+    } 
+}
 
 //EVENT LISTENERS
 menuButton.addEventListener('click', dropMenu);
