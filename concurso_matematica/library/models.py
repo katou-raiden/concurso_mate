@@ -4,12 +4,21 @@ from core.models import Tag
 
 # Create your models here.
 
+class Playlist(models.Model):
+    name = models.CharField(max_length=100)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True)
+    
+    def __str__(self):
+        return self.name
+
+
 class Video(models.Model):
     tag = models.ManyToManyField(Tag, related_name='videos', null=True, blank=True)
     title = models.CharField(max_length=75)
     description = models.TextField()
     video = models.FileField(upload_to='library/video/')
     user = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True)
+    playlist = models.ForeignKey(Playlist, related_name='videos', on_delete=models.CASCADE, null=True,blank=True, default='0')
 
     def __str__(self):
         return self.title
@@ -55,3 +64,4 @@ class Image(models.Model):
 class File(models.Model):
     document = models.ForeignKey(Document, on_delete=models.CASCADE, related_name='files')
     doc = models.FileField(upload_to='library/documents/')
+
