@@ -99,3 +99,10 @@ def doubts_view(request):
     
     
     return render(request, 'forum/doubts.html', context=context)
+
+    def concursos_view(request):
+        qs = Post.objects.filter(section='Concursos')
+
+        context = {'posts':qs}
+
+        return render(request, 'forum/concursos.html', context=context)
