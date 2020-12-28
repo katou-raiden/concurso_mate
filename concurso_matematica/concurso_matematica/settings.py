@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     #'tinymce',
     'django_filters',
     'widget_tweaks',
+    'training'
     
 ]
 

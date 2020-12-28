@@ -1,5 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.http.response import HttpResponse
+from django.shortcuts import redirect, render, get_object_or_404
 from .models import Exercise
+from .forms import Completed_ExerciseForm
 
 # Create your views here.
 
@@ -19,9 +21,23 @@ def exercise_list_view(request, level, topic):
 
 def exercise_detail_view(request,pk):
     exercise = get_object_or_404(Exercise, pk = pk)
+    form = Completed_ExerciseForm()
+    context = {'exercise':exercise, 'form':form}
 
-    context = {'exercise':exercise}
-    pass
+    if request.method == 'POST':
+        form = Completed_ExerciseForm(request.POST)
+        s = form.save(commit=False)
+        s.name = exercise.name
+        s.user = request.user
+        s.save()
+        # Crear la Succes View Como mejor estimes, eso lo veo mas como un tema de Frontend no se si redireccionar
+        # para la lista de ejercicios o para otro lugar tu decide
+        return HttpResponse('Todo Bien')
+    else:
+        return render(request, 'training/',context=context)
+
+    
+    
 
 
     

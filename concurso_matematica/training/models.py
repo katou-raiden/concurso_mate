@@ -1,15 +1,22 @@
 from django.db import models
 
+
 # Create your models here.
 
 LEVELS = ('Introductorio' , 'Intermedio' , 'Avanzado' , 'Experto')
 
 
+
+class Topic(models.Model):
+    name = models.CharField(max_length=75)
+    
+    def __str__(self):
+        return self.name
 class Exercise(models.Model):
     name = models.CharField(max_length=75)
     question = models.TextField()
     qualification_rule = models.TextField()
-    topic = models.ForeignKey(Topic, related_name='exercises')
+    topic = models.ForeignKey(Topic, on_delete=models.CASCADE, related_name='exercises')
     level = models.CharField(max_length=20)
 
     def __str__(self):
@@ -17,14 +24,7 @@ class Exercise(models.Model):
 
 class Test(models.Model):
     name = models.CharField(max_length=75)
-    questions = models.ForeignKey(Exercise, related_name='test')
+    questions = models.ForeignKey(Exercise, on_delete=models.CASCADE, related_name='test')
 
-    def __str__(self):
-        return self.name
-    
-
-class Topic(models.Model):
-    name = models.CharField(max_length=75)
-    
     def __str__(self):
         return self.name
