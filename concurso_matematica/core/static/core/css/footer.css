@@ -3,13 +3,13 @@ footer {
 }
 
 footer h6 a {
-  color: #68FCF1;
+  color: #FFB47B;
   text-decoration: none !important;
   transition: color .3s ease-out;
 }
 
 footer h6 a:hover {
-  color: #007BFF;
+  color: #F78640;
 }
 
 footer p {
@@ -19,7 +19,7 @@ footer p {
 
 footer *[class*="ic"] {
   transition: color .3s ease-out;
-  color: #68FCF1;
+  color: #FFB47B;
   cursor: pointer;
 }
 
@@ -44,7 +44,7 @@ footer .pin-ic:hover {
 }
 
 footer .footer-copyright {
-  color: #68FCF1;
+  color: #FFB47B;
 }
 
 footer .footer-copyright a {

@@ -3,120 +3,131 @@ $screen-md-min: 768px;
 $screen-lg-min: 992px;
 $screen-xl-min: 1200px;
 
-@mixin sm {
-    @media (min-width: #{$screen-sm-min}) {
-        @content
-    }
-}
 
-@mixin md {
-    @media (min-width: #{$screen-md-min}) {
-        @content
-    }
-}
-
-@mixin lg {
-    @media (min-width: #{$screen-lg-min}) {
-        @content
-    }
-}
-
-@mixin xl {
-    @media (min-width: #{$screen-xl-min}) {
-        @content
-    }
-}
-
-html{
+html, body  {
     box-sizing: border-box;
 }
-body, body * {
+body * {
     box-sizing: inherit;
 }
 
-body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#image-area{
+    width: fit-content;
+    img{
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+    }
+    #avatar-field-wrapper{
+        position: relative;
+        overflow: hidden;
+        color: white;
+        width: fit-content;
+        height: fit-content;
+        margin-left: auto;
+        margin-top: -1rem;
+        input{
+            opacity: 0;
+            position: absolute;
+        }
+    }
 }
 
-
-
-
-#avatar-field-wrapper {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-
-    i {
-        background-color: rgba(128, 128, 128, 0.383);
-        font-size: 1.2em;
-        padding: 6px;
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 1;
+form {
+     > * {
+        margin: .6rem auto;
         
-
     }
-    input[type="file"]{
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        z-index: 2;
-    }
+     width: fit-content;
+     text-align: center;
 }
 
 #signUp-area{
-    padding: 60px;
-    padding-top: 0;
-    
-    @include sm {
-        width: 100% !important;
-        
-    }
-    
-    @include lg {
-        width: 60% !important;
-    }
+    position: absolute;
+    left: 50%;
+    width: 320px;
+    background-color: rgba(184, 184, 184, 0.534);
+    border-radius: 20px;
+    top: 50%;
+    padding: 20px;
+    transform: translate(-50%, -50%);
 
-    @include xl {
-        width: 30% !important;
-    }
-      
 
-    .image-area {
-        position: relative;
-        width: 140px;
-        height: 140px;
-        margin: 0 auto;
-        margin-bottom: 40px;
-        
-        
-        img {
+    input[type="text"], input[type="number"], input[type="email"]{
+        border-radius: 15px;
+        padding: 0 10px;
+        border: none;
+        margin: .3rem auto;
+    }
+    #userpass-box{
+        input{
+            width: 45%;
+
             
-            position: absolute;
-            width: 70%;
-            height: 70%;
-            display: inline-block;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2;
-            object-fit: cover;
-            object-position: center;
         }
-
-       
-
-        
     }
-    form {
+
+    #links-area{
+        a{
+            margin: .6rem;
+            text-decoration: none;
+            color: orange;
+            transition: color .4s ease;
+            &:hover{
+                color: orangered;
+            }
+        }
+    }
+
+    #buttons-box{
+        display: flex;
+        justify-content: center;
+        margin: 1rem 0;
+
+        button[type="submit"], a{
+            background-color: orange;
+            display: inline-block;
+            width: 80px;
+            text-align: center;
+            color: white;
+            text-decoration: none;
+            outline: none;
+            padding: .3rem;
+            border-radius: 15px;
+            margin: 0 1rem;
+            transition: background .4s ease;
+            &:hover{
+                background-color: orangered;
+            }
+        }
         button[type="submit"]{
-            font-size: 1.7em;
+            box-shadow: none;
+            border: none;
+            
         }
     }
 }
+
+#puigrade-box{
+    input:first-child{
+        width: 60%;
+    }
+    input:last-child{
+        width: 30%;
+    }
+}
+
+.onefield{
+    input{
+        width: 80%;
+    }
+}
+.twofield{
+    input{
+        width: 50%;
+    }
+}
+
+

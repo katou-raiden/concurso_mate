@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
 from .forms import CommentForm
 from .filters import *
@@ -72,3 +72,6 @@ def tag_click_view(request,tag_name):
     news = HistoryPost.objects.filter(tag = tag)
 
     return render(request,'news/click_filter.html', context = {'hps':hps})
+
+def downloads_view(request):
+    return redirect('/library/downloads/')

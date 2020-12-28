@@ -2,10 +2,43 @@ $cyan : #66FCF1;
 $negroclaro : #1F2833;
 $negrooscuro: #0B0C10;
 $gris: #C5C6C7;
-
+$sm: 556px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
 
 
 .new{
+    
+    @media screen and (min-width: $sm) {
+        
+            .new-img-box{
+                flex-basis: 100%;
+                margin-bottom: 1rem;
+                
+            }
+            .media-body{
+                text-align: center;
+            }
+   
+    }
+
+    @media screen and (min-width: $md){
+
+        
+            
+            .new-img-box{
+                flex-basis: auto;
+                margin-right: 1rem;
+                margin-bottom: 0;
+                
+            }
+            .media-body{
+                text-align: initial;
+            }
+       
+        
+    }
     .new-img{
         width: 120px !important;
         height: 120px !important;

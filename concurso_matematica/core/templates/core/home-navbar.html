@@ -1,0 +1,69 @@
+{% load static %}
+<nav id="home-nav" class="">
+    <a href="{% url 'home' %}"><img src="{% static 'core/img/grayscale.svg' %}" alt="" id="home-logo"></a>
+    <ul id="home-list" class="nav-hidden nav-visuallyHidden">
+        <li class="list-item"><a href="{% url 'home' %}">Home</a></li>
+        <li class="list-item"><a href="#">Register</a></li>
+        <li class="list-item"><a href="#">Login</a></li>
+        <li class="list-item"><a href="#">About Us</a></li>
+    </ul>
+    <button id="navbar-toggle-button">
+        <span id="l1"></span>
+        <span id="l2"></span>
+        <span id="l3"></span>
+    </button>
+</nav>
+
+<script>
+
+    let navlist = document.getElementById('home-list');
+    let navToggle = document.getElementById('navbar-toggle-button');
+    let button = document.getElementsByTagName('button')[0];
+    let sp1 = document.getElementById('l1');
+    let sp3 = document.getElementById('l3');
+    let sp2 = document.getElementById('l2');
+    let end = false;
+
+    window.addEventListener('load', function(){
+        if (document.documentElement.clientWidth >= 768) {
+            navlist.className = "";
+        }
+    });
+
+    button.addEventListener('click', function(evt){
+        sp1.classList.toggle('animate1');
+        sp3.classList.toggle('animate3');
+        sp2.classList.toggle('fade');  
+        });
+
+    window.addEventListener('resize', function(evt){
+       if(document.documentElement.clientWidth >=  992) {
+           navlist.className = "";
+       } else {
+           navlist.className = "nav-hidden nav-visuallyHidden";
+       }
+    });
+  
+    navToggle.addEventListener('click', function (evt) {
+
+        if (navlist.classList.contains('nav-hidden')) {
+            navlist.classList.remove('nav-hidden');
+            setTimeout(function () {
+                navlist.classList.remove('nav-visuallyHidden');
+
+            }, 20);
+        } else {
+            navlist.classList.add('nav-visuallyHidden');
+            navlist.addEventListener('transitionend', function(evt) {
+                navlist.classList.add('nav-hidden');
+            }, {
+                capture: false,
+                once: true,
+                passive: false
+            });
+        }
+    }, false);
+    
+    
+
+</script>

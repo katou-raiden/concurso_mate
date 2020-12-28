@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="{% static 'news/css/main.css' %}">
 <section id="news-section" class="">
   
-  <svg id="Fondo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1365 768.27"><title>Lista Noticias</title><rect width="1365" height="768" style="fill:#fff7f3"/><polyline points="507.54 767.69 26.83 381.12 971.67 0 1195.95 0 817.84 768" style="fill:#bfdde5"/><path d="M1-54.91" transform="translate(-1 0)" style="fill:#07889b"/><polyline points="507.07 768.27 1365 292.85 1365 270.03 230.65 0 1 0 0 50.41 231.79 768 507.07 768.27" style="fill:#07889b;opacity:0.8"/><polygon points="842.38 0 1336.74 768.27 0 358.9 0 299.88 436.97 0 842.38 0" style="fill:#7acdd3;opacity:0.7000000000000001"/></svg>
   
   <div id="filters" class="py-2">
     <h2 class="text-center my-3">What are you looking up?</h2>
@@ -31,18 +30,18 @@
 </form>
 </div>
 
-<div class="container py-5 ">
+<div class="py-5 w-75 mx-auto">
 
 
 
 {% for new in news.object_list %}
 
-<div class="new d-flex  align-items-stretch  py-3">
+<div class="new media flex-wrap my-4">
 
-    <div class="" style="flex-grow: 1;">
+    <div class="new-img-box text-center">
       <img class="new-img img-thumbnail" src="{{ new.image.url }}" alt="">
     </div>
-    <div class="" style="flex-grow: 9;">
+    <div class="media-body">
 
       <div>
         <i class="fas fa-user"></i>
@@ -50,7 +49,7 @@
         <span>5 minutes read</span>
       </div>
 
-      <a href="{% url 'new' new.id %}" class="link-primary text-decoration-none embed btn-gp"><h6 class="my-2 h3 d-inline-block">{{ new.title }}</h6></a>
+      <a href="{% url 'new' new.id %}" class="link-primary text-decoration-none embed btn-gp"><h6 class="my-2 h5 d-inline-block">{{ new.title }}</h6></a>
       <div class="lead">
        
         Published <span>{{ new.date_created }}</span>

@@ -1,0 +1,27 @@
+body{
+    
+}
+
+.suggestion {
+    font-size: 4rem;
+    border-radius: 50%;
+    color: royalblue;
+    border: none;
+    box-shadow: none;
+    outline: none;   
+    background-color: transparent;
+    padding: 0 !important;
+    margin: 0;
+    transition: color .3s ease-out;
+
+    &:hover {
+        background-color: white;
+        color: orange;    
+    }
+    &:focus {
+        border: none;
+        box-shadow: none;
+        outline: none;
+    }
+
+}

@@ -12,9 +12,7 @@
 
 @media (min-width: 480px) and (min-height: 480px) {
   .c-circle-nav {
-    width: 96px;
-    height: 96px;
-    border-radius: 48px;
+    
   }
 }
 
@@ -32,8 +30,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 48px;
-  height: 48px;
+  width: 30px;
+  height: 30px;
   border-radius: 24px;
   opacity: 0;
   -webkit-transition-property: -webkit-transform, opacity;
@@ -225,7 +223,7 @@ THE TOGGLE COMPONENT
   padding: 0;
   width: 48px;
   height: 48px;
-  background-color: #ff283c;
+  background-color: #FFB47B;
   font: inherit;
   font-size: 0;
   text-indent: -9999px;
@@ -244,9 +242,9 @@ THE TOGGLE COMPONENT
 
 @media (min-width: 480px) and (min-height: 480px) {
   .c-circle-nav__toggle {
-    width: 96px;
-    height: 96px;
-    border-radius: 48px;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
   }
 }
 
@@ -254,7 +252,7 @@ THE TOGGLE COMPONENT
 .c-circle-nav__toggle:focus,
 .c-circle-nav__toggle.is-active {
   outline: none;
-  background-color: #c10012;
+  background-color: #FFB47B;
 }
 
 .c-circle-nav__toggle span,
@@ -265,6 +263,8 @@ THE TOGGLE COMPONENT
   height: 4px;
   background: #fff;
   border-radius: 1px;
+  
+  
 }
 
 @media (min-width: 480px) and (min-height: 480px) {
@@ -284,9 +284,10 @@ THE TOGGLE COMPONENT
 
 @media (min-width: 480px) and (min-height: 480px) {
   .c-circle-nav__toggle span {
-    top: 44px;
-    left: 20px;
+    top: 20px;
+    left: 15px;
     right: 20px;
+    width: 20px;
   }
 }
 

@@ -1,50 +1,131 @@
-html {
+html, body {
   box-sizing: border-box;
 }
 
-body, body * {
+body * {
   box-sizing: inherit;
 }
 
 body {
+  margin: 0;
+  padding: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .login-area {
-  padding: 0 60px;
-  padding-bottom: 40px;
-}
-
-.login-area .image-area {
-  position: relative;
-  width: 140px;
-  height: 140px;
-  margin: 0 auto;
-  margin-bottom: 40px;
-  pointer-events: none;
-}
-
-.login-area .image-area img:empty {
+  padding: 1rem 2rem;
+  background-color: rgba(196, 196, 196, 0.5);
   position: absolute;
-  width: 70%;
-  height: 70%;
-  display: inline-block;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  border-radius: 10px;
+}
+
+.login-area #buttons-area {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.login-area #buttons-area a, .login-area #buttons-area button[type="submit"] {
+  text-align: center;
+  display: inline-block;
+  background-color: orange;
+  color: white;
+  padding: .3rem;
+  border-radius: 15px;
+  margin: 0 1rem;
+  width: 80px;
+  transition: background .4s ease;
+}
+
+.login-area #buttons-area a:hover, .login-area #buttons-area button[type="submit"]:hover {
+  background-color: orangered;
+}
+
+.login-area #buttons-area button[type="submit"] {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+.login-area .image-area {
+  text-align: center;
+  margin: .6rem 0;
 }
 
 .login-area .image-area img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  display: inline-block;
+  padding: .6rem;
+  width: 70px;
+  height: 70px;
   object-position: center;
-  pointer-events: none;
+  object-fit: cover;
+  border-radius: 50%;
+  background-color: orange;
 }
 
-.login-area form button[type="submit"] {
-  font-size: 1.3em;
+.login-area .credential-box {
+  display: flex;
+  align-items: center;
+}
+
+.login-area label {
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+  color: white;
+  background-color: orange;
+  position: relative;
+  z-index: 1;
+}
+
+.login-area input {
+  display: inline-block;
+  width: 75%;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  border: solid 1px black;
+  padding-left: 28px;
+  background-color: white;
+  position: relative;
+  z-index: 0;
+  margin-left: -1.5rem;
+  margin-top: -.3rem;
+}
+
+.login-area input:focus {
+  outline: none;
+}
+
+.login-area #links-area {
+  margin-top: 1rem;
+}
+
+.login-area #links-area a {
+  transition: color .4s ease;
+  color: orange;
+  text-decoration: none;
+}
+
+.login-area #links-area a:hover {
+  color: orangered;
+}
+
+.login-area .credential-box {
+  margin: .6rem auto;
+}
+
+.login-area .credential-box .credential-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 /*# sourceMappingURL=login.css.map */

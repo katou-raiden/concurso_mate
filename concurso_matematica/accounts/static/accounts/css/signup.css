@@ -1,88 +1,122 @@
-html {
+html, body {
   box-sizing: border-box;
 }
 
-body, body * {
+body * {
   box-sizing: inherit;
 }
 
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+#image-area {
+  width: fit-content;
 }
 
-#avatar-field-wrapper {
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-}
-
-#avatar-field-wrapper i {
-  background-color: rgba(128, 128, 128, 0.383);
-  font-size: 1.2em;
-  padding: 6px;
+#image-area img {
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-#avatar-field-wrapper input[type="file"] {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  z-index: 2;
-}
-
-#signUp-area {
-  padding: 60px;
-  padding-top: 0;
-}
-
-@media (min-width: 576px) {
-  #signUp-area {
-    width: 100% !important;
-  }
-}
-
-@media (min-width: 992px) {
-  #signUp-area {
-    width: 60% !important;
-  }
-}
-
-@media (min-width: 1200px) {
-  #signUp-area {
-    width: 30% !important;
-  }
-}
-
-#signUp-area .image-area {
-  position: relative;
-  width: 140px;
-  height: 140px;
-  margin: 0 auto;
-  margin-bottom: 40px;
-}
-
-#signUp-area .image-area img {
-  position: absolute;
-  width: 70%;
-  height: 70%;
-  display: inline-block;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
   object-fit: cover;
   object-position: center;
 }
 
-#signUp-area form button[type="submit"] {
-  font-size: 1.7em;
+#image-area #avatar-field-wrapper {
+  position: relative;
+  overflow: hidden;
+  color: white;
+  width: fit-content;
+  height: fit-content;
+  margin-left: auto;
+  margin-top: -1rem;
+}
+
+#image-area #avatar-field-wrapper input {
+  opacity: 0;
+  position: absolute;
+}
+
+form {
+  width: fit-content;
+  text-align: center;
+}
+
+form > * {
+  margin: .6rem auto;
+}
+
+#signUp-area {
+  position: absolute;
+  left: 50%;
+  width: 320px;
+  background-color: rgba(184, 184, 184, 0.534);
+  border-radius: 20px;
+  top: 50%;
+  padding: 20px;
+  transform: translate(-50%, -50%);
+}
+
+#signUp-area input[type="text"], #signUp-area input[type="number"], #signUp-area input[type="email"] {
+  border-radius: 15px;
+  padding: 0 10px;
+  border: none;
+  margin: .3rem auto;
+}
+
+#signUp-area #userpass-box input {
+  width: 45%;
+}
+
+#signUp-area #links-area a {
+  margin: .6rem;
+  text-decoration: none;
+  color: orange;
+  transition: color .4s ease;
+}
+
+#signUp-area #links-area a:hover {
+  color: orangered;
+}
+
+#signUp-area #buttons-box {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+#signUp-area #buttons-box button[type="submit"], #signUp-area #buttons-box a {
+  background-color: orange;
+  display: inline-block;
+  width: 80px;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  outline: none;
+  padding: .3rem;
+  border-radius: 15px;
+  margin: 0 1rem;
+  transition: background .4s ease;
+}
+
+#signUp-area #buttons-box button[type="submit"]:hover, #signUp-area #buttons-box a:hover {
+  background-color: orangered;
+}
+
+#signUp-area #buttons-box button[type="submit"] {
+  box-shadow: none;
+  border: none;
+}
+
+#puigrade-box input:first-child {
+  width: 60%;
+}
+
+#puigrade-box input:last-child {
+  width: 30%;
+}
+
+.onefield input {
+  width: 80%;
+}
+
+.twofield input {
+  width: 50%;
 }
 /*# sourceMappingURL=signup.css.map */

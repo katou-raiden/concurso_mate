@@ -1,55 +1,50 @@
-#question-area-section{
-
-    min-height: 25% !important;
-    
+.author-info {
+  background-color: #FFB47B !important;
+  color: black;
 }
 
-.user-profile-picture img{
-    
+.author-info a {
+  color: black;
 }
 
-.text-justify{
-    text-align: justify;
-}
-
-.ask-button{
-  
-    height: 40px !important;
-    width: auto !important;
-    padding: .4rem !important;
-    
-}
-
-.rep-circle{
-    width: 5px;
-    height: 5px;
-    display: inline-block;
-    border-radius: 50%;
-    background-color: tomato;
-    margin: 0 .6rem;
-
-}
-
-.accepted-circle{
-    display: inline-block;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background-color: brown;
-    margin: 0 .6rem;
-
-}
-
-.user-info{
-    background-color: #E1ECF4;
-    border-radius: 4px;
-   
+.author-info .fa-circle {
+  color: #F78640 !important;
 }
 
 .tag {
-    background-color: #E1ECF4;;
+  background-color: #FFB47B;
 }
 
-.fa-sort-up, .fa-sort-down{
-    font-size: 3rem;
+.updownvote-box {
+  text-align: center;
 }
+
+.updownvote-box a {
+  display: inline-block;
+  color: #FFB47B;
+  transition: color .3s ease;
+}
+
+.updownvote-box a:hover {
+  color: #F78640;
+}
+
+.updownvote-box .link-up {
+  position: relative;
+  top: .6rem;
+}
+
+.updownvote-box .link-down {
+  padding: 0;
+  margin-top: -1rem;
+}
+
+.updownvote-box .comment-up {
+  color: #FFB47B;
+  transition: color .3s ease;
+}
+
+.updownvote-box .comment-up:hover {
+  color: #F78640;
+}
+/*# sourceMappingURL=detail.css.map */
