@@ -11,6 +11,7 @@ class Post(models.Model):
     date_pub = models.DateTimeField(auto_now_add=True)
     date_mod = models.DateTimeField(auto_now=True)
     content = models.TextField(default='',null=True)
+    voted = models.ManyToManyField(User, related_name='post_voted')
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     section = models.CharField(max_length=20, null=True, blank=True)
 

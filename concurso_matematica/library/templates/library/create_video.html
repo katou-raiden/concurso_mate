@@ -7,7 +7,7 @@
 <form action="" enctype="multipart/form-data" id="video-form" method="POST">
 <div class="container">
     <h1>Publique Nuevo Video:</h1>
-    <div class="row">
+    <!--<div class="row">
         <div class="col-sm-12 col-lg-6 my-2">
             <div class="cover-box">
                 
@@ -48,6 +48,11 @@
         </div>
     </div>
 </div>
+</form>-->
+
+<form action="" method="post">{% csrf_token %}
+    {{form}}
+    <input type="submit" value="Enviar">
 </form>
 <!-- <script>
     var button = document.getElementById('submiti');

@@ -1,5 +1,6 @@
 {% extends 'core/base.html' %}
 {% block content %}
+{% load static %}
 <link rel="stylesheet" href="{% static 'library/css/video_details.css' %}">
 <section id="video-details-section">
     <div class="container">
@@ -78,8 +79,8 @@
                 <div class="media-body">
                     <form method="POST" class='d-flex align-items-stretch '>
                         {% csrf_token %}
-                        <textarea class="text-area-comment" name="user-comment" class="" id="" cols="" rows="4" placeholder="Escribe tu comentario..."></textarea>
-                        <button class="btn btn-primary ml-2 text-uppercase font-weight-bold rounded" type="submit">submit</button>
+                        {{form}}
+                        <input type="submit" value="Enviar">
                     </form>
                 </div>
             </div>
