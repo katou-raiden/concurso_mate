@@ -13,7 +13,7 @@ class Playlist(models.Model):
 
 
 class Video(models.Model):
-    tag = models.ManyToManyField(Tag, related_name='videos', null=True, blank=True)
+    tag = models.ManyToManyField(Tag, related_name='videos', blank=True)
     title = models.CharField(max_length=75)
     description = models.TextField()
     up_votes = models.IntegerField(default=0)
