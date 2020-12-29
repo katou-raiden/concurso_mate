@@ -40,7 +40,7 @@ class Comment(models.Model):
     votes_plus = models.IntegerField(default=0)
     votes_minus = models.IntegerField(default=0)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments', null=True)
-    answer = models.ForeignKey(Answer, on_delete=models.CASCADE, related_name='comments', null=True)
+    answer = models.ForeignKey(Answer, blank=True, on_delete=models.CASCADE, related_name='comments', null=True, default=None)
 
     def __str__(self):
         return self.content

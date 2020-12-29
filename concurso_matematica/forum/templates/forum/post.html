@@ -1,21 +1,25 @@
-{% extends 'forum/base.html' %}
+{% extends 'core/base.html' %}
+{% load static %}
 
 {% block content %}
-    <form class="form-group" action="" method="post">
-        {% csrf_token %}
+<div class="media">
+    <div class="">
+        <div class="updownvote-box">
+            <a href=""><i class="fas fa-sort-up"></i></a>
+            <div></div>
+            25
+            <div></div>
+            <a href=""><i class="fas fa-sort-down"></i></a>
+        </div>
+    </div>
+    <div class="media-body">
+        <h3>{{ post.title }}</h3>
+        <p class="text-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae ipsam eligendi cupiditate est labore voluptas soluta atque. Delectus, eum, earum officiis facilis cupiditate nobis optio, error odio ipsam ab dolores?Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint aspernatur magni ipsam dolorem delectus atque veniam nobis dicta distinctio facere dolorum, itaque earum consectetur in illo iure nemo recusandae quam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, neque laborum, corrupti, cum recusandae sequi ea tenetur rem quidem commodi iusto? Aliquam cum est adipisci doloribus cupiditate. Sunt, suscipit fugiat.</p>
+        <div class="bg-light">
+            
+        </div>
+    </div>
+    
 
-        <label for="title-input">Title</label>
-        <input type="text" class="form-control" id="title-input" name="title">
-
-        <label for="content-textarea">Content</label>
-        <textarea class="form-control" id="content-textarea" rows="4"></textarea>
-
-        <label for="tag-select">Tag</label>
-        <select class="form-control form-control-lg" id="tag-select" name="tag">
-            {% for tag in tags %}
-              <option value="{{tag.id}}">{{tag.name}}</option>
-            {% endfor %}
-        <br>
-        <input class="btn btn-large btn-primary" type="submit" content="Post!!!">
-    </form>
+</div>
 {% endblock %}

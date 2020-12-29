@@ -1,0 +1,24 @@
+.suggestion {
+  font-size: 4rem;
+  border-radius: 50%;
+  color: royalblue;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  background-color: transparent;
+  padding: 0 !important;
+  margin: 0;
+  transition: color .3s ease-out;
+}
+
+.suggestion:hover {
+  background-color: white;
+  color: orange;
+}
+
+.suggestion:focus {
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+/*# sourceMappingURL=exercise.css.map */

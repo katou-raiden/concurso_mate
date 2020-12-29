@@ -7,6 +7,27 @@
   box-shadow: inset 2px 2px 3px 1px dodgerblue;
 }
 
+@media screen and (min-width: 556px) {
+  .new .new-img-box {
+    flex-basis: 100%;
+    margin-bottom: 1rem;
+  }
+  .new .media-body {
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .new .new-img-box {
+    flex-basis: auto;
+    margin-right: 1rem;
+    margin-bottom: 0;
+  }
+  .new .media-body {
+    text-align: initial;
+  }
+}
+
 .new .new-img {
   width: 120px !important;
   height: 120px !important;

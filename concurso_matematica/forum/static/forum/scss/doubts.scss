@@ -1,3 +1,6 @@
+$primary: #FFB47B;
+$accent: #F78640;
+
 textarea {
     resize: none;
 }
@@ -7,6 +10,7 @@ html, body{
 }
 body * {
     box-sizing: inherit !important;
+    font-size: 2.3vh;
     
 }
 

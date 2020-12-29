@@ -43,10 +43,10 @@ INSTALLED_APPS = [
     'forum.apps.ForumConfig',
     'library.apps.LibraryConfig',
     'dashboard.apps.DashboardConfig',
+    'training.apps.TrainingConfig',
     #'tinymce',
     'django_filters',
     'widget_tweaks',
-    'training'
     
 ]
 

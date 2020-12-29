@@ -1,0 +1,47 @@
+$primary: #FFB47B;
+$accent: #F78640;
+
+.author-info{
+    background-color: $primary !important;
+    color: black;
+    a{
+        color: black;
+    }
+    .fa-circle{
+        color: $accent !important;
+    }
+}
+
+.tag{
+    background-color: $primary;
+}
+
+.updownvote-box{
+    text-align: center;
+
+    a{
+        display: inline-block;
+        color: $primary;
+        transition: color .3s ease;
+        &:hover{
+            color: $accent;
+        }
+    }
+
+    .link-up{
+        position: relative;
+        top: .6rem;
+    }
+    .link-down{
+        padding: 0;
+        margin-top: -1rem;
+        
+    }
+    .comment-up{
+        color: $primary;
+        transition: color .3s ease;
+        &:hover{
+            color: $accent;
+        }
+    }
+}

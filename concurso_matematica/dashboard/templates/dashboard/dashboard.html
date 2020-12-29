@@ -3,176 +3,190 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'dashboard/css/charts.css' %}">
 
-<section id="dashboard-section">
+<section id="dashboard-section" class="pl-4">
   <h1>Welcome to your Dashboard</h1>
   <div class="mb-5 border-right border-left" style="width: 75%; height: 5px; background-color: black;"></div>
-  
+
   <section id="charts-section" class="my-4">
     <h2 class="mb-3">The Charts</h2>
     <div id="charts">
-    
+
     </div>
   </section>
-  
-  <section id="posts-section" class="my-4">
-  
-  
-  <h2 class="mb-3">Your Posts</h2>
-  <ul class="nav nav-pills">
-      <li class="nav-item">
-        <a class="nav-link" href="#" style="background-color: #F78640; color: white;">Forum</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" style="background-color: #FFB47B; color: white;">Noticias</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" style="background-color: #FFB47B; color: white;">Historia</a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" href="#" style="background-color: #FFB47B; color: white;">Videos</a>
-      </li>
-    </ul>
-  <table class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Check</th>
-          <th scope="col">Titulo</th>
-          <th scope="col">Fecha</th>
-          <th scope="col">Rating (L,D,V)</th>
-          <th scope="col">Comentarios</th>
-          <th scope="col">Opciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row"><input type="checkbox" class="custom-checkbox" name="" id=""></th>
-          <td>La cunchunbunba</td>
-          <td>15/12/2018 04:00AM</td>
-          <td>12,1,91</td>
-          <td>8</td>
-          <td>
-              <a href="#" class="text-black"><i class="fas fa-eye"></i></a>
-              <a href="#" class="text-warning"><i class="fas fa-pencil-alt"></i></a>
-              <a href="#" class="text-danger"><i class="fas fa-trash"></i></a>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row"><input type="checkbox" class="custom-checkbox" name="" id=""></th>
-          <td>La cunchunbunba</td>
-          <td>15/12/2018 04:00AM</td>
-          <td>12,1,91</td>
-          <td>8</td>
-          <td>
-              <a href="#" class="text-black"><i class="fas fa-eye"></i></a>
-              <a href="#" class="text-warning"><i class="fas fa-pencil-alt"></i></a>
-              <a href="#" class="text-danger"><i class="fas fa-trash"></i></a>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row"><input type="checkbox" class="custom-checkbox" name="" id=""></th>
-          <td>La cunchunbunba</td>
-          <td>15/12/2018 04:00AM</td>
-          <td>12,1,91</td>
-          <td>8</td>
-          <td>
-              <a href="#" class="text-black"><i class="fas fa-eye"></i></a>
-              <a href="#" class="text-warning"><i class="fas fa-pencil-alt"></i></a>
-              <a href="#" class="text-danger"><i class="fas fa-trash"></i></a>
-          </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><a href="" class="btn btn-primary px-4 py-2 w-75"><i class="fas fa-plus"></i></a></td>
-          </tr>
-      </tbody>
-      
-    </table>
-  </section>
-    <section id="comments-section" class="my-4">
-      <h2 class="mb-3">Your Comments</h2>
-      <ul class="nav nav-pills">
-        <li class="nav-item">
-          <a class="nav-link active" href="#" style="background-color: #F78640; color: white;">Forum</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" style="background-color: #FFB47B; color: white;">Noticias</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" style="background-color: #FFB47B; color: white;">Historia</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#" style="background-color: #FFB47B; color: white;">Videos</a>
-        </li>
-      </ul>
-    <table class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Check</th>
-            <th scope="col">Titulo</th>
-            <th scope="col">Fecha</th>
-            <th scope="col">Rating (L,D)</th>
-            <th scope="col">Usuarios</th>
-            <th scope="col">Opciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><input type="checkbox" class="custom-checkbox" name="" id=""></th>
-            <td>La cunchunbunba</td>
-            <td>15/12/2018 04:00AM</td>
-            <td>12,1</td>
-            <td><a href="#">@Mamey</a>, <a href="#">@Pepardo</a></td>
-            <td>
-                <a href="#" class="text-black"><i class="fas fa-eye"></i></a>
-                <a href="#" class="text-warning"><i class="fas fa-pencil-alt"></i></a>
-                <a href="#" class="text-danger"><i class="fas fa-trash"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"><input type="checkbox" class="custom-checkbox" name="" id=""></th>
-            <td>La cunchunbunba</td>
-            <td>15/12/2018 04:00AM</td>
-            <td>12,1</td>
-            <td><a href="#">@Mamey</a>, <a href="#">@Pepardo</a></td>
-            <td>
-                <a href="#" class="text-black"><i class="fas fa-eye"></i></a>
-                <a href="#" class="text-warning"><i class="fas fa-pencil-alt"></i></a>
-                <a href="#" class="text-danger"><i class="fas fa-trash"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"><input type="checkbox" class="custom-checkbox" name="" id=""></th>
-            <td>La cunchunbunba</td>
-            <td>15/12/2018 04:00AM</td>
-            <td>12,1</td>
-            <td><a href="#">@Mamey</a>, <a href="#">@Pepardo</a></td>
-            <td>
-                <a href="#" class="text-black"><i class="fas fa-eye"></i></a>
-                <a href="#" class="text-warning"><i class="fas fa-pencil-alt"></i></a>
-                <a href="#" class="text-danger"><i class="fas fa-trash"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><a href="" class="btn btn-primary px-4 py-2 w-75"><i class="fas fa-plus"></i></a></td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-</section>
-  <script src="{% static 'dashboard/js/charts.js' %}"></script>
-  <script>
-    window.addEventListener('load', function(){
-      buildCharts('charts', {'Disparos':[12,41], 'Saltos':[91,100], 'Estornudos':[14,25], 'Llamadas':[16,16]});
 
-    });
-  </script>
+  <section id="posts-section" class="my-4 ">
+
+
+    <h2 class="mb-3">Your Posts</h2>
+    <div class="card">
+      <div class="card-header">
+
+        <ul class="nav nav-tabs card-header-tabs">
+          <li class="nav-item">
+            <a class="nav-link active " href="#">Forum</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="#" >Noticias</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="#">Historia</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="#">Videos</a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Check</th>
+              <th scope="col">Titulo</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Rating (L,D,V)</th>
+              <th scope="col">Comentarios</th>
+              <th scope="col">Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><input type="checkbox" class="custom-checkbox" name="" id=""></th>
+              <td>La cunchunbunba</td>
+              <td>15/12/2018 04:00AM</td>
+              <td>12,1,91</td>
+              <td>8</td>
+              <td>
+                <a href="#" class="text-black"><i class="fas fa-eye"></i></a>
+                <a href="#" class="text-warning"><i class="fas fa-pencil-alt"></i></a>
+                <a href="#" class="text-danger"><i class="fas fa-trash"></i></a>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row"><input type="checkbox" class="custom-checkbox" name="" id=""></th>
+              <td>La cunchunbunba</td>
+              <td>15/12/2018 04:00AM</td>
+              <td>12,1,91</td>
+              <td>8</td>
+              <td>
+                <a href="#" class="text-black"><i class="fas fa-eye"></i></a>
+                <a href="#" class="text-warning"><i class="fas fa-pencil-alt"></i></a>
+                <a href="#" class="text-danger"><i class="fas fa-trash"></i></a>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row"><input type="checkbox" class="custom-checkbox" name="" id=""></th>
+              <td>La cunchunbunba</td>
+              <td>15/12/2018 04:00AM</td>
+              <td>12,1,91</td>
+              <td>8</td>
+              <td>
+                <a href="#" class="text-black"><i class="fas fa-eye"></i></a>
+                <a href="#" class="text-warning"><i class="fas fa-pencil-alt"></i></a>
+                <a href="#" class="text-danger"><i class="fas fa-trash"></i></a>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><a href="" class="btn btn-primary px-4 py-2 w-75"><i class="fas fa-plus"></i></a></td>
+            </tr>
+          </tbody>
+  
+        </table>
+      </div>
+    </div>
+  </section>
+  <section id="comments-section" class="my-4">
+    <h2 class="mb-3">Your Comments</h2>
+    <div class="card">
+      
+        <div class="card-header">
+          <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" href="#" >Forum</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" >Noticias</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" >Historia</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" >Videos</a>
+            </li>
+          </ul>
+        </div>
+        <div class="card-body">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Check</th>
+              <th scope="col">Titulo</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Rating (L,D)</th>
+              <th scope="col">Usuarios</th>
+              <th scope="col">Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><input type="checkbox" class="custom-checkbox" name="" id=""></th>
+              <td>La cunchunbunba</td>
+              <td>15/12/2018 04:00AM</td>
+              <td>12,1</td>
+              <td><a href="#">@Mamey</a>, <a href="#">@Pepardo</a></td>
+              <td>
+                <a href="#" class="text-black"><i class="fas fa-eye"></i></a>
+                <a href="#" class="text-warning"><i class="fas fa-pencil-alt"></i></a>
+                <a href="#" class="text-danger"><i class="fas fa-trash"></i></a>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row"><input type="checkbox" class="custom-checkbox" name="" id=""></th>
+              <td>La cunchunbunba</td>
+              <td>15/12/2018 04:00AM</td>
+              <td>12,1</td>
+              <td><a href="#">@Mamey</a>, <a href="#">@Pepardo</a></td>
+              <td>
+                <a href="#" class="text-black"><i class="fas fa-eye"></i></a>
+                <a href="#" class="text-warning"><i class="fas fa-pencil-alt"></i></a>
+                <a href="#" class="text-danger"><i class="fas fa-trash"></i></a>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row"><input type="checkbox" class="custom-checkbox" name="" id=""></th>
+              <td>La cunchunbunba</td>
+              <td>15/12/2018 04:00AM</td>
+              <td>12,1</td>
+              <td><a href="#">@Mamey</a>, <a href="#">@Pepardo</a></td>
+              <td>
+                <a href="#" class="text-black"><i class="fas fa-eye"></i></a>
+                <a href="#" class="text-warning"><i class="fas fa-pencil-alt"></i></a>
+                <a href="#" class="text-danger"><i class="fas fa-trash"></i></a>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><a href="" class="btn btn-primary px-4 py-2 w-75"><i class="fas fa-plus"></i></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</section>
+<script src="{% static 'dashboard/js/charts.js' %}"></script>
+<script>
+  window.addEventListener('load', function () {
+    buildCharts('charts', { 'Disparos': [12, 41], 'Saltos': [91, 100], 'Estornudos': [14, 25], 'Llamadas': [16, 16] });
+
+  });
+</script>
 {% endblock %}

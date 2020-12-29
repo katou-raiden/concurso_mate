@@ -14,10 +14,6 @@ def forum_main_view(request):
     posts = Post.objects.all()
     return render(request, 'forum/main.html', context={'posts': posts})
 
-
-
-
-
 def forum_detail_view(request,id):
     post = get_object_or_404(Post,id=id)
     answers = post.answers.all()
