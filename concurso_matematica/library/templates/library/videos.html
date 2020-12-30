@@ -1,58 +1,132 @@
 {% extends 'core/base.html' %}
 {% load static %}
+{% load widget_tweaks %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'library/css/videos.css' %}">
 <section id="videos-section">
-    <h1>Videos</h1>
-    <div class="container">
-      <div class="filters w-25 ml-auto">
-          <form action="" class="form-inline" method="GET">
-              <input type="text" class="w-75 form-control">
-              <button class="btn btn-primary w-25" type="submit"><i class="fas fa-search text-white"></i></button>
-          </form>
-      </div>
-      <div class="video-list p-4">
-      <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 justify-content-between w-75 mx-auto">
-        {% for video in videos %}
-            <div class="card">
-                
-                    <video class="card-img-top text-center" title="{{ video.title }}">
-                        <source src="{{ video.video.url }}#t=5">
-                        video no disponible
-                        
-                    </video>
-                    <a class="play-layer" href="#">
-                        <div class="layer-circle">
-                            <div class="layer-play">
+    <h1 class="pl-5">Videos</h1>
+    <form method="GET">
+        <div id="filters">
+            <h2 id="filters-title">Que Buscas?</h2>
+        
+            {% for field in filters.form %}
+            <div class="field">
+                {{ field }}
+                {{ field.label_tag }}
+            </div>
+            {% endfor %}
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+    </form>
 
-                            </div>
-                        </div>
-                    </a>
-                <div class="card-body">
-                    <div>
-                        <img src="{{ video.user.profile.avatar.url }}" class="user-avatar" alt="">
-                        <a>@{{ video.user.username }}</a>
-                        <span><!--Video Duration--></span>
-                    </div>
-                    <span class="divisor" style="display: inline-block; margin: .5rem 0; width: 90%; height: 2px; background-color: black;"></span>
-                    <a href=""><h6 class="card-title h5 text-capitalize ">{{ video.title }}</h6></a>
-                    
-                    <div class="video-info">
-                        <span class="mr-2"><i class="fas fa-eye mr-1"></i>55</span>
-                        <span class=""><i class="fas fa-thumbs-up mr-1"></i>1942</span>
-                        <span class="ml-2"><i class="fas fa-thumbs-down mr-1"></i>13</span>
-                    </div>
+    {{ form.non_field_errors }}
+    {{ form.field_errors }}
+    
+    <div id="video-list">
+        {% for video in videos.object_list %}
+        <div class="video-card">
+                <a href="{% url 'video_detail' video.pk %}">
+                    <video>
+                        <source src="{{ video.video.url }}">
+                    </video>
+                </a>
+            <div class="video-card-content">
+                <a class="video-card-title" href="{% url 'video_detail' video.pk %}">La caida de Alduin
+                    ajamalamajamal
+                </a>
+                <div class="video-card-info">
+                    <div><i class="fas fa-list mr-1"></i><a href="#">Skyrim Videos</a></div>
+                    <span><i class="fas fa-user mr-1"></i><a href="">@l0new0lf</a></span>
+                    <span><i class="fas fa-clock mr-1"></i>20 min</span>
+                </div>
+                <div class=video-card-tags>
+                    <a href="#" class="tag">algebra</a>
+                    <a href="#" class="tag">aritmetica</a>
+                    <a href="#" class="tag">discreta</a>
                 </div>
             </div>
-
-            {% endfor %}
         </div>
-      </div>
-      
-       
-            
-         
-     
+        {% endfor %}
     </div>
+
+        <!-- Paginador del contenido -->
+        {% if videos.has_other_pages %}
+
+        <ul class="pagination justify-content-center">
+    
+          {% if videos.has_previous %}
+    
+          <li class=page-item><a class="page-link" href="?page={{ videos.previous_page_number }}">&laquo;</a></li>
+    
+          {% else %}
+    
+          <li class="disabled page-item"><a class="page-link">&laquo;</a></li>
+    
+          {% endif %}
+    
+          {% for i in videos.paginator.page_range %}
+    
+          {% if videos.number == i %}
+    
+          <li class="page-item active"><a class=" page-link" href="?page={{ i }}">{{ i }}</a></li>
+    
+          {% else %}
+    
+          <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+    
+          {% endif %}
+    
+          {% endfor %}
+    
+          {% if videos.has_next %}
+    
+          <li class="page-item"><a href="?page={{ videos.next_page_number }}" class="page-link">&raquo;</a></li>
+    
+          {% else %}
+    
+          <li class="page-item disabled"><a href="#" class="page-link">&raquo;</a></li>
+    
+          {% endif %}
+        </ul>
+        {% endif %}
 </section>
+
+<script>
+    window.addEventListener('load', function(evt) {
+
+        let cards = document.getElementsByClassName('video-card');
+        let videos = document.getElementsByTagName('video');
+        let biggest = 0;
+        let count = 0;
+
+        
+        
+        for(let x of videos) {
+            x.addEventListener('loadedmetadata', function(evt) {
+            count++;
+            if (biggest < evt.target.offsetHeight) {
+                biggest = evt.target.offsetHeight;
+            }
+            if (count == videos.length) {
+                for (let x of videos) {
+                    x.style.height = `${biggest}px`;
+                }
+            }
+        });
+        } 
+       
+        
+        for(let x of cards) {
+            x.addEventListener('mouseover', function(evt) {
+                x.classList.add('video-card-float');
+                
+            });
+            x.addEventListener('mouseout', function(evt) {
+                x.classList.remove('video-card-float');
+                
+            });
+        }
+    });
+</script>
+
 {% endblock %}

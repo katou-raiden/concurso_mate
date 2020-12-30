@@ -1,99 +1,87 @@
 {% extends 'core/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
 {% block content %}
+
 <link rel="stylesheet" href="{% static 'library/css/video_details.css' %}">
-<section id="video-details-section">
-    <div class="container">
-        <h1>{{ video.title }}</h1>
-        <div class="row">
-            <div class="col-lg-8 col-12">
-                <div class="video">
-                    <video class="d-inline-block" id="video" controls title="{{ video.title }}">
-                        <source src="{{ video.video.url }}">
-                        <img src="" alt="">
-                        video no disponible
-                    </video>
-                    <div>
-                        <span class="">
-                            <i class="fas fa-eye"></i>
-                            <span>21</span>
-                        </span>
-                        
-                        <span>
-                            <span class="">
-                                <a href=""><i class="fas fa-thumbs-up"></i></a>
-                                <span>21</span>
-                            </span>
-                            <span class="">
-                                <a href=""><i class="fas fa-thumbs-down"></i></a>
-                                <span>21</span>
-                            </span>
-                        </span>
-                        
-                    </div>
-                    <div class="">
-                            <span><img src="{{ video.user.profile.avatar.url }}" alt=""><a href="">@{{ video.user.username }}</a></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-12">
-                <div class="card" id="playlist">
-                    <div class="card-header">
-                        <h2>Playlist</h2>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-subtitle">{{ video.playlist }}</h4>
-                        <span class="divisor" style="display: inline-block; margin: .5rem 0; width: 90%; height: 2px; background-color: black;"></span>
-                        <div class="d-flex flex-column justify-content-start">
-                            {% for video in videos %}
-                            <div class="playlist-item media">
-                                <img src="" alt="" class="playlist-item-image">
-                                <div class="media-body">
-                                    <h6>El creyente de Bretonia</h6>
-                                    <span><i class="fas fa-eye"></i><span>21</span></span>
-                                    <span>55 min</span>
-                                </div>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+<section id='new-section' class="">
+    <h6 id="video-title">{{ video.title }}</h6>
+    <div id="video-wrapper">
+        <video controls >
+            <source src="{{ video.video.url }}">
+        </video>
+        
+        <div id="video-actions">
+            <a href="#" class="action like"><i class="fas fa-thumbs-up"></i>{{ video.up_votes}}</a>
+            <a href="#" class="action dislike"><i class="fas fa-thumbs-down"></i>{{ video.down_votes }}</a>
+            <a href="#" class="action eye"><i class="fas fa-eye"></i>0</a>
+            <a href="#" class="action flag"><i class="fas fa-flag"></i></a>
         </div>
-        <div id="video-description">
-            {{ video.description }}
+    </div>
+    
+    <div class="mt-5" id="video-content">
+        
 
+        <button class="btn-collapser" data-toggle="collapse" data-target="#video-description">Description</button>
+
+        
+        <article id="video-description" class="collapse">
+                {{ video.description }}
+    
+        </article>
+      
+
+        <div id="author-section">
+            <img src="{{ new.user.profile.avatar.url }}" alt="" class="author-avatar img-thumbnail">
+            <div class="author-content">
+            <h6>Publicado por </h6>
+           <h6 class="text-center">{{ video.user.username }}</h6>
+           <p>{{ video.profile.description }}</p>
+           <div class="social-media text-center">
+               <h6>Puedes Contactarme por:</h6>
+                <a href="#"><i class="fab fa-facebook-square"></i></a>
+                <a href="#"><i class="fab fa-instagram-square"></i></a>
+                <a href="#"><i class="fab fa-twitter-square"></i></a>
+                <a href="#"><i class="fab fa-pinterest-square"></i></a>
+           </div>
+            </div>
+           
+        
         </div>
+
         <div id="comment-section" class="">
-            <div class="media">
-                <div class="mr-3">
-                {% if new.user.profile.avatar.url %}
-                <img src="{{ request.user.profile.avatar.url }}" alt="" class="img-thumbnail">
-                {% else %}
-                <img src="{% static 'img/user.svg' %}" alt="" class="img-thumbnail">
-                {% endif %}
+            <div class="media align-items-stretch">
+                <div>
+                    <div class="mr-3">
+                    {% if new.user.profile.avatar.url %}
+                    <img src="{{ request.user.profile.avatar.url }}" alt="" class="img-thumbnail">
+                    {% else %}
+                    <img src="{% static 'img/user.svg' %}" alt="" class="img-thumbnail">
+                    {% endif %}
+                    </div>
                 </div>
                 
                 
                 <div class="media-body">
-                    <form method="POST" class='d-flex align-items-stretch '>
+                    <form method="POST" class="h-100">
                         {% csrf_token %}
-                        <textarea class="text-area-comment" name="user-comment" class="" id="" cols="" rows="4" placeholder="Escribe tu comentario..."></textarea>
-                        <button class="btn btn-primary ml-2 text-uppercase font-weight-bold rounded" type="submit">submit</button>
+                        {{  form.content | add_class:"text-area-comment" | attr:"name:user-comment" | attr:"rows:4" | attr:"placeholder:Escribe tu comentario..." }}
+                        <!-- <textarea class="text-area-comment" name="user-comment" class="" id="" cols="" rows="4" placeholder="Escribe tu comentario..."></textarea> -->
+                        <button class="btn-submit" type="submit"><i class="fas fa-envelope"></i></button>
                     </form>
                 </div>
             </div>
         </div>
 
         <div id="comments-section" class="my-5">
-            <button class="btn btn-primary font-weight-bolder d-block w-100 text-left py-3" data-toggle="collapse" data-target="#user-comments">Comments - 48</button>
+            <button class="btn-collapser" data-toggle="collapse" data-target="#user-comments">Comments - 48</button>
             <div id="user-comments" class="collapse w-75 mx-auto py-3">
                 {% for comment in comments %}
 
-                <div class="media">
+                <div class="media maincomment">
                     <div class="user-info d-flex align-items-center flex-column">
                         <img src="{{ comment.user.profile.avatar.url }}" alt="" class="img-thumbnail mr-3">
-                        <div  >{{ comment.user.username }}</div>
+                        <div>{{ comment.user.username }}</div>
                         <div class="grades"></div>
                     </div>
                     <div class="media-body">
@@ -101,35 +89,44 @@
                         <p>{{ comment.content }}</p>
                         <div class="user-actions mt-2">
                         <span class="vote">   
-                        <a href="#"><i class="fas fa-arrow-up">{{ comment.upvotes }}</i></a>
-                        <a href="#"><i class="fas fa-arrow-down">{{ comment.downvotes }}</i></a>
+                        <a href="{% url 'votemain' comment.pk %}"><i class="fas fa-arrow-up">{{ comment.upvotes }}</i></a>
+                        <a href="{% url 'downmain' comment.pk %}"><i class="fas fa-arrow-down">{{ comment.downvotes }}</i></a>
                         </span>
                         <span class="others">
-                        <a href="#">Reply</a>
-                        <a href="#">Report</a>
+                        <a class="reply-button" onclick="showCommentBox(event)">Reply</a>
+                        <a class="report-button">Report</a>
                         </span>
                         </div>
 
                         {% for sub_comment in comment.sub_comments.all %}
-                        <div class="media">
+                        <div class="media subcomment">
                             <img src="{{ sub_comment.user.profile.avatar.url }}" alt="" class="img-thumbnail mr-3">
                             <div class="media-body">
                                 <div>Published {{ sub_comment.date_pub }}</div>
                                 <p>{{ sub_comment.content }}</p>
                                 <div class="user-actions">
                                 <span class="vote">
-                                    <a href="#"><i class="fas fa-sort-up">{{ sub_comment.upvotes }}</i></a>
-                                    <a href="#"><i class="fas fa-sort-down">{{ sub_comment.downvotes }}</i></a>
+                                    <a href="{% url 'votesub' sub_comment.pk %}"><i class="fas fa-sort-up">{{ sub_comment.upvotes }}</i></a>
+                                    <a href="{% url 'downsub' sub_comment.pk %}"><i class="fas fa-sort-down">{{ sub_comment.downvotes }}</i></a>
                                 </span>
                                 <span class="others">
-                                    <a href="#">Reply</a>
-                                    <a href="#">Report</a>
+                                    <a class="reply-button" onclick="showCommentBox(event)">Reply</a>
+                                    <a class="report-button">Report</a>
 
                                 </span>
                                 </div>
                             </div>
                         </div>
                         {% endfor %}
+                        <div class="user-subcomment hidden mt-3">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <img class="img-thumbnail" src="{{ request.user.profile.avatar.url }}" alt="">
+                                {{ sub_form.content | add_class:"text-area-subcomment" | attr:"rows:4" | attr:"placeholder:Escriba su respuesta..." }}
+                                <input type="number" class="d-none" value="{{ comment.pk }}" name="main_comment_pk">
+                                <button class="btn rounded-sm btn-primary" type="submit">Responder</button>
+                            </form>
+                        </div>
                     </div>
 
 
@@ -137,9 +134,13 @@
                 {% endfor %}
             </div>
         </div>
-
+        
     </div>
+    
 
 </section>
+<script src="{% static 'news/js/new.js' %}"></script>
+
+
 
 {% endblock %}

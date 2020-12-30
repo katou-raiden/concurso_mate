@@ -1,0 +1,10 @@
+{% extends "main.html" %}
+
+{% block content %}
+  <h1>Temas</h1>
+  <ul>
+      {% for tema in topics %}
+        <a href="#">{{tema.name}}</a>
+      {% endfor %}
+  </ul>
+{% endblock %}

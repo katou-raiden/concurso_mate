@@ -1,100 +1,336 @@
-$cyan : #66FCF1;
-$negroclaro : #1F2833;
-$negrooscuro: #0B0C10;
+
+$primary: #FFB47B;
+$accent: #F78640;
 $gris: #C5C6C7;
 $sm: 556px;
 $md: 768px;
 $lg: 992px;
 $xl: 1200px;
+$xs: 320px;
 
 
-.new{
+@mixin xs {
+    @media (min-width: $xs) {
+        @content;
+    }
+}
+@mixin sm {
+    @media (min-width: $sm) {
+        @content;
+    }
+}
+@mixin md {
+    @media (min-width: $md) {
+        @content;
+    }
+}
+@mixin lg {
+    @media (min-width: $lg) {
+        @content;
+    }
+}
+@mixin xl {
+    @media (min-width: $xl) {
+        @content;
+    }
+}
+
+h1 {
+    font-size: 1.8em;
+    color: $primary;
+    border-bottom: 2px solid $primary;
+    padding-bottom: .6em;
+    margin-bottom: .6em;
+}
+
+.post {
+
+    width: 100%;
+    display: flex;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.123);
+    background-color: white;
+    color: white;
+    padding: 1em;
+    border-radius: 5px;
+    margin-bottom: 1em;
     
-    @media screen and (min-width: $sm) {
-        
-            .new-img-box{
-                flex-basis: 100%;
-                margin-bottom: 1rem;
+    &:not(:first-child) {
+        margin: 1em 0;
+    }
+   
+    .post-img{
+        flex-basis: 25%;
+        margin-right: .6em;
+        img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            object-position: center;
+        }
+       
+       
+    }
+    .post-info {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: stretch;
+        align-items: start;
+       
+
+        .post-header {
+            
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100% !important;
+            h6 {
+                margin: 0;
+                padding: 0;
+                display: inline-block;
+                font-weight: normal;
+                font-size: 1.2em;
+                color: $primary;
+            }
+
+            span {
+                line-height: 1.2em;
+                color: black;
+            }
+        }
+
+        .post-footer {
+            margin-bottom: .4em;
+            color: black;
+            width: 100%;
+            
+        }
+        .user-info {
+            font-weight: 600;
+        }
+        .tags {
+            align-self: flex-end;
+            
+            a {
+                padding: .4em .6em;
+                background-color: $primary;
+                margin-right: .2em;
+                border-radius: 5px;
+                transition: color .3s ease-out, background-color .3s ease-out;
+                color: white;
+                
+                &:hover {
+                    background-color: $accent;
+                    color: white;
+                    
+                }
                 
             }
-            .media-body{
-                text-align: center;
+            span:not(:first-child) {
+                margin: 0 .2em;
             }
-   
+        }
+    }
+}   
+#filters {
+    @include md {
+        margin-top: 4.6em;
+    }
+}
+#filters-wrapper {
+
+    background-color: white;
+    margin: 0 auto;
+    margin-bottom: 1em;
+    padding: 1em 2em;
+    width: 100%;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.082);
+    border-radius: 5px;
+    
+    #filters-form {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        
+        
     }
 
-    @media screen and (min-width: $md){
+    button[type="submit"]{
+        background-color: $primary;
+        color: white;
+        width: 100%;
+        padding: 1em;
+        width: 100%;
+        border: 3px solid white;
+        transition: background-color .4s ease;
+        border-radius: 5px;
+        &:hover {
+            background-color: white;
+            color: orange;
+        }
+    }
 
-        
-            
-            .new-img-box{
-                flex-basis: auto;
-                margin-right: 1rem;
-                margin-bottom: 0;
-                
+  
+    
+    
+      /**
+      * Make the field a flex-container, reverse the order so label is on top.
+      */
+       
+      .field {
+        box-sizing: border-box;
+        display: flex;
+        flex-flow: column-reverse;
+        margin-bottom: 1em;
+        width: 50%;
+        font-size: .8em;
+
+        @include md {
+            width: 100%;
+        }
+
+        &:not(:first-child):not(:last-child){
+            padding: 0 .6em;
+
+            @include md {
+                padding: 0;
             }
-            .media-body{
-                text-align: initial;
-            }
+        }
+        &:first-child {
+            padding-right: .6em;
+        }
+        &:last-child {
+            padding-left: .6em;
+        }
+
        
         
-    }
-    .new-img{
-        width: 120px !important;
-        height: 120px !important;
-        object-fit: cover !important;
-        object-position: center !important;
-        border-color: black !important;
+      /**
+      * Add a transition to the label and input.
+      * I'm not even sure that touch-action: manipulation works on
+      * inputs, but hey, it's new and cool and could remove the 
+      * pesky delay.
+      */
+      label, input {
+        transition: all 0.2s;
+        touch-action: manipulation;
         
-    }
-    background-color: white;
-    box-shadow: 4px 4px 14px  black;
-    border-radius: 6px;
-    margin: 2rem 0;
-    padding: 1rem;
-    box-shadow: inset 2px 2px 3px 1px dodgerblue;
-}
-
-#filters{
-
-    font-weight: bolder;
-    background-color: white;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border-top: royalblue 4px solid;
-    color: royalblue;
-    width: fit-content;
-    margin: 0 auto;
-    padding: 0 1rem;
-    input{
-        font-size: 1.2rem;
-    }
-
-    label{
-        font-size: 1.4rem;
-        font-weight: normal !important;
+      }
+      
+      input {
+        background-color: white;
         color: black;
-    }
-    h1{
-        margin: 0;
+        font-size: 1.5em;
+        border: 0;
+        border-bottom: 3px solid white;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        font-family: inherit;
+        -webkit-appearance: none;
+        border-radius: 0;
+        border-bottom: 2px solid $primary;
+        padding: 0;
+        cursor: text;
+        
+      }
+      
+      input:focus {
+        outline: 0;
+        border-bottom: 2px solid #F78640;
+      }
+      
+      label {
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
         color: black;
-        padding: 1rem;
-        background-color: rgb(136, 135, 135);
+        font-size: .8em !important;
         
         
+      }
+      /**
+      * Translate down and scale the label up to cover the placeholder,
+      * when following an input (with placeholder-shown support).
+      * Also make sure the label is only on one row, at max 2/3rds of the
+      * field—to make sure it scales properly and doesn't wrap.
+      */
+      input:placeholder-shown + label, textarea:placeholder-shown + label {
+        cursor: text;
+        
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transform-origin: left bottom;
+        transform: translate(0, 2.125rem) scale(1.5);
+      }
+      /**
+      * By default, the placeholder should be transparent. Also, it should 
+      * inherit the transition.
+      */
+      ::-webkit-input-placeholder {
+        opacity: 0;
+        transition: inherit;
+      }
+      /**
+      * Show the placeholder when the input is focused.
+      */
+      input:focus::-webkit-input-placeholder {
+        opacity: 1;
+      }
+      /**
+      * When the element is focused, remove the label transform.
+      * Also, do this when the placeholder is _not_ shown, i.e. when 
+      * there's something in the input at all.
+      */
+      input:not(:placeholder-shown) + label,
+      input:focus + label {
+        transform: translate(0, 0) scale(1);
+        cursor: pointer;
+        display: flex;
+        justify-content: start;
+        width: fit-content !important;
+        background-color: $accent;
+        color: white;
+        font-weight: bolder;
+        border-radius: 5px;
+        padding: 0 .4em;
+
+      }
+
+
+
+    }
+    .textfield {
+        
+        margin-bottom: 1em;
+        label {
+            color: $primary;
+            text-transform: uppercase;
+            font-size: 1.2em;
+        }
+        textarea {
+            height: 100px;
+            resize: none;
+            
+        }    
     }
 }
 
-#Fondo{
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    transform: translate(-10%);
-    z-index: -1;
-
+#filters-header {
+    background-color: white !important;
+    color: $primary !important;
+    border-bottom: solid 2px $primary;
+    font-weight: normal !important;
+    padding: .4em;
+    font-size: 1.8em !important;
 }
 
 
 
+.page-item .page-link {
+    color: $primary;
+}
+
+.page-item.active .page-link {
+    background-color: $accent !important;
+    border-color: $accent;
+}

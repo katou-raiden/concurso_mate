@@ -1,11 +1,31 @@
+$primary: #FFB47B;
+$accent: #F78640;
+
+
+html {
+    font-family: 'Open Sans Regular';
+}
 body{
 
     min-height: 600px;
     
-
-    #gadgets-section{
+    #post-gadget {
+        background-color: white;
+        box-shadow: 2px 2px rgba(0, 0, 0, 0.096);
+    }
+    #gadgets-section {
+        @include lg {
+            margin-top: 4.6em;
+        }
+    
+        h5 {
+            font-size: 1.8em;
+            color: $primary;
+        }
         ul{
-            li{
+            li{ 
+                border: $primary 2px solid;
+                background-color: white;
                 img{
                     width: 40px;
                     height: 40px;

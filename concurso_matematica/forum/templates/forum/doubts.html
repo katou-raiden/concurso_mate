@@ -1,125 +1,130 @@
-{% extends 'core/base.html' %}
+{% extends "core/base.html" %}
 {% load static %}
 {% load widget_tweaks %}
+
 {% block content %}
-<link rel="stylesheet" href="{% static 'forum/css/doubts.css' %}">
-<section id="discussion-section" class="w-100">
-    <div class="w-100">
+<link rel="stylesheet" href="{% static 'news/css/main.css' %}">
+<section id="posts-section" class="">
 
-        <div id="heading" class="d-flex mb-4 justify-content-between">
-        <h1>Ultimas Publicaciones</h1>
-        <a href="#" class="btn btn-primary">Preguntar</a>
-        
-        </div>
+  <div class="row">
+    <!-- Columna de filtros de la pagina -->
+    <div id="filters" class="col-12 col-md-4">
+      <div class="" id="filters-wrapper">
+        <h2 class="text-center my-3 text-white font-weight-bolder" id="filters-header">Que Buscas?</h2>
 
-        <div id="clickable-filters" class="d-flex justify-content-center mb-4">
-                <a href="" class="rounded btn btn-primary w-25">Hot</a>
-                <a href="" class="w-25 btn btn-primary">Month</a>
-                <a href="" class="w-25 btn btn-primary">Day</a>
-            
-        </div>
-        <div class="row ">
-            <div class="col-lg-4 col-12 my-4">
-              <div id="filters" class=" px-4">
-                  <h4 class="text-center">Filtros</h4>
-                  <div class="">
-                      <form method="get">
-                          <h4 class="">Titulo</h4>
-                          {{ filter.form.title | add_class:"form-control" }}
-                          <h4>Usuario</h4>
-                          {{ filter.form.user__username | add_class:"form-control" }}
-                          <h4>Etiquetas</h4>
-                          {{ filter.form.tags | add_class:"form-control" }}
-                          <button type="submit" class="btn btn-primary mt-3 w-100 d-block"><i class="fas fa-search"></i></button>
-                      </form>
-                  </div>
-              </div>
-            </div>
-            <div class="col-lg col-12 my-4">
-              <div id="posts" class="p-3 ">
-  
-                  {% for post in posts %}
-                  <div class="post media {% if forloop.first %} mb-5 {% else %} my-5 {% endif %} py-3">
-  
-                      <div class="" style="">
-                        <img class="post-img img-thumbnail" src="{{ post.image.url }}" alt="">
-                      </div>
-                      <div class="" style="">
-                  
-                        <div class="media-body">
-                          <i class="fas fa-user"></i>
-                          <a href="#">{{ post.user.username }}</a>
-                          <span>5 minutes read</span>
-                        </div>
-                  
-                        <a href="{% url 'forum_detail' post.id %}" class="link-primary text-decoration-none">
-                          <h6 class="d-inline-block h5">{{ post.title }}</h6></a>
-                        <div class="lead">
-                         
-                          <span>Published</span> <span>{{ post.date_created }}</span>
-                          <div class="post-tags">
-                  
-                            {% for tag in post.tag.all %}
-                  
-                            <span class="badge badge-pill badge-primary">
-                              {{ tag.name }}
-                            </span>
-                  
-                            {% endfor %}
-                  
-                          </div>
-                        </div>
-                      </div>
-                    
-                  </div>
-                  {% endfor %}
-  
-              </div>
-            </div>
+        <form id="filters-form">
 
-        </div>
+          <div class="field">
+            {{ filter.form.title|attr:"placeholder=Matriz_Asociada" }}
+            {{ filter.form.title.label_tag }}
+          </div>
 
 
+          <div class="field">
+            {{ filter.form.user|attr:"placeholder=Juan_Perez" }}
+            {{ filter.form.user.label_tag }}
 
-{% if posts.has_other_pages %}
+          </div>
 
-<ul class="pagination justify-content-center mt-3">
 
-{% if posts.has_previous %}
+          <div class="textfield">
+            <label for="{{ filter.form.tags.id_for_label }}" class="">Etiquetas</label>
+            {{ filter.form.tags|add_class:"form-control"|attr:"placeholder=Albebra,Calculo" }}
 
-<li class=page-item><a class="page-link" href="?page={{ posts.previous_page_number }}">&laquo;</a></li>
+          </div>
 
-{% else %}
+          <button class="" type="submit"><i class="fas fa-search"></i></button>
 
-<li class="disabled page-item"><a class="page-link">&laquo;</a></li>
-
-{% endif %}
-
-{% for i in posts.paginator.page_range %}
-
-{% if posts.number == i %}
-
-<li class="page-item active"><a class=" page-link" href="?page={{ i }}">{{ i }}</a></li>
-
-{% else %}
-
-<li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
-
-{% endif %}
-
-{% endfor %}
-
-{% if posts.has_next %}
-
-<li class="page-item"><a href="?page={{ posts.next_page_number }}" class="page-link">&raquo;</a></li>
-
-{% else %}
-
-<li class="page-item disabled"><a href="#" class="page-link">&raquo;</a></li>
-
-{% endif %}
-</ul>
-{% endif %}
+        </form>
+      </div>
     </div>
+    <!-- Columna del contenido -->
+    <div class="col-12 col-md mb-3">
+      <!-- Titulo de la pagina de contenido -->
+      <h1 class="">Lista de Posts</h1>
+      
+      {% for post in posts.object_list %}
+
+    <div class="post">
+
+      <div class="post-img">
+        <img class="" src="{{ post.image.url }}" alt="">
+      </div>
+
+      <div class="post-info">
+        <div class="post-header">
+          <!-- Titulo del post -->
+          <h6 class="">{{ post.title }}</h6>
+          <!-- Duracion del video -->
+          <span>5 min</span>
+        </div>
+        <div class="post-footer">
+          <!-- Autor del post -->
+          por<a class='user-info' href="#">@{{ post.user.username }}</a>
+          <!-- Fecha de publicacion -->
+          <span>el 21/04/2019</span>
+        </div>
+        <div class="tags">
+          <!-- Etiquetas -->
+          {% for tag in post.tag.all %}
+          <a class="tag" href="{% url 'tag_click' tag.name %}">{{ tag.name }}</a>
+          {% endfor %}
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+    {% endfor %}
+    </div>
+
+
+    
+
+    <!-- Paginador del contenido -->
+    {% if posts.has_other_pages %}
+
+    <ul class="pagination justify-content-center">
+
+      {% if posts.has_previous %}
+
+      <li class=page-item><a class="page-link" href="?page={{ posts.previous_page_number }}">&laquo;</a></li>
+
+      {% else %}
+
+      <li class="disabled page-item"><a class="page-link">&laquo;</a></li>
+
+      {% endif %}
+
+      {% for i in posts.paginator.page_range %}
+
+      {% if posts.number == i %}
+
+      <li class="page-item active"><a class=" page-link" href="?page={{ i }}">{{ i }}</a></li>
+
+      {% else %}
+
+      <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+
+      {% endif %}
+
+      {% endfor %}
+
+      {% if posts.has_next %}
+
+      <li class="page-item"><a href="?page={{ posts.next_page_number }}" class="page-link">&raquo;</a></li>
+
+      {% else %}
+
+      <li class="page-item disabled"><a href="#" class="page-link">&raquo;</a></li>
+
+      {% endif %}
+    </ul>
+    {% endif %}
+
+  </div>
 </section>
+
+
 {% endblock %}

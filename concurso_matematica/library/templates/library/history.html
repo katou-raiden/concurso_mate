@@ -1,101 +1,131 @@
-{% extends 'core/base.html' %}
+{% extends "core/base.html" %}
 {% load static %}
-{% load app_filters %}
 {% load widget_tweaks %}
+
 {% block content %}
-<link rel="stylesheet" href="{% static 'library/css/history.css' %}">
-<section id="history-section">
-    <div class="filters mx-auto">
-        <h2 class="text-center mb-4">What are you looking up</h2>
-        <form action="" method="GET" class="form-inline justify-content-center">
-            <div class="mr-2 mb-2">
-            <label for="{{ filters.form.title.id_for_label }}" class="mb-2">Title</label>
-            {{ filters.form.title|add_class:"form-control" }}
-            </div>
-            <div class="ml-2 mb-2">
-                <label for="{{ filters.form.title.id_for_label }}" class="mb-2">Content</label>
-                {{ filters.form.content|add_class:"form-control" }}
-                <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
-            </div>
+<link rel="stylesheet" href="{% static 'news/css/main.css' %}">
+<section id="posts-section" class="">
+
+  <div class="row">
+    <!-- Columna de filtros de la pagina -->
+    <div id="filters" class="col-12 col-md-4">
+      <div class="" id="filters-wrapper">
+        <h2 class="text-center my-3 text-white font-weight-bolder" id="filters-header">Que Buscas?</h2>
+
+        <form id="filters-form">
+
+          <div class="field">
+            {{ filter.form.title|attr:"placeholder=Matriz_Asociada" }}
+            <label for="{{ filter.form.title.id_for_label }}" class="">Titulo</label>
+
+          </div>
+
+
+          <div class="field">
+            {{ filter.form.username|attr:"placeholder=Juan_Perez" }}
+            <label for="{{ filter.form.username.id_for_label }}" class="">Usuario</label>
+
+          </div>
+
+
+          <div class="textfield">
+            <label for="{{ filter.form.tags.id_for_label }}" class="">Etiquetas</label>
+            {{ filter.form.tags|add_class:"form-control"|attr:"placeholder=Albebra,Calculo" }}
+
+          </div>
+
+          <button class="" type="submit"><i class="fas fa-search"></i></button>
+
         </form>
+      </div>
     </div>
-    <div class="container">
+    <!-- Columna del contenido -->
+    <div class="col-12 col-md mb-3">
+      <!-- Titulo de la pagina de contenido -->
+      <h1 class="">Lista de Posts</h1>
+      
+      {% for post in posts.object_list %}
 
-        <div class="history-articles  mx-auto">
-            {% for post in h_posts.object_list %}
-            <div class="h-post media align-items-stretch my-5">
+    <div class="post">
 
-                <img class="history-cover img-thumbnail" src="{% if post.image %}{{ post.image.url }}{% endif %}"
-                    alt="">
-                <div class="media-body ml-4 d-flex flex-column justify-content-between">
+      <div class="post-img">
+        <img class="" src="{{ post.image.url }}" alt="">
+      </div>
 
-                    <h6 class="post-title h3 mt-2">{{ post.title }}</h6>
-                    <div class="mb-2">
-                        <img class="user-avatar"
-                            src="{% if post.user.profile.avatar %}{{ post.user.profile.avatar.url }}{% endif %}" alt="">
-                        <span class="user-name d-inline-block mr-2">{{ post.user.username }}</span>
-                        <span class="mr-2 d-inline-block">5 minutes read</span>
-                        <span class="ml-2 d-inline-block">Written {{ post.date_pub }}</span>
-                    </div>
-                </div>
-
-
-            </div>
-            {% endfor %}
-
+      <div class="post-info">
+        <div class="post-header">
+          <!-- Titulo del post -->
+          <h6 class="">{{ post.title }}</h6>
+          <!-- Duracion del video -->
+          <span>5 min</span>
+        </div>
+        <div class="post-footer">
+          <!-- Autor del post -->
+          por<a class='user-info' href="#">@{{ post.user.username }}</a>
+          <!-- Fecha de publicacion -->
+          <span>el 21/04/2019</span>
+        </div>
+        <div class="tags">
+          <!-- Etiquetas -->
+          {% for tag in post.tag.all %}
+          <a class="tag" href="{% url 'tag_click' tag.name %}">{{ tag.name }}</a>
+          {% endfor %}
 
         </div>
-
-        <div class="paginator">
-            {% if h_posts.has_other_pages %}
-
-            <ul class="pagination justify-content-center">
-
-                {% if h_posts.has_previous %}
-
-                <li class=page-item><a class="page-link" href="?page={{ h_posts.previous_page_number }}">&laquo;</a></li>
-
-                {% else %}
-
-                <li class="disabled page-item"><a class="page-link">&laquo;</a></li>
-
-                {% endif %}
-
-                {% for i in h_posts.paginator.page_range %}
-
-                {% if h_posts.number == i %}
-
-                <li class="page-item active"><a class=" page-link" href="?page={{ i }}">{{ i }}</a></li>
-
-                {% else %}
-
-                <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
-
-                {% endif %}
-
-                {% endfor %}
-
-                {% if h_posts.has_next %}
-
-                <li class="page-item"><a href="?page={{ h_posts.next_page_number }}" class="page-link">&raquo;</a></li>
-
-                {% else %}
-
-                <li class="page-item disabled"><a href="#" class="page-link">&raquo;</a></li>
-
-                {% endif %}
-            </ul>
-            {% endif %}
-
-        </div>
-
+      </div>
     </div>
 
-  
+  </div>
 
-
+    {% endfor %}
     </div>
 
 
+    
+
+    <!-- Paginador del contenido -->
+    {% if posts.has_other_pages %}
+
+    <ul class="pagination justify-content-center">
+
+      {% if posts.has_previous %}
+
+      <li class=page-item><a class="page-link" href="?page={{ posts.previous_page_number }}">&laquo;</a></li>
+
+      {% else %}
+
+      <li class="disabled page-item"><a class="page-link">&laquo;</a></li>
+
+      {% endif %}
+
+      {% for i in posts.paginator.page_range %}
+
+      {% if posts.number == i %}
+
+      <li class="page-item active"><a class=" page-link" href="?page={{ i }}">{{ i }}</a></li>
+
+      {% else %}
+
+      <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+
+      {% endif %}
+
+      {% endfor %}
+
+      {% if posts.has_next %}
+
+      <li class="page-item"><a href="?page={{ posts.next_page_number }}" class="page-link">&raquo;</a></li>
+
+      {% else %}
+
+      <li class="page-item disabled"><a href="#" class="page-link">&raquo;</a></li>
+
+      {% endif %}
+    </ul>
+    {% endif %}
+
+  </div>
 </section>
+
+
 {% endblock %}

@@ -1,88 +1,224 @@
-.card-img-top{
-    height: 18vh;
-    width: 100%;
-    display: inline-block;
-    object-fit: cover;
-    object-position: center;
+$primary: #FFB47B;
+$accent: #F78640;
+
+$xs: 320px;
+$two-videos: 550px;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+
+
+@mixin xs {
+    @media (min-width: #{$screen-xs-min}) {
+        @content;
+    }
 }
-.play-layer{
-    height: 18vh;
-    width: 100%;
-    display: block;
-    position: absolute;
-    z-index: 2;
-    transition: background-color .3s ease-out;
+
+@mixin two-videos {
+    @media (min-width: #{$two-videos}) {
+        @content;
+    }
+}
+
+
+@mixin xl {
+    @media (min-width: #{$xl}) {
+        @content;
+    }
+}
+
+@mixin sm {
+    @media (min-width: #{$sm}) {
+        @content;
+    }
+}
+
+@mixin md {
+    @media (min-width: #{$md}) {
+        @content;
+    }
+}
+
+@mixin lg {
+    @media (min-width: #{$lg}) {
+        @content
+    };
+}
+
+@mixin xl {
+    @media (min-width: #{$xl}) {
+        @content;
+    }
+}
+
+h1 {
+    color: $primary;
+    font-size: 1.8em;
+    
+    
+}
+
+#video-list {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
-    &:hover{
-        background-color: rgba(0, 0, 0, 0.548);
-        .layer-circle{
-            opacity: 1;
-            .layer-play{
+    width: 90%;
+    margin: 0 auto;
+
+    .video-card {
+        background-color: white;
+        transition: transform .5s ease;
+        position: relative;
+        margin: calc(1em + 20px) 0;
+
+       
+
+        video {
+            width: 100%;
+            object-position: center;
+            object-fit: cover;
+            
+            
+            
+            box-shadow: 0 16px 8px rgba(0, 0, 0, 0.162);
+        }
+
+        
+
+        .video-card-content {
+            padding: .8em;
+            border: solid 1px $primary;
+            border-top: none;
+            border-bottom-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+
+            a.video-card-title {
                 
+                display: inline-block;
+                color: $primary;
+                font-size: 1.2em;
+                line-height: 1em;
                 
+            }
+
+        }
+        
+        i {
+            color: $primary;
+
+        }
+        flex-basis: 100%;
+        
+
+        .video-card-tags {
+            margin-top: .6em;
+            .tag {
+                background-color: $primary;
+                color: white;
+                padding: .2em .4em;
+                font-size: .8em;
+                margin: .1em;
+                border-radius: 3px;
+                transition: background-color .3s ease-out;
+
+                &:hover {
+                    background-color: $accent;
+                }
+            }
+        }
+
+        
+        @include two-videos {
+            flex-basis: 45%;
+        }
+        @include md {
+            flex-basis: 30%;
+        }
+        
+    }
+    .video-card-float {
+        
+        transform: translate(0, -40px);
+    }
+}
+
+
+
+
+      
+
+    
+
+
+#filters {
+    box-sizing: border-box;
+    display: flex;
+    margin: 0 auto;
+    margin-bottom: 1em;
+    width: 100%;
+    font-size: .8em;
+    background-color: white;
+    flex-wrap: wrap;
+    padding: 1.8em;
+
+    @include md {
+        width: 75%;
+    }
+
+    h2#filters-title {
+        
+        color: $primary;
+        font-size: 1.6em;
+        flex-basis: 100%;
+        text-align: center;
+        border-bottom: solid 2px $primary;
+        padding-bottom: 1em;
+
+    }
+    
+    button[type="submit"] {
+        padding: 1em;
+        background-color: $primary;
+        transition: background-color .3s ease;
+        outline: none;
+        border: none;
+        color: white;
+        width: 100%;
+        margin-top: 1.8em;
+        
+        &:hover {
+            background-color: $accent;
+        }
+    }
+
+    .field {
+        display: flex;
+        flex-direction: column-reverse;
+        width: 100%;
+        padding: 0 1em;
+
+        @include md {
+            width: 50%;
+        }
+
+        
+        label {
+            text-transform: capitalize;
+            color: $primary;
+            font-weight: 1.2em;
+        }
+        input {
+            border: none;
+            outline: none;
+            border-bottom-width: 3px;
+            border-bottom-color: $primary;
+            border-bottom-style: solid;
+
+            &:focus {
+                border-bottom-style: $accent;
             }
         }
     }
-    .layer-circle {
-        transition: opacity .4s ease;
-        transition-delay: .2s;
-        opacity: 0;
-        height: calc(18vh*60/100);
-        width: calc(18vh*60/100);;
-        background-color: rgba(128, 128, 128, 0.575);
-        overflow: visible;
-        border-radius: 50%;
-        
-        .layer-play{
-            transition: border-left-color .3s ease;
-            transition-delay: .2s;
-            border-top: 34px solid transparent;
-            border-bottom: 34px solid transparent;
-            border-left: 34px solid rgba(255, 255, 255, 0.589);
-            border-top-left-radius: 8px;
-            border-bottom-left-radius: 8px;
-            position: absolute;
-            top: 50%;
-            left: 52%;
-            transform: translate(-50%, -50%);
-            
-
-        }
-    }
-
-}
-.user-avatar{
-    box-sizing:content-box;
-    object-fit: cover;
-    object-position: center;
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    display: inline-block;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    border: royalblue 3px;
-    border-style: dotted;
-    border-right-color: transparent;
-    border-left-color: transparent;
-}
-
-.filters{
-    *{
-        box-sizing: border-box;
-    }
-    input[type="text"]{
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-    }
-    button{
-        border-radius: 0;
-        border-top-right-radius: 8px;
-        border-bottom-right-radius: 8px;
-    }
-}
-.video-list{
-    background-color: rgba(255, 255, 255, 0.63);
 }

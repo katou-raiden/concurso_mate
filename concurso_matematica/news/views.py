@@ -70,7 +70,7 @@ def downvote_sub(request, pk):
 def list_news_view(request):
     news = Notice.objects.all()
     f = NoticeFilter(request.GET, queryset=news)
-    paginator = Paginator(f.queryset, 6)
+    paginator = Paginator(f.qs, 8)
     page = paginator.get_page(request.GET.get('page',1))
 
 

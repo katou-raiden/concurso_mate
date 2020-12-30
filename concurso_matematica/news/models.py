@@ -5,7 +5,7 @@ from core.models import Tag
 # Create your models here.
 
 class Notice(models.Model):
-    tag = models.ManyToManyField(Tag, null=True, blank=True, related_name='Notice')
+    tag = models.ManyToManyField(Tag, blank=True, related_name='Notice')
     title = models.CharField(max_length=30, default="")
     content = models.TextField(null=True, blank=True, default="")
     date_created = models.DateTimeField(auto_now_add=True)

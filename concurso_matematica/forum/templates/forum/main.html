@@ -9,7 +9,7 @@
       <div id="forum-sections" class="mx-auto row py-4">
 
         <div id="discussion-section" class="cforum-section col-6 border-right border-primary">
-          <a href="{% url 'doubts' %}">
+          <a href="{% url 'section' 'doubts' %}">
             <figure class="figure">
               <img src="{% static 'forum/images/discussion.svg' %}" class="figure-img img-fluid" alt="">
               <figcaption class="figure-caption text-center h2">Dudas</figcaption>
@@ -17,7 +17,7 @@
           </a>        
         </div>
         <div id="help-and-support-section" class="cforum-section col-6 border-left border-primary">
-          <a href="">
+          <a href="{% url 'section' 'support' %}">
             <figure class="figure">
               <img src="{% static 'forum/images/support.svg' %}" class="figure-img img-fluid" alt="">
               <figcaption class="figure-caption text-center h2">Help & Support</figcaption>
@@ -25,7 +25,7 @@
           </a>
         </div>
         <div id="contest-section" class="w-100 cforum-section border-top border-primary col">
-          <a href="">
+          <a href="{% url 'section' 'contests' %}">
             <figure class="figure">
               <img src="{% static 'forum/images/cup.svg' %}" class="figure-img img-fluid" alt="">
               <figcaption class="figure-caption text-center h2">Concursos</figcaption>
@@ -34,7 +34,6 @@
         </div>
   
       </div>
-
 
   </section>
 

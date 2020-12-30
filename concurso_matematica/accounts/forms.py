@@ -14,7 +14,13 @@ class UserForm(forms.ModelForm):
         ]
         model = User
 
-   
+    def __init__(self, *args, **kwargs):
+        super(UserForm, self).__init__(*args, **kwargs)
+        for key, field in self.fields.items():
+            if isinstance(field, forms.CharField):
+                field.widget = forms.TextInput(attrs={'class': 'form-control'})
+            elif not isinstance(field, forms.ImageField):
+                field.attrs.update({'class': 'form-control'})
 
 class StudentForm(forms.ModelForm):
 
@@ -22,7 +28,13 @@ class StudentForm(forms.ModelForm):
         fields = ['pui', 'grade']
         model = Student
     
-    
+    def __init__(self, *args, **kwargs):
+        super(StudentForm, self).__init__(*args, **kwargs)
+        for key, field in self.fields.items():
+            if isinstance(field, forms.CharField):
+                field.widget = forms.TextInput(attrs={'class': 'form-control'})
+            elif not isinstance(field, forms.ImageField):
+                field.attrs.update({'class': 'form-control'})
 
 class ProfessorForm(forms.ModelForm):
 
@@ -32,7 +44,14 @@ class ProfessorForm(forms.ModelForm):
         widgets = {
             'institute' : forms.TextInput,
         }
-   
+    def __init__(self, *args, **kwargs):
+        super(ProfessorForm, self).__init__(*args, **kwargs)
+        for key, field in self.fields.items():
+            if isinstance(field, forms.CharField):
+                field.widget = forms.TextInput(attrs={'class': 'form-control'})
+            elif not isinstance(field, forms.ImageField):
+                field.attrs.update({'class': 'form-control'})
+
 class ProfileForm(forms.ModelForm):
     
     class Meta:
@@ -41,3 +60,11 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         
 
+    def __init__(self, *args, **kwargs):
+        super(ProfileForm, self).__init__(*args, **kwargs)
+        for key, field in self.fields.items():
+            if isinstance(field, forms.CharField):
+                field.widget = forms.TextInput(attrs={'class': 'form-control'})
+            elif not isinstance(field, forms.ImageField):
+                field.attrs.update({'class': 'form-control'})
+            
