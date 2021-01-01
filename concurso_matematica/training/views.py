@@ -30,11 +30,13 @@ def exercise_detail_view(request,pk):
         s.name = exercise.name
         s.user = request.user
         s.save()
+        exercise.times_solved += 1
+        exercise.save()
         # Crear la Succes View Como mejor estimes, eso lo veo mas como un tema de Frontend no se si redireccionar
         # para la lista de ejercicios o para otro lugar tu decide
         return HttpResponse('Todo Bien')
     else:
-        return render(request, 'training/',context=context)
+        return render(request, 'training/exercise.html',context=context)
 
     
     
