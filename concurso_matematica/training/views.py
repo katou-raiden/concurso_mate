@@ -1,7 +1,8 @@
 from django.http.response import HttpResponse
+from django.forms import formset_factory
 from django.shortcuts import redirect, render, get_object_or_404
 from .models import Exercise
-from .forms import Completed_ExerciseForm
+from .forms import Completed_ExerciseForm, ExerciseForm, SugestionForm
 
 # Create your views here.
 
@@ -39,8 +40,32 @@ def exercise_detail_view(request,pk):
         return render(request, 'training/exercise.html',context=context)
 
     
-    
+def exercise_post_view(request):
+    ex_form = ExerciseForm()
 
+    Sugs_formset = formset_factory(SugestionForm, extra=4)
+
+    sugx_formset = Sugs_formset()
+
+    context = {'ex':ex_form, 'sugs' : sugx_formset}
+
+    if request.method == 'POST':
+        ex_form = ExerciseForm(request.POST)
+        sugx_formset = Sugs_formset(request.POST)
+
+        if ex_form.is_valid() and sugx_formset.is_valid():
+            ex = ex_form.save()
+
+            for form in sugx_formset:
+                s = form.save(commit = False)
+                s.exercise = ex
+                s.save()
+        
+        return HttpResponse('Todo Bien')
+    
+    else:
+        
+        return render(request, 'training/ex_post.html', context=context)
 
     
 
