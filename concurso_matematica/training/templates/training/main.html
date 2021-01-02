@@ -1,17 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Training</title>
-</head>
-<body>
-    <h1>Niveles</h1>
-    <ul>
-        <a href="#">Introductorio</a>
-        <a href="#">Intermedio</a>
-        <a href="#">Avanzado</a>
-        <a href="#">Experto</a>
-    </ul>
-</body>
-</html>
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'training/css/main.css' %}">
+<section id="level-section">
+    <div class="level-wrapper">
+        <a href="" class="level-card">
+            <img src="{% static '' %}" alt="">
+            <h4 class="level-card-title">Introductorio</h4>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut nulla, eius quam animi velit necessitatibus? Deleniti, nemo sint vel doloribus rem temporibus, eius fugiat nisi eaque illo numquam odio eos!</p>
+        </a>
+    </div>
+    <div class="level-wrapper">
+        <a href="" class="level-card">
+            <img src="{% static '' %}" alt="">
+            <h4 class="level-card-title">Basico</h4>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut nulla, eius quam animi velit necessitatibus? Deleniti, nemo sint vel doloribus rem temporibus, eius fugiat nisi eaque illo numquam odio eos!</p>
+        </a>
+    </div>
+    <div class="level-wrapper">
+        <a href="" class="level-card">
+            <img src="{% static '' %}" alt="">
+            <h4 class="level-card-title">Intermedio</h4>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut nulla, eius quam animi velit necessitatibus? Deleniti, nemo sint vel doloribus rem temporibus, eius fugiat nisi eaque illo numquam odio eos!</p>
+        </a>
+    </div>
+    <div class="level-wrapper">
+        <a href="" class="level-card">
+            <img src="{% static '' %}" alt="">
+            <h4 class="level-card-title">Avanzado</h4>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut nulla, eius quam animi velit necessitatibus? Deleniti, nemo sint vel doloribus rem temporibus, eius fugiat nisi eaque illo numquam odio eos!</p>
+        </a>
+    </div>
+</section>
+{% endblock %}

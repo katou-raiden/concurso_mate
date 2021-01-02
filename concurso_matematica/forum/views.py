@@ -124,33 +124,23 @@ def my_posts_edit_view(request, id):
 #Esta es la view general de las secciones
 def section_view(request,section):
     posts = Post.objects.all()
-    if section == 'doubts':
-        posts = Post.objects.filter(section = 'doubts')
+    sections = ('doubts', 'support', 'contests')
+
+    if section in sections:
+        #Aqui podrias incluir logica para definir contextos en funcion de la seccion que sea
+        
+        posts = Post.objects.filter(section=section)
         form = PostFilter(request.GET, queryset=posts)
         paginator = Paginator(form.qs, 7)
         page = paginator.get_page(request.GET.get('page', 1))
+        
         context = {
         'filter': form, 
         'posts': page,
-        }
+            }
+
         return render(request, 'forum/doubts.html', context=context)
-    elif section == 'support':
-        posts = Post.objects.filter(section = 'support')
-        form = PostFilter(request.GET, queryset=posts)
-        paginator = Paginator(form.qs, 7)
-        page = paginator.get_page(request.GET.get('page', 1))
-        context = {
-        'filter': form, 
-        'posts': page,
-        }
-        return render(request, 'forum/doubts.html', context=context)
-    elif section == 'contests':
-        posts = Post.objects.filter(section = 'doubts')
-        form = PostFilter(request.GET, queryset=posts)
-        paginator = Paginator(form.qs, 7)
-        page = paginator.get_page(request.GET.get('page', 1))
-        context = {
-        'filter': form, 
-        'posts': page,
-        }
-        return render(request, 'forum/doubts.html', context=context)
+
+    #Ahora no me acuerdo del nombre de la excepcion codigo 404
+    raise Exception('Seccion no encontrada')
+    

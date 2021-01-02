@@ -1,4 +1,6 @@
 {% load static %}
+{% url 'training' as training %}
+{% url 'video_details' as video_details %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,18 +30,19 @@
     
     <div class="container-fluid py-5" id="site-container">
         <div class="row">
-            <div id="site-content" class="col-12 col-lg-9">
+            <div id="site-content" class="col-12 col-lg no-gutters">
    
                 {% block content %}
                 {% endblock %}
       
             </div>
-            <div class="col-12 col-lg-3" id="gadgets-section">
-                <div class="card p-1 mt-4 shadow" id="post-gadget">
+            {% if training in request.path %}
+            <div class="col-12 col-lg-3 transparent" id="gadgets-section">
+                <div class="card" id="post-gadget">
                     <div class="card-body">
-                        <h6 class="card-title">Ult. Posts</h6>
+                        <h5 class="card-title">Ult. Posts</h5>
                         <ul class="list-group">
-                            <li class="list-group-item mb-2 list-group-item-primary">
+                            <li class="list-group-item mb-2">
                                 <a href="#" class="media text-center text-dark text-decoration-none">
                                     <div>
                                         <img src="{{ request.user.profile.avatar.url }}" alt="" class="">
@@ -72,7 +75,33 @@
 
                     </div>
                 </div>
+               
+                {% if request.path in video_details %}
+                <div class="card mt-4" id="playlist">
+                    <div class="card-header">
+                        <h2>Playlist</h2>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-subtitle">{{ video.playlist.1.name }}</h4>
+                        <span class="divisor" style="display: inline-block; margin: .5rem 0; width: 90%; height: 2px; background-color: black;"></span>
+                        <div class="d-flex flex-column justify-content-start">
+                            {% for video in videos %}
+                            <a class="playlist-item media">
+                                <video src="{{ video.video.url }}" alt="" class="playlist-item-image">
+                                </video>
+                                <div class="media-body">
+                                    <h6>{{ video.title }}</h6>
+                                    <span><i class="fas fa-eye"></i><span>21</span></span>
+                                    <span>55 min</span>
+                                </div>
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
             </div>
+            {% endif %}
 
         </div>
       

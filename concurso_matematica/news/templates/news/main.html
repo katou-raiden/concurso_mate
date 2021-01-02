@@ -5,114 +5,128 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'news/css/main.css' %}">
 <section id="news-section" class="">
-  
-  
-  <div id="filters" class="py-2">
-    <h2 class="text-center my-3">What are you looking up?</h2>
-    
-  <form class="form-inline form-row justify-content-center my-3 py-4">
-    
-    
-    <div class="form-group mx-3">
-      <label for="{{ filter.form.title.id_for_label }}" class="col-form-label mr-3">Title</label>
-      {{ filter.form.title|add_class:"form-control"}}
 
+  <div class="row">
+    <!-- Columna de filtros de la pagina -->
+    <div id="filters" class="col-12 col-md-4">
+      <div class="" id="filters-wrapper">
+        <h2 class="text-center my-3 text-white font-weight-bolder" id="filters-header">Que Buscas?</h2>
+
+        <form id="filters-form">
+
+          <div class="field">
+            {{ filter.form.title|attr:"placeholder=Matriz_Asociada" }}
+            <label for="{{ filter.form.title.id_for_label }}" class="">Titulo</label>
+
+          </div>
+
+
+          <div class="field">
+            {{ filter.form.username|attr:"placeholder=Juan_Perez" }}
+            <label for="{{ filter.form.username.id_for_label }}" class="">Usuario</label>
+
+          </div>
+
+
+          <div class="textfield">
+            <label for="{{ filter.form.tags.id_for_label }}" class="">Etiquetas</label>
+            {{ filter.form.tags|add_class:"form-control"|attr:"placeholder=Albebra,Calculo" }}
+
+          </div>
+
+          <button class="" type="submit"><i class="fas fa-search"></i></button>
+
+        </form>
+      </div>
     </div>
+    <!-- Columna del contenido -->
+    <div class="col-12 col-md mb-3">
+      <!-- Titulo de la pagina de contenido -->
+      <h1 class="">Lista de Posts</h1>
+      
+      {% for new in news.object_list %}
 
-    <div class="form-group mx-3">
-      <label for="{{ filter.form.title.id_for_label }}" class="col-form-label mr-3">Content</label>
-      {{ filter.form.content|add_class:"form-control" }}
+    <div class="post">
 
-    </div>
-
-    <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
-
-</form>
-</div>
-
-<div class="py-5 w-75 mx-auto">
-
-
-
-{% for new in news.object_list %}
-
-<div class="new media flex-wrap my-4">
-
-    <div class="new-img-box text-center">
-      <img class="new-img img-thumbnail" src="{{ new.image.url }}" alt="">
-    </div>
-    <div class="media-body">
-
-      <div>
-        <i class="fas fa-user"></i>
-        <a href="#">{{ new.user.username }}</a>
-        <span>5 minutes read</span>
+      <div class="post-img">
+        <img class="" src="{{ new.image.url }}" alt="">
       </div>
 
-      <a href="{% url 'new' new.id %}" class="link-primary text-decoration-none embed btn-gp"><h6 class="my-2 h5 d-inline-block">{{ new.title }}</h6></a>
-      <div class="lead">
-       
-        Published <span>{{ new.date_created }}</span>
-        <div class="new-tags">
-
+      <div class="post-info">
+        <div class="post-header">
+          <!-- Titulo del post -->
+          <a href="{% url 'new' new.id %}" class="">{{ new.title }}</a>
+          <!-- Duracion del video -->
+          <span>5 min</span>
+        </div>
+        <div class="post-footer">
+          <!-- Autor del post -->
+          por<a class='user-info' href="#">@{{ new.user.username }}</a>
+          <!-- Fecha de publicacion -->
+          <span>el 21/04/2019</span>
+        </div>
+        <div class="tags">
+          <!-- Etiquetas -->
           {% for tag in new.tag.all %}
-
-          <span class="badge badge-pill badge-primary">
-            {{ tag.name }}
-          </span>
-
+          <a class="tag" href="{% url 'tag_click' tag.name %}">{{ tag.name }}</a>
           {% endfor %}
 
         </div>
       </div>
     </div>
+
   
-</div>
 
-{% endfor %}
+    {% endfor %}
+  </div>
+    </div>
 
-{% if news.has_other_pages %}
 
-<ul class="pagination justify-content-center">
+    
 
-{% if news.has_previous %}
+    <!-- Paginador del contenido -->
+    {% if news.has_other_pages %}
 
-<li class=page-item><a class="page-link" href="?page={{ news.previous_page_number }}">&laquo;</a></li>
+    <ul class="pagination justify-content-center">
 
-{% else %}
+      {% if news.has_previous %}
 
-<li class="disabled page-item"><a class="page-link">&laquo;</a></li>
+      <li class=page-item><a class="page-link" href="?page={{ news.previous_page_number }}">&laquo;</a></li>
 
-{% endif %}
+      {% else %}
 
-{% for i in news.paginator.page_range %}
+      <li class="disabled page-item"><a class="page-link">&laquo;</a></li>
 
-{% if news.number == i %}
+      {% endif %}
 
-<li class="page-item active"><a class=" page-link" href="?page={{ i }}">{{ i }}</a></li>
+      {% for i in news.paginator.page_range %}
 
-{% else %}
+      {% if news.number == i %}
 
-<li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+      <li class="page-item active"><a class=" page-link" href="?page={{ i }}">{{ i }}</a></li>
 
-{% endif %}
+      {% else %}
 
-{% endfor %}
+      <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
 
-{% if news.has_next %}
+      {% endif %}
 
-<li class="page-item"><a href="?page={{ news.next_page_number }}" class="page-link">&raquo;</a></li>
+      {% endfor %}
 
-{% else %}
+      {% if news.has_next %}
 
-<li class="page-item disabled"><a href="#" class="page-link">&raquo;</a></li>
+      <li class="page-item"><a href="?page={{ news.next_page_number }}" class="page-link">&raquo;</a></li>
 
-{% endif %}
-</ul>
-{% endif %}
-      
-</div>
+      {% else %}
 
-</div>
+      <li class="page-item disabled"><a href="#" class="page-link">&raquo;</a></li>
+
+      {% endif %}
+    </ul>
+    {% endif %}
+
+  </div>
+</section>
+
 
 {% endblock %}

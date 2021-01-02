@@ -1,10 +1,5 @@
-@font-face {
-  font-family: 'OpenSans';
-  src: local("OpenSans Regular"), url("/static/webfonts/opensans/OpenSans-Regular.woff");
-}
-
 html {
-  font-size: 'OpenSans';
+  font-size: 'Open Sans Regular';
 }
 
 body, html {
@@ -33,6 +28,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+#home-nav img {
+  width: 120px;
+  height: 120px;
 }
 
 #home-nav #navbar-toggle-button {
@@ -169,8 +169,20 @@ body {
   font-size: 1.4rem;
 }
 
+@media screen and (min-width: 992px) {
+  #home-cover #dark-layer .layer-title {
+    font-size: 2rem;
+  }
+}
+
 #home-cover #dark-layer .layer-subtitle {
   font-size: 1rem;
+}
+
+@media screen and (min-width: 992px) {
+  #home-cover #dark-layer .layer-subtitle {
+    font-size: 1.2rem;
+  }
 }
 
 #home-cover #dark-layer #dark-layer-box {

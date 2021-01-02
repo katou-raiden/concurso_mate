@@ -1,7 +1,8 @@
+{% load static %}
 <nav id="home-nav" class="">
-    <img src="" alt="" id="home-logo">
+    <a href="{% url 'home' %}"><img src="{% static 'core/img/grayscale.svg' %}" alt="" id="home-logo"></a>
     <ul id="home-list" class="nav-hidden nav-visuallyHidden">
-        <li class="list-item"><a href="#">Home</a></li>
+        <li class="list-item"><a href="{% url 'home' %}">Home</a></li>
         <li class="list-item"><a href="#">Register</a></li>
         <li class="list-item"><a href="#">Login</a></li>
         <li class="list-item"><a href="#">About Us</a></li>

@@ -5,10 +5,23 @@
 <section id="create-post-section">
     <h1>Crea tu Post</h1>
     <div id="create-post-wrapper">
-        <form method="POST">
-            {% csrf_token %}
-            {{form}}
-            <input type="submit" value="Enviar">
+        <form method="GET">
+            <div class="form-group">
+                <h6>Title</h6>
+                {{ form.title | add_class:"form-control" }}
+            </div>
+            <div class="form-group">
+                <h6>Content</h6>
+                {{ form.content | add_class:"form-control" }}
+            </div>
+            <div class="form-group">
+                <h6>Tags</h6>
+                {{ form.tags | add_class:"form-control" }}
+            </div>
+            <div class="d-flex justify-content-center" id="buttons-box">
+                <button class="btn btn-success mr-4">Submit</button>
+                <button class="btn btn-danger ml-4">Cancel</button>
+            </div>
         </form>
     </div>
 

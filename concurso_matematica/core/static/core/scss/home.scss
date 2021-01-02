@@ -41,6 +41,10 @@ html{
     font-size: 'OpenSans';
 }
 
+html{
+    font-size: 'Open Sans Regular';
+}
+
 body, html {
     box-sizing: border-box;
 }
@@ -72,6 +76,12 @@ body{
     align-items: center;
     justify-content: space-between;
 
+    img{
+        width: 120px;
+        height: 120px;
+        
+
+    }
     
 
     #navbar-toggle-button{
@@ -208,10 +218,16 @@ body{
 
         .layer-title{
             font-size: 1.4rem;
+            @include lg{
+                font-size: 2rem;
+            }
         }
 
         .layer-subtitle{
             font-size: 1rem;
+            @include lg{
+                font-size: 1.2rem;
+            }
         }
         
         #dark-layer-box{

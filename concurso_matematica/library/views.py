@@ -77,10 +77,18 @@ def downvote_comment_video(request, pk):
 # tu video_gallery_view si lo consideras necesario cambiale el nombre
 
 def videos_gallery_view(request):
-    videos_random = Video.objects.filter(playlist=None)
+    videos = Video.objects.all()
     playlists = Playlist.objects.all()
+    filters = VideoFilter(request.GET, queryset=videos)
+    paginator = Paginator(filters.qs, 9)
+    page = paginator.get_page(request.GET.get('page',1))
+    
 
-    context = {'videos':videos_random, 'playlists':playlists}
+    context = {
+        'videos': page,
+        'playlists': playlists,
+        'filters': filters,
+        }
 
     return render(request, 'library/videos.html', context=context)
 

@@ -1,6 +1,36 @@
-body{
-    overflow-x: hidden !important;
-    width: 100%;
-    max-width: 100%;
-    
+html {
+  font-family: 'Open Sans Regular';
 }
+
+body {
+  min-height: 600px;
+}
+
+body #post-gadget {
+  background-color: white;
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.096);
+}
+
+body #gadgets-section {
+  margin-top: 4.6em;
+}
+
+body #gadgets-section h5 {
+  font-size: 1.8em;
+  color: #FFB47B;
+}
+
+body #gadgets-section ul li {
+  border: #FFB47B 2px solid;
+  background-color: white;
+  font-size: .7rem;
+}
+
+body #gadgets-section ul li img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+/*# sourceMappingURL=base.css.map */

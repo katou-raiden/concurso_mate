@@ -156,6 +156,8 @@ cython_debug
 
 .venv/
 
+.venv/
+
 .idea/
 .vscode/launch.json
 .vscode/settings.json
