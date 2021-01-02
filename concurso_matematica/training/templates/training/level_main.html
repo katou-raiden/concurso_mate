@@ -1,0 +1,98 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'training/css/level_main.css' %}">
+<div class="row">
+    <div class="col-lg-3 col-12">
+        
+        <div class="">
+            <div class="level-main-card" id="topics-box">
+                <div class="">Temas</div>
+                <ul class="level-list">
+                    
+                    <li class="level-item">
+                        <a class="level-link" href="{% url 'training' %}:?level=1">Mermelada de soja</a>
+                    </li>
+                    <li class="level-item">
+                        <a class="level-link" href="{% url 'training' %}:?level=1">Pan de flauta</a>
+                    </li>
+                    <li class="level-item">
+                        <a class="level-link" href="{% url 'training' %}:?level=1">Tortas a la escabeche</a>
+                    </li>
+                    <li class="level-item">
+                        <a class="level-link" href="{% url 'training' %}:?level=1">Panetela B!orracha</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="level-main-card" id="levels-box">
+                <div class="">Niveles</div>
+                <ul class="level-list">
+                    <li class="level-item">
+                        <a class="level-link" href="{% url 'training' %}:?level=1">Introductorio</a>
+                    </li>
+                    <li class="level-item">
+                        <a class="level-link" href="{% url 'training' %}:?level=1">Basico</a>
+                    </li>
+                    <li class="level-item">
+                        <a class="level-link" href="{% url 'training' %}:?level=1">Intermedio</a>
+                    </li>
+                    <li class="level-item">
+                        <a class="level-link" href="{% url 'training' %}:?level=1">Avanzado</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-lg col-12">
+        <div class="d-flex justify-content-between">
+            <h1>Lista de Ejercicios</h1>
+            <a href="#" class="btn">Hacer Examen</a>
+        </div>
+        <div id="exercises-list" class="">
+                <ul id="file-list">
+                    {% for exercise in exercises %}
+                    <li class="file-item">
+                        <a href="" class="file-name"><i class="fas fa-file"></i>Exercise #1</a>
+                        <span class="ml-5">Wednesday 12 Jue</span>
+                        <span class="ml-auto">
+                            <a href="" class=""><i class="fas fa-eye"></i></a>
+                            <a href="" class=""><i class="fas fa-download"></i></a>
+                        </span>
+                    </li>    
+                    {% endfor %}
+                    <li class="file-item">
+                        <span><i class="fas fa-file"></i>Exercise #1</span>
+                        <span class="ml-5">Wednesday 12 Jue</span>
+                        <span class="ml-auto">
+                            <a href="" class=""><i class="fas fa-eye"></i></a>
+                            <a href="" class=""><i class="fas fa-download"></i></a>
+                        </span>
+                    </li>
+                    <li class="file-item">
+                        <a href=""><i class="fas fa-file"></i>Exercise #1</a>
+                        <span class="ml-5">Wednesday 12 Jue</span>
+                        <span class="ml-auto">
+                            <a href="" class="text-dark"><i class="fas fa-eye"></i></a>
+                            <a href="" class="text-dark"><i class="fas fa-download"></i></a>
+                        </span>
+                    </li>
+                    <li class="file-item">
+                        <span><i class="fas fa-file"></i>Exercise #1</span>
+                        <span class="ml-5">Wednesday 12 Jue</span>
+                        <span class="ml-auto">
+                            <a href="" class="text-dark"><i class="fas fa-eye"></i></a>
+                            <a href="" class="text-dark"><i class="fas fa-download"></i></a>
+                        </span>
+                    </li>
+                    
+                    
+                </ul>
+            
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

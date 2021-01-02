@@ -71,10 +71,21 @@ $accent: #F78640;
             text-align: center;
             width: 100%;
             height: 100%;
+
+            img {
+                object-fit: scale-down;
+                object-position: center;
+                width: 100%;
+                height: 100px;
+                margin: .8em 0;
+                margin-bottom: 1.2em;
+
+            }
     
             @include sm {
                 
                 text-align: start;
+                object-fit: cover;
             }
             @include lg {
                 
@@ -85,7 +96,7 @@ $accent: #F78640;
             h4 {
                 color: $primary;
                 font-size: 1.6em;
-                margin-bottom: 1em;
+                margin-bottom: .8em;
                 
             }
     

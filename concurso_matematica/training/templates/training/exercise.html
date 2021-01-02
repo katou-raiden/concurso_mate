@@ -3,36 +3,35 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'training/css/exercise.css' %}">
 <!-- En esta carta estan los ejercicios, sugerencias y acciones -->
-<div class="card">
-        
-<<<<<<< HEAD
-=======
-            
-        
->>>>>>> 9694e0f1171ea6281bc645a8d2582cea99bc62fe
-        <div class="card-body">
-            <h2 class="card-title">Ejercicio #1</h2>
-            <p class="card-text">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum error voluptatum, possimus neque unde labore harum quisquam velit laudantium est itaque quod ratione in rem mollitia reprehenderit sequi accusantium ipsam.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Id ea mollitia, voluptas enim eum consequuntur aliquid saepe. Nulla rem exercitationem assumenda dicta, amet quos, illo nobis possimus, rerum hic voluptas!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque impedit, ipsam debitis vitae optio quasi facilis laboriosam corporis commodi earum, odit sed doloremque architecto. Quaerat cupiditate ducimus eius fugiat quisquam.
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem illum obcaecati, sint sed vitae id ducimus eius explicabo in alias! Libero ipsa repellendus numquam minus, quo odit quisquam at impedit!
-            </p>
-        </div>
-        <div class="card-panel bg-light d-flex justify-content-center py-3">
-            <button class="suggestion" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." ><i class="fas fa-question-circle " style=""></i></button>
-            <button class="suggestion" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."><i class="fas fa-question-circle" style=""></i></button>
-            <button class="suggestion" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."><i class="fas fa-question-circle" style=""></i></button>
-            <button class="suggestion" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."><i class="fas fa-question-circle" style=""></i></button>
-        </div>
-        <div class="card-footer d-flex justify-content-end bg-dark">
-            <button type="button" class="btn btn-primary mx-2">Autocalificarse</button>
-            <button type="button" class="btn btn-warning mx-2" data-toggle="modal" data-target="#staticBackdrop">Norma de Calificacion</button>
-            <button type="button" class="btn btn-success mx-2">Save to PDF <i class="fas fa-download"></i></button>
-            <a href="" class="btn btn-danger ml-2">Salir</a>
-        </div>
-   
-</div>
+
+<section id="exercise-section">
+  <div id="exercise">
+  
+    <div id="exercise-content">
+      <h2 id="exercise-title">{{ exercise.name }}</h2>
+              <p id="exercise-text">
+                  {{ exercise.question }}
+              </p>
+              <div id="suggestion-box">
+
+                {% for suggestion in exercise.sugestions.all %}
+                <button class="suggestion" data-container="body" data-toggle="popover" data-placement="top" data-content="{{ suggestion.text }}" ><i class="fas fa-question-circle "></i></button>
+                {% endfor %}
+                  <button class="suggestion" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."><i class="fas fa-question-circle" style=""></i></button>
+                  <button class="suggestion" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."><i class="fas fa-question-circle" style=""></i></button>
+                  <button class="suggestion" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."><i class="fas fa-question-circle" style=""></i></button>
+              </div>
+          </div>
+          
+          <div id="exercise-actions">
+              <button type="button" class="disabled" id="auto-qualify-btn">Autocalificarse</button>
+              <button type="button" class="" data-toggle="modal" data-target="#staticBackdrop">Norma de Calificacion</button>
+              <button type="button" class="">Save to PDF <i class="fas fa-download"></i></button>
+              <a href="" class="">Salir</a>
+          </div>
+     
+  </div>
+</section>
 
   
   <!-- Modal -->
@@ -46,13 +45,12 @@
           </button>
         </div>
         <div class="modal-body">
-            <!-- todo Aqui va la norma de calificacion -->
-          ...
+            {{ exercise.qualification_rule }}
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
          <!-- ! Cuando el estudiante cliquea entiendo significa que la calificacion ya esta en sus manos y puede proceder a realizarla, o sea que hasta que no clickee en entiendo en la norma de calif.. no puede hacer el ejercicio. -->
-          <button type="button" class="btn btn-primary">Entiendo</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="document.getElementById('auto-qualify-btn').classList.remove('disabled');">Entiendo</button>
         </div>
       </div>
     </div>

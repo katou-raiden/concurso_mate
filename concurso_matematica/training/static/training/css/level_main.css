@@ -1,0 +1,96 @@
+h1 {
+  color: #FFB47B;
+  font-size: 1.6em;
+}
+
+.btn {
+  background-color: #FFB47B;
+  transition: background-color .3s ease;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background-color: #F78640;
+  color: white;
+}
+
+.level-main-card {
+  margin: 0 auto;
+  word-break: normal;
+  background-color: white;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.116);
+  padding: 1.4em 1.4em;
+  margin: 1em 0;
+  color: #FFB47B;
+  border-radius: 5px;
+}
+
+.level-main-card > *:first-child {
+  font-size: 1.4em;
+}
+
+.level-main-card .level-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1em;
+  margin-left: 1.4em;
+}
+
+.level-main-card .level-list .level-item {
+  transition: background-color .3s ease;
+  padding: .4em .8em;
+  border-radius: 15px;
+}
+
+.level-main-card .level-list .level-item:hover {
+  background-color: #FFB47B;
+}
+
+.level-main-card .level-list .level-item:hover a {
+  color: white;
+}
+
+.level-main-card .level-list .level-item a {
+  text-decoration: none;
+  color: #FFB47B;
+  font-size: 1em;
+}
+
+#file-list {
+  margin: 0;
+  list-style-type: none;
+  padding: 0;
+}
+
+#file-list .file-item {
+  background-color: white;
+  padding: 1em;
+  border-radius: 20px;
+  margin: 1em 0;
+  display: flex;
+  justify-content: space-between;
+  transition: background-color .3s ease;
+}
+
+#file-list .file-item a {
+  color: black;
+}
+
+#file-list .file-item a:hover i {
+  color: #ff7a15;
+}
+
+#file-list .file-item i {
+  transition: color .3s ease;
+  color: #FFB47B;
+}
+
+#file-list .file-item i.fa-eye, #file-list .file-item i.fa-file {
+  font-weight: normal;
+}
+/*# sourceMappingURL=level_main.css.map */
