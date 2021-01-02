@@ -15,22 +15,22 @@
         <form id="filters-form">
 
           <div class="field">
-            {{ filter.form.title|attr:"placeholder=Matriz_Asociada" }}
-            <label for="{{ filter.form.title.id_for_label }}" class="">Titulo</label>
+            {{ filters.form.title|attr:"placeholder=Matriz_Asociada" }}
+            {{ filters.form.title.label_tag }}
 
           </div>
 
 
           <div class="field">
-            {{ filter.form.username|attr:"placeholder=Juan_Perez" }}
-            <label for="{{ filter.form.username.id_for_label }}" class="">Usuario</label>
+            {{ filters.form.content|attr:"placeholder=Juan_Perez" }}
+            {{ filters.form.content.label_tag }}
 
           </div>
 
 
           <div class="textfield">
-            <label for="{{ filter.form.tags.id_for_label }}" class="">Etiquetas</label>
-            {{ filter.form.tags|add_class:"form-control"|attr:"placeholder=Albebra,Calculo" }}
+            <label for="{{ filters.form.tags.id_for_label }}" class="">Etiquetas</label>
+            {{ filters.form.tags|add_class:"form-control"|attr:"placeholder=Albebra,Calculo" }}
 
           </div>
 

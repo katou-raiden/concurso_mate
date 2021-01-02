@@ -17,8 +17,6 @@ class ExerciseForm(forms.ModelForm):
 
         exclude = [
             'times_visited',
-            'times_solved',
-            'related_pdf',
         ]
 
 class SugestionForm(forms.ModelForm):

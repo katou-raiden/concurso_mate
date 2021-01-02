@@ -26,7 +26,7 @@
           <div id="exercise-actions">
               <button type="button" class="disabled" id="auto-qualify-btn">Autocalificarse</button>
               <button type="button" class="" data-toggle="modal" data-target="#staticBackdrop">Norma de Calificacion</button>
-              <button type="button" class="">Save to PDF <i class="fas fa-download"></i></button>
+              <a type="button" href="{% url 'render' exercise.pk %}" class="">Save to PDF <i class="fas fa-download"></i></a>
               <a href="" class="">Salir</a>
           </div>
      

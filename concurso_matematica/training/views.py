@@ -1,8 +1,13 @@
 from django.http.response import HttpResponse
 from django.forms import formset_factory
 from django.shortcuts import redirect, render, get_object_or_404
-from .models import Exercise
+from .models import Exercise, Sugestion, Level, Topic
 from .forms import Completed_ExerciseForm, ExerciseForm, SugestionForm
+
+#for htmltopdf
+from django.http import HttpResponse
+from django.template.loader import get_template
+from xhtml2pdf import pisa
 
 # Create your views here.
 
@@ -11,11 +16,23 @@ def main_view(request):
     return render(request, 'training/main.html')
 
 def level_view(request, level):
-    exercises = Exercise.objects.filter(level = level, topic = request.GET.get('topic', None))
+    
+    topic = request.GET.get('topic', Topic.objects.first().name or None)
+    exercises = Exercise.objects.filter(topic__level__name = level, topic__name = topic)
+    levels = Level.objects.all()
+    level = levels.filter(name=level)
     context = {
+        
         'level': level,
+        'levels': levels,
         'exercises': exercises,
         }
+
+    if topic:
+        context.update({'topic': topic })
+    else:
+        context.update({'topic': 'NO HAY TOPICO !!' })
+
     return render(request, 'training/level_main.html', context=context)
 
 def exercise_list_view(request, level, topic):
@@ -44,14 +61,14 @@ def exercise_detail_view(request,pk):
         return render(request, 'training/exercise.html',context=context)
 
     
-def exercise_post_view(request):
+def create_exercise_view(request):
     ex_form = ExerciseForm()
 
     Sugs_formset = formset_factory(SugestionForm, extra=4)
 
     sugx_formset = Sugs_formset()
 
-    context = {'ex':ex_form, 'sugs' : sugx_formset}
+    context = {'form':ex_form, 'sugs' : sugx_formset}
 
     if request.method == 'POST':
         ex_form = ExerciseForm(request.POST)
@@ -69,7 +86,25 @@ def exercise_post_view(request):
     
     else:
         
-        return render(request, 'training/ex_post.html', context=context)
+        return render(request, 'training/create_exercise.html', context=context)
 
     
-
+def render_pdf_view(request,pk):
+    template_path = 'training/pdf_render.html'
+    exercise = get_object_or_404(Exercise, pk = pk)
+    name = exercise.name
+    sugs = Sugestion.objects.filter(exercise=exercise)
+    context = {'exercise': exercise,'sugs':sugs}
+    # Create a Django response object, and specify content_type as pdf
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename=name'
+    # find the template and render it.
+    template = get_template(template_path)
+    html = template.render(context)
+    # create a pdf
+    pisa_status = pisa.CreatePDF(
+    html, dest=response)
+    # if error then show some funy view
+    if pisa_status.err:
+        return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response

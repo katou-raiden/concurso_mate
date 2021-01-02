@@ -1,0 +1,132 @@
+$sm: 556px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xs: 320px;
+$primary: #FFB47B;
+$accent: #F78640;
+
+@mixin xs {
+    @media (min-width:#{$xs}) {
+        @content;
+    }
+}
+@mixin sm {
+    @media (min-width:#{$sm}) {
+        @content;
+    }
+}
+@mixin md {
+    @media (min-width:#{$md}) {
+        @content;
+    }
+}
+@mixin lg {
+    @media (min-width:#{$lg}) {
+        @content;
+    }
+}
+@mixin xl {
+    @media (min-width:#{$xl}) {
+        @content;
+    }
+}
+#create-exercise-title {
+    color: $primary;
+    font-size: 1.6em;
+}
+#exercise-wrapper {
+    width: 100%;
+    margin: 0 auto;
+
+    .field {
+        margin: 1em 0;
+        display: flex;
+        textarea + label {
+            align-self: flex-start;
+        }
+        input ~ label, select ~ label {
+            align-self: center;
+            background-color: $accent;
+        }
+        label {
+
+            text-align: right;
+            margin-right: .4em;
+            display: inline-block;
+            width: 20ch !important;
+            color: $accent;
+        }
+        input[type=text], textarea {
+            -webkit-transition: all 0.30s ease-in-out;
+            -moz-transition: all 0.30s ease-in-out;
+            -ms-transition: all 0.30s ease-in-out;
+            -o-transition: all 0.30s ease-in-out;
+            outline: none;
+            padding: 3px 0px 3px 3px;
+            
+            border: 1px solid #DDDDDD;
+            border-radius: 5px;
+          }
+           
+          input[type=text]:focus, textarea:focus {
+            box-shadow: 0 0 5px $accent;
+            padding: 3px 0px 3px 3px;
+          
+            border: 1px solid $accent;
+          }
+    }
+
+    @include md {
+        width: 90%;
+    }
+    @include lg {
+        width: 75%;
+    }
+
+}
+
+form {
+    width: 100%;
+}
+
+#buttons {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+    button, a {
+        padding: 1em !important;
+        margin: 0;
+        transition: background-color .3s ease;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        margin: 0 1em;
+        font-size: .8em;
+        width: 70px;
+        text-align: center;
+        @include md {
+            width: 95px;
+            font-size: 1em;
+        }
+        
+       
+        
+    }
+    a {
+        background-color: red;
+        text-decoration: none;
+       &:hover {
+           background-color: darken(red, 20%);
+       } 
+    }
+    button[type="submit"] {
+        outline: none;
+        background-color: $primary;
+        box-shadow: none;
+
+        &:hover {
+            background-color: $accent;
+        }
+    }
+}

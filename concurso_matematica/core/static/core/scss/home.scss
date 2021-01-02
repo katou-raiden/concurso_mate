@@ -1,9 +1,10 @@
-$xs: 320px;
+$xs:320px;
 $lg:992px;
 $md:768px;
 $sm:576px;
 $xl:1200px;
-
+$primary: #FFB47B;
+$accent: #F78640;
 
 @mixin xs{
     @media screen and (min-width: $xs) {
@@ -267,11 +268,20 @@ body{
     padding: 1rem 2rem;
     
     .history-card{
+
         display: flex;
         justify-content: space-around;
         align-items: center;
-        margin: 2rem 0;
         flex-wrap: wrap;
+        background: linear-gradient(to right, #f78640, #ffb47b);
+        border-radius: 20px;
+        padding: 2em 1em;
+
+        margin: 2em;
+
+        &:nth-child(2n+1) {
+            background: linear-gradient(to right, white 30%, $accent);
+        }
 
         .history-content{
             
@@ -297,13 +307,23 @@ body{
             text-align: center;
             padding: 0 2rem;
             
+            @include lg {
+                font-size: 1.1em;
+            }
+            
         }
 
         img{
-            flex-basis: 40%;
+            
+            width: 60%;
+           
+            object-fit: cover;
+            object-position: center;
             order: 2;
             
-            
+           @include md  {
+               width: 40%;
+           }
         }
     }
 }
@@ -329,6 +349,12 @@ body{
         color .5s ease,
         background-color .5s ease;
         font-weight: 500;
+        
+
+        i {
+            margin: 0;
+            padding: 0;
+        }
 
         @include sm {
             flex-basis: 40%;

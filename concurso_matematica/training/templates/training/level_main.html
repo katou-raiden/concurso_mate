@@ -9,6 +9,12 @@
             <div class="level-main-card" id="topics-box">
                 <div class="">Temas</div>
                 <ul class="level-list">
+
+                    {% for topic in level.topics.all %}
+                    <li class="level-item">
+                        <a class="level-link" href="{% url 'training' %}:?topic=topic.name">{{ topic.name }}</a>
+                    </li>
+                    {% endfor %}
                     
                     <li class="level-item">
                         <a class="level-link" href="{% url 'training' %}:?level=1">Mermelada de soja</a>
@@ -57,8 +63,8 @@
                         <a href="" class="file-name"><i class="fas fa-file"></i>Exercise #1</a>
                         <span class="ml-5">Wednesday 12 Jue</span>
                         <span class="ml-auto">
-                            <a href="" class=""><i class="fas fa-eye"></i></a>
-                            <a href="" class=""><i class="fas fa-download"></i></a>
+                            <a href="{% url 'exercise' exercise.pk %}" class=""><i class="fas fa-eye"></i></a>
+                            <a href="{% url 'render' exercise.pk %}" class=""><i class="fas fa-download"></i></a>
                         </span>
                     </li>    
                     {% endfor %}

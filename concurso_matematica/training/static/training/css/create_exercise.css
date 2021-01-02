@@ -1,0 +1,110 @@
+#create-exercise-title {
+  color: #FFB47B;
+  font-size: 1.6em;
+}
+
+#exercise-wrapper {
+  width: 100%;
+  margin: 0 auto;
+}
+
+#exercise-wrapper .field {
+  margin: 1em 0;
+  display: flex;
+}
+
+#exercise-wrapper .field textarea + label {
+  align-self: flex-start;
+}
+
+#exercise-wrapper .field input ~ label, #exercise-wrapper .field select ~ label {
+  align-self: center;
+  background-color: #F78640;
+}
+
+#exercise-wrapper .field label {
+  text-align: right;
+  margin-right: .4em;
+  display: inline-block;
+  width: 20ch !important;
+  color: #F78640;
+}
+
+#exercise-wrapper .field input[type=text], #exercise-wrapper .field textarea {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  padding: 3px 0px 3px 3px;
+  border: 1px solid #DDDDDD;
+  border-radius: 5px;
+}
+
+#exercise-wrapper .field input[type=text]:focus, #exercise-wrapper .field textarea:focus {
+  box-shadow: 0 0 5px #F78640;
+  padding: 3px 0px 3px 3px;
+  border: 1px solid #F78640;
+}
+
+@media (min-width: 768px) {
+  #exercise-wrapper {
+    width: 90%;
+  }
+}
+
+@media (min-width: 992px) {
+  #exercise-wrapper {
+    width: 75%;
+  }
+}
+
+form {
+  width: 100%;
+}
+
+#buttons {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-end;
+}
+
+#buttons button, #buttons a {
+  padding: 1em !important;
+  margin: 0;
+  transition: background-color .3s ease;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin: 0 1em;
+  font-size: .8em;
+  width: 70px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  #buttons button, #buttons a {
+    width: 95px;
+    font-size: 1em;
+  }
+}
+
+#buttons a {
+  background-color: red;
+  text-decoration: none;
+}
+
+#buttons a:hover {
+  background-color: #990000;
+}
+
+#buttons button[type="submit"] {
+  outline: none;
+  background-color: #FFB47B;
+  box-shadow: none;
+}
+
+#buttons button[type="submit"]:hover {
+  background-color: #F78640;
+}
+/*# sourceMappingURL=create_exercise.css.map */
