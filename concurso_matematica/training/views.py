@@ -1,8 +1,13 @@
 from django.http.response import HttpResponse
 from django.forms import formset_factory
 from django.shortcuts import redirect, render, get_object_or_404
-from .models import Exercise
+from .models import Exercise, Sugestion
 from .forms import Completed_ExerciseForm, ExerciseForm, SugestionForm
+
+#for htmltopdf
+from django.http import HttpResponse
+from django.template.loader import get_template
+from xhtml2pdf import pisa
 
 # Create your views here.
 
@@ -68,4 +73,22 @@ def exercise_post_view(request):
         return render(request, 'training/ex_post.html', context=context)
 
     
-
+def render_pdf_view(request,pk):
+    template_path = 'training/pdf_render.html'
+    exercise = get_object_or_404(Exercise, pk = pk)
+    name = exercise.name
+    sugs = Sugestion.objects.filter(exercise=exercise)
+    context = {'exercise': exercise,'sugs':sugs}
+    # Create a Django response object, and specify content_type as pdf
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename=name'
+    # find the template and render it.
+    template = get_template(template_path)
+    html = template.render(context)
+    # create a pdf
+    pisa_status = pisa.CreatePDF(
+    html, dest=response)
+    # if error then show some funy view
+    if pisa_status.err:
+        return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response
