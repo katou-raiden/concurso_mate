@@ -2,6 +2,10 @@ html {
   font-size: 'Open Sans Regular';
 }
 
+html {
+  font-size: 'Open Sans Regular';
+}
+
 body, html {
   box-sizing: border-box;
 }

@@ -1,0 +1,333 @@
+$sm: 556px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xs: 320px;
+$primary: #FFB47B;
+$accent: #F78640;
+
+@mixin xs {
+    @media (min-width:#{$xs}) {
+        @content;
+    }
+}
+@mixin sm {
+    @media (min-width:#{$sm}) {
+        @content;
+    }
+}
+@mixin md {
+    @media (min-width:#{$md}) {
+        @content;
+    }
+}
+@mixin lg {
+    @media (min-width:#{$lg}) {
+        @content;
+    }
+}
+@mixin xl {
+    @media (min-width:#{$xl}) {
+        @content;
+    }
+}
+
+body {
+    
+
+}
+#video-title {
+    font-size: 1.6em;
+    color: $primary;
+    margin-bottom: 1.4em;
+}
+
+#video-wrapper {
+
+    margin: 0 auto;
+    width: 100%;
+    
+
+    @include lg {
+        width: 75%;
+    }
+    
+    video {
+    
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+        display: block;
+        background-color: red;
+    
+        
+        
+    
+    
+    }
+    #video-actions {
+        padding: .4em 1.2em;
+        background-color: $primary;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+
+        .action {
+            transition: color .3s ease-out;
+            border-right: 1px rgba(255, 255, 255, 0.486) solid;
+            padding-right: .6em;
+            display: inline-block;
+            &:last-of-type {
+                border: none;
+            }
+        }
+
+        i {
+            margin: 0 .5em;
+        }
+
+        .like {
+            color: dodgerblue;
+            &:hover {
+                color: darken(dodgerblue, 20%);
+            }
+        }
+        .dislike {
+            color: red;
+            &:hover {
+                color: darken(red, 20%);
+            }
+        }
+        .eye {
+            color: black;
+            &:hover {
+                color: lighten(black, 40%);
+            }
+        }
+        .flag {
+            color: rgb(255, 255, 0);
+            &:hover {
+                color: darken(yellow, 20%);
+            }
+        }
+    }
+}
+
+.new-article{
+    h6{
+        margin: 2rem;
+    }
+    margin-top: -3rem;
+    border-radius: 15px;
+    background-color: white;
+    padding: 3rem;
+    line-height: 1.5;
+
+   
+
+}
+
+.media .img-thumbnail{
+    width: 80px;
+    height: 80px;
+    
+
+}
+
+.text-area-comment {
+    resize: none;
+    width: 80%;
+    height: 100%;
+    padding: 0 !important;
+
+}
+
+.btn-submit {
+    height: 100% !important;
+    background-color: $primary;
+    display: inline-block;
+    border: none;
+
+    outline: none;
+    transition: background-color .3s ease;
+    text-align: center;
+    width: 18%;
+
+    &:hover {
+        background-color: $accent;
+    }
+    i {
+        color: white;
+        margin: 0;
+    }
+}
+
+
+
+
+
+.user-subcomment {
+
+    transition: width .8s ease;
+    transition: height .8s ease;
+    transition: opacity .4s .4s ease;
+    width: 100%;
+    
+    form{
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        textarea{
+            resize: none;
+            height: 60px;
+            margin: 0 1rem;
+        }
+        button{
+            font-size: 1.2em !important;
+            border-radius: 1px !important;
+        }
+    }
+
+    
+    &.hidden{
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+    &.visible{
+        width: initial;
+        height: initial;
+        opacity: 1;
+    }
+    
+
+    img{
+        width: 60px;
+        height: 60px;
+        display: inline-block;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+#user-comments{
+    .media{
+        background-color: white;
+        padding: 1rem;
+        margin: 1rem 0;
+        border-radius: 15px;
+        img{
+            display: block !important;
+        }
+    }
+
+    .reply-button, .report-button{
+        cursor: pointer;
+    }
+
+    .user-info{
+        
+    }
+    .user-actions{
+        display: flex;
+        justify-content: space-between;
+
+        a{
+            display: inline-block;
+            margin: 0 .6rem;
+        }
+
+    }
+}
+
+#comment-section{
+    margin-top: 2rem;
+
+    button{
+        font-size: 1.2em;
+    }
+    
+}
+
+#author-section{
+    margin-top: 1em;
+    .author-avatar{
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        object-position: center;
+        background-color: transparent;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: -2em;
+        
+    }
+
+   
+
+.author-content{
+   
+    width: 80%;
+    padding: 3rem;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 15px;
+
+    .social-media{
+        a{
+            text-decoration: none;
+            color: black;
+
+            
+            &:hover .fa-facebook-square{
+                color: rgb(28, 28, 146);
+            }
+            &:hover .fa-instagram-square{
+                color: rgb(167, 167, 0)
+            }
+            &:hover .fa-twitter-square{
+                color: dodgerblue;
+            }
+            &:hover .fa-pinterest-square{
+                color: red;
+            }
+            i{
+                font-size: 2rem;
+                transition: color .5s ease;
+            }
+        }
+    }
+}
+
+}
+
+
+.maincomment .media-body{
+    overflow: hidden;
+    max-width: 100%;
+}
+
+#video-description {
+    padding: 2em;
+    background-color: white;
+}
+
+.btn-collapser {
+    background-color: $primary;
+    padding: .4em 1em !important;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: start;
+    color: white;
+    transition: background-color .3s ease;
+    font-size: 1.2em !important;
+    border-radius: 5px !important;
+
+    &:hover {
+        background-color: $accent;
+    }
+    &:focus {
+        border: none;
+        outline: none;
+    }
+}

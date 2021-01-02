@@ -1,9 +1,0 @@
-{% extends 'core/base.html' %}
-{% load static %}
-{% block content %}
-<link rel="stylesheet" href="{% static 'training/css/levels.css' %}">
-<a href="{% url 'training':?level=1 %}" class="link-success rounded-circle">Introductorio</a>
-<a href="{% url 'training':?level=2 %}" class="link-primary rounded-circle">Basico</a>
-<a href="{% url 'training':?level=3 %}" class="link-warning rounded-circle">Intermedio</a>
-<a href="{% url 'training':?level=4 %}" class="link-danger rounded-circle">Avanzado</a>
-{% endblock %}

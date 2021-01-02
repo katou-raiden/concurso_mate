@@ -1,0 +1,111 @@
+$sm: 556px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xs: 320px;
+$primary: #FFB47B;
+$accent: #F78640;
+
+@mixin xs {
+    @media (min-width:#{$xs}) {
+        @content;
+    }
+}
+@mixin sm {
+    @media (min-width:#{$sm}) {
+        @content;
+    }
+}
+@mixin md {
+    @media (min-width:#{$md}) {
+        @content;
+    }
+}
+@mixin lg {
+    @media (min-width:#{$lg}) {
+        @content;
+    }
+}
+@mixin xl {
+    @media (min-width:#{$xl}) {
+        @content;
+    }
+}
+
+#level-section {
+    display: flex;
+    flex-wrap: wrap;
+    
+    
+
+    .level-wrapper {
+
+        padding: 1em;
+        transition: transform .4s ease;
+        transform: translate(0, 0);
+
+        &:hover {
+            transform: translate(0, -20px);
+        }
+
+        @include sm {
+            flex-basis: 50%;
+            
+        }
+        @include lg {
+            flex-basis: 25%;
+        }
+
+        
+        
+
+        .level-card {
+            background-color: white;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.164);
+            display: inline-block;
+            margin-bottom: 1em;
+            border-radius: 5px;
+            border: 2px solid $primary;
+            padding: 1em;
+            text-decoration: none;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+
+            img {
+                object-fit: scale-down;
+                object-position: center;
+                width: 100%;
+                height: 100px;
+                margin: .8em 0;
+                margin-bottom: 1.2em;
+
+            }
+    
+            @include sm {
+                
+                text-align: start;
+                object-fit: cover;
+            }
+            @include lg {
+                
+            }
+    
+            
+    
+            h4 {
+                color: $primary;
+                font-size: 1.6em;
+                margin-bottom: .8em;
+                
+            }
+    
+            p {
+                line-height: 1.5em;
+                color: black;
+            }
+    
+        }
+    }
+
+}

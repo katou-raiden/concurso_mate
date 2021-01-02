@@ -1,0 +1,68 @@
+#level-section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#level-section .level-wrapper {
+  padding: 1em;
+  transition: transform .4s ease;
+  transform: translate(0, 0);
+}
+
+#level-section .level-wrapper:hover {
+  transform: translate(0, -20px);
+}
+
+@media (min-width: 556px) {
+  #level-section .level-wrapper {
+    flex-basis: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  #level-section .level-wrapper {
+    flex-basis: 25%;
+  }
+}
+
+#level-section .level-wrapper .level-card {
+  background-color: white;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.164);
+  display: inline-block;
+  margin-bottom: 1em;
+  border-radius: 5px;
+  border: 2px solid #FFB47B;
+  padding: 1em;
+  text-decoration: none;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+#level-section .level-wrapper .level-card img {
+  object-fit: scale-down;
+  object-position: center;
+  width: 100%;
+  height: 100px;
+  margin: .8em 0;
+  margin-bottom: 1.2em;
+}
+
+@media (min-width: 556px) {
+  #level-section .level-wrapper .level-card {
+    text-align: start;
+    object-fit: cover;
+  }
+}
+
+#level-section .level-wrapper .level-card h4 {
+  color: #FFB47B;
+  font-size: 1.6em;
+  margin-bottom: .8em;
+}
+
+#level-section .level-wrapper .level-card p {
+  line-height: 1.5em;
+  color: black;
+}
+/*# sourceMappingURL=main.css.map */

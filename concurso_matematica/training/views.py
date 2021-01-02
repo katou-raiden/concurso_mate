@@ -12,17 +12,21 @@ from xhtml2pdf import pisa
 # Create your views here.
 
 def main_view(request):
+    
     return render(request, 'training/main.html')
 
-def category_view(request, level):
-    context = {'level': level}
-    return render(request, 'training/category.html', context=context)
+def level_view(request, level):
+    exercises = Exercise.objects.filter(level = level, topic = request.GET.get('topic', None))
+    context = {
+        'level': level,
+        'exercises': exercises,
+        }
+    return render(request, 'training/level_main.html', context=context)
 
 def exercise_list_view(request, level, topic):
-    exercises = Exercise.objects.filter(level == level and topic == topic)
+    
 
-    context = {'exercises':exercises}
-
+    context = {}
     return render(request, 'training/exercises.html', context=context)
 
 def exercise_detail_view(request,pk):

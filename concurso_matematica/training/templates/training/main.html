@@ -4,28 +4,28 @@
 <link rel="stylesheet" href="{% static 'training/css/main.css' %}">
 <section id="level-section">
     <div class="level-wrapper">
-        <a href="" class="level-card">
+        <a href="{% url 'level_main' 'introductory' %}" class="level-card">
             <img src="{% static 'training/img/first.svg' %}" alt="">
             <h4 class="level-card-title">Introductorio</h4>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut nulla, eius quam animi velit necessitatibus? Deleniti, nemo sint vel doloribus rem temporibus, eius fugiat nisi eaque illo numquam odio eos!</p>
         </a>
     </div>
     <div class="level-wrapper">
-        <a href="" class="level-card">
+        <a href="{% url 'level_main' 'basic' %}" class="level-card">
             <img src="{% static 'training/img/second.svg' %}" alt="">
             <h4 class="level-card-title">Basico</h4>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut nulla, eius quam animi velit necessitatibus? Deleniti, nemo sint vel doloribus rem temporibus, eius fugiat nisi eaque illo numquam odio eos!</p>
         </a>
     </div>
     <div class="level-wrapper">
-        <a href="" class="level-card">
-            <img src="{% static 'training/img/third.svg' %}" alt="">
+        <a href="{% url 'level_main' 'intermediate' %}" class="level-card">
+            <img src="{% static 'training/img/third.svg'  %}" alt="">
             <h4 class="level-card-title">Intermedio</h4>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut nulla, eius quam animi velit necessitatibus? Deleniti, nemo sint vel doloribus rem temporibus, eius fugiat nisi eaque illo numquam odio eos!</p>
         </a>
     </div>
     <div class="level-wrapper">
-        <a href="" class="level-card">
+        <a href="{% url 'level_main' 'advanced' %}" class="level-card">
             <img style="display: inline-block;" src="{% static 'training/img/fourth.svg' %}" alt="">
             <h4 class="level-card-title">Avanzado</h4>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut nulla, eius quam animi velit necessitatibus? Deleniti, nemo sint vel doloribus rem temporibus, eius fugiat nisi eaque illo numquam odio eos!</p>

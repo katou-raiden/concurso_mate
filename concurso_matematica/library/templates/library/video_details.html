@@ -6,9 +6,18 @@
 <link rel="stylesheet" href="{% static 'library/css/video_details.css' %}">
 <section id='new-section' class="">
     <h6 id="video-title">{{ video.title }}</h6>
-    <video controls >
-        <source src="{{ video.video.url }}">
-    </video>
+    <div id="video-wrapper">
+        <video controls >
+            <source src="{{ video.video.url }}">
+        </video>
+        
+        <div id="video-actions">
+            <a href="#" class="action like"><i class="fas fa-thumbs-up"></i>{{ video.up_votes}}</a>
+            <a href="#" class="action dislike"><i class="fas fa-thumbs-down"></i>{{ video.down_votes }}</a>
+            <a href="#" class="action eye"><i class="fas fa-eye"></i>0</a>
+            <a href="#" class="action flag"><i class="fas fa-flag"></i></a>
+        </div>
+    </div>
     
     <div class="mt-5" id="video-content">
         
@@ -127,7 +136,7 @@
         </div>
         
     </div>
-    
+     
 
 </section>
 <script src="{% static 'news/js/new.js' %}"></script>

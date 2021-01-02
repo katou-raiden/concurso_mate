@@ -1,27 +1,148 @@
+$sm: 556px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xs: 320px;
+$primary: #FFB47B;
+$accent: #F78640;
+
+@mixin xs {
+    @media (min-width:#{$xs}) {
+        @content;
+    }
+}
+@mixin sm {
+    @media (min-width:#{$sm}) {
+        @content;
+    }
+}
+@mixin md {
+    @media (min-width:#{$md}) {
+        @content;
+    }
+}
+@mixin lg {
+    @media (min-width:#{$lg}) {
+        @content;
+    }
+}
+@mixin xl {
+    @media (min-width:#{$xl}) {
+        @content;
+    }
+}
+
+
 body{
     
 }
 
-.suggestion {
-    font-size: 4rem;
-    border-radius: 50%;
-    color: royalblue;
-    border: none;
-    box-shadow: none;
-    outline: none;   
-    background-color: transparent;
-    padding: 0 !important;
-    margin: 0;
-    transition: color .3s ease-out;
-
-    &:hover {
-        background-color: white;
-        color: orange;    
+#exercise {
+    width: 75%;
+    
+    margin: 0 auto;
+    background-color: white;
+    #exercise-title {
+        font-size: 1.6em;
+        color: $primary;
     }
-    &:focus {
+
+    #exercise-text {
+        margin: 1.6em 0;
+    }
+
+    #exercise-content {
+        line-height: 1.5em;
+        margin: 1.6em 0;
+        padding: 1.6em;
+        
+    }
+    #exercise-actions {
+        background-color: #ffb47b57;
+        padding: 1em;
+        border-radius: 8px;
+        text-align: center;
+        
+
+        button, a {
+            font-size: .6em;
+            padding: .6em;
+            border-radius: 5px;
+            color: white;
+            margin: 0 .2em;
+
+            @include lg {
+                font-size: 1em;
+                margin: 0 .6em;
+            }
+            
+        }
+
+        button {
+            border: none;
+            outline: none;
+
+            &:nth-child(1) {
+                background-color: royalblue;
+            }
+            &:nth-child(2) {
+                background-color: rgb(231, 197, 1);
+            }
+            &:nth-child(3) {
+                background-color: white;
+                color: black;
+            }
+            &:nth-child(4) {
+                background-color: red;
+                
+            }
+        }
+        a {
+            background-color: red;
+        }
+       
+
+        @include lg {
+            text-align: right;
+        }
+        
+    }
+}
+
+#suggestion-box {
+    background-color: white;
+    text-align: center;
+
+    
+    .suggestion {
+        font-size: 3em;
+        border-radius: 50%;
+        color: $primary;
         border: none;
         box-shadow: none;
-        outline: none;
+        outline: none;   
+        background-color: transparent;
+        padding: 0 !important;
+        margin: 0;
+        transition: color .3s ease-out;
+    
+        &:hover {
+            
+            color: $accent;    
+        }
+        &:focus {
+            border: none;
+            box-shadow: none;
+            outline: none;
+        }
+    
     }
 
+
+
+
+}
+
+.disabled {
+    pointer-events: none !important;
 }
