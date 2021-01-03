@@ -160,7 +160,6 @@ cython_debug
 >>>>>>> 9694e0f1171ea6281bc645a8d2582cea99bc62fe
 
 .venv/
-
 .idea/
 .vscode/launch.json
 .vscode/settings.json

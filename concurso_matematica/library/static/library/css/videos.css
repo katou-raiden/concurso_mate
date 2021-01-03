@@ -1,3 +1,4 @@
+@charset "UTF-8";
 h1 {
   color: #FFB47B;
   font-size: 1.8em;
@@ -99,12 +100,16 @@ h1 {
 }
 
 #filters h2#filters-title {
-  color: #FFB47B;
+  width: fit-content;
+  color: white;
   font-size: 1.6em;
-  flex-basis: 100%;
+  margin: 0 auto;
+  margin-bottom: .6em;
   text-align: center;
   border-bottom: solid 2px #FFB47B;
-  padding-bottom: 1em;
+  padding: .6em;
+  background-color: #FFB47B;
+  border-radius: 15px;
 }
 
 #filters button[type="submit"] {
@@ -122,34 +127,141 @@ h1 {
   background-color: #F78640;
 }
 
-#filters .field {
+#fields {
   display: flex;
-  flex-direction: column-reverse;
+  justify-content: center;
   width: 100%;
-  padding: 0 1em;
+  flex-wrap: wrap;
+}
+
+/**
+      * Make the field a flex-container, reverse the order so label is on top.
+      */
+.field {
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: column-reverse;
+  margin: 0 1em;
+  margin-bottom: 1em;
+  width: 40% !important;
+  font-size: .8em;
+  padding: initial 2em !important;
+  /**
+  * Add a transition to the label and input.
+  * I'm not even sure that touch-action: manipulation works on
+  * inputs, but hey, it's new and cool and could remove the 
+  * pesky delay.
+  */
+  /**
+  * Translate down and scale the label up to cover the placeholder,
+  * when following an input (with placeholder-shown support).
+  * Also make sure the label is only on one row, at max 2/3rds of the
+  * field—to make sure it scales properly and doesn't wrap.
+  */
+  /**
+  * By default, the placeholder should be transparent. Also, it should 
+  * inherit the transition.
+  */
+  /**
+  * Show the placeholder when the input is focused.
+  */
+  /**
+  * When the element is focused, remove the label transform.
+  * Also, do this when the placeholder is _not_ shown, i.e. when 
+  * there's something in the input at all.
+  */
+}
+
+.field * {
+  box-sizing: inherit;
 }
 
 @media (min-width: 768px) {
-  #filters .field {
-    width: 50%;
+  .field {
+    width: 100%;
   }
 }
 
-#filters .field label {
-  text-transform: capitalize;
-  color: #FFB47B;
-  font-weight: 1.2em;
+.field:not(:first-child):not(:last-child) {
+  padding: 0 .6em;
 }
 
-#filters .field input {
-  border: none;
-  outline: none;
-  border-bottom-width: 3px;
-  border-bottom-color: #FFB47B;
-  border-bottom-style: solid;
+@media (min-width: 768px) {
+  .field:not(:first-child):not(:last-child) {
+    padding: 0;
+  }
 }
 
-#filters .field input:focus {
-  border-bottom-style: #F78640;
+.field:first-child {
+  padding-right: .6em;
+}
+
+.field:last-child {
+  padding-left: .6em;
+}
+
+.field label, .field input {
+  transition: all 0.2s;
+  touch-action: manipulation;
+}
+
+.field input {
+  background-color: white;
+  color: black;
+  font-size: 1.5em;
+  border: 0;
+  border-bottom: 3px solid white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  font-family: inherit;
+  -webkit-appearance: none;
+  border-radius: 0;
+  border-bottom: 2px solid #FFB47B;
+  padding: 0;
+  cursor: text;
+}
+
+.field input:focus {
+  outline: 0;
+  border-bottom: 2px solid #F78640;
+}
+
+.field label {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: black;
+  font-size: .8em !important;
+}
+
+.field input:placeholder-shown + label, .field textarea:placeholder-shown + label {
+  cursor: text;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transform-origin: left bottom;
+  transform: translate(0, 2.125rem) scale(1.5);
+}
+
+.field ::-webkit-input-placeholder {
+  opacity: 0;
+  transition: inherit;
+}
+
+.field input:focus::-webkit-input-placeholder {
+  opacity: 1;
+}
+
+.field input:not(:placeholder-shown) + label,
+.field input:focus + label {
+  transform: translate(0, 0) scale(1);
+  cursor: pointer;
+  display: flex;
+  justify-content: start;
+  width: fit-content;
+  background-color: #F78640;
+  color: white;
+  font-weight: bolder;
+  border-radius: 5px;
+  padding: 0 .4em;
 }
 /*# sourceMappingURL=videos.css.map */

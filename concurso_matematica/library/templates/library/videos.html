@@ -9,12 +9,13 @@
         <div id="filters">
             <h2 id="filters-title">Que Buscas?</h2>
         
-            {% for field in filters.form %}
+        <div id="fields">{% for field in filters.form %}
             <div class="field">
-                {{ field }}
-                {{ field.label_tag }}
+            {{ field | attr:"placeholder:@criterio" }}
+            {{ field.label_tag }}
             </div>
             {% endfor %}
+        </div>
             <button type="submit"><i class="fas fa-search"></i></button>
         </div>
     </form>

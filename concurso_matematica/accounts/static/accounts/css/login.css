@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html, body {
   box-sizing: border-box;
 }
@@ -10,6 +11,7 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
+  background-color: #FFB47B;
 }
 
 .login-area {
@@ -20,6 +22,8 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
   border-radius: 10px;
+  background-color: white;
+  border: #F78640 2px solid;
 }
 
 .login-area #buttons-area {
@@ -31,7 +35,7 @@ body {
 .login-area #buttons-area a, .login-area #buttons-area button[type="submit"] {
   text-align: center;
   display: inline-block;
-  background-color: orange;
+  background-color: #FFB47B;
   color: white;
   padding: .3rem;
   border-radius: 15px;
@@ -41,7 +45,7 @@ body {
 }
 
 .login-area #buttons-area a:hover, .login-area #buttons-area button[type="submit"]:hover {
-  background-color: orangered;
+  background-color: #F78640;
 }
 
 .login-area #buttons-area button[type="submit"] {
@@ -55,7 +59,8 @@ body {
   margin: .6rem 0;
 }
 
-.login-area .image-area img {
+.login-area .image-area svg {
+  fill: white;
   display: inline-block;
   padding: .6rem;
   width: 70px;
@@ -63,46 +68,12 @@ body {
   object-position: center;
   object-fit: cover;
   border-radius: 50%;
-  background-color: orange;
+  background-color: #FFB47B;
 }
 
 .login-area .credential-box {
   display: flex;
   align-items: center;
-}
-
-.login-area label {
-  border-radius: 50%;
-  width: 35px;
-  height: 35px;
-  line-height: 35px;
-  text-align: center;
-  vertical-align: middle;
-  display: inline-block;
-  color: white;
-  background-color: orange;
-  position: relative;
-  z-index: 1;
-}
-
-.login-area input {
-  display: inline-block;
-  width: 75%;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-top-left-radius: 10px;
-  border: solid 1px black;
-  padding-left: 28px;
-  background-color: white;
-  position: relative;
-  z-index: 0;
-  margin-left: -1.5rem;
-  margin-top: -.3rem;
-}
-
-.login-area input:focus {
-  outline: none;
 }
 
 .login-area #links-area {
@@ -111,12 +82,12 @@ body {
 
 .login-area #links-area a {
   transition: color .4s ease;
-  color: orange;
+  color: #FFB47B;
   text-decoration: none;
 }
 
 .login-area #links-area a:hover {
-  color: orangered;
+  color: #F78640;
 }
 
 .login-area .credential-box {
@@ -127,5 +98,130 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/**
+      * Make the field a flex-container, reverse the order so label is on top.
+      */
+.field {
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: column-reverse;
+  margin-bottom: 1em;
+  width: 50%;
+  font-size: .8em;
+  /**
+      * Add a transition to the label and input.
+      * I'm not even sure that touch-action: manipulation works on
+      * inputs, but hey, it's new and cool and could remove the 
+      * pesky delay.
+      */
+  /**
+      * Translate down and scale the label up to cover the placeholder,
+      * when following an input (with placeholder-shown support).
+      * Also make sure the label is only on one row, at max 2/3rds of the
+      * field—to make sure it scales properly and doesn't wrap.
+      */
+  /**
+      * By default, the placeholder should be transparent. Also, it should 
+      * inherit the transition.
+      */
+  /**
+      * Show the placeholder when the input is focused.
+      */
+  /**
+      * When the element is focused, remove the label transform.
+      * Also, do this when the placeholder is _not_ shown, i.e. when 
+      * there's something in the input at all.
+      */
+}
+
+@media screen and (min-width: 768px) {
+  .field {
+    width: 100%;
+  }
+}
+
+.field:not(:first-child):not(:last-child) {
+  padding: 0 .6em;
+}
+
+@media screen and (min-width: 768px) {
+  .field:not(:first-child):not(:last-child) {
+    padding: 0;
+  }
+}
+
+.field:first-child {
+  padding-right: .6em;
+}
+
+.field:last-child {
+  padding-left: .6em;
+}
+
+.field label, .field input {
+  transition: all 0.2s;
+  touch-action: manipulation;
+}
+
+.field input {
+  background-color: white;
+  color: black;
+  font-size: 1.5em;
+  border: 0;
+  border-bottom: 3px solid white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  font-family: inherit;
+  -webkit-appearance: none;
+  border-radius: 0;
+  border-bottom: 2px solid #FFB47B;
+  padding: 0;
+  cursor: text;
+}
+
+.field input:focus {
+  outline: 0;
+  border-bottom: 2px solid #F78640;
+}
+
+.field label {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: black;
+  font-size: .8em !important;
+}
+
+.field input:placeholder-shown + label, .field textarea:placeholder-shown + label {
+  cursor: text;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transform-origin: left bottom;
+  transform: translate(0, 2.125rem) scale(1.5);
+}
+
+.field ::-webkit-input-placeholder {
+  opacity: 0;
+  transition: inherit;
+}
+
+.field input:focus::-webkit-input-placeholder {
+  opacity: 1;
+}
+
+.field input:not(:placeholder-shown) + label,
+.field input:focus + label {
+  transform: translate(0, 0) scale(1);
+  cursor: pointer;
+  display: flex;
+  justify-content: start;
+  width: fit-content !important;
+  background-color: #F78640;
+  color: white;
+  font-weight: bolder;
+  border-radius: 5px;
+  padding: 0 .4em;
 }
 /*# sourceMappingURL=login.css.map */

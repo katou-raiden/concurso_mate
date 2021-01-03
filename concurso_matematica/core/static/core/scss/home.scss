@@ -57,8 +57,28 @@ body{
     overflow-x: hidden;
 }   
 
+#home-subtitle {
+    color: $primary;
+    & + div {
+        width: 360px; 
+        border-radius: 15px; 
+        height: 3px; 
+        margin: .6rem auto; 
+        background-color: black;
+        background-color: $primary;
+    }
+}
 
-
+#features-title {
+    color: $primary;
+    & + div {
+        width: 360px; 
+        border-radius: 15px; 
+        height: 3px; 
+        margin: .6rem auto; 
+        background-color: $primary;
+    }
+}
 
 #home-nav{
     height: 40px;
@@ -266,9 +286,10 @@ body{
 
 #history{
     padding: 1rem 2rem;
-    
-    .history-card{
+  
 
+    .history-card{
+      
         display: flex;
         justify-content: space-around;
         align-items: center;

@@ -18,7 +18,7 @@ class Video(models.Model):
     description = models.TextField()
     up_votes = models.IntegerField(default=0)
     down_votes = models.IntegerField(default=0)
-    voted = models.ManyToManyField(User, related_name='video_voted')
+    voted = models.ManyToManyField(User, related_name='video_voted',null=True, blank=True)
     video = models.FileField(upload_to='library/video/')
     user = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True)
     playlist = models.ForeignKey(Playlist, related_name='videos', on_delete=models.CASCADE, null=True,blank=True, default=None)

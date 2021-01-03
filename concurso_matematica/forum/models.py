@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 
 class Post(models.Model):
-    tag = models.ManyToManyField(Tag,related_name='tags',blank=True)
+    tag = models.ManyToManyField(Tag,related_name='tags',blank=True,null=True)
     title = models.CharField(max_length=150)
     date_pub = models.DateTimeField(auto_now_add=True)
     date_mod = models.DateTimeField(auto_now=True)

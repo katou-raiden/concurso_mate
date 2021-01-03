@@ -1,11 +1,52 @@
+$xs:320px;
+$lg:992px;
+$md:768px;
+$sm:576px;
+$xl:1200px;
 $primary: #FFB47B;
 $accent: #F78640;
+
+@mixin xs{
+    @media screen and (min-width: $xs) {
+       @content; 
+    }
+}
+
+@mixin sm{
+    @media screen and (min-width: $sm) {
+       @content; 
+    }
+}
+@mixin md{
+    @media screen and (min-width: $md) {
+       @content; 
+    }
+}
+@mixin lg{
+    @media screen and (min-width: $lg) {
+       @content; 
+    }
+}
+@mixin xl{
+    @media screen and (min-width: $xl) {
+       @content; 
+    }
+}
 
 
 html {
     font-family: 'Open Sans Regular';
 }
-body{
+body {
+
+    #login-reg-box {
+        color: $primary;
+        padding: .3em 1em;
+        a {
+            color: $accent;
+        }
+    }
+    
 
     min-height: 600px;
     
@@ -14,6 +55,7 @@ body{
         box-shadow: 2px 2px rgba(0, 0, 0, 0.096);
     }
     #gadgets-section {
+
         @include lg {
             margin-top: 4.6em;
         }
@@ -22,6 +64,7 @@ body{
             font-size: 1.8em;
             color: $primary;
         }
+
         ul{
             li{ 
                 border: $primary 2px solid;

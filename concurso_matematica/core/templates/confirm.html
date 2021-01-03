@@ -6,10 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="post">
-        {% csrf_token %}
-        {{form}}
-        <input type="submit" value="Enviar">
+    <form action="" method="POST">
+        <h3>Seguro que desea eliminar {{object}}</h3>
+        <input type="submit" value="Confirmar">
     </form>
 </body>
 </html>

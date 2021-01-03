@@ -1,5 +1,10 @@
+@charset "UTF-8";
 html, body {
   box-sizing: border-box;
+}
+
+body {
+  background-color: #FFB47B !important;
 }
 
 body * {
@@ -7,30 +12,45 @@ body * {
 }
 
 #image-area {
-  width: fit-content;
+  width: 80px;
+  height: 80px;
+  background-color: #FFB47B;
+  border-radius: 50%;
+  line-height: 80px;
 }
 
-#image-area img {
+#image-area svg {
   width: 60px;
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
+  fill: white;
   object-position: center;
 }
 
 #image-area #avatar-field-wrapper {
   position: relative;
-  overflow: hidden;
-  color: white;
-  width: fit-content;
+  overflow: visible;
+  color: black;
+  top: -25px;
+  left: 50px;
+}
+
+#image-area #avatar-field-wrapper label {
   height: fit-content;
-  margin-left: auto;
-  margin-top: -1rem;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #image-area #avatar-field-wrapper input {
+  background-color: #F78640;
+  left: -3000px;
   opacity: 0;
   position: absolute;
+  width: 0.1px !important;
+  height: 0.1px !important;
 }
 
 form {
@@ -46,33 +66,23 @@ form > * {
   position: absolute;
   left: 50%;
   width: 320px;
-  background-color: rgba(184, 184, 184, 0.534);
+  background-color: white;
+  border: 2px #F78640 solid !important;
   border-radius: 20px;
   top: 50%;
   padding: 20px;
   transform: translate(-50%, -50%);
 }
 
-#signUp-area input[type="text"], #signUp-area input[type="number"], #signUp-area input[type="email"] {
-  border-radius: 15px;
-  padding: 0 10px;
-  border: none;
-  margin: .3rem auto;
-}
-
-#signUp-area #userpass-box input {
-  width: 45%;
-}
-
 #signUp-area #links-area a {
   margin: .6rem;
   text-decoration: none;
-  color: orange;
+  color: #FFB47B;
   transition: color .4s ease;
 }
 
 #signUp-area #links-area a:hover {
-  color: orangered;
+  color: #F78640;
 }
 
 #signUp-area #buttons-box {
@@ -82,7 +92,7 @@ form > * {
 }
 
 #signUp-area #buttons-box button[type="submit"], #signUp-area #buttons-box a {
-  background-color: orange;
+  background-color: #FFB47B;
   display: inline-block;
   width: 80px;
   text-align: center;
@@ -96,7 +106,7 @@ form > * {
 }
 
 #signUp-area #buttons-box button[type="submit"]:hover, #signUp-area #buttons-box a:hover {
-  background-color: orangered;
+  background-color: #F78640;
 }
 
 #signUp-area #buttons-box button[type="submit"] {
@@ -104,19 +114,131 @@ form > * {
   border: none;
 }
 
-#puigrade-box input:first-child {
-  width: 60%;
+#fields {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-#puigrade-box input:last-child {
-  width: 30%;
+/**
+      * Make the field a flex-container, reverse the order so label is on top.
+      */
+.field {
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: column-reverse;
+  margin-bottom: 1em;
+  align-items: stretch;
+  font-size: .8em;
+  flex-basis: 100%;
+  /**
+      * Add a transition to the label and input.
+      * I'm not even sure that touch-action: manipulation works on
+      * inputs, but hey, it's new and cool and could remove the 
+      * pesky delay.
+      */
+  /**
+      * Translate down and scale the label up to cover the placeholder,
+      * when following an input (with placeholder-shown support).
+      * Also make sure the label is only on one row, at max 2/3rds of the
+      * field—to make sure it scales properly and doesn't wrap.
+      */
+  /**
+      * By default, the placeholder should be transparent. Also, it should 
+      * inherit the transition.
+      */
+  /**
+      * Show the placeholder when the input is focused.
+      */
+  /**
+      * When the element is focused, remove the label transform.
+      * Also, do this when the placeholder is _not_ shown, i.e. when 
+      * there's something in the input at all.
+      */
 }
 
-.onefield input {
-  width: 80%;
+.field:nth-child(4), .field:nth-child(5) {
+  flex-basis: 50%;
 }
 
-.twofield input {
-  width: 50%;
+.field:nth-child(4) {
+  padding-right: .5em;
+}
+
+.field:nth-child(5) {
+  padding-left: .5em;
+}
+
+@media screen and (min-width: 768px) {
+  .field {
+    width: 100%;
+  }
+}
+
+.field label, .field input {
+  transition: all 0.2s;
+  touch-action: manipulation;
+  text-align: left;
+}
+
+.field input {
+  background-color: white;
+  color: black;
+  font-size: 1.5em;
+  width: 100% !important;
+  border: 0;
+  border-bottom: 3px solid white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  font-family: inherit;
+  -webkit-appearance: none;
+  border-radius: 0;
+  border-bottom: 2px solid #FFB47B;
+  padding: 0;
+  cursor: text;
+}
+
+.field input:focus {
+  outline: 0;
+  border-bottom: 2px solid #F78640;
+}
+
+.field label {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: black;
+  font-size: .8em !important;
+}
+
+.field input:placeholder-shown + label, .field textarea:placeholder-shown + label {
+  cursor: text;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transform-origin: left bottom;
+  transform: translate(0, 2.125rem) scale(1.5);
+}
+
+.field ::-webkit-input-placeholder {
+  opacity: 0;
+  transition: inherit;
+}
+
+.field input:focus::-webkit-input-placeholder {
+  opacity: 1;
+}
+
+.field input:not(:placeholder-shown) + label,
+.field input:focus + label {
+  transform: translate(0, 0) scale(1);
+  cursor: pointer;
+  display: flex;
+  justify-content: start;
+  width: fit-content !important;
+  background-color: #F78640;
+  color: white;
+  font-weight: bolder;
+  border-radius: 5px;
+  padding: 0 .4em;
 }
 /*# sourceMappingURL=signup.css.map */
