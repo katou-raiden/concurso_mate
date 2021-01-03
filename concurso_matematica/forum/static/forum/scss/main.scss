@@ -1,4 +1,5 @@
-
+$primary: #FFB47B;
+$accent: #F78640;
 
 
 body{
@@ -6,6 +7,17 @@ body{
 }
 
 
+#forum-section {
+    *[id$="section"] {
+        background-color: white;
+        transition: background-color .3s ease;
+
+        &:hover {
+            background-color: $primary;
+        }
+    }
+
+}
 .cforum-section{
     
     /*background-color: #FFB47B;*/

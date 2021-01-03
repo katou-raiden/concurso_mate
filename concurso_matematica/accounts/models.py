@@ -45,9 +45,9 @@ class SocialLink(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     
 class Completed_Exercise(models.Model):
-    name = models.CharField(max_length=35)
+    exercise = models.OneToOneField('training.Exercise', default=None, on_delete=models.CASCADE)
     points = models.IntegerField(default=0)
     user = models.ForeignKey(Student, on_delete = models.CASCADE, related_name='completed_exercises')
-
+    
     def __str__(self):
         return self.name

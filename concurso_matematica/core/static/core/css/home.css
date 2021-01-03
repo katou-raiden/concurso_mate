@@ -276,9 +276,7 @@ body {
   background-color: white;
   border-radius: 15px;
   flex-basis: calc(100% - 1rem);
-  transition: border-color .5s ease, 
- color .5s ease,
- background-color .5s ease;
+  transition: border-color .5s ease,  color .5s ease, background-color .5s ease;
   font-weight: 500;
 }
 
@@ -306,9 +304,7 @@ body {
 }
 
 #features-box .feature .feature-icon-box {
-  transition: border-color .5s ease, 
- color .5s ease,
- background-color .5s ease;
+  transition: border-color .5s ease,  color .5s ease, background-color .5s ease;
   margin-bottom: 1rem;
   margin-left: auto;
   margin-right: auto;

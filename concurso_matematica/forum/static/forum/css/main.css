@@ -2,6 +2,15 @@ body {
   box-sizing: border-box !important;
 }
 
+#forum-section *[id$="section"] {
+  background-color: white;
+  transition: background-color .3s ease;
+}
+
+#forum-section *[id$="section"]:hover {
+  background-color: #FFB47B;
+}
+
 .cforum-section {
   /*background-color: #FFB47B;*/
   transition: background-color .5s ease;

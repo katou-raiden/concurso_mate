@@ -1,7 +1,7 @@
 from django.http.response import HttpResponse
 from django.forms import formset_factory
 from django.shortcuts import redirect, render, get_object_or_404
-from .models import Exercise, Sugestion
+from .models import Exercise, Sugestion, Level, Topic
 from .forms import Completed_ExerciseForm, ExerciseForm, SugestionForm
 
 #for htmltopdf
@@ -16,11 +16,23 @@ def main_view(request):
     return render(request, 'training/main.html')
 
 def level_view(request, level):
-    exercises = Exercise.objects.filter(level = level, topic = request.GET.get('topic', None))
+    
+    topic = request.GET.get('topic', Topic.objects.first().name or None)
+    exercises = Exercise.objects.filter(topic__level__name = level, topic__name = topic)
+    levels = Level.objects.all()
+    level = levels.filter(name=level)
     context = {
+        
         'level': level,
+        'levels': levels,
         'exercises': exercises,
         }
+
+    if topic:
+        context.update({'topic': topic })
+    else:
+        context.update({'topic': 'NO HAY TOPICO !!' })
+
     return render(request, 'training/level_main.html', context=context)
 
 def exercise_list_view(request, level, topic):
