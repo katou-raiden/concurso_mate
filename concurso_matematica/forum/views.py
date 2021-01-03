@@ -81,11 +81,12 @@ def forum_create_post_view(request,section):
     tags = Tag.objects.all()
     if request.method == 'POST':
         form = PostForm(request.POST)
-        post = form.save(commit=False)
-        post.user = request.user
-        post.section = section
-        post.save()
-        return redirect(request.META.get('HTTP_REFERER'))
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = request.user
+            post.section = section
+            post.save()
+            return redirect(request.META.get('HTTP_REFERER'))
     else:
         return render(request, 'forum/create_post.html', context = {'tags':tags,'form':form})
 

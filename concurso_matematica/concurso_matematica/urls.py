@@ -28,6 +28,7 @@ urlpatterns = [
     path('library/', include('library.urls')),
     path('dashboard/', dashboard_view, name='dashboard'),
     path('training/', include('training.urls')),
+    path('dash/', include('dashboard.urls'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
