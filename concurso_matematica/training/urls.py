@@ -6,5 +6,6 @@ urlpatterns = [
     path('<str:level>/', level_view, name='level_main' ),
     path('exercise/<int:pk>/', exercise_detail_view, name='exercise'),
     path('exercise_post/', exercise_post_view, name='ex_post'),
-    path('exercise_to_pdf/<int:pk>', render_pdf_view, name='render')
+    path('exercise_to_pdf/<int:pk>', render_pdf_view, name='render'),
+    
 ]

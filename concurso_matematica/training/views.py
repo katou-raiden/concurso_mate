@@ -15,31 +15,50 @@ def main_view(request):
     
     return render(request, 'training/main.html')
 
-def level_view(request, level):
+
+def level_view(request, level,topic = None):
+
+    general_levels = Level.objects.all()
+    actual_level = Level.objects.get(name = level.capitalize())
+    topics = actual_level.topics.all()
+    default_topic = actual_level.topics.get(pk=1)
     
-    topic = request.GET.get('topic', Topic.objects.first().name or None)
-    exercises = Exercise.objects.filter(topic__level__name = level, topic__name = topic)
-    levels = Level.objects.all()
-    level = levels.filter(name=level)
-    context = {
-        
-        'level': level,
-        'levels': levels,
-        'exercises': exercises,
+    if request.GET.get('topic'):
+        topic_name = request.GET.get('topic')
+        actual_topic = actual_level.topics.get(name=topic_name)
+        print('Con topic marcado '+actual_topic)
+        exercises = Exercise.objects.filer(topic = actual_topic)
+        context = {
+            #nivel en que estas
+            'actual_level': actual_level,
+            'actual_topic':actual_topic,
+            'topics':topics,
+            'exercises':exercises,
+            'general_levels':general_levels
         }
-
-    if topic:
-        context.update({'topic': topic })
+        return render(request, 'training/level_main.html',context)
     else:
-        context.update({'topic': 'NO HAY TOPICO !!' })
+        exercises = Exercise.objects.filter(topic = default_topic)
+        context = {
+            #nivel en que estas
+            'actual_level': actual_level,
+            'actual_topic':default_topic,
+            'topics':topics,
+            'exercises':exercises,
+            'general_levels':general_levels
+        }
+        print('Nivel Actual ')
+        print(actual_level)
+        print('Topic por default ')
+        print(default_topic)
+        print('Todos los topics ')
+        print(topics)
+        print('Ejercicios ')
+        print(exercises)
+        print('Todos los niveles ')
+        print(general_levels) 
+        return render(request, 'training/level_main.html',context)
 
-    return render(request, 'training/level_main.html', context=context)
-
-def exercise_list_view(request, level, topic):
-    
-
-    context = {}
-    return render(request, 'training/exercises.html', context=context)
 
 def exercise_detail_view(request,pk):
     exercise = get_object_or_404(Exercise, pk = pk)
