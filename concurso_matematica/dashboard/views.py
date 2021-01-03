@@ -30,6 +30,10 @@ def remove_new_view(request,pk):
     new = Notice.objects.filter(pk=pk).delete()
     return redirect(request.META.get('HTTP_REFERER'))
 
+def remove_exercise_view(request,pk):
+    new = Exercise.objects.filter(pk=pk).delete()
+    return redirect(request.META.get('HTTP_REFERER'))
+
 def edit_post_view(request,pk):
     post = get_object_or_404(Post, pk = pk)
     form = PostForm(instance = post)
@@ -57,3 +61,31 @@ def edit_Hpost_view(request,pk):
             return render(request,'library/create_history.html', context={'form':form, 'errors':form.errors})
     else:
         return render(request,'library/create_history.html', context={'form':form})
+
+def edit_New_view(request,pk):
+    new = get_object_or_404(Notice, pk = pk)
+    form = PostForm(instance = new)
+
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance = new)
+        if form.is_valid():
+            form.save()
+            return HttpResponse('Todo Bien')
+        else:
+            return render(request,'news/create_notice.html', context={'form':form, 'errors':form.errors})
+    else:
+        return render(request,'news/create_notice.html', context={'form':form})
+
+def edit_exercise_view(request,pk):
+    ex = get_object_or_404(Exercise, pk = pk)
+    form = PostForm(instance = ex)
+
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance = ex)
+        if form.is_valid():
+            form.save()
+            return HttpResponse('Todo Bien')
+        else:
+            return render(request,'training/ex_post.html', context={'form':form, 'errors':form.errors})
+    else:
+        return render(request,'training/ex_post.html', context={'form':form})
