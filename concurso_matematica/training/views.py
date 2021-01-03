@@ -84,14 +84,14 @@ def exercise_detail_view(request,pk):
         return render(request, 'training/exercise.html',context=context)
 
     
-def exercise_post_view(request):
+def create_exercise_view(request):
     ex_form = ExerciseForm()
 
     Sugs_formset = formset_factory(SugestionForm, extra=4)
 
     sugx_formset = Sugs_formset()
 
-    context = {'ex':ex_form, 'sugs' : sugx_formset}
+    context = {'form':ex_form, 'sugs' : sugx_formset}
 
     if request.method == 'POST':
         ex_form = ExerciseForm(request.POST)
@@ -109,7 +109,7 @@ def exercise_post_view(request):
     
     else:
         
-        return render(request, 'training/ex_post.html', context=context)
+        return render(request, 'training/create_exercise.html', context=context)
 
     
 def render_pdf_view(request,pk):

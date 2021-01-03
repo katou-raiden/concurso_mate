@@ -1,0 +1,51 @@
+h2, h1 {
+  color: #FFB47B;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: 600;
+}
+
+h1 + div {
+  background-color: #FFB47B !important;
+  width: 75%;
+  height: 3px;
+}
+
+h2 {
+  font-size: 1.2em;
+}
+
+.nav-link {
+  color: #FFB47B;
+}
+
+.nav-link:hover {
+  color: #F78640;
+}
+
+.btn {
+  background-color: #FFB47B;
+  width: 100% !important;
+  display: inline-block;
+  height: 100% !important;
+  text-align: center;
+  border: none;
+  color: white;
+}
+
+.btn i {
+  margin: 0;
+  padding: 0;
+}
+
+.btn:hover {
+  background-color: #F78640;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #F78640 !important;
+  color: #F78640 !important;
+}
+/*# sourceMappingURL=dashboard.css.map */

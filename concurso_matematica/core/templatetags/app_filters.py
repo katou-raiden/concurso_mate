@@ -22,3 +22,7 @@ def number_minus(number, arg):
 @register.filter(name='format_date')
 def format_date_our_way(date):
     pass
+
+@register.filter('input_type')
+def input_type(input):
+    return input.field.widget.__class__.__name__

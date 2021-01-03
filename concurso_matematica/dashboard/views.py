@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.models import User
 from forum.models import Post
 from news.models import Notice
-from library.models import HistoryPost
+from library.models import HistoryPost  
 from accounts.models import Completed_Exercise
 from training.models import Exercise
 from forum.forms import PostForm

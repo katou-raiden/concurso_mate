@@ -228,8 +228,15 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin: 2rem 0;
   flex-wrap: wrap;
+  background: linear-gradient(to right, #f78640, #ffb47b);
+  border-radius: 20px;
+  padding: 2em 1em;
+  margin: 2em;
+}
+
+#history .history-card:nth-child(2n+1) {
+  background: linear-gradient(to right, white 30%, #F78640);
 }
 
 #history .history-card .history-content {
@@ -256,9 +263,23 @@ body {
   padding: 0 2rem;
 }
 
+@media screen and (min-width: 992px) {
+  #history .history-card p {
+    font-size: 1.1em;
+  }
+}
+
 #history .history-card img {
-  flex-basis: 40%;
+  width: 60%;
+  object-fit: cover;
+  object-position: center;
   order: 2;
+}
+
+@media screen and (min-width: 768px) {
+  #history .history-card img {
+    width: 40%;
+  }
 }
 
 #features-box {
@@ -278,6 +299,11 @@ body {
   flex-basis: calc(100% - 1rem);
   transition: border-color .5s ease,  color .5s ease, background-color .5s ease;
   font-weight: 500;
+}
+
+#features-box .feature i {
+  margin: 0;
+  padding: 0;
 }
 
 @media screen and (min-width: 576px) {

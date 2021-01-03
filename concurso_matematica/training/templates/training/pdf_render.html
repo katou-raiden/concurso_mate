@@ -3,15 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{exercise.name}}</title>
+    <title>{{ exercise.name }}</title>
     <style>
         body{
-            text-align: center;
+            box-sizing: border-box;
+            
+            width: 80%;
+            margin: 0 auto;
+            padding-top: 3em;
+            
         }
+
+        * {
+            margin: 0;
+            text-align: left;
+            
+        }
+        h2, h1 {
+            padding-bottom: .2em;
+            margin: 0;
+            
+        }
+        p span {
+            color: dodgerblue;
+            font-weight: 700;
+        }
+
+        p {
+            padding: 0;
+            padding-left: .5em;
+            line-height: 1.5em;
+            text-align: justify;
+            margin: 0;
+        }
+
+        #norma {
+            color: red;
+        }
+        #sugerencias {
+            color: dodgerblue;
+        }
+
     </style>
 </head>
 <body>
-    <h1>{{exercise.name}}</h1>
+
+   <!-- <h1>{{exercise.name}}</h1>
     <p>{{exercise.question}}</p>
     <h2>Norma de Calificacion</h2>
     <p>{{exercise.qualification_rule}}</p>
@@ -22,5 +59,17 @@
       <br>
       <hr>
     {% endfor %}
+   -->
+
+   <h1>Ejercicio 1:</h1>
+   <p>{{ exercise.question }}</p>
+   <h2 id="norma">Norma de Calificacion</h2>
+   <p>{{ exercise.qualification_rule }}</p>
+   <h2 id="sugerencias">Sugerencias</h2>
+   {% for sug in sugs %}
+   <p><span>#{{ forloop.counter }}:</span> {{ sug.text }}</p>
+   {% endfor %}
+
+
 </body>
 </html>

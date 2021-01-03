@@ -1,0 +1,89 @@
+$sm: 556px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xs: 320px;
+$primary: #FFB47B;
+$accent: #F78640;
+
+@mixin xs {
+    @media (min-width:#{$xs}) {
+        @content;
+    }
+}
+@mixin sm {
+    @media (min-width:#{$sm}) {
+        @content;
+    }
+}
+@mixin md {
+    @media (min-width:#{$md}) {
+        @content;
+    }
+}
+@mixin lg {
+    @media (min-width:#{$lg}) {
+        @content;
+    }
+}
+@mixin xl {
+    @media (min-width:#{$xl}) {
+        @content;
+    }
+}
+
+
+h2, h1 {
+    color: $primary;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: 600;
+
+    & + div {
+
+        background-color: $primary !important;
+        width: 75%; 
+        height: 3px;
+        
+
+    }
+}
+
+h2 {
+    font-size: 1.2em;
+}
+
+
+.nav-link {
+    color: $primary;
+    &:hover {
+        color: $accent;
+    }
+}
+
+.btn {
+    background-color: $primary;
+    width: 100% !important;
+    
+    display: inline-block;
+    height: 100% !important;
+    text-align: center;
+    border: none;
+    color: white;
+    
+    i {
+        margin: 0;
+        padding: 0;
+    }
+
+    &:hover {
+        background-color: $accent;
+    }
+}
+
+input[type="checkbox"]:checked {
+    background-color: $accent !important;
+    color: $accent !important;
+}
