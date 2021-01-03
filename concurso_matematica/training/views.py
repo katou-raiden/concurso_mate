@@ -15,6 +15,10 @@ def main_view(request):
     
     return render(request, 'training/main.html')
 
+def test_view(request):
+    form = Completed_ExerciseForm(request.POST)
+    return render(request,'training/ex_post.html',context={'form':form})
+
 
 def level_view(request, level,topic = None):
 

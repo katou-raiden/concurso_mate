@@ -23,6 +23,7 @@ class Exercise(models.Model):
     name = models.CharField(max_length=75)
     question = models.TextField()
     qualification_rule = models.TextField()
+    date_pub = models.DateTimeField(auto_now_add=True,blank=True,null=True)
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE, related_name='exercises')
     times_visited = models.IntegerField(default=0,blank=True, null=True)    
 

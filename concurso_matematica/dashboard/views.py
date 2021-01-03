@@ -1,4 +1,5 @@
 from django.http.response import HttpResponse
+from django.views.generic import DeleteView
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.models import User
 from forum.models import Post
