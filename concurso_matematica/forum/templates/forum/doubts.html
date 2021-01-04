@@ -15,13 +15,13 @@
         <form id="filters-form">
 
           <div class="field">
-            {{ filter.form.title|attr:"placeholder=Matriz_Asociada" }}
+            {{ filter.form.title }}
             {{ filter.form.title.label_tag }}
           </div>
 
 
           <div class="field">
-            {{ filter.form.user|attr:"placeholder=Juan_Perez" }}
+            {{ filter.form.user }}
             {{ filter.form.user.label_tag }}
 
           </div>
@@ -45,36 +45,34 @@
       
       {% for post in posts.object_list %}
 
-    <div class="post">
+          <div class="post">
 
-      <div class="post-img">
-        <img class="" src="{{ post.image.url }}" alt="">
-      </div>
+            
 
-      <div class="post-info">
-        <div class="post-header">
-          <!-- Titulo del post -->
-          <h6 class="">{{ post.title }}</h6>
-          <!-- Duracion del video -->
-          <span>5 min</span>
+            <div class="post-info">
+              <div class="post-header">
+                <!-- Titulo del post -->
+                <h6 class="">{{ post.title }}</h6>
+                <!-- Duracion del video -->
+                <span>5 min</span>
+              </div>
+              <div class="post-footer">
+                <!-- Autor del post -->
+                por<a class='user-info' href="#">@{{ post.user.username }}</a>
+                <!-- Fecha de publicacion -->
+                <span>el 21/04/2019</span>
+              </div>
+              <div class="tags">
+                <!-- Etiquetas -->
+                {% for tag in post.tag.all %}
+                <a class="tag" href="{% url 'tag_click' tag.name %}">{{ tag.name }}</a>
+                {% endfor %}
+
+              </div>
+            </div>
+          </div>
+
         </div>
-        <div class="post-footer">
-          <!-- Autor del post -->
-          por<a class='user-info' href="#">@{{ post.user.username }}</a>
-          <!-- Fecha de publicacion -->
-          <span>el 21/04/2019</span>
-        </div>
-        <div class="tags">
-          <!-- Etiquetas -->
-          {% for tag in post.tag.all %}
-          <a class="tag" href="{% url 'tag_click' tag.name %}">{{ tag.name }}</a>
-          {% endfor %}
-
-        </div>
-      </div>
-    </div>
-
-  </div>
 
     {% endfor %}
     </div>
