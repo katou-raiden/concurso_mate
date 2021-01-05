@@ -169,12 +169,17 @@ h1 {
 
     h2#filters-title {
         
-        color: $primary;
+        width: fit-content;
+        color: white;
         font-size: 1.6em;
-        flex-basis: 100%;
+        margin: 0 auto;
+        margin-bottom: .6em;
         text-align: center;
         border-bottom: solid 2px $primary;
-        padding-bottom: 1em;
+        padding: .6em;
+        background-color: $primary;
+        border-radius: 15px;
+      
 
     }
     
@@ -192,33 +197,143 @@ h1 {
             background-color: $accent;
         }
     }
+}
+   
+#fields {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+      /**
+      * Make the field a flex-container, reverse the order so label is on top.
+      */
+       
+.field {
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column-reverse;
+    margin: 0 1em;
+    margin-bottom: 1em;
+    width: 40% !important;
+    font-size: .8em;
+    padding: initial 2em !important;
 
-    .field {
-        display: flex;
-        flex-direction: column-reverse;
+    & * {
+        box-sizing: inherit;
+    }
+
+    @include md {
         width: 100%;
-        padding: 0 1em;
+    }
+
+    &:not(:first-child):not(:last-child){
+        padding: 0 .6em;
 
         @include md {
-            width: 50%;
-        }
-
-        
-        label {
-            text-transform: capitalize;
-            color: $primary;
-            font-weight: 1.2em;
-        }
-        input {
-            border: none;
-            outline: none;
-            border-bottom-width: 3px;
-            border-bottom-color: $primary;
-            border-bottom-style: solid;
-
-            &:focus {
-                border-bottom-style: $accent;
-            }
+            padding: 0;
         }
     }
+    &:first-child {
+        padding-right: .6em;
+    }
+    &:last-child {
+        padding-left: .6em;
+    }
+
+   
+    
+  /**
+  * Add a transition to the label and input.
+  * I'm not even sure that touch-action: manipulation works on
+  * inputs, but hey, it's new and cool and could remove the 
+  * pesky delay.
+  */
+  label, input {
+    transition: all 0.2s;
+    touch-action: manipulation;
+    
+  }
+  
+  input {
+
+    background-color: white;
+    color: black;
+    font-size: 1.5em;
+    border: 0;
+    border-bottom: 3px solid white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-family: inherit;
+    -webkit-appearance: none;
+    border-radius: 0;
+    border-bottom: 2px solid $primary;
+    padding: 0;
+    cursor: text;
+    
+  }
+  
+  input:focus {
+    outline: 0;
+    border-bottom: 2px solid #F78640;
+  }
+  
+  label {
+
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: black;
+    font-size: .8em !important;  
+    
+  }
+  /**
+  * Translate down and scale the label up to cover the placeholder,
+  * when following an input (with placeholder-shown support).
+  * Also make sure the label is only on one row, at max 2/3rds of the
+  * field—to make sure it scales properly and doesn't wrap.
+  */
+  input:placeholder-shown + label, textarea:placeholder-shown + label {
+    cursor: text;
+    
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transform-origin: left bottom;
+    transform: translate(0, 2.125rem) scale(1.5);
+  }
+  /**
+  * By default, the placeholder should be transparent. Also, it should 
+  * inherit the transition.
+  */
+  ::-webkit-input-placeholder {
+    opacity: 0;
+    transition: inherit;
+  }
+  /**
+  * Show the placeholder when the input is focused.
+  */
+  input:focus::-webkit-input-placeholder {
+    opacity: 1;
+  }
+  /**
+  * When the element is focused, remove the label transform.
+  * Also, do this when the placeholder is _not_ shown, i.e. when 
+  * there's something in the input at all.
+  */
+  input:not(:placeholder-shown) + label,
+  input:focus + label {
+    transform: translate(0, 0) scale(1);
+    cursor: pointer;
+    display: flex;
+    justify-content: start;
+    width: fit-content;
+    background-color: $accent;
+    color: white;
+    font-weight: bolder;
+    border-radius: 5px;
+    padding: 0 .4em;
+
+  }
 }
+
+

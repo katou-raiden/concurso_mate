@@ -1,7 +1,36 @@
-$screen-sm-min: 576px;
-$screen-md-min: 768px;
-$screen-lg-min: 992px;
-$screen-xl-min: 1200px;
+$xs: 320px;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$primary: #FFB47B;
+$accent: #F78640;
+@mixin xs{
+    @media screen and (min-width: $xs) {
+       @content; 
+    }
+}
+
+@mixin sm{
+    @media screen and (min-width: $sm) {
+       @content; 
+    }
+}
+@mixin md{
+    @media screen and (min-width: $md) {
+       @content; 
+    }
+}
+@mixin lg{
+    @media screen and (min-width: $lg) {
+       @content; 
+    }
+}
+@mixin xl{
+    @media screen and (min-width: $xl) {
+       @content; 
+    }
+}
 
 
 
@@ -18,6 +47,7 @@ body{
     margin: 0;
     padding: 0;
     display: flex;
+    background-color: $primary;
 
 }
 
@@ -29,6 +59,8 @@ body{
     top: 50%;
     transform: translate(-50%, -50%);
     border-radius: 10px;
+    background-color: white;
+    border: $accent 2px solid;
     
     #buttons-area{
         
@@ -44,7 +76,7 @@ body{
         a, button[type="submit"]{
             text-align: center;
             display: inline-block;
-            background-color: orange;
+            background-color: $primary;
             color: white;
             padding: .3rem;
             border-radius: 15px;
@@ -52,7 +84,7 @@ body{
             width: 80px;
             transition: background .4s ease;
             &:hover{
-                background-color: orangered;
+                background-color: $accent;
             }
         }
 
@@ -67,8 +99,8 @@ body{
     .image-area{
         text-align: center;
         margin: .6rem 0;
-        img{
-
+        svg{
+            fill: white;
             display: inline-block;
             padding: .6rem;
             width: 70px;
@@ -76,7 +108,7 @@ body{
             object-position: center;
             object-fit: cover;
             border-radius: 50%;
-            background-color: orange;
+            background-color: $primary;
         }
         
     }
@@ -84,45 +116,16 @@ body{
         display: flex;
         align-items: center;
     }
-    label{
-        border-radius: 50%;
-        width: 35px;
-        height: 35px;
-        line-height: 35px;
-        text-align: center;
-        vertical-align: middle;
-        display: inline-block;
-        color: white;
-        background-color: orange;
-        position: relative;
-        z-index: 1;
-    }
-    input{
-        display: inline-block;
-        width: 75%;
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px;
-        border-bottom-left-radius: 10px;
-        border-top-left-radius: 10px;
-        border: solid 1px black;
-        padding-left: 28px;
-        background-color: white;
-        position: relative;
-        z-index: 0;
-        margin-left: -1.5rem;
-        margin-top: -.3rem;
-        &:focus{
-            outline: none;
-        }
-    }
+ 
+   
     #links-area{
         margin-top: 1rem;
         a{
             transition: color .4s ease;
-            color: orange;
+            color: $primary;
             text-decoration: none;
             &:hover{
-                color: orangered;
+                color: $accent;
 
             }
         }
@@ -141,3 +144,134 @@ body{
     }
     
 }
+
+
+    
+      /**
+      * Make the field a flex-container, reverse the order so label is on top.
+      */
+       
+      .field {
+        box-sizing: border-box;
+        display: flex;
+        flex-flow: column-reverse;
+        margin-bottom: 1em;
+        width: 50%;
+        font-size: .8em;
+
+        @include md {
+            width: 100%;
+        }
+
+        &:not(:first-child):not(:last-child){
+            padding: 0 .6em;
+
+            @include md {
+                padding: 0;
+            }
+        }
+        &:first-child {
+            padding-right: .6em;
+        }
+        &:last-child {
+            padding-left: .6em;
+        }
+
+       
+        
+      /**
+      * Add a transition to the label and input.
+      * I'm not even sure that touch-action: manipulation works on
+      * inputs, but hey, it's new and cool and could remove the 
+      * pesky delay.
+      */
+      label, input {
+        transition: all 0.2s;
+        touch-action: manipulation;
+        
+      }
+      
+      input {
+
+        background-color: white;
+        color: black;
+        font-size: 1.5em;
+        border: 0;
+        border-bottom: 3px solid white;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        font-family: inherit;
+        -webkit-appearance: none;
+        border-radius: 0;
+        border-bottom: 2px solid $primary;
+        padding: 0;
+        cursor: text;
+        
+      }
+      
+      input:focus {
+        outline: 0;
+        border-bottom: 2px solid #F78640;
+      }
+      
+      label {
+
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: black;
+        font-size: .8em !important;  
+        
+      }
+      /**
+      * Translate down and scale the label up to cover the placeholder,
+      * when following an input (with placeholder-shown support).
+      * Also make sure the label is only on one row, at max 2/3rds of the
+      * field—to make sure it scales properly and doesn't wrap.
+      */
+      input:placeholder-shown + label, textarea:placeholder-shown + label {
+        cursor: text;
+        
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transform-origin: left bottom;
+        transform: translate(0, 2.125rem) scale(1.5);
+      }
+      /**
+      * By default, the placeholder should be transparent. Also, it should 
+      * inherit the transition.
+      */
+      ::-webkit-input-placeholder {
+        opacity: 0;
+        transition: inherit;
+      }
+      /**
+      * Show the placeholder when the input is focused.
+      */
+      input:focus::-webkit-input-placeholder {
+        opacity: 1;
+      }
+      /**
+      * When the element is focused, remove the label transform.
+      * Also, do this when the placeholder is _not_ shown, i.e. when 
+      * there's something in the input at all.
+      */
+      input:not(:placeholder-shown) + label,
+      input:focus + label {
+        transform: translate(0, 0) scale(1);
+        cursor: pointer;
+        display: flex;
+        justify-content: start;
+        width: fit-content !important;
+        background-color: $accent;
+        color: white;
+        font-weight: bolder;
+        border-radius: 5px;
+        padding: 0 .4em;
+
+      }
+
+
+
+    }
+    

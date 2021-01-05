@@ -29,8 +29,8 @@
 
 
           <div class="textfield">
-            <label for="{{ filters.form.tags.id_for_label }}" class="">Etiquetas</label>
-            {{ filters.form.tags|add_class:"form-control"|attr:"placeholder=Albebra,Calculo" }}
+            {{ filters.form.tag|add_class:"form-control"|attr:"placeholder=Albebra,Calculo" }}
+            {{ filters.form.tag.label_tag }}
 
           </div>
 

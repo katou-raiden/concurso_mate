@@ -96,10 +96,11 @@ def create_exercise_view(request):
     if request.method == 'POST':
         ex_form = ExerciseForm(request.POST)
         sugx_formset = Sugs_formset(request.POST)
-
-        if ex_form.is_valid() and sugx_formset.is_valid():
+        ex_form.save()
+        
+        if ex_form.is_valid():
             ex = ex_form.save()
-
+            
             for form in sugx_formset:
                 s = form.save(commit = False)
                 s.exercise = ex

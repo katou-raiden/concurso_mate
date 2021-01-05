@@ -6,13 +6,24 @@ body {
   min-height: 600px;
 }
 
+body #login-reg-box {
+  color: #FFB47B;
+  padding: .3em 1em;
+}
+
+body #login-reg-box a {
+  color: #F78640;
+}
+
 body #post-gadget {
   background-color: white;
   box-shadow: 2px 2px rgba(0, 0, 0, 0.096);
 }
 
-body #gadgets-section {
-  margin-top: 4.6em;
+@media screen and (min-width: 992px) {
+  body #gadgets-section {
+    margin-top: 4.6em;
+  }
 }
 
 body #gadgets-section h5 {

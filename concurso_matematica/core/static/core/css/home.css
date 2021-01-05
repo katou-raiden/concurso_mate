@@ -21,6 +21,31 @@ body {
   overflow-x: hidden;
 }
 
+#home-subtitle {
+  color: #FFB47B;
+}
+
+#home-subtitle + div {
+  width: 360px;
+  border-radius: 15px;
+  height: 3px;
+  margin: .6rem auto;
+  background-color: black;
+  background-color: #FFB47B;
+}
+
+#features-title {
+  color: #FFB47B;
+}
+
+#features-title + div {
+  width: 360px;
+  border-radius: 15px;
+  height: 3px;
+  margin: .6rem auto;
+  background-color: #FFB47B;
+}
+
 #home-nav {
   height: 40px;
   padding: 30px 20px;
