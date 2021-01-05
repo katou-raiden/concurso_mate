@@ -37,32 +37,74 @@ body{
     
 }
 
-#exercise {
-    width: 75%;
+#test-section {
+    position: relative;
+
+    #ex-controls {
+        button.btn[type="button"] {
+            background-color: $primary;
+            color: white;
+            font-size: 2em;
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+            transition: background-color .5s ease;
     
+            &:hover {
+                background-color: $accent;
+            }
+        }
+    
+         button#next-btn {
+            right: 0;
+    
+        }
+         button#prev-btn {
+            left: 0;
+        }
+    }
+}
+
+.exercise {
+    width: 75%;
     margin: 0 auto;
+    position: relative;
     background-color: white;
-    #exercise-title {
+
+    
+    .exercise-title {
         font-size: 1.6em;
         color: $primary;
     }
 
-    #exercise-text {
+    .exercise-text {
         margin: 1.6em 0;
     }
 
-    #exercise-content {
+    .exercise-content {
         line-height: 1.5em;
         margin: 1.6em 0;
         padding: 1.6em;
         
     }
-    #exercise-actions {
+    .exercise-actions {
         background-color: #ffb47b57;
         padding: 1em;
         border-radius: 8px;
         text-align: center;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
         
+        
+        & > * {
+            height: 100%;
+        }
+        
+        .form-control {
+            width: fit-content;
+        }
 
         button, a {
             font-size: .6em;
@@ -77,30 +119,45 @@ body{
             }
             
         }
+        
+        form {
+          display: flex;
+          flex-direction: row-reverse;
+            select {
+                height: 100% !important;
+                display: inline-block;
 
+            }
+            button {
+                display: inline-block;
+            }
+        }
+        button, a {
+            transition: background-color .3s ease;
+        }
         button {
             border: none;
             outline: none;
-
-            &:nth-child(1) {
-                background-color: royalblue;
-            }
-            &:nth-child(2) {
-                background-color: rgb(231, 197, 1);
-            }
-            &:nth-child(3) {
-                background-color: white;
-                color: black;
-            }
-            &:nth-child(4) {
-                background-color: red;
-                
-            }
+        
+           
         }
         a {
-            background-color: red;
+            background-color: $primary;
+            text-decoration: none;
+            &:first-of-type {
+                background-color: $primary
+                
+            }
+            &:first-of-type:hover {
+                background-color: $accent;
+            }
+            &:last-of-type {
+                background-color: red;
+            }
+            &:last-of-type:hover {
+                background-color: darken(red, 15%);
+            }
         }
-       
 
         @include lg {
             text-align: right;
@@ -143,6 +200,25 @@ body{
 
 }
 
-.disabled {
-    pointer-events: none !important;
+
+
+#radio-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em 0;
+}
+.radio {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: $primary;
+    margin: 0 .3em;
+    cursor: pointer;
+    transition: background-color .3s ease;
+    
+
+    &.active, &:hover {
+        background-color: $accent;
+    }
 }

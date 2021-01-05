@@ -6,7 +6,7 @@ urlpatterns = [
     path('detail/<int:id>/', views.forum_detail_view, name='forum_detail'),
     path('filter/<int:id>/', views.forum_filter_view, name='forum_filter'),
     path('section/<str:section>/', views.section_view, name="section"),
-    path('section/<str:section>/post/', views.forum_create_post_view, name = 'post'),
-    
+    path('section/<str:section>/create-post/', views.create_post_view, name = 'create-post'),
+
     
 ]

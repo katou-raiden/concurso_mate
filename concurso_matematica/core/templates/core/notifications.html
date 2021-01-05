@@ -1,0 +1,30 @@
+<div id="notifications">
+    <ul class="list-group-flush">
+        {% for notification in notifications %}
+        <li class="list-group-item"><a href="" class="media">
+            <img src="" alt="">
+            <div class="media-body">
+                <div>{{ notification.date_pub }}</div>
+                <p>{{ notification.message }}</p>
+                <button class="btn btn-dark text-white">&times;</button>
+            </div>
+        </a></li>
+        {% endfor %}    
+        <li class="list-group-item"><a href="" class="media">
+            <img src="" alt="">
+            <div class="media-body">
+                <div>{{ notification.date_pub }}</div>
+                <p>{{ notification.message }}</p>
+                <button class="btn btn-dark text-white">&times;</button>
+            </div>
+        </a></li>
+        <li class="list-group-item"><a href="" class="media">
+            <img src="" alt="">
+            <div class="media-body">
+                <div>{{ notification.date_pub }}</div>
+                <p>{{ notification.message }}</p>
+                <button class="btn btn-dark text-white">&times;</button>
+            </div>
+        </a></li>    
+    </ul>
+</div>

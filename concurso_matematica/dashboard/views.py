@@ -2,14 +2,46 @@ from django.http.response import HttpResponse
 from django.views.generic import DeleteView
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.models import User
-from forum.models import Post
-from news.models import Notice
-from library.models import HistoryPost
-from accounts.models import Completed_Exercise
+from forum.models import Post,Comment,Answer
+from news.models import Notice,MainComment,SubComment
+from library.models import HistoryPost,Comment_History, Comment_Video  
+from training.models import Completed_Exercise
 from training.models import Exercise
 from forum.forms import PostForm
 
 # Create your views here.
+
+class CommentDelete(DeleteView):
+    model = Comment
+
+    success_url = '/dashboard'
+
+class AnswerDelete(DeleteView):
+    model = Answer
+
+    success_url = '/dashboard'
+
+class MainCommentDelete(DeleteView):
+    model = MainComment
+
+    success_url = '/dashboard'
+
+class SubCommentDelete(DeleteView):
+    model = SubComment
+
+    success_url = '/dashboard'
+
+class Comment_HistoryDelete(DeleteView):
+    model = Comment_History
+
+    success_url = '/dashboard'
+
+class Comment_VideoDelete(DeleteView):
+    model = Comment_Video
+
+    success_url = '/dashboard'
+
+
 
 def dashboard_view(request):
     qspost = Post.objects.all()

@@ -3,9 +3,13 @@
 {% load widget_tweaks %}
 
     {% block content %}
+    <head>
+        
+        {{ main_form.media }}
+    </head>
     <link rel="stylesheet" href="{% static 'news/css/new.css' %}">
     <section id='new-section' class="">
-        <img id="new-portrait" src="{{new.image.url}}" alt="">
+        <img id="new-portrait" src="{{ new.image.url }}" alt="">
         
         <div class="">
 
@@ -45,11 +49,11 @@
                     
                     
                     <div class="media-body">
-                        <form method="POST" class='d-flex align-items-stretch'>
+                        <form method="POST" class='d-flex align-items-stretch flex-wrap'>
                             {% csrf_token %}
-                            {{  main_form.content | add_class:"text-area-comment" | attr:"name:user-comment" | attr:"rows:4" | attr:"placeholder:Escribe tu comentario..." }}
+                            {{  main_form.content | add_class:"text-area-comment" | attr:"name:user-comment" | attr:"rows:6" | attr:"placeholder:Escribe tu comentario..." }}
                             <!-- <textarea class="text-area-comment" name="user-comment" class="" id="" cols="" rows="4" placeholder="Escribe tu comentario..."></textarea> -->
-                            <button class="btn btn-primary ml-2 text-uppercase font-weight-bold rounded" type="submit">submit</button>
+                            <button class="btn btn-primary  text-uppercase ml-auto mt-2 font-weight-bold rounded" type="submit">submit</button>
                         </form>
                     </div>
                 </div>
@@ -68,7 +72,7 @@
                         </div>
                         <div class="media-body">
                             <div>Published {{ comment.date_pub }}</div>
-                            <p>{{ comment.content }}</p>
+                            <p>{{ comment.content | safe }}</p>
                             <div class="user-actions mt-2">
                             <span class="vote">   
                             <a href="{% url 'votemain' comment.pk %}"><i class="fas fa-arrow-up">{{ comment.upvotes }}</i></a>
@@ -122,5 +126,7 @@
 
     </section>
     <script src="{% static 'news/js/new.js' %}"></script>
+    
+
     {% endblock %}
 

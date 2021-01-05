@@ -1,4 +1,7 @@
 {
     "liveSassCompile.settings.includeItems": [],
-    "liveSassCompile.settings.autoprefix": []
+    "liveSassCompile.settings.autoprefix": [],
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.mypyEnabled": false
 }

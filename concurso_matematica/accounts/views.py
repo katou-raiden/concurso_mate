@@ -56,17 +56,21 @@ def signUp_view(request):
             #usuario, entonces estamos listos para proceder con las extensiones del mismo
             #El primero que tenga informacion proveida y correcta, es el procesado
 
-            if professor_form.is_bound and professor_form.is_valid():
-                #profesor tiene datos y son correctos (literalmente)
+            
 
+            if professor_form.is_valid() and professor_form.has_changed():
+                #profesor tiene datos y son correctos (literalmente)
+                
+                if profile_form.is_valid():
+                    new_profile = profile_form.save(commit=False)
+                    new_profile.user = new_user
+                    new_profile.save()
                 
                 new_user = user_form.save(commit=False)
                 new_user.set_password(request.POST.get('password'))
                 new_user.save()
 
-                if (profile_form.is_valid()):
-                    new_profile = profile_form.save(commit=False)
-                    new_profile.user = new_user
+                
 
                 #en estas tres lineas aseguro que la instancia user este salvada para
                 #que la extension tenga su referencia asegurada en la bd
@@ -76,15 +80,16 @@ def signUp_view(request):
                 #modelo extendido salvado con exito y procedemos a la redireccion
                 return HttpResponse('Registrado con exito')
             
-            elif student_form.is_bound and student_form.is_valid():
+            elif student_form.is_valid() and student_form.has_changed():
                 #Mismos procedimientos
                 new_user = user_form.save(commit=False)
                 new_user.set_password(request.POST.get('password'))
                 new_user.save()
 
-                if (profile_form.is_valid()):
+                if profile_form.is_valid():
                     new_profile = profile_form.save(commit=False)
                     new_profile.user = new_user
+                    new_profile.save()
 
                 new_student = student_form.save(commit=False)
                 new_student.user = new_user

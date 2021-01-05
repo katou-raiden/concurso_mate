@@ -1,30 +1,33 @@
 {% extends 'core/base.html' %}
 {% load static %}
 {% load widget_tweaks %}
-{% block content %}
-<section id="create-post-section">
-    <h1>Crea tu Post</h1>
-    <div id="create-post-wrapper">
-        <form method="POST">
-            {% csrf_token %}
-            <div class="form-group">
-                <h6>Title</h6>
-                {{ form.title | add_class:"form-control" }}
-            </div>
-            <div class="form-group">
-                <h6>Content</h6>
-                {{ form.content | add_class:"form-control" }}
-            </div>
-            <div class="form-group">
-                <h6>Tags</h6>
-                {{ form.tag | add_class:"form-control" }}
-            </div>
-            <div class="d-flex justify-content-center" id="buttons-box">
-                <button class="btn btn-success mr-4">Submit</button>
-                <button class="btn btn-danger ml-4">Cancel</button>
-            </div>
-        </form>
-    </div>
 
-</section>
+{% block css %}
+    <link rel="stylesheet" href="{% static 'library/css/create_history.css' %}">
+    {{ form.media.css }}
+{% endblock %}
+
+{% block content %}    
+
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="field">
+            {{ field | safe }}
+            {{ field.label_tag }}
+        </div>
+        {% endfor %}
+        <div class="form-btns">
+            <button type="submit">Enviar</button>
+            <a href="">Cancelar</a>
+        </div>
+    </form>
+</body>
+</html>
+
+{% endblock %}
+
+{% block js %}
+{{ form.media.js }}
 {% endblock %}

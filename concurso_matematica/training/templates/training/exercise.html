@@ -1,15 +1,22 @@
 {% extends 'core/base.html' %}
 {% load static %}
+{% load widget_tweaks %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'training/css/exercise.css' %}">
 <!-- En esta carta estan los ejercicios, sugerencias y acciones -->
 
 <section id="exercise-section">
-  <div id="exercise">
-  
-    <div id="exercise-content">
-      <h2 id="exercise-title">{{ exercise.name }}</h2>
-              <p id="exercise-text">
+  <div class="exercise">
+  <div>
+    <ul>
+      {% for message in messages %}
+      <li class="bg-danger">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+    <div class="exercise-content">
+      <h2 class="exercise-title">{{ exercise.name }}</h2>
+              <p class="exercise-text">
                   {{ exercise.question }}
               </p>
               <div id="suggestion-box">
@@ -17,17 +24,19 @@
                 {% for suggestion in exercise.sugestions.all %}
                 <button class="suggestion" data-container="body" data-toggle="popover" data-placement="top" data-content="{{ suggestion.text }}" ><i class="fas fa-question-circle "></i></button>
                 {% endfor %}
-                  <button class="suggestion" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."><i class="fas fa-question-circle" style=""></i></button>
-                  <button class="suggestion" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."><i class="fas fa-question-circle" style=""></i></button>
-                  <button class="suggestion" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."><i class="fas fa-question-circle" style=""></i></button>
+                 
               </div>
           </div>
           
-          <div id="exercise-actions">
-              <button type="button" class="disabled" id="auto-qualify-btn">Autocalificarse</button>
-              <button type="button" class="" data-toggle="modal" data-target="#staticBackdrop">Norma de Calificacion</button>
-              <a type="button" href="{% url 'render' exercise.pk %}" class="">Save to PDF <i class="fas fa-download"></i></a>
-              <a href="" class="">Salir</a>
+          <div class="exercise-actions">
+            <form action="{% url 'exercise' exercise.pk %}" class="" method="POST">
+              {% csrf_token %}
+              {{ form.points | add_class:"form-control" }}
+              <button type="submit" class="btn btn-success" id="auto-qualify-btn">Enviar</button>
+              </form>
+              <button type="button" class="btn-warning" data-toggle="modal" data-target="#staticBackdrop">Norma de Calificacion</button>
+              <a type="button" href="{% url 'render' exercise.pk %}" class="download-btn">Save to PDF <i class="fas fa-download"></i></a>
+              <a href="" class="link-danger">Salir</a>
           </div>
      
   </div>
@@ -50,7 +59,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
          <!-- ! Cuando el estudiante cliquea entiendo significa que la calificacion ya esta en sus manos y puede proceder a realizarla, o sea que hasta que no clickee en entiendo en la norma de calif.. no puede hacer el ejercicio. -->
-          <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="document.getElementById('auto-qualify-btn').classList.remove('disabled');">Entiendo</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Entiendo</button>
         </div>
       </div>
     </div>

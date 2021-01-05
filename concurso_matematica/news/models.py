@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from core.models import Tag
-
+from tinymce.models import HTMLField
 # Create your models here.
 
 class Notice(models.Model):
@@ -25,6 +25,7 @@ class MainComment(models.Model):
 
     
     content = models.TextField(default='', null=True)
+    #content = HTMLField(null=True, blank=True)
     date_pub = models.DateTimeField(auto_now_add=True)
     date_mod = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)

@@ -1,7 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import *
 from .forms import *
-from .filters import NoticeFilter
 from django.core.paginator import Paginator
 
 # Create your views here.
@@ -68,12 +67,13 @@ def downvote_sub(request, pk):
     return redirect(request.META.get('HTTP_REFERER'))
     
 def list_news_view(request):
-    news = Notice.objects.all()
-    f = NoticeFilter(request.GET, queryset=news)
+    f = NoticeFilter()
+    if request.method == 'GET':
+        print(' Es un method GET')
+        f = NoticeFilter(request.GET)
+        print('es valido? : ', f.is_valid())
     paginator = Paginator(f.qs, 8)
     page = paginator.get_page(request.GET.get('page',1))
-
-
     cxt = {
         'news': page,
         'filter': f,
@@ -89,8 +89,10 @@ def tag_click_view(request,tag_name):
 
 def create_notice(request):
     form = NoticeForm()
-    if request.method == "GET" and request.GET:
-        form = NoticeForm(request.GET, request.FILES)
+    print('the view working')
+    if request.method == "POST":
+        form = NoticeForm(request.POST, request.FILES)
+        print('is a GET')
         if form.is_valid():
             form.save()
             print('it worked')

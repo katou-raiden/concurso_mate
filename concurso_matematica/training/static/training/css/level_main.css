@@ -3,7 +3,7 @@ h1 {
   font-size: 1.6em;
 }
 
-.btn {
+.test.btn {
   background-color: #FFB47B;
   transition: background-color .3s ease;
   text-align: center;
@@ -14,7 +14,7 @@ h1 {
   font-weight: 600;
 }
 
-.btn:hover {
+.test.btn:hover {
   background-color: #F78640;
   color: white;
 }

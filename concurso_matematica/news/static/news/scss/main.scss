@@ -335,3 +335,71 @@ h1 {
     background-color: $accent !important;
     border-color: $accent;
 }
+
+.field-autocomplete {
+    margin: 0 auto;
+    flex-direction: column;
+    display: flex;
+    
+}
+
+.select2-container {
+    width: 10em !important;
+}
+.select2-container--open {
+    width: 10em !important;
+}
+
+.select2-container--default .select2-selection--single {
+    width:  10em !important;
+    position: relative;
+}
+
+.select2-container--default .select2-selection--multiple {
+    width: 10em !important;
+}
+
+.select2-container--open .select2-dropdown--below {
+    width: 10em !important;
+}
+
+
+.dropdown-menu {
+    min-width: 0;
+    width: auto !important;
+
+    .dropdown-item {
+        padding: .25rem .8rem;
+        transition: 
+        background-color .3s ease,
+        color .3s ease;
+
+        
+        &:first-child {
+            color: $primary;
+        }
+        
+        &:last-child {
+            color: red;
+        }
+        
+        &:hover:first-child {
+            background-color: $primary;
+            
+        }
+        
+        &:hover:last-child {
+            background-color: red;
+        }
+        
+        &:hover {
+            color: white;
+        }
+        .fas {
+            margin: 0;
+            padding: 0;
+
+        }
+    }
+    
+}

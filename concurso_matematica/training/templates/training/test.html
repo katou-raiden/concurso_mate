@@ -1,0 +1,114 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'training/css/exercise.css' %}">
+
+<section id="test-section">
+  
+  <form class="" method="POST">
+    {% csrf_token %}
+    {{ formset.management_form }}
+{% for exercise in exercises %}
+    <div class="exercise">
+      
+    <div>
+      <ul>
+        {% for message in messages %}
+        <li class="bg-danger">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+      <div class="exercise-content">
+        <h2 class="exercise-title">{{ exercise.name }}</h2>
+                <p class="exercise-text">
+                    {{ exercise.question }}
+                </p>
+                <div id="suggestion-box">
+  
+                  {% for suggestion in exercise.sugestions.all %}
+                  <button class="suggestion" data-container="body" data-toggle="popover" data-placement="top" data-content="{{ suggestion.text }}" ><i class="fas fa-question-circle "></i></button>
+                  {% endfor %}
+                    
+                </div>
+      </div>
+            
+            <div class="exercise-actions">
+              {% if forloop.last %}
+              <button data-toggle="modal" data-target="#staticBackdrop" type="submit" class="btn btn-success" id="auto-qualify-btn">Enviar</button>
+              {% endif %}
+              
+              {% render_field next_form.points class="form-control" disabled='' %}
+              
+              <button type="button"  class="rule-btn btn-warning"  data-toggle="modal" data-target="#staticBackdrop{{ forloop.counter }}">Norma de Calificacion</button>
+              <a type="button" href="{% url 'render' exercise.pk %}" class="">Save to PDF <i class="fas fa-download"></i></a>
+              <a href="" class="">Salir</a>
+            </div>
+       
+    </div>
+ 
+  
+    
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop{{ forloop.counter }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              {{ exercise.qualification_rule }}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+           <!-- ! Cuando el estudiante cliquea entiendo significa que la calificacion ya esta en sus manos y puede proceder a realizarla, o sea que hasta que no clickee en entiendo en la norma de calif.. no puede hacer el ejercicio. -->
+            <button type="button" class="btn btn-primary accept-rule-btn" data-dismiss="modal" >Entiendo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% comment %}
+    {% if forloop.last %}
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <p id="submit-question">
+                
+              </p>
+              <button class="btn-success">Aceptar</button>
+              <button class="btn-danger">Cancelar</button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+           <!-- ! Cuando el estudiante cliquea entiendo significa que la calificacion ya esta en sus manos y puede proceder a realizarla, o sea que hasta que no clickee en entiendo en la norma de calif.. no puede hacer el ejercicio. -->
+            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="document.getElementById('auto-qualify-btn').classList.remove('disabled');">Entiendo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% endcomment %}
+    
+{% endfor %}
+</form>
+<div id="ex-controls">
+  <button type="button" id="prev-btn" class="btn">&ltdot;</button>
+  <button type="button" id="next-btn" class="btn">&gtdot;</button>
+</div>
+<div id="radio-box">
+ 
+</div>
+</section>
+
+ <script src="{% static 'training/js/test.js' %}"></script>   
+{% endblock %}

@@ -1,32 +1,71 @@
-#exercise {
+#test-section {
+  position: relative;
+}
+
+#test-section #ex-controls button.btn[type="button"] {
+  background-color: #FFB47B;
+  color: white;
+  font-size: 2em;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  transition: background-color .5s ease;
+}
+
+#test-section #ex-controls button.btn[type="button"]:hover {
+  background-color: #F78640;
+}
+
+#test-section #ex-controls button#next-btn {
+  right: 0;
+}
+
+#test-section #ex-controls button#prev-btn {
+  left: 0;
+}
+
+.exercise {
   width: 75%;
   margin: 0 auto;
+  position: relative;
   background-color: white;
 }
 
-#exercise #exercise-title {
+.exercise .exercise-title {
   font-size: 1.6em;
   color: #FFB47B;
 }
 
-#exercise #exercise-text {
+.exercise .exercise-text {
   margin: 1.6em 0;
 }
 
-#exercise #exercise-content {
+.exercise .exercise-content {
   line-height: 1.5em;
   margin: 1.6em 0;
   padding: 1.6em;
 }
 
-#exercise #exercise-actions {
+.exercise .exercise-actions {
   background-color: #ffb47b57;
   padding: 1em;
   border-radius: 8px;
   text-align: center;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
-#exercise #exercise-actions button, #exercise #exercise-actions a {
+.exercise .exercise-actions > * {
+  height: 100%;
+}
+
+.exercise .exercise-actions .form-control {
+  width: fit-content;
+}
+
+.exercise .exercise-actions button, .exercise .exercise-actions a {
   font-size: .6em;
   padding: .6em;
   border-radius: 5px;
@@ -35,40 +74,58 @@
 }
 
 @media (min-width: 992px) {
-  #exercise #exercise-actions button, #exercise #exercise-actions a {
+  .exercise .exercise-actions button, .exercise .exercise-actions a {
     font-size: 1em;
     margin: 0 .6em;
   }
 }
 
-#exercise #exercise-actions button {
+.exercise .exercise-actions form {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.exercise .exercise-actions form select {
+  height: 100% !important;
+  display: inline-block;
+}
+
+.exercise .exercise-actions form button {
+  display: inline-block;
+}
+
+.exercise .exercise-actions button, .exercise .exercise-actions a {
+  transition: background-color .3s ease;
+}
+
+.exercise .exercise-actions button {
   border: none;
   outline: none;
 }
 
-#exercise #exercise-actions button:nth-child(1) {
-  background-color: royalblue;
+.exercise .exercise-actions a {
+  background-color: #FFB47B;
+  text-decoration: none;
 }
 
-#exercise #exercise-actions button:nth-child(2) {
-  background-color: #e7c501;
+.exercise .exercise-actions a:first-of-type {
+  background-color: #FFB47B;
 }
 
-#exercise #exercise-actions button:nth-child(3) {
-  background-color: white;
-  color: black;
+.exercise .exercise-actions a:first-of-type:hover {
+  background-color: #F78640;
 }
 
-#exercise #exercise-actions button:nth-child(4) {
+.exercise .exercise-actions a:last-of-type {
   background-color: red;
 }
 
-#exercise #exercise-actions a {
-  background-color: red;
+.exercise .exercise-actions a:last-of-type:hover {
+  background-color: #b30000;
 }
 
 @media (min-width: 992px) {
-  #exercise #exercise-actions {
+  .exercise .exercise-actions {
     text-align: right;
   }
 }
@@ -101,7 +158,24 @@
   outline: none;
 }
 
-.disabled {
-  pointer-events: none !important;
+#radio-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 0;
+}
+
+.radio {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #FFB47B;
+  margin: 0 .3em;
+  cursor: pointer;
+  transition: background-color .3s ease;
+}
+
+.radio.active, .radio:hover {
+  background-color: #F78640;
 }
 /*# sourceMappingURL=exercise.css.map */

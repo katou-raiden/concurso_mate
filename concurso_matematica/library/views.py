@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404,redirect,HttpResponse
 from .models import *
-from .forms import CommentVideoForm,CommentHistoryForm,VideoForm,PlaylistForm
+from .forms import *
 from .filters import *
 from django.contrib import messages
 from django.core.paginator import Paginator
@@ -159,7 +159,35 @@ def downloads_main_view(request):
     return render(request,'library/downloads_main.html')
 
 #Terminar Esto despues de hacer el Formulario para Comments
+def create_history_view(request):
+    form = HistoryForm()
 
+    if request.method == "GET":
+        form = HistoryForm(request.GET)
+        
+        if form.is_valid():
+            form.save()
+
+
+    context = {
+        'form' : form,
+    }
+    return render(request, 'library/create_history.html', context)
+
+def edit_history_view(request, pk):
+    form = HistoryForm(instance=get_object_or_404(HistoryPost, pk=pk))
+
+    if request.method == "GET":
+        form = HistoryForm(request.GET, instance=get_object_or_404(HistoryPost, pk=pk))
+        
+        if form.is_valid():
+            form.save()
+
+
+    context = {
+        'form' : form,
+    }
+    return render(request, 'library/create_history.html', context)
 
 def history_post_view(request,pk):
     post = get_object_or_404(HistoryPost,id=pk)

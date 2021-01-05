@@ -241,4 +241,11 @@ form > * {
   border-radius: 5px;
   padding: 0 .4em;
 }
+
+button[type="submit"] {
+  all: unset !important;
+  background-color: violet !important;
+  pointer-events: all !important;
+  cursor: pointer !important;
+}
 /*# sourceMappingURL=signup.css.map */

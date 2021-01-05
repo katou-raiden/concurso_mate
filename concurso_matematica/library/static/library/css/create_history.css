@@ -1,0 +1,45 @@
+form .field {
+  display: flex;
+  flex-direction: column-reverse;
+  margin: 1em;
+}
+
+form .field label {
+  margin-bottom: .6em;
+}
+
+form .field:first-of-type {
+  margin-top: 0;
+}
+
+form .form-btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form .form-btns * {
+  box-sizing: border-box;
+  margin: 0 1em;
+  background-color: #FFB47B;
+  transition: background-color .3s ease;
+  padding: .6em !important;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  font-size: 1em;
+  color: white;
+  width: 80px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+form .form-btns *:hover {
+  background-color: #F78640;
+}
+
+form .form-btns a {
+  text-decoration: none;
+}
+/*# sourceMappingURL=create_history.css.map */

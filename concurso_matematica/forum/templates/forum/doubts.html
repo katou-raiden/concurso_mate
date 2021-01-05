@@ -2,8 +2,13 @@
 {% load static %}
 {% load widget_tweaks %}
 
-{% block content %}
+{% block css %}
+{{ filter.media.css }}
 <link rel="stylesheet" href="{% static 'news/css/main.css' %}">
+{% endblock %}
+
+{% block content %}
+
 <section id="posts-section" class="">
 
   <div class="row">
@@ -15,21 +20,21 @@
         <form id="filters-form">
 
           <div class="field">
-            {{ filter.form.title|attr:"placeholder=Matriz_Asociada" }}
-            {{ filter.form.title.label_tag }}
+            {{ filter.title }}
+            {{ filter.title.label_tag }}
           </div>
 
 
-          <div class="field">
-            {{ filter.form.user|attr:"placeholder=Juan_Perez" }}
-            {{ filter.form.user.label_tag }}
+          <div class="field-autocomplete">
+            {{ filter.user.label_tag }}
+            {{ filter.user }}
 
           </div>
 
 
-          <div class="textfield">
-            <label for="{{ filter.form.tags.id_for_label }}" class="">Etiquetas</label>
-            {{ filter.form.tags|add_class:"form-control"|attr:"placeholder=Albebra,Calculo" }}
+          <div class="field-autocomplete">
+            {{ filter.tag.label_tag }}
+            {{ filter.tag }}
 
           </div>
 
@@ -41,41 +46,51 @@
     <!-- Columna del contenido -->
     <div class="col-12 col-md mb-3">
       <!-- Titulo de la pagina de contenido -->
-      <h1 class="">Lista de Posts</h1>
+     
+        <h1 class="d-flex justify-content-between align-items-center">Lista de Posts <a href="{% url 'section' 'section' %}create-post/" class="btn btn-primary">Preguntar !</a></h1>
+
       
       {% for post in posts.object_list %}
 
-    <div class="post">
+          <div class="post">
 
-      <div class="post-img">
-        <img class="" src="{{ post.image.url }}" alt="">
-      </div>
+            
 
-      <div class="post-info">
-        <div class="post-header">
-          <!-- Titulo del post -->
-          <h6 class="">{{ post.title }}</h6>
-          <!-- Duracion del video -->
-          <span>5 min</span>
-        </div>
-        <div class="post-footer">
-          <!-- Autor del post -->
-          por<a class='user-info' href="#">@{{ post.user.username }}</a>
-          <!-- Fecha de publicacion -->
-          <span>el 21/04/2019</span>
-        </div>
-        <div class="tags">
-          <!-- Etiquetas -->
-          {% for tag in post.tag.all %}
-          <a class="tag" href="{% url 'tag_click' tag.name %}">{{ tag.name }}</a>
-          {% endfor %}
-
-        </div>
-      </div>
-    </div>
-
-  </div>
-
+            <div class="post-info">
+              <div class="post-header">
+                <!-- Titulo del post -->
+                <a class="" href="">{{ post.title }}</a>
+                <!-- Duracion del video -->
+                <span>5 min</span>
+              </div>
+              <div class="post-footer">
+                <!-- Autor del post -->
+                por<a class='user-info' href="#">@{{ post.user.username }}</a>
+                <!-- Fecha de publicacion -->
+                <span>el 21/04/2019</span>
+              </div>
+              <div class="d-flex w-100">
+                <div class="tags flex-grow-1" style="flex-basis: 0% !important;">
+                  <!-- Etiquetas -->
+                  {% for tag in post.tag.all %}
+                  <a class="tag" href="{% url 'tag_click' tag.name %}">{{ tag.name }}</a>
+                  {% endfor %}
+  
+                </div>
+                <div class="actions dropdown mt-0 rounded flex-grow-0 ">
+                  <button class="btn btn-secondary p-1 px-3 text-center dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                  <div class="dropdown-menu" style="" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#"><i class="fas fa-pencil-alt"></i></a>
+                    <a class="dropdown-item" href="#"><i class="fas fa-trash"></i></a>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            
+          </div>
+        
     {% endfor %}
     </div>
 
@@ -123,8 +138,10 @@
     </ul>
     {% endif %}
 
-  </div>
+
 </section>
 
-
+{% endblock %}
+{% block js %}
+{{ filter.media.js }}
 {% endblock %}

@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{% static 'accounts/css/signup.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'accounts/css/signup.css' %}"> -->
     <link rel="stylesheet" href="{% static 'css/all.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <script src="{% static 'js/jquery.min.js' %}"></script>
@@ -31,7 +31,7 @@
         {{ nonfields_field }}
         {% endfor %}
 
-        <form class="" method="POST">
+        <form class="" action="." method="POST">
             {% csrf_token %}
          
             <div id="image-area">
@@ -53,21 +53,21 @@
     
        
                 <div class="field">
-                    {{ user_form.username | attr:"placeholder:Username..." }}
+                    {{ user_form.username | attr:"placeholder:Username..." | attr:"value:" }}
                     {{ user_form.username.label_tag }}
                 </div>
                 <div class="field">
-                    {{ user_form.password | attr:"placeholder:Password..." }}
+                    {{ user_form.password | attr:"type:password" | attr:"placeholder:Password..." | attr:"value:" }}
                     {{ user_form.password.label_tag }}
                 </div>
     
       
                 <div class="field">
-                    {{ student_form.pui | attr:"placeholder:Tu escuela..." }}
+                    {{ student_form.pui | attr:"placeholder:Tu escuela..." | attr:"value:" }}
                     {{ student_form.pui.label_tag }}
                 </div>
                 <div class="field">
-                    {{ student_form.grade | attr:"placeholder:Tu grado..." }}
+                    {{ student_form.grade | attr:"placeholder:Tu grado..." | attr:"value:" }}
                     {{ student_form.grade.label_tag }}
                 </div>
   

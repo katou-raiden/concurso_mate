@@ -3,7 +3,7 @@ from .models import Post, Comment, Answer
 from core.models import Tag
 from .forms import *
 from django.core.paginator import Paginator
-from .filters import *
+
 
 # Create your views here.
 
@@ -72,7 +72,7 @@ def downvote_answer_post(request, pk):
     return redirect(request.META.get('HTTP_REFERER'))
 
 
-def forum_create_post_view(request,section):
+def create_post_view(request,section):
     '''
         Campos del Formulario:
         title,content,tag
@@ -81,6 +81,7 @@ def forum_create_post_view(request,section):
     tags = Tag.objects.all()
     if request.method == 'POST':
         form = PostForm(request.POST)
+        print(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
             post.user = request.user
@@ -88,7 +89,27 @@ def forum_create_post_view(request,section):
             post.save()
             return redirect(request.META.get('HTTP_REFERER'))
     else:
-        return render(request, 'forum/create_post.html', context = {'tags':tags,'form':form})
+        return render(request, 'forum/create_post.html', context = {'tags':tags,'form':form, 'section' : section})
+
+
+def edit_post_view(request, section, pk):
+    '''
+        Campos del Formulario:
+        title,content,tag
+    '''
+    form = PostForm(instance=get_object_or_404(Post, pk=pk))
+    tags = Tag.objects.all()
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance=get_object_or_404(Post, pk=pk))
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = request.user
+            post.section = section
+            post.save()
+            return redirect(request.META.get('HTTP_REFERER'))
+    else:
+        return render(request, 'forum/create_post.html', context = {'tags':tags,'form':form, 'section' : section})
+
 
 # Tag click filter
 

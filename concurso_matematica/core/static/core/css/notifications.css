@@ -1,0 +1,13 @@
+#notifications .notification-item .media-body {
+  width: 200px !important;
+}
+
+#notifications .notification-item p {
+  line-height: 1.2;
+  font-size: .8em;
+}
+
+#notifications .notification-item:last-of-type {
+  border: none !important;
+}
+/*# sourceMappingURL=notifications.css.map */

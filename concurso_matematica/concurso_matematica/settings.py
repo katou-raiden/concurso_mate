@@ -44,9 +44,13 @@ INSTALLED_APPS = [
     'library.apps.LibraryConfig',
     'dashboard.apps.DashboardConfig',
     'training.apps.TrainingConfig',
-    #'tinymce',
+    'tinymce',
+    #'tags_input',
     'django_filters',
     'widget_tweaks',
+    'notifications.apps.NotificationsConfig',
+    'dal',
+    'dal_select2',
     
 ]
 
@@ -125,6 +129,7 @@ USE_L10N = True
 USE_TZ = True
 
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
@@ -134,3 +139,26 @@ STATICFILES_DIRS = [
 ]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+#TINYMCE
+TINYMCE_DEFAULT_CONFIG = {
+    'plugins': "table,spellchecker,paste,searchreplace,image,imagetools,media,codesample,link,code",
+    'width' : '100%',
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 10,
+    'theme' : 'silver'
+}
+TINYMCE_SPELLCHECKER = True
+TINYMCE_COMPRESSOR = False
+TINYMCE_JS_ROOT = os.path.join(STATIC_URL, "js/tinymce/")
+TINYMCE_JS_URL = os.path.join(TINYMCE_JS_ROOT, "tinymce.min.js")
+
+#**********
+
+TAGS_INPUT_MAPPINGS = {
+    
+    'core.Tag': { 'field': 'name', },
+
+}
+
+TAGS_INPUT_INCLUDE_JQUERY = True

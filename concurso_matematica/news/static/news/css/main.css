@@ -291,4 +291,66 @@ h1 {
   background-color: #F78640 !important;
   border-color: #F78640;
 }
+
+.field-autocomplete {
+  margin: 0 auto;
+  flex-direction: column;
+  display: flex;
+}
+
+.select2-container {
+  width: 10em !important;
+}
+
+.select2-container--open {
+  width: 10em !important;
+}
+
+.select2-container--default .select2-selection--single {
+  width: 10em !important;
+  position: relative;
+}
+
+.select2-container--default .select2-selection--multiple {
+  width: 10em !important;
+}
+
+.select2-container--open .select2-dropdown--below {
+  width: 10em !important;
+}
+
+.dropdown-menu {
+  min-width: 0;
+  width: auto !important;
+}
+
+.dropdown-menu .dropdown-item {
+  padding: .25rem .8rem;
+  transition: background-color .3s ease, color .3s ease;
+}
+
+.dropdown-menu .dropdown-item:first-child {
+  color: #FFB47B;
+}
+
+.dropdown-menu .dropdown-item:last-child {
+  color: red;
+}
+
+.dropdown-menu .dropdown-item:hover:first-child {
+  background-color: #FFB47B;
+}
+
+.dropdown-menu .dropdown-item:hover:last-child {
+  background-color: red;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  color: white;
+}
+
+.dropdown-menu .dropdown-item .fas {
+  margin: 0;
+  padding: 0;
+}
 /*# sourceMappingURL=main.css.map */

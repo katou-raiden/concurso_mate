@@ -10,6 +10,7 @@ def number_over(number, arg=None):
     print("Resultado", str(int(number) % int(arg)))
     return int(number) % int(arg)
 
+
 @register.filter(name="minus")
 def number_minus(number, arg):
     arg = int(arg)

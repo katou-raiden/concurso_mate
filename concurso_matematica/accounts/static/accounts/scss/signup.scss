@@ -246,8 +246,8 @@ form {
       * field—to make sure it scales properly and doesn't wrap.
       */
       input:placeholder-shown + label, textarea:placeholder-shown + label {
+
         cursor: text;
-        
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -273,7 +273,10 @@ form {
       * Also, do this when the placeholder is _not_ shown, i.e. when 
       * there's something in the input at all.
       */
+
+    
       input:not(:placeholder-shown) + label,
+      
       input:focus + label {
         transform: translate(0, 0) scale(1);
         cursor: pointer;
@@ -289,8 +292,12 @@ form {
 
       }
 
-
-
+      
     }
     
-    
+    button[type="submit"] {
+        all: unset !important;
+        background-color: violet !important;
+        pointer-events: all !important;
+        cursor: pointer !important;
+    }

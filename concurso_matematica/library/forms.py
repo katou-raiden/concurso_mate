@@ -1,5 +1,38 @@
-from .models import Comment_History, Comment_Video, Video
+from .models import Comment_History, Comment_Video, Video, HistoryPost
 from django import forms
+from tinymce.widgets import TinyMCE
+from core.forms import CoreModelForm
+from dal import autocomplete
+class HistoryPostFilter(CoreModelForm):
+    
+    class Meta:
+        model = HistoryPost
+        labels = {
+            'tag' : 'Etiquetas',
+        }
+        fields = {
+            'title' : '__icontains',
+            'content' : '__icontains',
+            'tag' : '__in',
+        }
+        widgets = {
+            'tag' : autocomplete.ModelSelect2Multiple(url='tag-autocomplete'),
+            'content' : forms.TextInput(),
+        }
+        not_required = '__all__'
+
+class HistoryForm(forms.ModelForm):
+    content = forms.CharField(widget=TinyMCE())
+    class Meta:
+        model = HistoryPost
+        fields = (
+            'title',
+            'content',
+            'tag'
+        )
+        widgets = {
+            'tag' : autocomplete.ModelSelect2Multiple('tag-create-autocomplete'),
+        }
 
 class PlaylistForm(forms.ModelForm):
     
@@ -30,6 +63,8 @@ class VideoForm(forms.ModelForm):
             'playlist',
 
         ]
+
+
 class CommentHistoryForm(forms.ModelForm):
 
     class Meta():

@@ -1,108 +1,55 @@
-#user-menu::-webkit-scrollbar{
-    width: 20px;
-}
-#user-menu::-webkit-scrollbar-track{
-    background-color: rgb(20, 19, 19);
-}
-#user-menu::-webkit-scrollbar-thumb{
-    width: 12px;
-    background-color: cyan;
-    border-radius: 7px;
-    border: solid 2px rgb(58, 54, 54);
-}
-#user-menu-container{
-    position: fixed !important;
-    height: 100vh;
-    width: 70px;
-    opacity: 1;
-    overflow: visible;
-    left: 0;
-    top: 0;
-    z-index: 200;
+$primary: #FFB47B;
+$accent: #F78640;
 
-    &:hover #usermenu{
-        left: 50px;
-    }
-}
+#userbar {
 
-
-#user-menu{
-    position: relative;
-    left: -100%;
     display: flex;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.609);
-    width: 70px;
-    height: 100%;
-    background-color: black;
-    flex-flow: column nowrap;
-    justify-content: space-around;
-    align-items: center;
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
-    transition: left .5s ease;
+    justify-content: flex-end;
+    background: linear-gradient(to right, $accent, $primary);
 
-    &.reveal-user-menu{
-        left: 0;
-   }
-   
+    #notifications {
 
-    .user-avatar-link{
-
-        border-width: 2px;
-        border-color: rgba(105, 105, 105, 0.719);
-        border-top-style: solid;
-        border-bottom-style: solid;
-        display: inline-block;
-        padding: 1em 0;
-
-        img{
+        .dropdown-menu {
             
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-          
-          
-        
-        }
-    }
 
-    #options-bar {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-flow: nowrap column;
-        align-items: center;
-
-        .option-divider{
-            width: .75em;
-            padding: 0;
-            height: 2px;
-            background-color: rgba(105, 105, 105, 0.719);
-            margin: 1em 0;
-        }
-        .option{
-            
-            a{
-                    
+            > .btn {
+                width: 100%;
+                display: block;
+                background-color: $primary;
+                transition: background-color .3s ease;
+                margin: .6em 0;
                 color: white;
-                font-size: 1.4em;
+                
+                
+                &:hover {
+                    background-color: $accent;
+                }
+
             }
-            &:hover a{
-                animation: optionHover .8s;
+        }
+
+        .dropdown-toggle {
+            background-color: transparent;
+            color: white;
+        }
+
+        .notification-item {
+            .media-body {
+                width: 200px !important;
+            }
+            p {
+                line-height: 1.2;
+                font-size: .8em;
             }
 
+            border-bottom: 1px solid black;
+
+            &:last-of-type {
+                border: none !important;
+            }
+
+            
         }
     }
-}
 
-@keyframes optionHover{
-    33%{
-        transform: rotate(-35deg);
-    }
-    66%{
-        transform: rotate(35deg);
-    }
-    100%{
-        transform: rotate(0deg);
-    }
 }

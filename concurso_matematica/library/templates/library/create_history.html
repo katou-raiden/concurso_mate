@@ -1,15 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    {{ form.media }}
 </head>
-<body>
-    <form action="" method="post">
+    <link rel="stylesheet" href="{% static 'library/css/create_history.css' %}">
+
+
+    <form action="" method="POST">
         {% csrf_token %}
-        {{form}}
-        <input type="submit" value="Enviar">
+        {% for field in form %}
+        <div class="field">
+            {{ field | safe }}
+            {{ field.label_tag }}
+        </div>
+        {% endfor %}
+        <div class="form-btns">
+            <button type="submit">Enviar</button>
+            <a href="">Cancelar</a>
+        </div>
     </form>
-</body>
-</html>
+{% endblock %}

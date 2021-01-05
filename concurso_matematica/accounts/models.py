@@ -8,8 +8,6 @@ from django.core.validators import RegexValidator
 PROVINCE_REGEX = '48|47|7|45|42|43|51|41|33|32|31|24|23|22|21|46'
 PUI_REGEX = None
 
-
-
 class Profile(models.Model):
 
     avatar = models.ImageField(upload_to="users/profile_pictures", null=True)
@@ -22,7 +20,7 @@ class Profile(models.Model):
     
 
 class Student(models.Model):
-    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE, related_name="student")
     pui = models.CharField(max_length=20, blank=True, default='')
     grade = models.CharField(max_length=1, blank=True, default='')
     score = models.IntegerField(default=0)
@@ -43,11 +41,3 @@ class Professor(models.Model):
 class SocialLink(models.Model):
     link = models.URLField(default='')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    
-class Completed_Exercise(models.Model):
-    exercise = models.OneToOneField('training.Exercise', default=None, on_delete=models.CASCADE)
-    points = models.IntegerField(default=0)
-    user = models.ForeignKey(Student, on_delete = models.CASCADE, related_name='completed_exercises')
-    
-    def __str__(self):
-        return self.name

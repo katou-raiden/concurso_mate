@@ -9,7 +9,6 @@
 
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'core/css/navbar.css' %}">
 {% if not user.is_authenticated %}
 <div id ="login-reg-box" class="d-flex justify-content-end bg-dark">
     <a href="{% url 'signup' %}" class="">Register</a>&nbsp;|&nbsp;
@@ -207,11 +206,61 @@ style="fill:#ff925a;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-
 <li class="nav-item {% if videos in request.path %}active{% endif %}">
    <a href="{{ videos }}" class="nav-link"><i class="fas fa-video"></i>Video</a>
 </li>
+{% comment %}
 <li class="nav-item {% if dashboard in request.path %}active{% endif %}">
     <a class="nav-link" href="{{ dashboard }}" style="overflow: hidden;"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
 </li>
+{% endcomment %}
 </ul>
 </div>
 </nav>
+{% url 'home' as home %}
+{% if not request.path in home %}
+<div id="userbar">
+    
+        <div class="dropdown" id="notifications">
+            <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-inbox"></i></button>
+            <div class="dropdown-menu dropdown-menu-right p-0 px-2">
+                <ul class="p-0 m-0" aria-labelledby="dropdownMenuButton" style="width: 360px !important">
 
+                    <li class="d-flex flex-row py-2 notification-item">
+                        <div class="media" style="flex-basis: 0 !important; flex-grow: 1 !important;">
+                            <img src="{% static 'core/img/2.jpg' %}" alt="" style="object-fit: cover; object-position: center; width: 60px; height: 60px; border-radius: 50%;">
+                            <div class="media-body">
+                                <p>Lorem ipsum dddolor sit amet consectetur adipisicing elit. Doloremque molestias obcaecati architecto! </p>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-outline-dark d-inline-block">&times;</button>
+                    </li>
+
+                    <li class="d-flex flex-row py-2 notification-item">
+                        <div class="media" style="flex-basis: 0 !important; flex-grow: 1 !important;">
+                            <img src="{% static 'core/img/2.jpg' %}" alt="" style="object-fit: cover; object-position: center; width: 60px; height: 60px; border-radius: 50%;">
+                            <div class="media-body">
+                                <p>Lorem ipsum dddolor sit amet consectetur adipisicing elit. Doloremque molestias obcaecati architecto! </p>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-outline-dark d-inline-block">&times;</button>
+                    </li>
+
+                    {% for ntf in notifications %}
+                  <li class="d-flex flex-row py-2 notification-item">
+                      <div class="media" style="flex-basis: 0 !important; flex-grow: 1 !important;">
+                          <img src="{% static 'core/img/2.jpg' %}" alt="" style="object-fit: cover; object-position: center; width: 60px; height: 60px; border-radius: 50%;">
+                          <div class="media-body">
+                              <p>{{ ntf.message }}</p>
+                          </div>
+                      </div>
+                      <a href="#" class="btn btn-outline-dark d-inline-block">&times;</a>
+                  </li>
+                    {% endfor %}
+                  
+                </ul>
+                <button class="btn">See All Notifications</button>
+            </div>
+          </div>
+    
+
+</div>
+{% endif %}
 <script src="{% static 'core/js/navbar.js' %}"></script>
